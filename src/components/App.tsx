@@ -1,7 +1,12 @@
 import { FC } from 'react';
+import { Header } from './header/Header';
 
 const App: FC = () => {
-  return <div>Application works</div>;
+  return (
+    <div>
+      <Header />
+    </div>
+  );
 };
 
 export { App };
