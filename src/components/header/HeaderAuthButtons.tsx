@@ -1,15 +1,20 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { Box, Button } from '@mui/material';
 
 const HeaderAuthButtons: FC = () => {
   return (
     <Box sx={{ display: 'flex', columnGap: 2 }}>
-      <Button variant="contained" size="small">
-        Sign In
-      </Button>
-      <Button variant="contained" size="small">
-        Sign Up
-      </Button>
+      <Link to="/signin" style={{ textDecoration: 'none' }}>
+        <Button variant="contained" size="small">
+          Sign In
+        </Button>
+      </Link>
+      <Link to="/signup" style={{ textDecoration: 'none' }}>
+        <Button variant="contained" size="small">
+          Sign Up
+        </Button>
+      </Link>
     </Box>
   );
 };
