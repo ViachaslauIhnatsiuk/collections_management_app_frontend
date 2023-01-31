@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { MenuItem, Menu } from '@mui/material';
-import { MobileMenuProps } from '../../models/componentsProps';
+import { MobileMenuProps } from '../../../models/componentsProps';
 import { HeaderAuthButtons } from './HeaderAuthButtons';
 import { HeaderThemeSwitcher } from './HeaderThemeSwitcher';
 import { HeaderLocalization } from './HeaderLocalization';

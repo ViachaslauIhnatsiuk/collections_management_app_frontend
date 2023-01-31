@@ -1,12 +1,12 @@
 import { FC, useState } from 'react';
 import { AppBar, Box, Toolbar, IconButton } from '@mui/material';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { HeaderLogo } from './HeaderLogo';
-import { HeaderSearch } from './HeaderSearch';
-import { HeaderAuthButtons } from './HeaderAuthButtons';
-import { HeaderThemeSwitcher } from './HeaderThemeSwitcher';
-import { HeaderLocalization } from './HeaderLocalization';
-import { HeaderMobileMenu } from './HeaderMobileMenu';
+import { HeaderLogo } from './headerComponents/HeaderLogo';
+import { HeaderSearch } from './headerComponents/HeaderSearch';
+import { HeaderAuthButtons } from './headerComponents/HeaderAuthButtons';
+import { HeaderThemeSwitcher } from './headerComponents/HeaderThemeSwitcher';
+import { HeaderLocalization } from './headerComponents/HeaderLocalization';
+import { HeaderMobileMenu } from './headerComponents/HeaderMobileMenu';
 import { SidebarToggleButton } from '../sidebar/SidebarToggleButton';
 
 const Header: FC = () => {

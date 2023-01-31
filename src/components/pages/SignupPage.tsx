@@ -1,7 +1,8 @@
 import { FC } from 'react';
+import { SignupForm } from '../forms/SignupForm';
 
 const SignupPage: FC = () => {
-  return <div>SignupPage</div>;
+  return <SignupForm />;
 };
 
 export { SignupPage };

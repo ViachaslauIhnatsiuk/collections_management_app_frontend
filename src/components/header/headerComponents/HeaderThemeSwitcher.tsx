@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { styled, Switch } from '@mui/material';
-import { darkThemeIcon, lightThemeIcon } from '../../constants/themeSwitcherIcons';
+import { darkThemeIcon, lightThemeIcon } from '../../../constants/themeSwitcherIcons';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 58,

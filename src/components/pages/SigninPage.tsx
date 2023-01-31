@@ -1,7 +1,8 @@
 import { FC } from 'react';
+import { SigninForm } from '../forms/SigninForm';
 
 const SigninPage: FC = () => {
-  return <div>SigninPage</div>;
+  return <SigninForm />;
 };
 
 export { SigninPage };

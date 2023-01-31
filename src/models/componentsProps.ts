@@ -11,4 +11,8 @@ interface SidebarProps {
   toggleSidebar: () => void;
 }
 
-export type { MobileMenuProps, SidebarProps };
+interface SubmitButtonProps {
+  handler(email: string, password: string, name?: string): Promise<void>;
+}
+
+export type { MobileMenuProps, SidebarProps, SubmitButtonProps };

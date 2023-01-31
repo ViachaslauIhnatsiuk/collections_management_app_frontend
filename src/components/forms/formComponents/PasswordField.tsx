@@ -1,0 +1,44 @@
+import { FC, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
+import {
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
+  Typography,
+} from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { passwordRegister } from '../../../constants/formValidation';
+import { IFormUser } from '../../../models/formUser';
+
+const PasswordField: FC = () => {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<IFormUser>();
+
+  return (
+    <>
+      <FormControl variant="outlined" required>
+        <InputLabel htmlFor="password">Password</InputLabel>
+        <OutlinedInput
+          type={showPassword ? 'text' : 'password'}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
+                {showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </InputAdornment>
+          }
+          label="Password"
+          {...register('password', passwordRegister)}
+        />
+      </FormControl>
+      <Typography sx={{ fontSize: 10 }}>{errors.password?.message}</Typography>
+    </>
+  );
+};
+
+export { PasswordField };
