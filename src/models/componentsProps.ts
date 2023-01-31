@@ -6,4 +6,9 @@ interface MobileMenuProps {
   setMenuAnchorElement: Dispatch<SetStateAction<null | HTMLElement>>;
 }
 
-export type { MobileMenuProps };
+interface SidebarProps {
+  isSidebarOpen: boolean;
+  toggleSidebar: () => void;
+}
+
+export type { MobileMenuProps, SidebarProps };

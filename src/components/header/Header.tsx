@@ -1,6 +1,5 @@
 import { FC, useState } from 'react';
 import { AppBar, Box, Toolbar, IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { HeaderLogo } from './HeaderLogo';
 import { HeaderSearch } from './HeaderSearch';
@@ -8,6 +7,7 @@ import { HeaderAuthButtons } from './HeaderAuthButtons';
 import { HeaderThemeSwitcher } from './HeaderThemeSwitcher';
 import { HeaderLocalization } from './HeaderLocalization';
 import { HeaderMobileMenu } from './HeaderMobileMenu';
+import { SidebarToggleButton } from '../sidebar/SidebarToggleButton';
 
 const Header: FC = () => {
   const [menuAnchorElement, setMenuAnchorElement] = useState<null | HTMLElement>(null);
@@ -16,9 +16,7 @@ const Header: FC = () => {
   return (
     <AppBar position="static">
       <Toolbar sx={{ columnGap: 2 }}>
-        <IconButton size="medium" edge="start" color="inherit">
-          <MenuIcon />
-        </IconButton>
+        <SidebarToggleButton />
         <HeaderLogo />
         <HeaderSearch />
         <Box sx={{ flexGrow: 1 }} />
