@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 import { IFormUser } from '../../../models/formUser';
 import { SubmitButtonProps } from '../../../models/componentsProps';
 
-const RegSubmitButton: FC<SubmitButtonProps> = ({ handler }) => {
+const SubmitButton: FC<SubmitButtonProps> = ({ submitHandler }) => {
   const navigate = useNavigate();
   const {
     getValues,
@@ -13,8 +13,9 @@ const RegSubmitButton: FC<SubmitButtonProps> = ({ handler }) => {
     formState: { isValid },
   } = useFormContext<IFormUser>();
 
-  const handleSubmit = async (): Promise<void> => {
-    await handler(...getValues(['name', 'email', 'password'])).catch();
+  const handleSubmit = (): void => {
+    const fieldsValues = getValues(['email', 'password', 'name']);
+    submitHandler(...fieldsValues);
     reset();
     navigate('/');
   };
@@ -27,9 +28,9 @@ const RegSubmitButton: FC<SubmitButtonProps> = ({ handler }) => {
       disabled={!isValid}
       onClick={handleSubmit}
     >
-      Sign Up
+      Sign In
     </Button>
   );
 };
 
-export { RegSubmitButton };
+export { SubmitButton };

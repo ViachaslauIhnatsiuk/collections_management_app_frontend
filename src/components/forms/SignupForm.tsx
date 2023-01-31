@@ -6,18 +6,14 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import { NameField } from './formComponents/NameField';
 import { EmailField } from './formComponents/EmailField';
 import { PasswordField } from './formComponents/PasswordField';
-import { RegSubmitButton } from './formComponents/RegSubmitButton';
 import { IFormUser } from '../../models/formUser';
+import { SubmitButton } from './formComponents/SubmitButton';
 
 const SignupForm: FC = () => {
   const methods = useForm<IFormUser>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
 
-  const handleSignup = async (
-    name: string,
-    email: string,
-    password: string,
-  ): Promise<void> => {
+  const handleSignup = (name: string, email: string, password: string): void => {
     console.log(name, email, password);
   };
 
@@ -52,7 +48,7 @@ const SignupForm: FC = () => {
           <NameField />
           <EmailField />
           <PasswordField />
-          <RegSubmitButton handler={handleSignup} />
+          <SubmitButton submitHandler={handleSignup} />
           <Link to="/signin" style={{ textDecoration: 'none' }}>
             <Typography sx={{ fontSize: 14, color: '#000000' }}>
               Already have an account? Sign In

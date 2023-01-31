@@ -12,7 +12,7 @@ interface SidebarProps {
 }
 
 interface SubmitButtonProps {
-  handler(email: string, password: string, name?: string): Promise<void>;
+  submitHandler(email: string, password: string, name?: string): void;
 }
 
 export type { MobileMenuProps, SidebarProps, SubmitButtonProps };

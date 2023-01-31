@@ -5,14 +5,14 @@ import { Avatar, Box, Typography, Container } from '@mui/material';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { EmailField } from './formComponents/EmailField';
 import { PasswordField } from './formComponents/PasswordField';
-import { AuthSubmitButton } from './formComponents/AuthSubmitButton';
 import { IFormUser } from '../../models/formUser';
+import { SubmitButton } from './formComponents/SubmitButton';
 
 const SigninForm: FC = () => {
   const methods = useForm<IFormUser>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
 
-  const handleSignin = async (email: string, password: string): Promise<void> => {
+  const handleSignin = (email: string, password: string): void => {
     console.log(email, password);
   };
 
@@ -46,7 +46,7 @@ const SigninForm: FC = () => {
         >
           <EmailField />
           <PasswordField />
-          <AuthSubmitButton handler={handleSignin} />
+          <SubmitButton submitHandler={handleSignin} />
           <Link to="/signup" style={{ textDecoration: 'none' }}>
             <Typography sx={{ fontSize: 14, color: '#000000' }}>
               Don`t have an account? Sign Up
