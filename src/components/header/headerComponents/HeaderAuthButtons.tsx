@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import { selectUser, useAppSelector } from '../../../store/selectors';
 import { useAppDispatch } from '../../../store/store';
 import { resetUserState } from '../../../store/slices/userSlice/userSlice';
+import { HeaderAuthButton } from './HeaderAuthButton';
 
 const HeaderAuthButtons: FC = () => {
   const { isAuth } = useAppSelector(selectUser);
@@ -16,21 +16,11 @@ const HeaderAuthButtons: FC = () => {
   return (
     <Box sx={{ display: 'flex', columnGap: 2 }}>
       {isAuth ? (
-        <Button variant="contained" size="small" onClick={signOut}>
-          Sign Out
-        </Button>
+        <HeaderAuthButton value="Sign Out" path="/signin" handler={signOut} />
       ) : (
         <>
-          <Link to="/signin" style={{ textDecoration: 'none' }}>
-            <Button variant="contained" size="small">
-              Sign In
-            </Button>
-          </Link>
-          <Link to="/signup" style={{ textDecoration: 'none' }}>
-            <Button variant="contained" size="small">
-              Sign Up
-            </Button>
-          </Link>
+          <HeaderAuthButton value="Sign In" path="/signin" />
+          <HeaderAuthButton value="Sign Up" path="/signup" />
         </>
       )}
     </Box>

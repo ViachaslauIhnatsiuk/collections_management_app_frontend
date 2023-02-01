@@ -16,4 +16,10 @@ interface SubmitButtonProps {
   submitHandler(email: string, password: string, name?: string): void;
 }
 
-export type { MobileMenuProps, SidebarProps, SubmitButtonProps };
+interface AuthButtonProps {
+  value: string;
+  path: string;
+  handler?: () => void;
+}
+
+export type { MobileMenuProps, SidebarProps, SubmitButtonProps, AuthButtonProps };
