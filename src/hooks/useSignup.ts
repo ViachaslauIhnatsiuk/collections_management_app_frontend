@@ -1,12 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../constants/baseUrl';
 import { useAppDispatch } from '../store/store';
 import { setUserState } from '../store/slices/userSlice/userSlice';
 
 const useSignup = () => {
   const [error, setError] = useState<Error | null>(null);
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const signUp = async (name: string, email: string, password: string): Promise<void> => {
@@ -20,13 +18,8 @@ const useSignup = () => {
 
     if (!response.ok) {
       setError(user.error);
-    }
-
-    if (response.ok) {
-      localStorage.setItem('user', JSON.stringify(user));
+    } else {
       dispatch(setUserState(user));
-      navigate('/');
-      window.location.reload();
     }
   };
 

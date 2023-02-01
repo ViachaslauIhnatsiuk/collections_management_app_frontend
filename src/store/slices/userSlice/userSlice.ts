@@ -19,13 +19,8 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setSignIn: (state) => {
-      state.isAuth = true;
-    },
-    setSignOut: (state) => {
-      state.isAuth = false;
-    },
     setUserState: (state, { payload: user }: PayloadAction<ICurrentUserState>) => {
+      state.isAuth = true;
       const { currentUser } = state;
       const { id, token, name, email, isBlocked, isAdmin, language, theme } = user;
       currentUser.id = id;
@@ -37,8 +32,9 @@ const userSlice = createSlice({
       if (language) currentUser.language = language;
       if (theme) currentUser.theme = theme;
     },
+    resetUserState: () => initialState,
   },
 });
 
-export const { setSignIn, setSignOut, setUserState } = userSlice.actions;
+export const { resetUserState, setUserState } = userSlice.actions;
 export { userSlice };

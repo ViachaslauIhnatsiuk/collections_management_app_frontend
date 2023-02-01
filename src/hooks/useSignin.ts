@@ -18,10 +18,7 @@ const useSignin = () => {
 
     if (!response.ok) {
       setError(user.error);
-    }
-
-    if (response.ok) {
-      localStorage.setItem('user', JSON.stringify(user));
+    } else {
       dispatch(setUserState(user));
     }
   };
