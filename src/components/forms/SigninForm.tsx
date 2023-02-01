@@ -44,7 +44,7 @@ const SigninForm: FC = () => {
         >
           <EmailField />
           <PasswordField />
-          <SubmitButton submitHandler={signIn} />
+          <SubmitButton value="Sign In" submitHandler={signIn} />
           <Link to="/signup" style={{ textDecoration: 'none' }}>
             <Typography sx={{ fontSize: 14, color: '#000000' }}>
               Don`t have an account? Sign Up

@@ -12,6 +12,7 @@ interface SidebarProps {
 }
 
 interface SubmitButtonProps {
+  value: string;
   submitHandler(email: string, password: string, name?: string): void;
 }
 

@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { BASE_URL } from '../constants/baseUrl';
+import { useAppDispatch } from '../store/store';
+import { setUserState } from '../store/slices/userSlice/userSlice';
 
 const useSignin = () => {
   const [error, setError] = useState<Error | null>(null);
+  const dispatch = useAppDispatch();
 
   const signIn = async (email: string, password: string): Promise<void> => {
     const response = await fetch(`${BASE_URL}/signin`, {
@@ -19,7 +22,7 @@ const useSignin = () => {
 
     if (response.ok) {
       localStorage.setItem('user', JSON.stringify(user));
-      // setIsAuth(true);
+      dispatch(setUserState(user));
     }
   };
 

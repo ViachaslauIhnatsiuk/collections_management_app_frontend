@@ -46,7 +46,7 @@ const SignupForm: FC = () => {
           <NameField />
           <EmailField />
           <PasswordField />
-          <SubmitButton submitHandler={signUp} />
+          <SubmitButton value="Sign Up" submitHandler={signUp} />
           <Link to="/signin" style={{ textDecoration: 'none' }}>
             <Typography sx={{ fontSize: 14, color: '#000000' }}>
               Already have an account? Sign In

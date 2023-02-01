@@ -1,12 +1,10 @@
 import { FC } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { IFormUser } from '../../../models/formUser';
 import { SubmitButtonProps } from '../../../models/componentsProps';
 
-const SubmitButton: FC<SubmitButtonProps> = ({ submitHandler }) => {
-  const navigate = useNavigate();
+const SubmitButton: FC<SubmitButtonProps> = ({ value, submitHandler }) => {
   const {
     getValues,
     reset,
@@ -21,7 +19,6 @@ const SubmitButton: FC<SubmitButtonProps> = ({ submitHandler }) => {
       submitHandler(...(fieldsValues.slice(1) as [string, string]));
     }
     reset();
-    navigate('/');
   };
 
   return (
@@ -32,7 +29,7 @@ const SubmitButton: FC<SubmitButtonProps> = ({ submitHandler }) => {
       disabled={!isValid}
       onClick={handleSubmit}
     >
-      Sign In
+      {value}
     </Button>
   );
 };

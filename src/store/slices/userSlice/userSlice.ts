@@ -4,11 +4,10 @@ import { ICurrentUserState } from './userModel';
 const initialState = {
   isAuth: false,
   currentUser: {
-    _id: '',
+    id: '',
     token: '',
     name: '',
     email: '',
-    password: '',
     isBlocked: false,
     isAdmin: false,
     language: 'EN',
@@ -28,13 +27,11 @@ const userSlice = createSlice({
     },
     setUserState: (state, { payload: user }: PayloadAction<ICurrentUserState>) => {
       const { currentUser } = state;
-      const { _id, token, name, email, password, isBlocked, isAdmin, language, theme } =
-        user;
-      currentUser._id = _id;
+      const { id, token, name, email, isBlocked, isAdmin, language, theme } = user;
+      currentUser.id = id;
       currentUser.token = token;
       currentUser.name = name;
       currentUser.email = email;
-      currentUser.password = password;
       if (isBlocked) currentUser.isBlocked = isBlocked;
       if (isAdmin) currentUser.isAdmin = isAdmin;
       if (language) currentUser.language = language;
@@ -43,5 +40,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { setSignIn, setSignOut } = userSlice.actions;
+export const { setSignIn, setSignOut, setUserState } = userSlice.actions;
 export { userSlice };

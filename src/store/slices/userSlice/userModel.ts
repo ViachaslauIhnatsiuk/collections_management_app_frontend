@@ -1,9 +1,8 @@
 interface ICurrentUserState {
-  _id: string;
+  id: string;
   token: string;
   name: string;
   email: string;
-  password: string;
   isBlocked: boolean;
   isAdmin: boolean;
   language: string;
