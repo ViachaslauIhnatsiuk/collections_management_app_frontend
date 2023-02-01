@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useSignin } from '../../hooks/useSignin';
 import { Avatar, Box, Typography, Container } from '@mui/material';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { EmailField } from './formComponents/EmailField';
@@ -11,10 +12,7 @@ import { SubmitButton } from './formComponents/SubmitButton';
 const SigninForm: FC = () => {
   const methods = useForm<IFormUser>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
-
-  const handleSignin = (email: string, password: string): void => {
-    console.log(email, password);
-  };
+  const { signIn } = useSignin();
 
   return (
     <Container
@@ -46,7 +44,7 @@ const SigninForm: FC = () => {
         >
           <EmailField />
           <PasswordField />
-          <SubmitButton submitHandler={handleSignin} />
+          <SubmitButton submitHandler={signIn} />
           <Link to="/signup" style={{ textDecoration: 'none' }}>
             <Typography sx={{ fontSize: 14, color: '#000000' }}>
               Don`t have an account? Sign Up

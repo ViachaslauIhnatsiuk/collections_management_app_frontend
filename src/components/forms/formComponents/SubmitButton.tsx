@@ -14,8 +14,12 @@ const SubmitButton: FC<SubmitButtonProps> = ({ submitHandler }) => {
   } = useFormContext<IFormUser>();
 
   const handleSubmit = (): void => {
-    const fieldsValues = getValues(['email', 'password', 'name']);
-    submitHandler(...fieldsValues);
+    const fieldsValues = getValues(['name', 'email', 'password']);
+    if (submitHandler.length === 3) {
+      submitHandler(...fieldsValues);
+    } else {
+      submitHandler(...(fieldsValues.slice(1) as [string, string]));
+    }
     reset();
     navigate('/');
   };
