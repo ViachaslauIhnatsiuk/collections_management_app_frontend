@@ -4,6 +4,7 @@ import { selectCollections, selectUser, useAppSelector } from '../../store/selec
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
 import { CollectionCard } from '../collection/CollectionCard';
+import { Loader } from '../UI/Loader';
 
 const UserCollectionsPage: FC = () => {
   const { collections, status, error } = useAppSelector(selectCollections);
@@ -27,7 +28,7 @@ const UserCollectionsPage: FC = () => {
         py: 5,
       }}
     >
-      {status === 'loading' && <h2>Loading...</h2>}
+      {status === 'loading' && <Loader />}
       {error === 'loading' && <h2>Error: {error}</h2>}
       {collections.length ? (
         <Stack
