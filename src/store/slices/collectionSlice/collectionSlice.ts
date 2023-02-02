@@ -133,7 +133,7 @@ const collectionSlice = createSlice({
     builder.addCase(getCollections.pending, setPending);
     builder.addCase(createCollection.pending, setPending);
     builder.addCase(updateCollection.pending, setPending);
-    builder.addCase(deleteCollection.rejected, setPending);
+    builder.addCase(deleteCollection.pending, setPending);
 
     builder.addCase(
       getCollections.fulfilled,
