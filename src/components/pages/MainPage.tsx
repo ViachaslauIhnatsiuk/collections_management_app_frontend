@@ -1,6 +1,5 @@
 import { Container } from '@mui/material';
 import { FC } from 'react';
-import { CollectionsPage } from './CollectionsPage';
 
 const MainPage: FC = () => {
   return (
@@ -12,7 +11,7 @@ const MainPage: FC = () => {
         py: 5,
       }}
     >
-      <CollectionsPage />
+      Main page
     </Container>
   );
 };
