@@ -1,17 +1,20 @@
-import { FC, useEffect } from 'react';
-import { selectCollections, useAppSelector } from '../../store/selectors';
-import { fetchCollections } from '../../store/slices/collectionSlice/collectionSlice';
-import { useAppDispatch } from '../../store/store';
+import { Container } from '@mui/material';
+import { FC } from 'react';
+import { CollectionsPage } from './CollectionsPage';
 
 const MainPage: FC = () => {
-  const { collections } = useAppSelector(selectCollections);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchCollections());
-  }, [dispatch]);
-
-  return <div>MainPage</div>;
+  return (
+    <Container
+      maxWidth="md"
+      sx={{
+        display: 'grid',
+        placeContent: 'center',
+        py: 5,
+      }}
+    >
+      <CollectionsPage />
+    </Container>
+  );
 };
 
 export { MainPage };
