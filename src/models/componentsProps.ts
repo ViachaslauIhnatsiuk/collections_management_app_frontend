@@ -11,6 +11,11 @@ interface SidebarProps {
   toggleSidebar: () => void;
 }
 
+interface SidebarListItemProps {
+  title: string;
+  link: string;
+}
+
 interface SubmitButtonProps {
   value: string;
   submitHandler(email: string, password: string, name?: string): void;
@@ -22,4 +27,10 @@ interface AuthButtonProps {
   handler?: () => void;
 }
 
-export type { MobileMenuProps, SidebarProps, SubmitButtonProps, AuthButtonProps };
+export type {
+  MobileMenuProps,
+  SidebarProps,
+  SidebarListItemProps,
+  SubmitButtonProps,
+  AuthButtonProps,
+};
