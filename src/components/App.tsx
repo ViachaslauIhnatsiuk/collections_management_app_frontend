@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { selectUser, useAppSelector } from '../store/selectors';
 import { Header } from './header/Header';
 import { CollectionsPage } from './pages/CollectionsPage';
+import { UserCollectionsPage } from './pages/UserCollectionsPage';
 import { MainPage } from './pages/MainPage';
 import { SigninPage } from './pages/SigninPage';
 import { SignupPage } from './pages/SignupPage';
@@ -21,7 +22,7 @@ const App: FC = () => {
         />
         <Route
           path="/user-collections"
-          element={isAuth ? <CollectionsPage /> : <Navigate to="/signin" />}
+          element={isAuth ? <UserCollectionsPage /> : <Navigate to="/signin" />}
         />
         <Route path="/signin" element={!isAuth ? <SigninPage /> : <Navigate to="/" />} />
         <Route path="/signup" element={!isAuth ? <SignupPage /> : <Navigate to="/" />} />

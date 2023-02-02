@@ -12,7 +12,7 @@ const SignupPage: FC = () => {
         py: 5,
       }}
     >
-      <SignupForm />;
+      <SignupForm />
     </Container>
   );
 };

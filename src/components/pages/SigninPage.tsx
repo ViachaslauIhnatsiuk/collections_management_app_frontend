@@ -12,7 +12,7 @@ const SigninPage: FC = () => {
         py: 5,
       }}
     >
-      <SigninForm />;
+      <SigninForm />
     </Container>
   );
 };
