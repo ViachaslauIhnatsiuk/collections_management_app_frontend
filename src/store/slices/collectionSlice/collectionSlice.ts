@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../../constants/baseUrl';
-import { CollectionStatus, ICollection, ICollectionsState } from './collectionModel';
+import { ICollection, ICollectionsState } from './collectionModel';
+import { setError, setPending, setResolved } from './collectionHelpers';
 
 const initialState: ICollectionsState = {
   collections: [],
@@ -10,7 +11,7 @@ const initialState: ICollectionsState = {
 
 const getCollections = createAsyncThunk(
   'collections/getCollections',
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, dispatch }) => {
     try {
       const response = await fetch(`${BASE_URL}/collections`);
 
@@ -20,7 +21,7 @@ const getCollections = createAsyncThunk(
 
       const collections = await response.json();
 
-      return collections;
+      dispatch(setCollections(collections));
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -95,23 +96,13 @@ const deleteCollection = createAsyncThunk(
   },
 );
 
-const setPending = (state: ICollectionsState) => {
-  state.status = CollectionStatus.loading;
-  state.error = '';
-};
-
-const setError = (
-  state: ICollectionsState,
-  { payload }: PayloadAction<unknown | string>,
-) => {
-  state.status = CollectionStatus.rejected;
-  state.error = payload as string;
-};
-
 const collectionSlice = createSlice({
   name: 'collections',
   initialState,
   reducers: {
+    setCollections: (state, { payload }: PayloadAction<ICollection[]>) => {
+      state.collections = payload;
+    },
     createNewCollection: (state, { payload }: PayloadAction<ICollection>) => {
       state.collections = [...state.collections, payload];
     },
@@ -135,13 +126,10 @@ const collectionSlice = createSlice({
     builder.addCase(updateCollection.pending, setPending);
     builder.addCase(deleteCollection.pending, setPending);
 
-    builder.addCase(
-      getCollections.fulfilled,
-      (state, { payload }: PayloadAction<ICollection[]>) => {
-        state.status = CollectionStatus.resolved;
-        state.collections = payload;
-      },
-    );
+    builder.addCase(getCollections.fulfilled, setResolved);
+    builder.addCase(createCollection.fulfilled, setResolved);
+    builder.addCase(updateCollection.fulfilled, setResolved);
+    builder.addCase(deleteCollection.fulfilled, setResolved);
 
     builder.addCase(getCollections.rejected, setError);
     builder.addCase(createCollection.rejected, setError);
@@ -150,8 +138,12 @@ const collectionSlice = createSlice({
   },
 });
 
-export const { updateSelectedCollection, deleteSelectedCollection, createNewCollection } =
-  collectionSlice.actions;
+export const {
+  setCollections,
+  createNewCollection,
+  updateSelectedCollection,
+  deleteSelectedCollection,
+} = collectionSlice.actions;
 export {
   collectionSlice,
   getCollections,

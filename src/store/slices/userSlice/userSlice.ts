@@ -1,5 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ICurrentUserState } from './userModel';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { BASE_URL } from '../../../constants/baseUrl';
+import { setError, setPending, setResolved } from './userHelpers';
+import { ICurrentUserState, ISignUpData, ISignInData } from './userModel';
 
 const initialState = {
   isAuth: false,
@@ -13,7 +15,55 @@ const initialState = {
     language: 'EN',
     theme: 'light',
   },
+  status: '',
+  error: '',
 };
+
+const signUp = createAsyncThunk(
+  'user/signUp',
+  async (userData: ISignUpData, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await fetch(`${BASE_URL}/signup`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      });
+
+      if (!response.ok) {
+        throw new Error('User sign up error');
+      }
+
+      const newUser = await response.json();
+
+      dispatch(setUserState(newUser));
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
+
+const signIn = createAsyncThunk(
+  'user/signIn',
+  async (userData: ISignInData, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await fetch(`${BASE_URL}/signin`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      });
+
+      if (!response.ok) {
+        throw new Error('User sign in error');
+      }
+
+      const user = await response.json();
+
+      dispatch(setUserState(user));
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
 
 const userSlice = createSlice({
   name: 'user',
@@ -34,7 +84,17 @@ const userSlice = createSlice({
     },
     resetUserState: () => initialState,
   },
+  extraReducers(builder) {
+    builder.addCase(signUp.pending, setPending);
+    builder.addCase(signIn.pending, setPending);
+
+    builder.addCase(signUp.fulfilled, setResolved);
+    builder.addCase(signIn.fulfilled, setResolved);
+
+    builder.addCase(signUp.rejected, setError);
+    builder.addCase(signIn.rejected, setError);
+  },
 });
 
 export const { resetUserState, setUserState } = userSlice.actions;
-export { userSlice };
+export { userSlice, signUp, signIn };

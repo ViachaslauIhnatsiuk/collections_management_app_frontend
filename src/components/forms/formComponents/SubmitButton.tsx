@@ -3,21 +3,37 @@ import { useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { IFormUser } from '../../../models/formUser';
 import { SubmitButtonProps } from '../../../models/componentsProps';
+import { useAppDispatch } from '../../../store/store';
+import { signIn, signUp } from '../../../store/slices/userSlice/userSlice';
 
-const SubmitButton: FC<SubmitButtonProps> = ({ value, submitHandler }) => {
+const SubmitButton: FC<SubmitButtonProps> = ({ value }) => {
   const {
     getValues,
     reset,
     formState: { isValid },
   } = useFormContext<IFormUser>();
+  const dispatch = useAppDispatch();
 
   const handleSubmit = (): void => {
     const fieldsValues = getValues(['name', 'email', 'password']);
-    if (submitHandler.length === 3) {
-      submitHandler(...fieldsValues);
+
+    if (value === 'Sign Up') {
+      const signUpData = {
+        name: fieldsValues[0],
+        email: fieldsValues[1],
+        password: fieldsValues[2],
+      };
+
+      dispatch(signUp(signUpData));
     } else {
-      submitHandler(...(fieldsValues.slice(1) as [string, string]));
+      const signInData = {
+        email: fieldsValues[1],
+        password: fieldsValues[2],
+      };
+
+      dispatch(signIn(signInData));
     }
+
     reset();
   };
 

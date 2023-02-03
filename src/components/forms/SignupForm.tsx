@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useSignup } from '../../hooks/useSignup';
 import { Avatar, Box, Typography, Container } from '@mui/material';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import { NameField } from './formComponents/NameField';
@@ -13,7 +12,6 @@ import { SubmitButton } from './formComponents/SubmitButton';
 const SignupForm: FC = () => {
   const methods = useForm<IFormUser>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
-  const { signUp } = useSignup();
 
   return (
     <Container
@@ -46,7 +44,7 @@ const SignupForm: FC = () => {
           <NameField />
           <EmailField />
           <PasswordField />
-          <SubmitButton value="Sign Up" submitHandler={signUp} />
+          <SubmitButton value="Sign Up" />
           <Link to="/signin" style={{ textDecoration: 'none' }}>
             <Typography sx={{ fontSize: 14, color: '#000000' }}>
               Already have an account? Sign In
