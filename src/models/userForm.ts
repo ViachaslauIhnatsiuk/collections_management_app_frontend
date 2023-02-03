@@ -1,7 +1,7 @@
-interface IFormUser {
+interface IUserForm {
   name: string;
   email: string;
   password: string;
 }
 
-export type { IFormUser };
+export type { IUserForm };

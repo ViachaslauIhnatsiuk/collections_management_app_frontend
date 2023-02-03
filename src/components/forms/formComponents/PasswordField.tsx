@@ -10,14 +10,14 @@ import {
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { passwordRegister } from '../../../constants/formValidation';
-import { IFormUser } from '../../../models/formUser';
+import { IUserForm } from '../../../models/userForm';
 
 const PasswordField: FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const {
     register,
     formState: { errors },
-  } = useFormContext<IFormUser>();
+  } = useFormContext<IUserForm>();
 
   return (
     <>

@@ -6,11 +6,11 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import { NameField } from './formComponents/NameField';
 import { EmailField } from './formComponents/EmailField';
 import { PasswordField } from './formComponents/PasswordField';
-import { IFormUser } from '../../models/formUser';
+import { IUserForm } from '../../models/userForm';
 import { SubmitButton } from './formComponents/SubmitButton';
 
 const SignupForm: FC = () => {
-  const methods = useForm<IFormUser>({ mode: 'onBlur' });
+  const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
 
   return (

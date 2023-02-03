@@ -5,11 +5,11 @@ import { Avatar, Box, Typography, Container } from '@mui/material';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { EmailField } from './formComponents/EmailField';
 import { PasswordField } from './formComponents/PasswordField';
-import { IFormUser } from '../../models/formUser';
+import { IUserForm } from '../../models/userForm';
 import { SubmitButton } from './formComponents/SubmitButton';
 
 const SigninForm: FC = () => {
-  const methods = useForm<IFormUser>({ mode: 'onBlur' });
+  const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
 
   return (

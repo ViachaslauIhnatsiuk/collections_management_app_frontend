@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { Stack } from '@mui/material';
 import { ExtraFieldChip } from './ExtraFieldChip';
 import { ExtraFieldsForm } from './ExtraFieldsForm';
-import { IExtraFields } from '../../../models/componentsProps';
+import { IExtraFields } from '../../../models/itemExtraFieldsProps';
 
 const ExtraFieldsList: FC = () => {
   const [extraFields, setExtraFields] = useState<IExtraFields[]>([]);

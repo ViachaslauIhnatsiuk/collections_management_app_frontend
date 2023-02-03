@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
 import { Stack } from '@mui/material';
-import { ExtraFieldsFormProps } from '../../../models/componentsProps';
 import { ExtraFieldsFormInput } from './ExtraFieldsFormInput';
 import { ExtraFieldsFormSelect } from './ExtraFieldsFormSelect';
 import { ExtraFieldsFormButton } from './ExtraFieldsFormButtons';
+import { ExtraFieldsFormProps } from '../../../models/itemExtraFieldsProps';
 
 const ExtraFieldsForm: FC<ExtraFieldsFormProps> = ({ extraFields, setExtraFields }) => {
   const [fieldName, setFieldName] = useState<string>('');

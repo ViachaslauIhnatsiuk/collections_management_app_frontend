@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
-import { IFormUser } from '../../../models/formUser';
+import { IUserForm } from '../../../models/userForm';
 import { SubmitButtonProps } from '../../../models/componentsProps';
 import { useAppDispatch } from '../../../store/store';
 import { signIn, signUp } from '../../../store/slices/userSlice/userSlice';
@@ -11,7 +11,7 @@ const SubmitButton: FC<SubmitButtonProps> = ({ value }) => {
     getValues,
     reset,
     formState: { isValid },
-  } = useFormContext<IFormUser>();
+  } = useFormContext<IUserForm>();
   const dispatch = useAppDispatch();
 
   const handleSubmit = (): void => {

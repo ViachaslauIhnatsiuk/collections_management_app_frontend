@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Box } from '@mui/material';
-import { IFormUser } from '../../models/formUser';
-import { MainCollectionFormField } from './collectionFormComponents/MainCollectionFormField';
+import { IUserForm } from '../../models/userForm';
+import { CollectionFormField } from './collectionFormComponents/CollectionFormField';
 import { ExtraFieldsList } from './collectionFormComponents/ExtraFieldsList';
 
 const AddCollectionForm: FC = () => {
-  const methods = useForm<IFormUser>({ mode: 'onBlur' });
+  const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
 
   return (
@@ -24,9 +24,9 @@ const AddCollectionForm: FC = () => {
             rowGap: 1,
           }}
         >
-          <MainCollectionFormField type="title" />
-          <MainCollectionFormField type="topic" />
-          <MainCollectionFormField type="description" />
+          <CollectionFormField type="title" />
+          <CollectionFormField type="topic" />
+          <CollectionFormField type="description" />
         </Box>
       </FormProvider>
       <ExtraFieldsList />

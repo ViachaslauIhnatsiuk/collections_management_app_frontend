@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Button } from '@mui/material';
-import { ExtraFieldsFormButtonProps } from '../../../models/componentsProps';
+import { ExtraFieldsFormButtonProps } from '../../../models/itemExtraFieldsProps';
 
 const ExtraFieldsFormButton: FC<ExtraFieldsFormButtonProps> = ({ setField }) => {
   return (

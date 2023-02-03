@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { TextField } from '@mui/material';
-import { ExtraFieldsFormInputProps } from '../../../models/componentsProps';
+import { ExtraFieldsFormInputProps } from '../../../models/itemExtraFieldsProps';
 
 const ExtraFieldsFormInput: FC<ExtraFieldsFormInputProps> = ({
   fieldName,

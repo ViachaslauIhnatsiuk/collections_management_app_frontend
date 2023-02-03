@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { ExtraFieldsFormSelectProps } from '../../../models/componentsProps';
 import { extraFieldsSelectItems } from '../../../constants/extraFieldsSelectItems';
+import { ExtraFieldsFormSelectProps } from '../../../models/itemExtraFieldsProps';
 
 const ExtraFieldsFormSelect: FC<ExtraFieldsFormSelectProps> = ({
   fieldDataType,

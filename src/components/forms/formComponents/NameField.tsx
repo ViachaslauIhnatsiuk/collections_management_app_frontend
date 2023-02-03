@@ -2,13 +2,13 @@ import { FC } from 'react';
 import { TextField, Typography } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
 import { nameRegister } from '../../../constants/formValidation';
-import { IFormUser } from '../../../models/formUser';
+import { IUserForm } from '../../../models/userForm';
 
 const NameField: FC = () => {
   const {
     register,
     formState: { errors },
-  } = useFormContext<IFormUser>();
+  } = useFormContext<IUserForm>();
 
   return (
     <>

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Chip } from '@mui/material';
-import { ExtraFieldChipProps } from '../../../models/componentsProps';
+import { ExtraFieldChipProps } from '../../../models/itemExtraFieldsProps';
 
 const ExtraFieldChip: FC<ExtraFieldChipProps> = ({
   name,
