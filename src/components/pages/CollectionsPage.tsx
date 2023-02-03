@@ -3,7 +3,7 @@ import { FC, useEffect } from 'react';
 import { selectCollections, useAppSelector } from '../../store/selectors';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
-import { CollectionCard } from '../collection/CollectionCard';
+import { CollectionCard } from '../collectionsComponents/CollectionCard';
 import { Loader } from '../UI/Loader';
 
 const CollectionsPage: FC = () => {

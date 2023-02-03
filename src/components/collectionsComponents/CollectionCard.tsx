@@ -1,12 +1,14 @@
-import { Paper, Typography } from '@mui/material';
 import { FC } from 'react';
+import { Paper, Stack, Typography } from '@mui/material';
 import { ICollection } from '../../store/slices/collectionSlice/collectionModel';
+import { RemoveCollectionButton } from './RemoveCollectionButton';
+import { EditCollectionButton } from './EditCollectionButton';
 
 const CollectionCard: FC<ICollection> = (collection) => {
   return (
     <Paper
       sx={{
-        p: 4,
+        p: 3,
         width: '300px',
         display: 'flex',
         flexDirection: 'column',
@@ -23,6 +25,18 @@ const CollectionCard: FC<ICollection> = (collection) => {
       <Typography variant="h6" sx={{ color: '#2475c5', textAlign: 'center' }}>
         {collection.description}
       </Typography>
+      <Stack
+        sx={{
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <RemoveCollectionButton />
+        <EditCollectionButton />
+      </Stack>
     </Paper>
   );
 };

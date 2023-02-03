@@ -3,7 +3,8 @@ import { FC, useEffect, useMemo } from 'react';
 import { selectCollections, selectUser, useAppSelector } from '../../store/selectors';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
-import { CollectionCard } from '../collection/CollectionCard';
+import { CollectionCard } from '../collectionsComponents/CollectionCard';
+import { CollectionsToolbar } from '../collectionsComponents/CollectionsToolbar';
 import { Loader } from '../UI/Loader';
 
 const UserCollectionsPage: FC = () => {
@@ -26,10 +27,12 @@ const UserCollectionsPage: FC = () => {
         display: 'grid',
         placeContent: 'center',
         py: 5,
+        gap: 2,
       }}
     >
       {status === 'loading' && <Loader />}
       {error === 'loading' && <h2>Error: {error}</h2>}
+      <CollectionsToolbar />
       {collections.length ? (
         <Stack
           sx={{
