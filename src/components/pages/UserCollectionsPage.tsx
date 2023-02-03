@@ -1,5 +1,5 @@
 import { Container, Stack } from '@mui/material';
-import { FC, useEffect, useMemo } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { selectCollections, selectUser, useAppSelector } from '../../store/selectors';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
@@ -9,6 +9,7 @@ import { Loader } from '../UI/Loader';
 
 const UserCollectionsPage: FC = () => {
   const { collections, status, error } = useAppSelector(selectCollections);
+  const [filteredCollections, setFilteredCollections] = useState<string>('');
   const { currentUser } = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
 
@@ -17,8 +18,12 @@ const UserCollectionsPage: FC = () => {
   }, [dispatch]);
 
   const collectionsToRender = useMemo(() => {
-    return collections.filter(({ ownerId }) => ownerId === currentUser.id);
-  }, [collections, currentUser]);
+    return collections.filter(
+      ({ title, ownerId }) =>
+        title.toLowerCase().includes(filteredCollections.toLowerCase()) &&
+        ownerId === currentUser.id,
+    );
+  }, [collections, currentUser, filteredCollections]);
 
   return (
     <Container
@@ -32,7 +37,7 @@ const UserCollectionsPage: FC = () => {
     >
       {status === 'loading' && <Loader />}
       {error === 'loading' && <h2>Error: {error}</h2>}
-      <CollectionsToolbar />
+      <CollectionsToolbar setState={setFilteredCollections} />
       {collections.length ? (
         <Stack
           sx={{

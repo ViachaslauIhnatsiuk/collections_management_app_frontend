@@ -26,10 +26,15 @@ interface AuthButtonProps {
   handler?: () => void;
 }
 
+interface CollectionsFilterBarProps {
+  setState: Dispatch<SetStateAction<string>>;
+}
+
 export type {
   MobileMenuProps,
   SidebarProps,
   SidebarListItemProps,
   SubmitButtonProps,
   AuthButtonProps,
+  CollectionsFilterBarProps,
 };
