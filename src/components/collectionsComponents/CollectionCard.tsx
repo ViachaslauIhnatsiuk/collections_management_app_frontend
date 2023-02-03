@@ -34,7 +34,7 @@ const CollectionCard: FC<ICollection> = (collection) => {
           alignItems: 'center',
         }}
       >
-        <RemoveCollectionButton />
+        <RemoveCollectionButton id={collection._id} />
         <EditCollectionButton />
       </Stack>
     </Paper>
