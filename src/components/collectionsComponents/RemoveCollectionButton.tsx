@@ -13,7 +13,7 @@ import { useAppDispatch } from '../../store/store';
 import { deleteCollection } from '../../store/slices/collectionSlice/collectionSlice';
 
 const RemoveCollectionButton: FC<{ id: string }> = ({ id }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
   const removeCollection = (): void => {
