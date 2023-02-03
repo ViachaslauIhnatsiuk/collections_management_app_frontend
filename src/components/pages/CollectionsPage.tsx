@@ -3,9 +3,9 @@ import { Container, Stack } from '@mui/material';
 import { selectCollections, useAppSelector } from '../../store/selectors';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
-import { CollectionCard } from '../collectionsComponents/CollectionCard';
+import { CollectionCard } from '../collections/collectionCard/CollectionCard';
+import { CollectionsFilterbar } from '../collections/CollectionsFilterbar';
 import { Loader } from '../UI/Loader';
-import { CollectionsFilterbar } from '../collectionsComponents/CollectionsFilterBar';
 
 const CollectionsPage: FC = () => {
   const [filteredCollections, setFilteredCollections] = useState<string>('');

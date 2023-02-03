@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Paper, Stack, Typography } from '@mui/material';
-import { ICollection } from '../../store/slices/collectionSlice/collectionModel';
+import { ICollection } from '../../../store/slices/collectionSlice/collectionModel';
 import { RemoveCollectionButton } from './RemoveCollectionButton';
 import { EditCollectionButton } from './EditCollectionButton';
 

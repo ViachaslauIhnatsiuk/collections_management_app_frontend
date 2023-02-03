@@ -1,11 +1,11 @@
 import { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Box } from '@mui/material';
-import { IUserForm } from '../../models/userForm';
-import { CollectionFormField } from './collectionFormComponents/CollectionFormField';
-import { ExtraFieldsList } from './collectionFormComponents/ExtraFieldsList';
+import { IUserForm } from '../../../models/userForm';
+import { CollectionFormField } from './CollectionFormField';
+import { ExtraFieldsList } from './ExtraFieldsList';
 
-const AddCollectionForm: FC = () => {
+const CollectionForm: FC = () => {
   const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
 
@@ -34,4 +34,4 @@ const AddCollectionForm: FC = () => {
   );
 };
 
-export { AddCollectionForm };
+export { CollectionForm };

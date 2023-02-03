@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
 import { Button, Dialog, DialogTitle, DialogContent } from '@mui/material';
-import { AddCollectionForm } from './AddCollectionForm';
+import { CollectionForm } from './collectionForm/CollectionForm';
 
-const AddCollectionButton: FC = () => {
+const CollectionAddButton: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   const closeDialog = (): void => {
@@ -28,11 +28,11 @@ const AddCollectionButton: FC = () => {
       >
         <DialogTitle>{'Collection form'}</DialogTitle>
         <DialogContent>
-          <AddCollectionForm />
+          <CollectionForm />
         </DialogContent>
       </Dialog>
     </>
   );
 };
 
-export { AddCollectionButton };
+export { CollectionAddButton };

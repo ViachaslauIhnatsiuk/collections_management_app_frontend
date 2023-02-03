@@ -9,8 +9,8 @@ import {
   DialogTitle,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useAppDispatch } from '../../store/store';
-import { deleteCollection } from '../../store/slices/collectionSlice/collectionSlice';
+import { useAppDispatch } from '../../../store/store';
+import { deleteCollection } from '../../../store/slices/collectionSlice/collectionSlice';
 
 const RemoveCollectionButton: FC<{ id: string }> = ({ id }) => {
   const [open, setOpen] = useState<boolean>(false);

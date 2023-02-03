@@ -1,10 +1,10 @@
-import { Container, Stack } from '@mui/material';
 import { FC, useEffect, useMemo, useState } from 'react';
+import { Container, Stack } from '@mui/material';
 import { selectCollections, selectUser, useAppSelector } from '../../store/selectors';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
-import { CollectionCard } from '../collectionsComponents/CollectionCard';
-import { CollectionsToolbar } from '../collectionsComponents/CollectionsToolbar';
+import { CollectionCard } from '../collections/collectionCard/CollectionCard';
+import { CollectionsToolbar } from '../collections/CollectionsToolbar';
 import { Loader } from '../UI/Loader';
 
 const UserCollectionsPage: FC = () => {
