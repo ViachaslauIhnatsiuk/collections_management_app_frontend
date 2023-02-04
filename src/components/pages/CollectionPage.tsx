@@ -1,7 +1,30 @@
-import { FC } from 'react';
-import { Container } from '@mui/material';
+import { FC, useEffect, useMemo, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Container, Stack } from '@mui/material';
+import { selectItems, useAppSelector } from '../../store/selectors';
+import { useAppDispatch } from '../../store/store';
+import { getItems } from '../../store/slices/itemSlice/itemSlice';
+import { Loader } from '../UI/Loader';
 
 const CollectionPage: FC = () => {
+  const { items, status, error } = useAppSelector(selectItems);
+  const [filteredItems, setFilteredItems] = useState<string>('');
+  const dispatch = useAppDispatch();
+  const { pathname } = useLocation();
+  const currentId = pathname.split('/')[2];
+
+  useEffect(() => {
+    dispatch(getItems());
+  }, [dispatch]);
+
+  const itemsToRender = useMemo(() => {
+    return items.filter(
+      ({ title, collectionId }) =>
+        title.toLowerCase().includes(filteredItems.toLowerCase()) &&
+        collectionId === currentId,
+    );
+  }, [items, filteredItems]);
+
   return (
     <Container
       maxWidth="md"
@@ -11,7 +34,21 @@ const CollectionPage: FC = () => {
         py: 5,
       }}
     >
-      Items
+      {status === 'loading' && <Loader />}
+      {error === 'loading' && <h2>Error: {error}</h2>}
+      {items.length ? (
+        <Stack
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 2,
+          }}
+        >
+          {itemsToRender.map((item) => (
+            <div key={item._id}>{item.title}</div>
+          ))}
+        </Stack>
+      ) : null}
     </Container>
   );
 };
