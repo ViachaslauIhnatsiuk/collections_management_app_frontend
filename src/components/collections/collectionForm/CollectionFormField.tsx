@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { TextField } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
 import {
@@ -8,7 +8,8 @@ import {
 } from '../../../models/collectionForm';
 
 const CollectionFormField: FC<CollectionFieldProps> = (props) => {
-  const { type, minLength, maxLength, multi, rows } = props;
+  const { value, type, minLength, maxLength, multi, rows } = props;
+  const [fieldValue, setFieldValue] = useState<string>(value as string);
   const { register } = useFormContext<ICollectionForm>();
 
   return (
@@ -18,9 +19,11 @@ const CollectionFormField: FC<CollectionFieldProps> = (props) => {
       fullWidth
       multiline={multi}
       rows={rows}
+      value={fieldValue}
       label={type.toUpperCase()}
       autoComplete="off"
       {...register(type as CollectionFormType)}
+      onChange={(e) => setFieldValue(e.target.value)}
     />
   );
 };

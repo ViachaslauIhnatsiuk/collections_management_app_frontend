@@ -18,6 +18,7 @@ interface CollectionEditFormProps extends CollectionFormProps {
 }
 
 interface CollectionFieldProps {
+  value?: string;
   type: string;
   minLength: number;
   maxLength: number;

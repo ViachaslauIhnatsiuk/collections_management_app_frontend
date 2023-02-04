@@ -5,10 +5,17 @@ import { IUserForm } from '../../../models/userForm';
 import { CollectionFormFields } from './CollectionFormFields';
 import { CollectionEditFormButton } from './CollectionEditFormButton';
 import { CollectionEditFormProps } from '../../../models/collectionForm';
+import { selectCollections, useAppSelector } from '../../../store/selectors';
+import { ICollection } from '../../../store/slices/collectionSlice/collectionModel';
 
 const CollectionEditForm: FC<CollectionEditFormProps> = ({ id, setOpen }) => {
   const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
+  const { collections } = useAppSelector(selectCollections);
+
+  const collectionFieldsValues = collections.find(
+    (collection) => collection._id === id,
+  ) as ICollection;
 
   return (
     <FormProvider {...methods}>
@@ -24,7 +31,7 @@ const CollectionEditForm: FC<CollectionEditFormProps> = ({ id, setOpen }) => {
           rowGap: 2,
         }}
       >
-        <CollectionFormFields />
+        <CollectionFormFields fieldsValues={collectionFieldsValues} />
         <CollectionEditFormButton value="Edit collection" id={id} setOpen={setOpen} />
       </Box>
     </FormProvider>

@@ -7,6 +7,7 @@ import { ExtraFieldsList } from '../extraFieldsForm/ExtraFieldsList';
 import { CollectionCreationFormButton } from './CollectionCreationFormButton';
 import { IExtraFields } from '../../../models/itemExtraFieldsProps';
 import { CollectionFormProps } from '../../../models/collectionForm';
+import { initialFieldsValues } from '../../../constants/initialFieldsValues';
 
 const CollectionCreationForm: FC<CollectionFormProps> = ({ setOpen }) => {
   const [extraFields, setExtraFields] = useState<IExtraFields[]>([]);
@@ -27,7 +28,7 @@ const CollectionCreationForm: FC<CollectionFormProps> = ({ setOpen }) => {
           rowGap: 2,
         }}
       >
-        <CollectionFormFields />
+        <CollectionFormFields fieldsValues={initialFieldsValues} />
         <ExtraFieldsList extraFields={extraFields} setExtraFields={setExtraFields} />
         <CollectionCreationFormButton
           value="Create collection"
