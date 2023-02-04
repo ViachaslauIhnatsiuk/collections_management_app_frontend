@@ -56,7 +56,7 @@ const updateCollection = createAsyncThunk(
   async (updatedCollectionData: ICollection, { rejectWithValue, dispatch }) => {
     try {
       const response = await fetch(
-        `${BASE_URL}/collections${updatedCollectionData._id}`,
+        `${BASE_URL}/collections/${updatedCollectionData._id}`,
         {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
