@@ -22,13 +22,13 @@ const CollectionAddButton: FC = () => {
         aria-describedby="alert-dialog"
         sx={{
           '& .MuiDialog-paper': {
-            maxWidth: '300px',
+            maxWidth: '350px',
           },
         }}
       >
         <DialogTitle>{'Collection form'}</DialogTitle>
         <DialogContent>
-          <CollectionForm />
+          <CollectionForm setOpen={setOpen} />
         </DialogContent>
       </Dialog>
     </>

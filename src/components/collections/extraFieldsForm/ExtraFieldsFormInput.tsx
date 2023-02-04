@@ -9,7 +9,6 @@ const ExtraFieldsFormInput: FC<ExtraFieldsFormInputProps> = ({
   return (
     <TextField
       size="small"
-      required
       label="Field name"
       inputProps={{ maxLength: 20 }}
       autoComplete="off"

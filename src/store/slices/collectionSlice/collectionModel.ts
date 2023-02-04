@@ -4,12 +4,18 @@ enum CollectionStatus {
   rejected = 'rejected',
 }
 
+interface IItemExtraFields {
+  name: string;
+  type: string;
+}
+
 interface ICollection {
-  _id: string;
+  _id?: string;
   title: string;
   description: string;
   topic: string;
   ownerId: string;
+  itemExtraFields: IItemExtraFields[];
 }
 
 interface ICollectionsState {

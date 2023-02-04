@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
+import { IExtraFields } from './itemExtraFieldsProps';
 
 interface MobileMenuProps {
   isMenuOpen: boolean;
@@ -18,6 +19,9 @@ interface SidebarListItemProps {
 
 interface SubmitButtonProps {
   value: string;
+  extraFields?: IExtraFields[];
+  setExtraFields?: Dispatch<SetStateAction<IExtraFields[]>>;
+  setOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 interface AuthButtonProps {

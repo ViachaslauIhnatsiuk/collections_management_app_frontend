@@ -11,6 +11,8 @@ interface ExtraFieldsFormSelectProps {
 }
 
 interface ExtraFieldsFormButtonProps {
+  fieldName: string;
+  fieldDataType: string;
   setField: () => void;
 }
 

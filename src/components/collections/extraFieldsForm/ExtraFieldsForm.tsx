@@ -12,15 +12,13 @@ const ExtraFieldsForm: FC<ExtraFieldsFormProps> = ({ extraFields, setExtraFields
   const setField = (): void => {
     const newField = { name: fieldName, type: fieldDataType };
 
-    if (fieldName && fieldDataType) {
-      setExtraFields([...extraFields, newField]);
-      setFieldName('');
-      setFieldDataType('');
-    }
+    setExtraFields([...extraFields, newField]);
+    setFieldName('');
+    setFieldDataType('');
   };
 
   return (
-    <Stack sx={{ mt: 2, gap: 1 }}>
+    <Stack sx={{ gap: 1 }}>
       <Stack sx={{ flexDirection: 'row', gap: 1 }}>
         <ExtraFieldsFormInput fieldName={fieldName} setFieldName={setFieldName} />
         <ExtraFieldsFormSelect
@@ -28,7 +26,11 @@ const ExtraFieldsForm: FC<ExtraFieldsFormProps> = ({ extraFields, setExtraFields
           setFieldDataType={setFieldDataType}
         />
       </Stack>
-      <ExtraFieldsFormButton setField={setField} />
+      <ExtraFieldsFormButton
+        setField={setField}
+        fieldName={fieldName}
+        fieldDataType={fieldDataType}
+      />
     </Stack>
   );
 };

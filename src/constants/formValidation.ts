@@ -5,7 +5,6 @@ const invalidEmailReport = 'Invalid email address. Please correct and try again'
 const invalidPasswordReport =
   'Password must contain at least one number and uppercase characters';
 const minPasswordLengthReport = 'Minimum 8 characters required';
-const matchPasswordReport = 'Passwords must match';
 const emailValidation =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const passwordValidation = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]/;
@@ -42,4 +41,4 @@ const passwordRegister = {
   },
 };
 
-export { nameRegister, emailRegister, passwordRegister, matchPasswordReport };
+export { nameRegister, emailRegister, passwordRegister };

@@ -1,12 +1,10 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { Stack } from '@mui/material';
 import { ExtraFieldChip } from './ExtraFieldChip';
 import { ExtraFieldsForm } from './ExtraFieldsForm';
-import { IExtraFields } from '../../../models/itemExtraFieldsProps';
+import { ExtraFieldsFormProps } from '../../../models/itemExtraFieldsProps';
 
-const ExtraFieldsList: FC = () => {
-  const [extraFields, setExtraFields] = useState<IExtraFields[]>([]);
-
+const ExtraFieldsList: FC<ExtraFieldsFormProps> = ({ extraFields, setExtraFields }) => {
   return (
     <>
       <Stack
@@ -14,7 +12,6 @@ const ExtraFieldsList: FC = () => {
           flexDirection: 'row',
           justifyContent: 'center',
           flexWrap: 'wrap',
-          mt: 2,
           gap: 0.5,
         }}
       >

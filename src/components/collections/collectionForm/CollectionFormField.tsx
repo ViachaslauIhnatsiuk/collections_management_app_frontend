@@ -1,33 +1,32 @@
 import { FC } from 'react';
-import { TextField, Typography } from '@mui/material';
+import { TextField } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
-import { nameRegister } from '../../../constants/formValidation';
 import {
-  CollectionFormProps,
+  CollectionFieldProps,
   CollectionFormType,
   ICollectionForm,
 } from '../../../models/collectionForm';
 
-const CollectionFormField: FC<CollectionFormProps> = ({ type }) => {
-  const {
-    register,
-    formState: { errors },
-  } = useFormContext<ICollectionForm>();
+const CollectionFormField: FC<CollectionFieldProps> = ({
+  type,
+  minLength,
+  maxLength,
+  multi,
+  rows,
+}) => {
+  const { register } = useFormContext<ICollectionForm>();
 
   return (
-    <>
-      <TextField
-        size="small"
-        required
-        fullWidth
-        label={type.toUpperCase()}
-        autoComplete="off"
-        {...register(type as CollectionFormType, nameRegister)}
-      />
-      <Typography sx={{ fontSize: 10 }}>
-        {errors[type as CollectionFormType]?.message}
-      </Typography>
-    </>
+    <TextField
+      size="small"
+      inputProps={{ minLength, maxLength }}
+      fullWidth
+      multiline={multi}
+      rows={rows}
+      label={type.toUpperCase()}
+      autoComplete="off"
+      {...register(type as CollectionFormType)}
+    />
   );
 };
 

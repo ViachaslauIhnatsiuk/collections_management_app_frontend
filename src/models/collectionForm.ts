@@ -1,3 +1,6 @@
+import { Dispatch, SetStateAction } from 'react';
+import { IExtraFields } from './itemExtraFieldsProps';
+
 type CollectionFormType = 'title' | 'description' | 'topic';
 
 interface ICollectionForm {
@@ -7,7 +10,28 @@ interface ICollectionForm {
 }
 
 interface CollectionFormProps {
-  type: string;
+  setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export type { CollectionFormType, ICollectionForm, CollectionFormProps };
+interface CollectionFieldProps {
+  type: string;
+  minLength: number;
+  maxLength: number;
+  multi?: boolean;
+  rows?: number;
+}
+
+interface CollectionFormButtonProps {
+  value: string;
+  extraFields: IExtraFields[];
+  setExtraFields: Dispatch<SetStateAction<IExtraFields[]>>;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+}
+
+export type {
+  CollectionFormType,
+  ICollectionForm,
+  CollectionFormProps,
+  CollectionFieldProps,
+  CollectionFormButtonProps,
+};
