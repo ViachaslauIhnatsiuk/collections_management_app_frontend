@@ -3,12 +3,12 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { Box } from '@mui/material';
 import { IUserForm } from '../../../models/userForm';
 import { CollectionFormField } from './CollectionFormField';
-import { CollectionFormButton } from './CollectionFormButton';
+import { CollectionCreationFormButton } from './CollectionCreationFormButton';
 import { ExtraFieldsList } from '../extraFieldsForm/ExtraFieldsList';
 import { IExtraFields } from '../../../models/itemExtraFieldsProps';
 import { CollectionFormProps } from '../../../models/collectionForm';
 
-const CollectionForm: FC<CollectionFormProps> = ({ setOpen }) => {
+const CollectionCreationForm: FC<CollectionFormProps> = ({ setOpen }) => {
   const [extraFields, setExtraFields] = useState<IExtraFields[]>([]);
   const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
@@ -38,7 +38,7 @@ const CollectionForm: FC<CollectionFormProps> = ({ setOpen }) => {
             rows={3}
           />
           <ExtraFieldsList extraFields={extraFields} setExtraFields={setExtraFields} />
-          <CollectionFormButton
+          <CollectionCreationFormButton
             value="Create collection"
             extraFields={extraFields}
             setExtraFields={setExtraFields}
@@ -50,4 +50,4 @@ const CollectionForm: FC<CollectionFormProps> = ({ setOpen }) => {
   );
 };
 
-export { CollectionForm };
+export { CollectionCreationForm };

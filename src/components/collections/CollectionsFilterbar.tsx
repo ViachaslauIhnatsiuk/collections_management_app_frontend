@@ -1,9 +1,8 @@
-import { Dispatch, FC, SetStateAction } from 'react';
+import { FC } from 'react';
 import { TextField } from '@mui/material';
+import { CollectionsFilterBarProps } from '../../models/componentsProps';
 
-const CollectionsFilterbar: FC<{
-  setState: Dispatch<SetStateAction<string>>;
-}> = ({ setState }) => {
+const CollectionsFilterbar: FC<CollectionsFilterBarProps> = ({ setState }) => {
   return (
     <TextField
       variant="outlined"

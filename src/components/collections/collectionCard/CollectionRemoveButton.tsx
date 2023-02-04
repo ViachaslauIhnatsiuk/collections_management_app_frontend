@@ -12,7 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppDispatch } from '../../../store/store';
 import { deleteCollection } from '../../../store/slices/collectionSlice/collectionSlice';
 
-const RemoveCollectionButton: FC<{ id: string }> = ({ id }) => {
+const CollectionRemoveButton: FC<{ id: string }> = ({ id }) => {
   const [open, setOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
@@ -51,4 +51,4 @@ const RemoveCollectionButton: FC<{ id: string }> = ({ id }) => {
   );
 };
 
-export { RemoveCollectionButton };
+export { CollectionRemoveButton };

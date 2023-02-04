@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { Button } from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
 
-const ViewCollectionButton: FC<{ id: string }> = ({ id }) => {
+const CollectionViewButton: FC<{ id: string }> = ({ id }) => {
   const { pathname } = useLocation();
 
   return (
@@ -12,4 +12,4 @@ const ViewCollectionButton: FC<{ id: string }> = ({ id }) => {
   );
 };
 
-export { ViewCollectionButton };
+export { CollectionViewButton };

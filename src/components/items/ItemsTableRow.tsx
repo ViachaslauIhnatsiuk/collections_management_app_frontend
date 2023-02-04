@@ -1,19 +1,21 @@
 import { FC } from 'react';
 import { TableCell, TableRow } from '@mui/material';
-import { IItem } from '../../store/slices/itemSlice/itemModel';
+import { ItemsTableRowProps } from '../../models/itemsTableProps';
 
-const ItemsTableRow: FC<{ item: IItem }> = ({ item }) => {
+const ItemsTableRow: FC<ItemsTableRowProps> = ({ item }) => {
+  const itemsToRender = Object.values(item).slice(0, 3);
+
   return (
-    <TableRow hover role="checkbox" tabIndex={-1}>
-      {Object.values(item)
-        .slice(0, 3)
-        .map((value, index) => {
-          return (
-            <TableCell key={index} sx={{ px: 2, py: 0.4 }}>
-              {value.toString()}
-            </TableCell>
-          );
-        })}
+    <TableRow hover tabIndex={-1}>
+      {itemsToRender.map((value, index) => {
+        return (
+          <TableCell key={index} sx={{ overflowWrap: 'break-word', px: 2, py: 1 }}>
+            {typeof value === 'object'
+              ? value.map((tag: string, index: number) => <span key={index}> {tag}</span>)
+              : value}
+          </TableCell>
+        );
+      })}
     </TableRow>
   );
 };

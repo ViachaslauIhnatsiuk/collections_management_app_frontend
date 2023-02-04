@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { Paper, Stack, Typography } from '@mui/material';
 import { ICollection } from '../../../store/slices/collectionSlice/collectionModel';
-import { RemoveCollectionButton } from './RemoveCollectionButton';
-import { EditCollectionButton } from './EditCollectionButton';
-import { ViewCollectionButton } from './ViewCollectionButton';
+import { CollectionRemoveButton } from './CollectionRemoveButton';
+import { CollectionEditButton } from './CollectionEditButton';
+import { CollectionViewButton } from './CollectionViewButton';
 
 const CollectionCard: FC<ICollection> = ({ title, topic, description, _id }) => {
   return (
@@ -37,10 +37,10 @@ const CollectionCard: FC<ICollection> = ({ title, topic, description, _id }) => 
           alignItems: 'center',
         }}
       >
-        <RemoveCollectionButton id={_id as string} />
-        <EditCollectionButton />
+        <CollectionRemoveButton id={_id as string} />
+        <CollectionEditButton />
       </Stack>
-      <ViewCollectionButton id={_id as string} />
+      <CollectionViewButton id={_id as string} />
     </Paper>
   );
 };

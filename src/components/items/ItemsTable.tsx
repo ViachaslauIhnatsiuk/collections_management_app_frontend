@@ -1,23 +1,37 @@
-import { FC } from 'react';
-import { Paper, Table, TableBody, TableContainer } from '@mui/material';
-import { IItem } from '../../store/slices/itemSlice/itemModel';
+import { FC, useMemo, useState } from 'react';
+import { Table, TableContainer, Paper } from '@mui/material';
 import { ItemsTableHead } from './ItemsTableHead';
-import { ItemsTableRow } from './ItemsTableRow';
+import { ItemsTableFooter } from './ItemsTableFooter';
+import { ItemsTableProps } from '../../models/itemsTableProps';
+import { ItemsTableBody } from './ItemsTableBody';
 
-const ItemsTable: FC<{ itemsToRender: IItem[] }> = ({ itemsToRender }) => {
+const ItemsTable: FC<ItemsTableProps> = ({ itemsToRender }) => {
+  const [page, setPage] = useState<number>(0);
+  const [rowsPerPage, setRowsPerPage] = useState<number>(5);
+
+  const emptyRows = useMemo(() => {
+    return page > 0 ? Math.max(0, (1 + page) * rowsPerPage - itemsToRender.length) : 0;
+  }, [page, rowsPerPage, itemsToRender]);
+
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer style={{ maxHeight: '50vh' }}>
-        <Table stickyHeader aria-label="sticky table">
-          <ItemsTableHead />
-          <TableBody>
-            {itemsToRender.map((item) => {
-              return <ItemsTableRow key={item._id} item={item} />;
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Paper>
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: '800px' }}>
+        <ItemsTableHead />
+        <ItemsTableBody
+          itemsToRender={itemsToRender}
+          page={page}
+          rowsPerPage={rowsPerPage}
+          emptyRows={emptyRows}
+        />
+        <ItemsTableFooter
+          itemsToRender={itemsToRender}
+          page={page}
+          rowsPerPage={rowsPerPage}
+          setPage={setPage}
+          setRowsPerPage={setRowsPerPage}
+        />
+      </Table>
+    </TableContainer>
   );
 };
 

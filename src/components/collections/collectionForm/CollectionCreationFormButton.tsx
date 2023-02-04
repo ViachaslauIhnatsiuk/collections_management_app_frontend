@@ -2,19 +2,15 @@ import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
 import {
-  CollectionFormButtonProps,
+  CollectionCreationFormButtonProps,
   ICollectionForm,
 } from '../../../models/collectionForm';
 import { useAppDispatch } from '../../../store/store';
 import { createCollection } from '../../../store/slices/collectionSlice/collectionSlice';
 import { selectUser, useAppSelector } from '../../../store/selectors';
 
-const CollectionFormButton: FC<CollectionFormButtonProps> = ({
-  value,
-  extraFields,
-  setExtraFields,
-  setOpen,
-}) => {
+const CollectionCreationFormButton: FC<CollectionCreationFormButtonProps> = (props) => {
+  const { value, extraFields, setExtraFields, setOpen } = props;
   const {
     getValues,
     reset,
@@ -56,4 +52,4 @@ const CollectionFormButton: FC<CollectionFormButtonProps> = ({
   );
 };
 
-export { CollectionFormButton };
+export { CollectionCreationFormButton };

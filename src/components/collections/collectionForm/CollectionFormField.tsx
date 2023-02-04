@@ -7,13 +7,8 @@ import {
   ICollectionForm,
 } from '../../../models/collectionForm';
 
-const CollectionFormField: FC<CollectionFieldProps> = ({
-  type,
-  minLength,
-  maxLength,
-  multi,
-  rows,
-}) => {
+const CollectionFormField: FC<CollectionFieldProps> = (props) => {
+  const { type, minLength, maxLength, multi, rows } = props;
   const { register } = useFormContext<ICollectionForm>();
 
   return (

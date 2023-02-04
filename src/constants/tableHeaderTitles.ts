@@ -5,7 +5,7 @@ export const tableHeaderTitles: ITabelHeaderModel[] = [
   {
     id: 'title',
     label: 'Title',
-    minWidth: 220,
+    minWidth: 150,
   },
   {
     id: 'tags',

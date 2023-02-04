@@ -21,7 +21,7 @@ interface CollectionFieldProps {
   rows?: number;
 }
 
-interface CollectionFormButtonProps {
+interface CollectionCreationFormButtonProps {
   value: string;
   extraFields: IExtraFields[];
   setExtraFields: Dispatch<SetStateAction<IExtraFields[]>>;
@@ -33,5 +33,5 @@ export type {
   ICollectionForm,
   CollectionFormProps,
   CollectionFieldProps,
-  CollectionFormButtonProps,
+  CollectionCreationFormButtonProps,
 };

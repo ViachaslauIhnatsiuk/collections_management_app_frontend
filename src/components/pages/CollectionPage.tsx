@@ -28,7 +28,7 @@ const CollectionPage: FC = () => {
 
   return (
     <Container
-      maxWidth="lg"
+      maxWidth="md"
       sx={{
         display: 'grid',
         placeContent: 'center',
