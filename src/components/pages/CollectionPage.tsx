@@ -4,6 +4,7 @@ import { Container, Stack } from '@mui/material';
 import { selectItems, useAppSelector } from '../../store/selectors';
 import { useAppDispatch } from '../../store/store';
 import { getItems } from '../../store/slices/itemSlice/itemSlice';
+import { ItemsTable } from '../items/ItemsTable';
 import { Loader } from '../UI/Loader';
 
 const CollectionPage: FC = () => {
@@ -27,7 +28,7 @@ const CollectionPage: FC = () => {
 
   return (
     <Container
-      maxWidth="md"
+      maxWidth="lg"
       sx={{
         display: 'grid',
         placeContent: 'center',
@@ -40,13 +41,10 @@ const CollectionPage: FC = () => {
         <Stack
           sx={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: 2,
+            placeContent: 'center',
           }}
         >
-          {itemsToRender.map((item) => (
-            <div key={item._id}>{item.title}</div>
-          ))}
+          <ItemsTable itemsToRender={itemsToRender} />
         </Stack>
       ) : null}
     </Container>
