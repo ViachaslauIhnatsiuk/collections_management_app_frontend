@@ -18,6 +18,12 @@ interface ICollection {
   itemExtraFields: IItemExtraFields[];
 }
 
+interface IUpdateCollection {
+  title: string;
+  description: string;
+  topic: string;
+}
+
 interface ICollectionsState {
   collections: ICollection[];
   status: string;
@@ -25,4 +31,4 @@ interface ICollectionsState {
 }
 
 export { CollectionStatus };
-export type { ICollection, ICollectionsState };
+export type { ICollection, IUpdateCollection, ICollectionsState };

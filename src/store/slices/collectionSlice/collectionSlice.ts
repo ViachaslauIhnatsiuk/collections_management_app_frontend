@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../../constants/baseUrl';
-import { ICollection, ICollectionsState } from './collectionModel';
+import { ICollection, ICollectionsState, IUpdateCollection } from './collectionModel';
 import { setError, setPending, setResolved } from './collectionHelpers';
 
 const initialState: ICollectionsState = {
@@ -53,16 +53,16 @@ const createCollection = createAsyncThunk(
 
 const updateCollection = createAsyncThunk(
   'collections/updateCollection',
-  async (updatedCollectionData: ICollection, { rejectWithValue, dispatch }) => {
+  async (
+    [updatedCollectionData, id]: [IUpdateCollection, string],
+    { rejectWithValue, dispatch },
+  ) => {
     try {
-      const response = await fetch(
-        `${BASE_URL}/collections/${updatedCollectionData._id}`,
-        {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(updatedCollectionData),
-        },
-      );
+      const response = await fetch(`${BASE_URL}/collections/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedCollectionData),
+      });
 
       if (!response.ok) {
         throw new Error('Сollection update error');

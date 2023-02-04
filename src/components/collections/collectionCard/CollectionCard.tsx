@@ -38,7 +38,7 @@ const CollectionCard: FC<ICollection> = ({ title, topic, description, _id }) => 
         }}
       >
         <CollectionRemoveButton id={_id as string} />
-        <CollectionEditButton />
+        <CollectionEditButton id={_id as string} />
       </Stack>
       <CollectionViewButton id={_id as string} />
     </Paper>

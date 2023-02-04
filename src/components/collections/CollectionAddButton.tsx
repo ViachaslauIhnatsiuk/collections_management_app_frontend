@@ -5,10 +5,6 @@ import { CollectionCreationForm } from './collectionForm/CollectionCreationForm'
 const CollectionAddButton: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
 
-  const closeDialog = (): void => {
-    setOpen(false);
-  };
-
   return (
     <>
       <Button variant="contained" size="small" onClick={() => setOpen(true)}>
@@ -18,7 +14,7 @@ const CollectionAddButton: FC = () => {
         transitionDuration={400}
         open={open}
         keepMounted
-        onClose={closeDialog}
+        onClose={() => setOpen(false)}
         aria-describedby="alert-dialog"
         sx={{
           '& .MuiDialog-paper': {

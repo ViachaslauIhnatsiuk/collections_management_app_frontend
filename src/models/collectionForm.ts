@@ -13,6 +13,10 @@ interface CollectionFormProps {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+interface CollectionEditFormProps extends CollectionFormProps {
+  id: string;
+}
+
 interface CollectionFieldProps {
   type: string;
   minLength: number;
@@ -28,10 +32,18 @@ interface CollectionCreationFormButtonProps {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+interface CollectionEditFormButtonProps {
+  id: string;
+  value: string;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+}
+
 export type {
   CollectionFormType,
   ICollectionForm,
   CollectionFormProps,
+  CollectionEditFormProps,
   CollectionFieldProps,
   CollectionCreationFormButtonProps,
+  CollectionEditFormButtonProps,
 };
