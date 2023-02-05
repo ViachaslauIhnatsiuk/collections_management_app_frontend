@@ -1,16 +1,15 @@
-import { PayloadAction } from '@reduxjs/toolkit';
-import { ItemStatus, IItemsState } from './itemModel';
+import { ItemStatus, IItemsState, ErrorPayload } from './itemModel';
 
-const setPending = (state: IItemsState) => {
+const setPending = (state: IItemsState): void => {
   state.status = ItemStatus.loading;
   state.error = '';
 };
 
-const setResolved = (state: IItemsState) => {
+const setResolved = (state: IItemsState): void => {
   state.status = ItemStatus.resolved;
 };
 
-const setError = (state: IItemsState, { payload }: PayloadAction<unknown | string>) => {
+const setError = (state: IItemsState, { payload }: ErrorPayload): void => {
   state.status = ItemStatus.rejected;
   state.error = payload as string;
 };

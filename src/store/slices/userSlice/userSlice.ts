@@ -1,9 +1,15 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../../constants/baseUrl';
 import { setError, setPending, setResolved } from './userHelpers';
-import { ICurrentUserState, ISignUpData, ISignInData } from './userModel';
+import {
+  ICurrentUserState,
+  ISignUpData,
+  ISignInData,
+  UserErrors,
+  IUserState,
+} from './userModel';
 
-const initialState = {
+const initialState: IUserState = {
   isAuth: false,
   currentUser: {
     id: '',
@@ -30,7 +36,7 @@ const signUp = createAsyncThunk(
       });
 
       if (!response.ok) {
-        throw new Error('User sign up error');
+        throw new Error(UserErrors.signUp);
       }
 
       const newUser = await response.json();
@@ -53,7 +59,7 @@ const signIn = createAsyncThunk(
       });
 
       if (!response.ok) {
-        throw new Error('User sign in error');
+        throw new Error(UserErrors.signIn);
       }
 
       const user = await response.json();

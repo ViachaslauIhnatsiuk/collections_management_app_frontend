@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../../constants/baseUrl';
-import { IItem, IItemsState, INewItem } from './itemModel';
 import { setError, setPending, setResolved } from './itemHelpers';
+import { CollectionErrors, IItem, IItemsState, INewItem } from './itemModel';
 
 const initialState: IItemsState = {
   items: [],
@@ -16,7 +16,7 @@ const getItems = createAsyncThunk(
       const response = await fetch(`${BASE_URL}/items`);
 
       if (!response.ok) {
-        throw new Error('Items request error');
+        throw new Error(CollectionErrors.get);
       }
 
       const items = await response.json();
@@ -42,7 +42,7 @@ const createItem = createAsyncThunk(
       );
 
       if (!response.ok) {
-        throw new Error('Item creation error');
+        throw new Error(CollectionErrors.create);
       }
 
       const createdItem = await response.json();
@@ -68,7 +68,7 @@ const updateItem = createAsyncThunk(
       );
 
       if (!response.ok) {
-        throw new Error('Item update error');
+        throw new Error(CollectionErrors.update);
       }
 
       const updatedItem = await response.json();
@@ -89,7 +89,7 @@ const deleteItem = createAsyncThunk(
       });
 
       if (!response.ok) {
-        throw new Error('Item removal error');
+        throw new Error(CollectionErrors.delete);
       }
 
       dispatch(deleteSelectedItem(itemId));

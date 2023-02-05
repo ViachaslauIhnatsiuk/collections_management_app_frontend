@@ -1,7 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../../constants/baseUrl';
-import { ICollection, ICollectionsState, IUpdateCollection } from './collectionModel';
 import { setError, setPending, setResolved } from './collectionHelpers';
+import {
+  CollectionErrors,
+  ICollection,
+  ICollectionsState,
+  IUpdateCollection,
+} from './collectionModel';
 
 const initialState: ICollectionsState = {
   collections: [],
@@ -16,7 +21,7 @@ const getCollections = createAsyncThunk(
       const response = await fetch(`${BASE_URL}/collections`);
 
       if (!response.ok) {
-        throw new Error('Сollections request error');
+        throw new Error(CollectionErrors.get);
       }
 
       const collections = await response.json();
@@ -39,7 +44,7 @@ const createCollection = createAsyncThunk(
       });
 
       if (!response.ok) {
-        throw new Error('Сollection creation error');
+        throw new Error(CollectionErrors.create);
       }
 
       const createdCollection = await response.json();
@@ -65,7 +70,7 @@ const updateCollection = createAsyncThunk(
       });
 
       if (!response.ok) {
-        throw new Error('Сollection update error');
+        throw new Error(CollectionErrors.update);
       }
 
       const updatedCollection = await response.json();
@@ -86,7 +91,7 @@ const deleteCollection = createAsyncThunk(
       });
 
       if (!response.ok) {
-        throw new Error('Сollection removal error');
+        throw new Error(CollectionErrors.delete);
       }
 
       dispatch(deleteSelectedCollection(collectionId));

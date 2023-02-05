@@ -11,7 +11,7 @@ import { IItem } from '../../store/slices/itemSlice/itemModel';
 import { FilterBar } from '../UI/FilterBar';
 import { SortButton } from '../UI/SortButton';
 
-const CollectionPage: FC = () => {
+const ItemsPage: FC = () => {
   const [filteredItems, setFilteredItems] = useState<string>('');
   const [sortType, setSortType] = useState<string>('asc');
   const { items, status, error } = useAppSelector(selectItems);
@@ -61,4 +61,4 @@ const CollectionPage: FC = () => {
   );
 };
 
-export { CollectionPage };
+export { ItemsPage };

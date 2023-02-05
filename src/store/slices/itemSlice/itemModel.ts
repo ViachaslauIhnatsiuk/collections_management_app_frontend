@@ -1,7 +1,16 @@
+import { PayloadAction } from '@reduxjs/toolkit';
+
 enum ItemStatus {
   loading = 'loading',
   resolved = 'resolved',
   rejected = 'rejected',
+}
+
+enum CollectionErrors {
+  get = 'Items request error',
+  create = 'Item creation error',
+  update = 'Item update error',
+  delete = 'Item removal error',
 }
 
 interface IItemComments {
@@ -29,5 +38,7 @@ interface IItemsState {
   error: string;
 }
 
-export { ItemStatus };
-export type { IItem, INewItem, IItemsState };
+type ErrorPayload = PayloadAction<unknown | string>;
+
+export { ItemStatus, CollectionErrors };
+export type { IItem, INewItem, IItemsState, ErrorPayload };

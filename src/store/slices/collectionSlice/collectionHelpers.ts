@@ -1,19 +1,15 @@
-import { PayloadAction } from '@reduxjs/toolkit';
-import { CollectionStatus, ICollectionsState } from './collectionModel';
+import { CollectionStatus, ErrorPayload, ICollectionsState } from './collectionModel';
 
-const setPending = (state: ICollectionsState) => {
+const setPending = (state: ICollectionsState): void => {
   state.status = CollectionStatus.loading;
   state.error = '';
 };
 
-const setResolved = (state: ICollectionsState) => {
+const setResolved = (state: ICollectionsState): void => {
   state.status = CollectionStatus.resolved;
 };
 
-const setError = (
-  state: ICollectionsState,
-  { payload }: PayloadAction<unknown | string>,
-) => {
+const setError = (state: ICollectionsState, { payload }: ErrorPayload): void => {
   state.status = CollectionStatus.rejected;
   state.error = payload as string;
 };

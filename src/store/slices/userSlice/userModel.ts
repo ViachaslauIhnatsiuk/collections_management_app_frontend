@@ -1,7 +1,14 @@
+import { PayloadAction } from '@reduxjs/toolkit';
+
 enum UserStatus {
   loading = 'loading',
   resolved = 'resolved',
   rejected = 'rejected',
+}
+
+enum UserErrors {
+  signUp = 'User sign up error',
+  signIn = 'User sign in error',
 }
 
 interface ICurrentUserState {
@@ -22,16 +29,16 @@ interface IUserState {
   error: string;
 }
 
-interface ISignUpData {
-  name: string;
-  email: string;
-  password: string;
-}
-
 interface ISignInData {
   email: string;
   password: string;
 }
 
-export { UserStatus };
-export type { ICurrentUserState, IUserState, ISignUpData, ISignInData };
+interface ISignUpData extends ISignInData {
+  name: string;
+}
+
+type ErrorPayload = PayloadAction<unknown | string>;
+
+export { UserStatus, UserErrors };
+export type { ICurrentUserState, IUserState, ISignUpData, ISignInData, ErrorPayload };

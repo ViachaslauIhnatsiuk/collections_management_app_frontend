@@ -1,7 +1,16 @@
+import { PayloadAction } from '@reduxjs/toolkit';
+
 enum CollectionStatus {
   loading = 'loading',
   resolved = 'resolved',
   rejected = 'rejected',
+}
+
+enum CollectionErrors {
+  get = 'Сollections request error',
+  create = 'Сollection creation error',
+  update = 'Сollection update error',
+  delete = 'Сollection removal error',
 }
 
 interface IItemExtraFields {
@@ -30,5 +39,7 @@ interface ICollectionsState {
   error: string;
 }
 
-export { CollectionStatus };
-export type { ICollection, IUpdateCollection, ICollectionsState };
+type ErrorPayload = PayloadAction<unknown | string>;
+
+export { CollectionStatus, CollectionErrors };
+export type { ICollection, IUpdateCollection, ICollectionsState, ErrorPayload };
