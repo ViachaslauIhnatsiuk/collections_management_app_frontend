@@ -1,8 +1,8 @@
 import { FC, MouseEvent, ChangeEvent } from 'react';
 import { TableFooter, TablePagination, TableRow } from '@mui/material';
 import { ItemsTablePaginationActions } from './ItemsTablePaginationActions';
-import { ItemsTableFooterProps } from '../../models/itemsTableProps';
-import { rowsPerPageOptions } from '../../constants/rowsPerPageOptions';
+import { ItemsTableFooterProps } from '../../../models/itemsTableProps';
+import { rowsPerPageOptions } from '../../../constants/rowsPerPageOptions';
 
 const ItemsTableFooter: FC<ItemsTableFooterProps> = (props) => {
   const { itemsToRender, page, rowsPerPage, setPage, setRowsPerPage } = props;

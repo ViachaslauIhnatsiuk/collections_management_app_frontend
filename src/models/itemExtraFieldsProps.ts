@@ -26,10 +26,7 @@ interface ExtraFieldsFormProps {
   setExtraFields: Dispatch<SetStateAction<IExtraFields[]>>;
 }
 
-interface ExtraFieldChipProps extends ExtraFieldsFormProps {
-  name: string;
-  type: string;
-}
+interface ExtraFieldChipProps extends ExtraFieldsFormProps, IExtraFields {}
 
 export type {
   ExtraFieldsFormInputProps,

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { TableCell, TableRow } from '@mui/material';
-import { ItemsTableRowProps } from '../../models/itemsTableProps';
+import { ItemsTableRowProps } from '../../../models/itemsTableProps';
 
 const ItemsTableRow: FC<ItemsTableRowProps> = ({ item }) => {
   const itemsToRender = Object.values(item).slice(0, 3);

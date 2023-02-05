@@ -4,7 +4,7 @@ import FirstPageIcon from '@mui/icons-material/FirstPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
-import { ItemsTablePaginationActionsProps } from '../../models/itemsTableProps';
+import { ItemsTablePaginationActionsProps } from '../../../models/itemsTableProps';
 
 const ItemsTablePaginationActions = (props: ItemsTablePaginationActionsProps) => {
   const { count, page, rowsPerPage, onPageChange } = props;

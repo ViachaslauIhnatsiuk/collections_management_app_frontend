@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction } from 'react';
-import { IExtraFields } from './itemExtraFieldsProps';
 
 interface MobileMenuProps {
   isMenuOpen: boolean;
@@ -19,9 +18,6 @@ interface SidebarListItemProps {
 
 interface SubmitButtonProps {
   value: string;
-  extraFields?: IExtraFields[];
-  setExtraFields?: Dispatch<SetStateAction<IExtraFields[]>>;
-  setOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
 interface AuthButtonProps {
@@ -30,8 +26,13 @@ interface AuthButtonProps {
   handler?: () => void;
 }
 
-interface CollectionsFilterBarProps {
-  setState: Dispatch<SetStateAction<string>>;
+interface FilterBarProps {
+  setFiltered: Dispatch<SetStateAction<string>>;
+}
+
+interface SortButtonProps {
+  sortType: string;
+  setSortType: Dispatch<SetStateAction<string>>;
 }
 
 export type {
@@ -40,5 +41,6 @@ export type {
   SidebarListItemProps,
   SubmitButtonProps,
   AuthButtonProps,
-  CollectionsFilterBarProps,
+  FilterBarProps,
+  SortButtonProps,
 };

@@ -1,15 +1,20 @@
 import { FC, useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Container, Stack } from '@mui/material';
+import { Container, Stack, Toolbar } from '@mui/material';
 import { selectItems, useAppSelector } from '../../store/selectors';
 import { useAppDispatch } from '../../store/store';
 import { getItems } from '../../store/slices/itemSlice/itemSlice';
-import { ItemsTable } from '../items/ItemsTable';
+import { ItemsTable } from '../items/itemsTable/ItemsTable';
 import { Loader } from '../UI/Loader';
+import { sortByTitle } from '../../helpers/sort';
+import { IItem } from '../../store/slices/itemSlice/itemModel';
+import { FilterBar } from '../UI/FilterBar';
+import { SortButton } from '../UI/SortButton';
 
 const CollectionPage: FC = () => {
-  const { items, status, error } = useAppSelector(selectItems);
   const [filteredItems, setFilteredItems] = useState<string>('');
+  const [sortType, setSortType] = useState<string>('asc');
+  const { items, status, error } = useAppSelector(selectItems);
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
   const currentId = pathname.split('/')[2];
@@ -19,12 +24,13 @@ const CollectionPage: FC = () => {
   }, [dispatch]);
 
   const itemsToRender = useMemo(() => {
-    return items.filter(
+    const itemsToSort = items.filter(
       ({ title, collectionId }) =>
         title.toLowerCase().includes(filteredItems.toLowerCase()) &&
         collectionId === currentId,
     );
-  }, [items, filteredItems]);
+    return sortByTitle(itemsToSort, sortType) as IItem[];
+  }, [items, filteredItems, sortType]);
 
   return (
     <Container
@@ -37,7 +43,11 @@ const CollectionPage: FC = () => {
     >
       {status === 'loading' && <Loader />}
       {error === 'loading' && <h2>Error: {error}</h2>}
-      {items.length ? (
+      <Toolbar sx={{ gap: 2 }}>
+        <FilterBar setFiltered={setFilteredItems} />
+        <SortButton sortType={sortType} setSortType={setSortType} />
+      </Toolbar>
+      {itemsToRender.length ? (
         <Stack
           sx={{
             display: 'grid',

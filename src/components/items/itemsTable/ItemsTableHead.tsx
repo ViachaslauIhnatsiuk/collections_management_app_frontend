@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { TableCell, TableHead, TableRow } from '@mui/material';
-import { tableHeaderTitles } from '../../constants/tableHeaderTitles';
+import { tableHeaderTitles } from '../../../constants/tableHeaderTitles';
 
 const ItemsTableHead: FC = () => {
   return (

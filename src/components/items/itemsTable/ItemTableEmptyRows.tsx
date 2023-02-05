@@ -1,6 +1,6 @@
 import { FC, memo } from 'react';
 import { TableCell, TableRow } from '@mui/material';
-import { ItemsTableEmptyRowsProps } from '../../models/itemsTableProps';
+import { ItemsTableEmptyRowsProps } from '../../../models/itemsTableProps';
 
 const ItemsTableEmptyRows: FC<ItemsTableEmptyRowsProps> = memo(({ emptyRows }) => {
   const rowHeight = 37 * emptyRows;

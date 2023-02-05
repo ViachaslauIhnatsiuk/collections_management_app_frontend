@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { TextField } from '@mui/material';
-import { CollectionsFilterBarProps } from '../../models/componentsProps';
+import { FilterBarProps } from '../../models/componentsProps';
 
-const CollectionsFilterbar: FC<CollectionsFilterBarProps> = ({ setState }) => {
+const FilterBar: FC<FilterBarProps> = ({ setFiltered }) => {
   return (
     <TextField
       variant="outlined"
@@ -14,9 +14,9 @@ const CollectionsFilterbar: FC<CollectionsFilterBarProps> = ({ setState }) => {
       autoComplete="off"
       size="small"
       placeholder="Filter..."
-      onChange={(e) => setState(e.target.value)}
+      onChange={(e) => setFiltered(e.target.value)}
     />
   );
 };
 
-export { CollectionsFilterbar };
+export { FilterBar };

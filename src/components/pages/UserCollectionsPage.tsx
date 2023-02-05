@@ -1,14 +1,19 @@
 import { FC, useEffect, useMemo, useState } from 'react';
-import { Container, Stack } from '@mui/material';
+import { Container, Stack, Toolbar } from '@mui/material';
 import { selectCollections, selectUser, useAppSelector } from '../../store/selectors';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
 import { CollectionCard } from '../collections/collectionCard/CollectionCard';
-import { CollectionsToolbar } from '../collections/CollectionsToolbar';
 import { Loader } from '../UI/Loader';
+import { FilterBar } from '../UI/FilterBar';
+import { CollectionAddButton } from '../collections/CollectionAddButton';
+import { SortButton } from '../UI/SortButton';
+import { sortByTitle } from '../../helpers/sort';
+import { ICollection } from '../../store/slices/collectionSlice/collectionModel';
 
 const UserCollectionsPage: FC = () => {
   const { collections, status, error } = useAppSelector(selectCollections);
+  const [sortType, setSortType] = useState<string>('asc');
   const [filteredCollections, setFilteredCollections] = useState<string>('');
   const { currentUser } = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
@@ -18,12 +23,13 @@ const UserCollectionsPage: FC = () => {
   }, [dispatch]);
 
   const collectionsToRender = useMemo(() => {
-    return collections.filter(
+    const collectionsToSort = collections.filter(
       ({ title, ownerId }) =>
         title.toLowerCase().includes(filteredCollections.toLowerCase()) &&
         ownerId === currentUser.id,
     );
-  }, [collections, currentUser, filteredCollections]);
+    return sortByTitle(collectionsToSort, sortType) as ICollection[];
+  }, [collections, currentUser, filteredCollections, sortType]);
 
   return (
     <Container
@@ -37,7 +43,11 @@ const UserCollectionsPage: FC = () => {
     >
       {status === 'loading' && <Loader />}
       {error === 'loading' && <h2>Error: {error}</h2>}
-      <CollectionsToolbar setState={setFilteredCollections} />
+      <Toolbar sx={{ gap: 2 }}>
+        <FilterBar setFiltered={setFilteredCollections} />
+        <SortButton sortType={sortType} setSortType={setSortType} />
+        <CollectionAddButton />
+      </Toolbar>
       {collections.length ? (
         <Stack
           sx={{

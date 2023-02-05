@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { TableBody } from '@mui/material';
 import { ItemsTableRow } from './ItemsTableRow';
 import { ItemsTableEmptyRows } from './ItemTableEmptyRows';
-import { ItemsTableBodyProps } from '../../models/itemsTableProps';
+import { ItemsTableBodyProps } from '../../../models/itemsTableProps';
 
 const ItemsTableBody: FC<ItemsTableBodyProps> = (props) => {
   const { itemsToRender, page, rowsPerPage, emptyRows } = props;

@@ -2,7 +2,7 @@ import { FC, useMemo, useState } from 'react';
 import { Table, TableContainer, Paper } from '@mui/material';
 import { ItemsTableHead } from './ItemsTableHead';
 import { ItemsTableFooter } from './ItemsTableFooter';
-import { ItemsTableProps } from '../../models/itemsTableProps';
+import { ItemsTableProps } from '../../../models/itemsTableProps';
 import { ItemsTableBody } from './ItemsTableBody';
 
 const ItemsTable: FC<ItemsTableProps> = ({ itemsToRender }) => {

@@ -1,14 +1,18 @@
 import { FC, useEffect, useMemo, useState } from 'react';
-import { Container, Stack } from '@mui/material';
+import { Container, Stack, Toolbar } from '@mui/material';
 import { selectCollections, useAppSelector } from '../../store/selectors';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
 import { CollectionCard } from '../collections/collectionCard/CollectionCard';
-import { CollectionsFilterbar } from '../collections/CollectionsFilterbar';
+import { FilterBar } from '../UI/FilterBar';
+import { sortByTitle } from '../../helpers/sort';
 import { Loader } from '../UI/Loader';
+import { ICollection } from '../../store/slices/collectionSlice/collectionModel';
+import { SortButton } from '../UI/SortButton';
 
 const CollectionsPage: FC = () => {
   const [filteredCollections, setFilteredCollections] = useState<string>('');
+  const [sortType, setSortType] = useState<string>('asc');
   const { collections, status, error } = useAppSelector(selectCollections);
   const dispatch = useAppDispatch();
 
@@ -17,10 +21,11 @@ const CollectionsPage: FC = () => {
   }, [dispatch]);
 
   const collectionsToRender = useMemo(() => {
-    return collections.filter(({ title }) =>
+    const collectionsToSort = collections.filter(({ title }) =>
       title.toLowerCase().includes(filteredCollections.toLowerCase()),
     );
-  }, [collections, filteredCollections]);
+    return sortByTitle(collectionsToSort, sortType) as ICollection[];
+  }, [collections, filteredCollections, sortType]);
 
   return (
     <Container
@@ -33,7 +38,10 @@ const CollectionsPage: FC = () => {
     >
       {status === 'loading' && <Loader />}
       {error === 'loading' && <h2>Error: {error}</h2>}
-      <CollectionsFilterbar setState={setFilteredCollections} />
+      <Toolbar sx={{ gap: 2 }}>
+        <FilterBar setFiltered={setFilteredCollections} />
+        <SortButton sortType={sortType} setSortType={setSortType} />
+      </Toolbar>
       <Stack
         sx={{
           display: 'grid',
