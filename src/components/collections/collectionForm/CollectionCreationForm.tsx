@@ -4,13 +4,13 @@ import { Box } from '@mui/material';
 import { CollectionFormFields } from './CollectionFormFields';
 import { ExtraFieldsList } from '../extraFieldsForm/ExtraFieldsList';
 import { CollectionCreationFormButton } from './CollectionCreationFormButton';
-import { IExtraFields } from '../../../models/itemExtraFieldsProps';
+import { IExtraField } from '../../../models/itemExtraFieldsProps';
 import { CollectionFormProps } from '../../../models/collectionFormProps';
 import { initialFieldsValues } from '../../../constants/initialFieldsValues';
 import { IUserForm } from '../../../models/componentsModels';
 
 const CollectionCreationForm: FC<CollectionFormProps> = ({ setOpen }) => {
-  const [extraFields, setExtraFields] = useState<IExtraFields[]>([]);
+  const [extraFields, setExtraFields] = useState<IExtraField[]>([]);
   const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
 

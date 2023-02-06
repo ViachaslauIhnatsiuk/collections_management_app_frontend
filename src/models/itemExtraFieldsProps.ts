@@ -16,23 +16,23 @@ interface ExtraFieldsFormButtonProps {
   setField: () => void;
 }
 
-interface IExtraFields {
+interface IExtraField {
   name: string;
   type: string;
 }
 
 interface ExtraFieldsFormProps {
-  extraFields: IExtraFields[];
-  setExtraFields: Dispatch<SetStateAction<IExtraFields[]>>;
+  extraFields: IExtraField[];
+  setExtraFields: Dispatch<SetStateAction<IExtraField[]>>;
 }
 
-interface ExtraFieldChipProps extends ExtraFieldsFormProps, IExtraFields {}
+interface ExtraFieldChipProps extends ExtraFieldsFormProps, IExtraField {}
 
 export type {
   ExtraFieldsFormInputProps,
   ExtraFieldsFormSelectProps,
   ExtraFieldsFormButtonProps,
-  IExtraFields,
+  IExtraField,
   ExtraFieldsFormProps,
   ExtraFieldChipProps,
 };
