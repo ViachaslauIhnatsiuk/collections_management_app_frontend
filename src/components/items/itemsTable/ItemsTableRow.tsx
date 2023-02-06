@@ -6,7 +6,7 @@ import { ItemEditButton } from '../ItemEditButton';
 import { ItemViewButton } from '../ItemViewButton';
 
 const ItemsTableRow: FC<ItemsTableRowProps> = ({ item }) => {
-  const itemToRender = Object.values(item).slice(0, 3);
+  const itemToRender = [item._id, item.title, item.tags];
 
   return (
     <TableRow hover tabIndex={-1}>

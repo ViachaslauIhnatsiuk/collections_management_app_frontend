@@ -40,12 +40,10 @@ const CollectionsPage: FC = () => {
           }}
         >
           <Stack>
-            {collectionsToRender.length > 0 && (
-              <Toolbar sx={{ gap: 2 }}>
-                <FilterBar setFiltered={setFilteredCollections} />
-                <SortButton sortType={sortType} setSortType={setSortType} />
-              </Toolbar>
-            )}
+            <Toolbar sx={{ gap: 2 }}>
+              <FilterBar setFiltered={setFilteredCollections} />
+              <SortButton sortType={sortType} setSortType={setSortType} />
+            </Toolbar>
             <Stack
               sx={{
                 display: 'grid',

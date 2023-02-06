@@ -5,7 +5,7 @@ import {
   CollectionErrors,
   ICollection,
   ICollectionsState,
-  IUpdateCollection,
+  UpdateCollection,
 } from './collectionModel';
 
 const initialState: ICollectionsState = {
@@ -59,7 +59,7 @@ const createCollection = createAsyncThunk(
 const updateCollection = createAsyncThunk(
   'collections/updateCollection',
   async (
-    [updatedCollectionData, id]: [IUpdateCollection, string],
+    [updatedCollectionData, id]: UpdateCollection,
     { rejectWithValue, dispatch },
   ) => {
     try {

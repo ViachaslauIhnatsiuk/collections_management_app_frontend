@@ -6,6 +6,7 @@ interface ItemFormProps {
 }
 
 interface ItemCreationFormButtonProps {
+  id: string;
   value: string;
   extraFields: string[];
   setOpen: Dispatch<SetStateAction<boolean>>;

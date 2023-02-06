@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, MouseEvent } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { useAppDispatch } from '../../../store/store';
@@ -15,7 +15,8 @@ const CollectionEditFormButton: FC<CollectionEditFormButtonProps> = (props) => {
   } = useFormContext<ICollectionForm>();
   const dispatch = useAppDispatch();
 
-  const handleSubmit = (): void => {
+  const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {
+    e.preventDefault();
     const fieldsValues = getValues(['title', 'description', 'topic']);
 
     const updatedCollectionData = {

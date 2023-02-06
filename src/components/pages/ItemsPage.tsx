@@ -46,13 +46,11 @@ const ItemsPage: FC = () => {
           }}
         >
           <Stack>
-            {itemsToRender.length > 0 && (
-              <Toolbar sx={{ gap: 2 }}>
-                <FilterBar setFiltered={setFilteredItems} />
-                <SortButton sortType={sortType} setSortType={setSortType} />
-                <ItemAddButton />
-              </Toolbar>
-            )}
+            <Toolbar sx={{ gap: 2 }}>
+              <FilterBar setFiltered={setFilteredItems} />
+              <SortButton sortType={sortType} setSortType={setSortType} />
+              <ItemAddButton />
+            </Toolbar>
             {itemsToRender.length ? (
               <Stack
                 sx={{

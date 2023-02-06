@@ -34,6 +34,7 @@ const ItemCreationForm: FC<ItemFormProps> = ({ setOpen, id }) => {
       >
         <ItemFormFields extraFields={extraFields} />
         <ItemCreationFormButton
+          id={id}
           value="Create item"
           extraFields={extraFields}
           setOpen={setOpen}

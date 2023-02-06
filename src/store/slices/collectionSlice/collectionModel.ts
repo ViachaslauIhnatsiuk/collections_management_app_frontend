@@ -27,11 +27,7 @@ interface ICollection {
   itemExtraFields: IItemExtraFields[];
 }
 
-interface IUpdateCollection {
-  title: string;
-  description: string;
-  topic: string;
-}
+type UpdateCollection = [Pick<ICollection, 'title' | 'description' | 'topic'>, string];
 
 interface ICollectionsState {
   collections: ICollection[];
@@ -42,4 +38,4 @@ interface ICollectionsState {
 type ErrorPayload = PayloadAction<unknown | string>;
 
 export { CollectionStatus, CollectionErrors };
-export type { ICollection, IUpdateCollection, ICollectionsState, ErrorPayload };
+export type { ICollection, UpdateCollection, ICollectionsState, ErrorPayload };

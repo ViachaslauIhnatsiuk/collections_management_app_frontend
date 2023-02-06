@@ -45,13 +45,11 @@ const UserCollectionsPage: FC = () => {
           }}
         >
           <Stack>
-            {collections.length > 0 && (
-              <Toolbar sx={{ gap: 2 }}>
-                <FilterBar setFiltered={setFilteredCollections} />
-                <SortButton sortType={sortType} setSortType={setSortType} />
-                <CollectionAddButton />
-              </Toolbar>
-            )}
+            <Toolbar sx={{ gap: 2 }}>
+              <FilterBar setFiltered={setFilteredCollections} />
+              <SortButton sortType={sortType} setSortType={setSortType} />
+              <CollectionAddButton />
+            </Toolbar>
             {collections.length ? (
               <Stack
                 sx={{

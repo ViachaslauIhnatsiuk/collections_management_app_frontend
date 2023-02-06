@@ -19,18 +19,10 @@ interface IItemComments {
 }
 
 interface IItem {
-  _id?: string;
-  title: string;
-  tags: string[];
-  collectionId: string;
-  ownerId: string;
-  comments: IItemComments[];
+  [key: string]: number | string | string[] | boolean | IItemComments[];
 }
 
-interface INewItem {
-  collectionId: string;
-  newItem: IItem;
-}
+type NewItem = [IItem, string];
 
 interface IItemsState {
   items: IItem[];
@@ -41,4 +33,4 @@ interface IItemsState {
 type ErrorPayload = PayloadAction<unknown | string>;
 
 export { ItemStatus, CollectionErrors };
-export type { IItem, INewItem, IItemsState, ErrorPayload };
+export type { IItem, NewItem, IItemsState, ErrorPayload };

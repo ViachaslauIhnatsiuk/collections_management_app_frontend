@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../../constants/baseUrl';
 import { setError, setPending, setResolved } from './itemHelpers';
-import { CollectionErrors, IItem, IItemsState, INewItem } from './itemModel';
+import { CollectionErrors, IItem, IItemsState, NewItem } from './itemModel';
 
 const initialState: IItemsState = {
   items: [],
@@ -30,16 +30,13 @@ const getItems = createAsyncThunk(
 
 const createItem = createAsyncThunk(
   'items/createItem',
-  async (createdItemData: INewItem, { rejectWithValue, dispatch }) => {
+  async ([newItemData, id]: NewItem, { rejectWithValue, dispatch }) => {
     try {
-      const response = await fetch(
-        `${BASE_URL}/collections/${createdItemData.collectionId}/items`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(createdItemData.newItem),
-        },
-      );
+      const response = await fetch(`${BASE_URL}/collections/${id}/items`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newItemData),
+      });
 
       if (!response.ok) {
         throw new Error(CollectionErrors.create);
@@ -56,16 +53,13 @@ const createItem = createAsyncThunk(
 
 const updateItem = createAsyncThunk(
   'items/updateItem',
-  async (updatedItemData: INewItem, { rejectWithValue, dispatch }) => {
+  async ([newItemData, id]: NewItem, { rejectWithValue, dispatch }) => {
     try {
-      const response = await fetch(
-        `${BASE_URL}/collections/${updatedItemData.collectionId}/items`,
-        {
-          method: 'PUT',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(updatedItemData.newItem._id),
-        },
-      );
+      const response = await fetch(`${BASE_URL}/collections/${id}/items`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newItemData),
+      });
 
       if (!response.ok) {
         throw new Error(CollectionErrors.update);
