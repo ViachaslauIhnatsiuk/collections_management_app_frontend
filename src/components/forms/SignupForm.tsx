@@ -6,8 +6,8 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import { NameField } from './formComponents/NameField';
 import { EmailField } from './formComponents/EmailField';
 import { PasswordField } from './formComponents/PasswordField';
-import { IUserForm } from '../../models/userForm';
 import { SubmitButton } from './formComponents/SubmitButton';
+import { IUserForm } from '../../models/componentsModels';
 
 const SignupForm: FC = () => {
   const methods = useForm<IUserForm>({ mode: 'onBlur' });

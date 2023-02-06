@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Box, List, Drawer } from '@mui/material';
 import { SidebarProps } from '../../models/componentsProps';
-import { sidebarList } from '../../constants/sidebarList';
+import { sidebarList } from '../../constants/renderLists';
 import { SidebarListItem } from './SidebarListItem';
 
 const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {

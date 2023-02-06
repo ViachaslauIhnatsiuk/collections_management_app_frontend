@@ -20,8 +20,7 @@ interface SubmitButtonProps {
   value: string;
 }
 
-interface AuthButtonProps {
-  value: string;
+interface AuthButtonProps extends SubmitButtonProps {
   path: string;
   handler?: () => void;
 }

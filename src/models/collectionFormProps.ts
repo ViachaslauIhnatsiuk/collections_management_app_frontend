@@ -1,20 +1,16 @@
 import { Dispatch, SetStateAction } from 'react';
 import { IExtraFields } from './itemExtraFieldsProps';
 
-type CollectionFormType = 'title' | 'description' | 'topic';
-
-interface ICollectionForm {
-  title: string;
-  description: string;
-  topic: string;
-}
-
 interface CollectionFormProps {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 interface CollectionEditFormProps extends CollectionFormProps {
   id: string;
+}
+
+interface CollectionEditFormButtonProps extends CollectionEditFormProps {
+  value: string;
 }
 
 interface CollectionFieldProps {
@@ -33,15 +29,7 @@ interface CollectionCreationFormButtonProps {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-interface CollectionEditFormButtonProps {
-  id: string;
-  value: string;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-}
-
 export type {
-  CollectionFormType,
-  ICollectionForm,
   CollectionFormProps,
   CollectionEditFormProps,
   CollectionFieldProps,

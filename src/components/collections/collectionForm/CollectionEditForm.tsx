@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Box } from '@mui/material';
-import { IUserForm } from '../../../models/userForm';
 import { CollectionFormFields } from './CollectionFormFields';
 import { CollectionEditFormButton } from './CollectionEditFormButton';
-import { CollectionEditFormProps } from '../../../models/collectionForm';
+import { CollectionEditFormProps } from '../../../models/collectionFormProps';
 import { selectCollections, useAppSelector } from '../../../store/selectors';
 import { ICollection } from '../../../store/slices/collectionSlice/collectionModel';
+import { IUserForm } from '../../../models/componentsModels';
 
 const CollectionEditForm: FC<CollectionEditFormProps> = ({ id, setOpen }) => {
   const methods = useForm<IUserForm>({ mode: 'onBlur' });

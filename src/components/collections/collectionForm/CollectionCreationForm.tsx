@@ -1,13 +1,13 @@
 import { FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Box } from '@mui/material';
-import { IUserForm } from '../../../models/userForm';
 import { CollectionFormFields } from './CollectionFormFields';
 import { ExtraFieldsList } from '../extraFieldsForm/ExtraFieldsList';
 import { CollectionCreationFormButton } from './CollectionCreationFormButton';
 import { IExtraFields } from '../../../models/itemExtraFieldsProps';
-import { CollectionFormProps } from '../../../models/collectionForm';
+import { CollectionFormProps } from '../../../models/collectionFormProps';
 import { initialFieldsValues } from '../../../constants/initialFieldsValues';
+import { IUserForm } from '../../../models/componentsModels';
 
 const CollectionCreationForm: FC<CollectionFormProps> = ({ setOpen }) => {
   const [extraFields, setExtraFields] = useState<IExtraFields[]>([]);

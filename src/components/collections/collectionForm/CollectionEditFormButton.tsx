@@ -1,12 +1,10 @@
 import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
-import {
-  CollectionEditFormButtonProps,
-  ICollectionForm,
-} from '../../../models/collectionForm';
 import { useAppDispatch } from '../../../store/store';
 import { updateCollection } from '../../../store/slices/collectionSlice/collectionSlice';
+import { CollectionEditFormButtonProps } from '../../../models/collectionFormProps';
+import { ICollectionForm } from '../../../models/componentsModels';
 
 const CollectionEditFormButton: FC<CollectionEditFormButtonProps> = (props) => {
   const { id, value, setOpen } = props;

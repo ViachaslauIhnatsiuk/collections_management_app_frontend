@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { TextField, Typography } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
 import { emailRegister } from '../../../constants/formValidation';
-import { IUserForm } from '../../../models/userForm';
+import { IUserForm } from '../../../models/componentsModels';
 
 const EmailField: FC = () => {
   const {

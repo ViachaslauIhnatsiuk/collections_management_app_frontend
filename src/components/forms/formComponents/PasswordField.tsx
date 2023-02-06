@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { passwordRegister } from '../../../constants/formValidation';
-import { IUserForm } from '../../../models/userForm';
+import { IUserForm } from '../../../models/componentsModels';
 
 const PasswordField: FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);

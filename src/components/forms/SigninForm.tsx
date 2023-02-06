@@ -5,8 +5,8 @@ import { Avatar, Box, Typography, Container } from '@mui/material';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { EmailField } from './formComponents/EmailField';
 import { PasswordField } from './formComponents/PasswordField';
-import { IUserForm } from '../../models/userForm';
 import { SubmitButton } from './formComponents/SubmitButton';
+import { IUserForm } from '../../models/componentsModels';
 
 const SigninForm: FC = () => {
   const methods = useForm<IUserForm>({ mode: 'onBlur' });

@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
-import { IUserForm } from '../../../models/userForm';
 import { SubmitButtonProps } from '../../../models/componentsProps';
 import { useAppDispatch } from '../../../store/store';
 import { signIn, signUp } from '../../../store/slices/userSlice/userSlice';
+import { IUserForm } from '../../../models/componentsModels';
 
 const SubmitButton: FC<SubmitButtonProps> = ({ value }) => {
   const {

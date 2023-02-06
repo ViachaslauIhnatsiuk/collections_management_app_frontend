@@ -1,13 +1,11 @@
 import { FC } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
-import {
-  CollectionCreationFormButtonProps,
-  ICollectionForm,
-} from '../../../models/collectionForm';
 import { useAppDispatch } from '../../../store/store';
 import { createCollection } from '../../../store/slices/collectionSlice/collectionSlice';
 import { selectUser, useAppSelector } from '../../../store/selectors';
+import { CollectionCreationFormButtonProps } from '../../../models/collectionFormProps';
+import { ICollectionForm } from '../../../models/componentsModels';
 
 const CollectionCreationFormButton: FC<CollectionCreationFormButtonProps> = (props) => {
   const { value, extraFields, setExtraFields, setOpen } = props;
