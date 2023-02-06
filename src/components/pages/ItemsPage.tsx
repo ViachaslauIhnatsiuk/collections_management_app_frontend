@@ -33,31 +33,40 @@ const ItemsPage: FC = () => {
   }, [items, filteredItems, sortType]);
 
   return (
-    <Container
-      maxWidth="md"
-      sx={{
-        display: 'grid',
-        placeContent: 'center',
-        py: 5,
-      }}
-    >
-      {status === 'loading' && <Loader />}
-      {error === 'loading' && <h2>Error: {error}</h2>}
-      <Toolbar sx={{ gap: 2 }}>
-        <FilterBar setFiltered={setFilteredItems} />
-        <SortButton sortType={sortType} setSortType={setSortType} />
-      </Toolbar>
-      {itemsToRender.length ? (
-        <Stack
+    <>
+      <Loader status={status} error={error} />
+      {status !== 'loading' && !error && (
+        <Container
+          maxWidth="md"
           sx={{
             display: 'grid',
             placeContent: 'center',
+            py: 5,
           }}
         >
-          <ItemsTable itemsToRender={itemsToRender} />
-        </Stack>
-      ) : null}
-    </Container>
+          <Stack>
+            {itemsToRender.length > 0 && (
+              <Toolbar sx={{ gap: 2 }}>
+                <FilterBar setFiltered={setFilteredItems} />
+                <SortButton sortType={sortType} setSortType={setSortType} />
+              </Toolbar>
+            )}
+            {itemsToRender.length ? (
+              <Stack
+                sx={{
+                  display: 'grid',
+                  placeContent: 'center',
+                }}
+              >
+                <ItemsTable itemsToRender={itemsToRender} />
+              </Stack>
+            ) : (
+              'There are no items yet'
+            )}
+          </Stack>
+        </Container>
+      )}
+    </>
   );
 };
 

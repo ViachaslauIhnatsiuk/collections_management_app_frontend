@@ -43,7 +43,7 @@ const signUp = createAsyncThunk(
 
       dispatch(setUserState(newUser));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(UserErrors.signUp);
     }
   },
 );
@@ -66,7 +66,7 @@ const signIn = createAsyncThunk(
 
       dispatch(setUserState(user));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(UserErrors.signIn);
     }
   },
 );

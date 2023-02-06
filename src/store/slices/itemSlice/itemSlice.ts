@@ -23,7 +23,7 @@ const getItems = createAsyncThunk(
 
       dispatch(setItems(items));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(CollectionErrors.get);
     }
   },
 );
@@ -49,7 +49,7 @@ const createItem = createAsyncThunk(
 
       dispatch(createNewItem(createdItem));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(CollectionErrors.create);
     }
   },
 );
@@ -75,7 +75,7 @@ const updateItem = createAsyncThunk(
 
       dispatch(updateSelectedItem(updatedItem));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(CollectionErrors.update);
     }
   },
 );
@@ -94,7 +94,7 @@ const deleteItem = createAsyncThunk(
 
       dispatch(deleteSelectedItem(itemId));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(CollectionErrors.delete);
     }
   },
 );

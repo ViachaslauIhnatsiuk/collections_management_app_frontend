@@ -12,4 +12,9 @@ interface ICollectionForm {
   topic: string;
 }
 
-export type { IUserForm, CollectionFormType, ICollectionForm };
+interface LoaderProps {
+  status: string;
+  error: string;
+}
+
+export type { IUserForm, CollectionFormType, ICollectionForm, LoaderProps };

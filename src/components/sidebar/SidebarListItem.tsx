@@ -4,15 +4,15 @@ import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/mater
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import { SidebarListItemProps } from '../../models/componentsProps';
 
-const SidebarListItem: FC<SidebarListItemProps> = (item) => {
+const SidebarListItem: FC<SidebarListItemProps> = ({ link, title }) => {
   return (
     <ListItem disablePadding>
-      <Link to={item.link} style={{ textDecoration: 'none' }}>
+      <Link to={link} style={{ textDecoration: 'none' }}>
         <ListItemButton>
           <ListItemIcon>
             <InboxIcon />
           </ListItemIcon>
-          <ListItemText primary={item.title} />
+          <ListItemText primary={title} />
         </ListItemButton>
       </Link>
     </ListItem>

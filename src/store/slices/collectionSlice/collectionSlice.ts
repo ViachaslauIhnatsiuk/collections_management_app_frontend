@@ -28,7 +28,7 @@ const getCollections = createAsyncThunk(
 
       dispatch(setCollections(collections));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(CollectionErrors.get);
     }
   },
 );
@@ -51,7 +51,7 @@ const createCollection = createAsyncThunk(
 
       dispatch(createNewCollection(createdCollection));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(CollectionErrors.create);
     }
   },
 );
@@ -77,7 +77,7 @@ const updateCollection = createAsyncThunk(
 
       dispatch(updateSelectedCollection(updatedCollection));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(CollectionErrors.update);
     }
   },
 );
@@ -96,7 +96,7 @@ const deleteCollection = createAsyncThunk(
 
       dispatch(deleteSelectedCollection(collectionId));
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue(CollectionErrors.delete);
     }
   },
 );
