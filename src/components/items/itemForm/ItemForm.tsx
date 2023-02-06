@@ -2,12 +2,12 @@ import { FC, useMemo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Box } from '@mui/material';
 import { ItemFormFields } from './ItemFromFields';
-import { ItemCreationFormButton } from './ItemCreationFormButton';
+import { ItemFormButton } from './ItemFormButton';
 import { ItemFormProps } from '../../../models/itemFormProps';
 import { IUserForm } from '../../../models/componentsModels';
 import { selectCollections, useAppSelector } from '../../../store/selectors';
 
-const ItemCreationForm: FC<ItemFormProps> = ({ setOpen, id }) => {
+const ItemForm: FC<ItemFormProps> = ({ value, itemId, id, setOpen }) => {
   const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
   const { collections } = useAppSelector(selectCollections);
@@ -33,9 +33,10 @@ const ItemCreationForm: FC<ItemFormProps> = ({ setOpen, id }) => {
         }}
       >
         <ItemFormFields extraFields={extraFields} />
-        <ItemCreationFormButton
+        <ItemFormButton
+          value={value}
           id={id}
-          value="Create item"
+          itemId={itemId}
           extraFields={extraFields}
           setOpen={setOpen}
         />
@@ -44,4 +45,4 @@ const ItemCreationForm: FC<ItemFormProps> = ({ setOpen, id }) => {
   );
 };
 
-export { ItemCreationForm };
+export { ItemForm };

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../../constants/baseUrl';
 import { setError, setPending, setResolved } from './itemHelpers';
-import { CollectionErrors, IItem, IItemsState, NewItem } from './itemModel';
+import { CollectionErrors, IItem, IItemsState, NewItem, UpdatedItem } from './itemModel';
 
 const initialState: IItemsState = {
   items: [],
@@ -53,9 +53,9 @@ const createItem = createAsyncThunk(
 
 const updateItem = createAsyncThunk(
   'items/updateItem',
-  async ([newItemData, id]: NewItem, { rejectWithValue, dispatch }) => {
+  async ([newItemData, id, itemId]: UpdatedItem, { rejectWithValue, dispatch }) => {
     try {
-      const response = await fetch(`${BASE_URL}/collections/${id}/items`, {
+      const response = await fetch(`${BASE_URL}/collections/${id}/items/${itemId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newItemData),

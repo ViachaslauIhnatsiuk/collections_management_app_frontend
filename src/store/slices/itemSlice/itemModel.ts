@@ -24,6 +24,8 @@ interface IItem {
 
 type NewItem = [IItem, string];
 
+type UpdatedItem = [IItem, string, string];
+
 interface IItemsState {
   items: IItem[];
   status: string;
@@ -33,4 +35,4 @@ interface IItemsState {
 type ErrorPayload = PayloadAction<unknown | string>;
 
 export { ItemStatus, CollectionErrors };
-export type { IItem, NewItem, IItemsState, ErrorPayload };
+export type { IItem, NewItem, UpdatedItem, IItemsState, ErrorPayload };

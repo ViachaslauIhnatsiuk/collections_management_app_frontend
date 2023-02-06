@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Button, Dialog, DialogTitle, DialogContent } from '@mui/material';
-import { ItemCreationForm } from './itemForm/ItemCreationForm';
+import { ItemForm } from './itemForm/ItemForm';
 
-const ItemAddButton: FC = () => {
+const ItemAddButton: FC<{ itemId: string }> = ({ itemId }) => {
   const [open, setOpen] = useState<boolean>(false);
   const { pathname } = useLocation();
   const currentId = pathname.split('/')[2];
@@ -25,9 +25,14 @@ const ItemAddButton: FC = () => {
           },
         }}
       >
-        <DialogTitle>{'Item form'}</DialogTitle>
+        <DialogTitle>{'Item create form'}</DialogTitle>
         <DialogContent>
-          <ItemCreationForm setOpen={setOpen} id={currentId} />
+          <ItemForm
+            value="Create item"
+            itemId={itemId}
+            setOpen={setOpen}
+            id={currentId}
+          />
         </DialogContent>
       </Dialog>
     </>

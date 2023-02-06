@@ -1,15 +1,14 @@
 import { Dispatch, SetStateAction } from 'react';
 
 interface ItemFormProps {
+  value: string;
+  itemId: string;
   id: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-interface ItemCreationFormButtonProps {
-  id: string;
-  value: string;
+interface ItemFormButtonProps extends ItemFormProps {
   extraFields: string[];
-  setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 interface ItemFieldProps {
@@ -21,4 +20,4 @@ interface ItemFieldProps {
   rows?: number;
 }
 
-export type { ItemFormProps, ItemCreationFormButtonProps, ItemFieldProps };
+export type { ItemFormProps, ItemFormButtonProps, ItemFieldProps };

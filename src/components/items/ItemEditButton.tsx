@@ -1,10 +1,14 @@
 import { FC, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Dialog, DialogTitle, DialogContent } from '@mui/material';
 import { IconButton } from '@mui/material';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
+import { ItemForm } from './itemForm/ItemForm';
 
-const ItemEditButton: FC<{ id: string }> = ({ id }) => {
+const ItemEditButton: FC<{ itemId: string }> = ({ itemId }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const { pathname } = useLocation();
+  const currentId = pathname.split('/')[2];
 
   return (
     <>
@@ -24,7 +28,9 @@ const ItemEditButton: FC<{ id: string }> = ({ id }) => {
         }}
       >
         <DialogTitle>{'Item edit form'}</DialogTitle>
-        <DialogContent></DialogContent>
+        <DialogContent>
+          <ItemForm value="Edit item" itemId={itemId} id={currentId} setOpen={setOpen} />
+        </DialogContent>
       </Dialog>
     </>
   );
