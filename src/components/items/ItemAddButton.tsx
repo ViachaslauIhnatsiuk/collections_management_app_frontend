@@ -1,12 +1,11 @@
 import { FC, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Button, Dialog, DialogTitle, DialogContent } from '@mui/material';
 import { ItemForm } from './itemForm/ItemForm';
 
-const ItemAddButton: FC<{ itemId: string }> = ({ itemId }) => {
+const ItemAddButton: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const { pathname } = useLocation();
-  const currentId = pathname.split('/')[2];
+  const { id } = useParams();
 
   return (
     <>
@@ -18,7 +17,6 @@ const ItemAddButton: FC<{ itemId: string }> = ({ itemId }) => {
         open={open}
         keepMounted
         onClose={() => setOpen(false)}
-        aria-describedby="alert-dialog"
         sx={{
           '& .MuiDialog-paper': {
             maxWidth: '350px',
@@ -27,12 +25,7 @@ const ItemAddButton: FC<{ itemId: string }> = ({ itemId }) => {
       >
         <DialogTitle>{'Item create form'}</DialogTitle>
         <DialogContent>
-          <ItemForm
-            value="Create item"
-            itemId={itemId}
-            setOpen={setOpen}
-            id={currentId}
-          />
+          <ItemForm value="Create item" collectionId={id as string} setOpen={setOpen} />
         </DialogContent>
       </Dialog>
     </>

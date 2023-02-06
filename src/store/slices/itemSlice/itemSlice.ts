@@ -30,9 +30,9 @@ const getItems = createAsyncThunk(
 
 const createItem = createAsyncThunk(
   'items/createItem',
-  async ([newItemData, id]: NewItem, { rejectWithValue, dispatch }) => {
+  async ([newItemData, collectionId]: NewItem, { rejectWithValue, dispatch }) => {
     try {
-      const response = await fetch(`${BASE_URL}/collections/${id}/items`, {
+      const response = await fetch(`${BASE_URL}/collections/${collectionId}/items`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newItemData),
@@ -53,13 +53,19 @@ const createItem = createAsyncThunk(
 
 const updateItem = createAsyncThunk(
   'items/updateItem',
-  async ([newItemData, id, itemId]: UpdatedItem, { rejectWithValue, dispatch }) => {
+  async (
+    [newItemData, collectionId, itemId]: UpdatedItem,
+    { rejectWithValue, dispatch },
+  ) => {
     try {
-      const response = await fetch(`${BASE_URL}/collections/${id}/items/${itemId}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newItemData),
-      });
+      const response = await fetch(
+        `${BASE_URL}/collections/${collectionId}/items/${itemId}`,
+        {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newItemData),
+        },
+      );
 
       if (!response.ok) {
         throw new Error(CollectionErrors.update);

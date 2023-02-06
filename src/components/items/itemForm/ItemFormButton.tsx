@@ -8,7 +8,7 @@ import { ItemFormButtonProps } from '../../../models/itemFormProps';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
 
 const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
-  const { id, itemId, value, extraFields, setOpen } = props;
+  const { value, itemId, collectionId, extraFields, setOpen } = props;
   const {
     getValues,
     reset,
@@ -25,7 +25,7 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
       const newItem: IItem = {
         title: fieldsValues[0],
         tags: [fieldsValues[1]],
-        collectionId: id,
+        collectionId: collectionId,
         ownerId: currentUser.id,
         comments: [],
       };
@@ -34,7 +34,7 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
         newItem[extraFields[i - 2]] = fieldsValues[i];
       }
 
-      dispatch(createItem([newItem, id]));
+      dispatch(createItem([newItem, collectionId]));
     } else {
       const newItem: IItem = {
         title: fieldsValues[0],
@@ -45,7 +45,7 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
         newItem[extraFields[i - 2]] = fieldsValues[i];
       }
 
-      dispatch(updateItem([newItem, id, itemId]));
+      dispatch(updateItem([newItem, collectionId, itemId as string]));
     }
 
     reset();

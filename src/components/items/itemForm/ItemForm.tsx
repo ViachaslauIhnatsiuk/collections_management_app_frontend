@@ -7,16 +7,17 @@ import { ItemFormProps } from '../../../models/itemFormProps';
 import { IUserForm } from '../../../models/componentsModels';
 import { selectCollections, useAppSelector } from '../../../store/selectors';
 
-const ItemForm: FC<ItemFormProps> = ({ value, itemId, id, setOpen }) => {
+const ItemForm: FC<ItemFormProps> = (props) => {
+  const { value, itemId, collectionId, setOpen } = props;
   const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
   const { collections } = useAppSelector(selectCollections);
 
   const extraFields = useMemo(() => {
-    const collection = collections.find((collection) => collection._id === id);
+    const collection = collections.find(({ _id }) => _id === collectionId);
     const fieldNames = collection?.itemExtraFields.map((field) => field.name) as string[];
     return fieldNames;
-  }, [collections]);
+  }, [collections, collectionId]);
 
   return (
     <FormProvider {...methods}>
@@ -35,8 +36,8 @@ const ItemForm: FC<ItemFormProps> = ({ value, itemId, id, setOpen }) => {
         <ItemFormFields extraFields={extraFields} />
         <ItemFormButton
           value={value}
-          id={id}
           itemId={itemId}
+          collectionId={collectionId}
           extraFields={extraFields}
           setOpen={setOpen}
         />

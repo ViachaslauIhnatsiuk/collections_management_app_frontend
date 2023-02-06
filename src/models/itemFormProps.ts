@@ -2,8 +2,8 @@ import { Dispatch, SetStateAction } from 'react';
 
 interface ItemFormProps {
   value: string;
-  itemId: string;
-  id: string;
+  itemId?: string;
+  collectionId: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 

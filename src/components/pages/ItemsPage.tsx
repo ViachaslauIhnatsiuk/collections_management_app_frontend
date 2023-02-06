@@ -1,5 +1,5 @@
 import { FC, useEffect, useMemo, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Container, Stack, Toolbar } from '@mui/material';
 import { selectItems, useAppSelector } from '../../store/selectors';
 import { useAppDispatch } from '../../store/store';
@@ -16,9 +16,8 @@ const ItemsPage: FC = () => {
   const [filteredItems, setFilteredItems] = useState<string>('');
   const [sortType, setSortType] = useState<string>('asc');
   const { items, status, error } = useAppSelector(selectItems);
+  const { id } = useParams();
   const dispatch = useAppDispatch();
-  const { pathname } = useLocation();
-  const currentId = pathname.split('/')[2];
 
   useEffect(() => {
     dispatch(getItems());
@@ -27,8 +26,8 @@ const ItemsPage: FC = () => {
   const itemsToRender = useMemo(() => {
     const itemsToSort = items.filter(
       ({ title, collectionId }) =>
-        title.toLowerCase().includes(filteredItems.toLowerCase()) &&
-        collectionId === currentId,
+        (title as string).toLowerCase().includes(filteredItems.toLowerCase()) &&
+        collectionId === id,
     );
     return sortByTitle(itemsToSort, sortType) as IItem[];
   }, [items, filteredItems, sortType]);

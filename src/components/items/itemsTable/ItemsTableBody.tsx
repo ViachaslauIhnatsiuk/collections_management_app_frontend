@@ -13,7 +13,7 @@ const ItemsTableBody: FC<ItemsTableBodyProps> = (props) => {
         ? itemsToRender.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
         : itemsToRender
       ).map((item) => {
-        return <ItemsTableRow key={item._id} item={item} />;
+        return <ItemsTableRow key={item._id as string} item={item} />;
       })}
       <ItemsTableEmptyRows emptyRows={emptyRows} />
     </TableBody>

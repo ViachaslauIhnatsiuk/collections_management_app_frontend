@@ -5,12 +5,12 @@ import { useAppDispatch } from '../../store/store';
 import { deleteItem } from '../../store/slices/itemSlice/itemSlice';
 import { RemoveConfirmationModal } from '../UI/RemoveConfirmationModal';
 
-const ItemRemoveButton: FC<{ id: string }> = ({ id }) => {
+const ItemRemoveButton: FC<{ itemId: string }> = ({ itemId }) => {
   const [open, setOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
   const removeCollection = (): void => {
-    dispatch(deleteItem(id));
+    dispatch(deleteItem(itemId));
   };
 
   return (

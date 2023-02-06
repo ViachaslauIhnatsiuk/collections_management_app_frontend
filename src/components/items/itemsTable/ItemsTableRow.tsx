@@ -22,7 +22,7 @@ const ItemsTableRow: FC<ItemsTableRowProps> = ({ item }) => {
         );
       })}
       <TableCell sx={{ px: 2, py: 0 }}>
-        <ItemRemoveButton id={item._id as string} />
+        <ItemRemoveButton itemId={item._id as string} />
         <ItemEditButton itemId={item._id as string} />
         <ItemViewButton />
       </TableCell>
