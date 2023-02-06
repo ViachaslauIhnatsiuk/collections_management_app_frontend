@@ -6,10 +6,11 @@ import { useAppDispatch } from '../../store/store';
 import { getItems } from '../../store/slices/itemSlice/itemSlice';
 import { ItemsTable } from '../items/itemsTable/ItemsTable';
 import { Loader } from '../UI/Loader';
-import { sortByTitle } from '../../helpers/sort';
-import { IItem } from '../../store/slices/itemSlice/itemModel';
 import { FilterBar } from '../UI/FilterBar';
 import { SortButton } from '../UI/SortButton';
+import { ItemAddButton } from '../items/ItemAddButton';
+import { sortByTitle } from '../../helpers/sort';
+import { IItem } from '../../store/slices/itemSlice/itemModel';
 
 const ItemsPage: FC = () => {
   const [filteredItems, setFilteredItems] = useState<string>('');
@@ -49,6 +50,7 @@ const ItemsPage: FC = () => {
               <Toolbar sx={{ gap: 2 }}>
                 <FilterBar setFiltered={setFilteredItems} />
                 <SortButton sortType={sortType} setSortType={setSortType} />
+                <ItemAddButton />
               </Toolbar>
             )}
             {itemsToRender.length ? (
