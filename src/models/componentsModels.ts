@@ -17,4 +17,17 @@ interface LoaderProps {
   error: string;
 }
 
-export type { IUserForm, CollectionFormType, ICollectionForm, LoaderProps };
+interface ITableHeaderTitles {
+  id: string;
+  label: string;
+  minWidth: number;
+  align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
+}
+
+export type {
+  IUserForm,
+  CollectionFormType,
+  ICollectionForm,
+  LoaderProps,
+  ITableHeaderTitles,
+};

@@ -9,6 +9,7 @@ const ItemsTableHead: FC = () => {
         {tableHeaderTitles.map((title) => (
           <TableCell
             key={title.id}
+            align={title.align}
             sx={{
               px: 2,
               py: 1,

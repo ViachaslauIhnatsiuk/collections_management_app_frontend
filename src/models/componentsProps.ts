@@ -34,6 +34,12 @@ interface SortButtonProps {
   setSortType: Dispatch<SetStateAction<string>>;
 }
 
+interface RemoveConfirmationModalProps {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  actionHandler: () => void;
+}
+
 export type {
   MobileMenuProps,
   SidebarProps,
@@ -42,4 +48,5 @@ export type {
   AuthButtonProps,
   FilterBarProps,
   SortButtonProps,
+  RemoveConfirmationModalProps,
 };

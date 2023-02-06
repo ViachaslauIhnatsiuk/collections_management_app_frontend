@@ -1,1 +1,1 @@
-export const rowsPerPageOptions = [5, 10, 20];
+export const rowsPerPageOptions = [5, 10, 15];

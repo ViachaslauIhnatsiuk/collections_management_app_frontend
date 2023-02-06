@@ -29,7 +29,7 @@ const ItemsTableFooter: FC<ItemsTableFooterProps> = (props) => {
       <TableRow>
         <TablePagination
           rowsPerPageOptions={rowsPerPageOptions}
-          colSpan={3}
+          colSpan={4}
           count={itemsToRender.length}
           rowsPerPage={rowsPerPage}
           page={page}

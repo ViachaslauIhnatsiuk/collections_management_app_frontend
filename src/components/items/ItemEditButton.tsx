@@ -2,9 +2,8 @@ import { FC, useState } from 'react';
 import { Dialog, DialogTitle, DialogContent } from '@mui/material';
 import { IconButton } from '@mui/material';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
-import { CollectionEditForm } from '../collectionForm/CollectionEditForm';
 
-const CollectionEditButton: FC<{ id: string }> = ({ id }) => {
+const ItemEditButton: FC<{ id: string }> = ({ id }) => {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -24,13 +23,11 @@ const CollectionEditButton: FC<{ id: string }> = ({ id }) => {
           },
         }}
       >
-        <DialogTitle>{'Collection edit form'}</DialogTitle>
-        <DialogContent>
-          <CollectionEditForm id={id} setOpen={setOpen} />
-        </DialogContent>
+        <DialogTitle>{'Item edit form'}</DialogTitle>
+        <DialogContent></DialogContent>
       </Dialog>
     </>
   );
 };
 
-export { CollectionEditButton };
+export { ItemEditButton };
