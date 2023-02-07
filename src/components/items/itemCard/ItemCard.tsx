@@ -1,0 +1,42 @@
+import { FC } from 'react';
+import { Paper, Stack, Typography } from '@mui/material';
+import { IItem } from '../../../store/slices/itemSlice/itemModel';
+
+const ItemCard: FC<{ item: IItem }> = ({ item }) => {
+  const { _id, collectionId, ownerId, tags, comments, likes, ...itemsToRender } = item;
+  const itemKeys = Object.keys(itemsToRender);
+  const itemValues = Object.values(itemsToRender);
+
+  return (
+    <Paper
+      sx={{
+        mt: 10,
+        p: 3,
+        width: '350px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 2,
+      }}
+    >
+      <Typography variant="h4">{item.title}</Typography>
+      <Stack sx={{ width: '100%' }}>
+        {itemValues.map((value, index) => {
+          return (
+            <Typography key={index} variant="h6">
+              {itemKeys[index]}: {value}
+            </Typography>
+          );
+        })}
+      </Stack>
+      <Stack
+        sx={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}
+      >
+        <Typography variant="h6">Tags: {tags}</Typography>
+        <Typography variant="h6">Likes: {likes}</Typography>
+      </Stack>
+    </Paper>
+  );
+};
+
+export { ItemCard };

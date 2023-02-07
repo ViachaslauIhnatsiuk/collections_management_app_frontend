@@ -18,7 +18,7 @@ const SortButton: FC<SortButtonProps> = ({ sortType, setSortType }) => {
       variant="contained"
       size="small"
       sx={{ width: 100 }}
-      startIcon={sortType === 'asc' ? <NorthIcon /> : <SouthIcon />}
+      startIcon={sortType === 'asc' ? <SouthIcon /> : <NorthIcon />}
       onClick={handleSort}
     >
       {sortType === 'asc' ? 'A-Z' : 'Z-A'}

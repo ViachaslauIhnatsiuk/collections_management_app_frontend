@@ -8,6 +8,7 @@ import { MainPage } from './pages/MainPage';
 import { SigninPage } from './pages/SigninPage';
 import { SignupPage } from './pages/SignupPage';
 import { ItemsPage } from './pages/ItemsPage';
+import { ItemPage } from './pages/ItemPage';
 
 const App: FC = () => {
   const { isAuth } = useAppSelector(selectUser);
@@ -22,11 +23,13 @@ const App: FC = () => {
           element={isAuth ? <CollectionsPage /> : <Navigate to="/signin" />}
         />
         <Route path="/all-collections/:id" element={<ItemsPage />} />
+        <Route path="/all-collections/:id/items/:id" element={<ItemPage />} />
         <Route
           path="/user-collections"
           element={isAuth ? <UserCollectionsPage /> : <Navigate to="/signin" />}
         />
         <Route path="/user-collections/:id" element={<ItemsPage />} />
+        <Route path="/user-collections/:id/items/:id" element={<ItemPage />} />
         <Route path="/signin" element={!isAuth ? <SigninPage /> : <Navigate to="/" />} />
         <Route path="/signup" element={!isAuth ? <SignupPage /> : <Navigate to="/" />} />
       </Routes>

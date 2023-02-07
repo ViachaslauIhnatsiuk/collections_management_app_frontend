@@ -1,7 +1,6 @@
 import { FC, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Dialog, DialogTitle, DialogContent } from '@mui/material';
-import { IconButton } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import { ItemForm } from './itemForm/ItemForm';
 
