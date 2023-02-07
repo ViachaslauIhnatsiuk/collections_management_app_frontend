@@ -17,6 +17,7 @@ const ItemsTable: FC<ItemsTableProps> = ({ itemsToRender }) => {
     const columns: GridColDef[] = headerNamesList.map((item) => ({
       field: item,
       headerName: item.charAt(0).toUpperCase() + item.slice(1),
+      type: typeof tableItems[item] === 'boolean' ? 'boolean' : 'string',
     }));
 
     return columns.map((column) => {

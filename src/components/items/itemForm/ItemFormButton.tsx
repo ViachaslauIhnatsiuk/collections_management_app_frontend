@@ -1,4 +1,4 @@
-import { FC, MouseEvent } from 'react';
+import { FC, MouseEvent, useMemo } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { useAppDispatch } from '../../../store/store';
@@ -17,9 +17,17 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector(selectUser);
 
+  const fields = useMemo(() => {
+    return extraFields.map((field) => field.type.toLowerCase()) as string[];
+  }, [extraFields]);
+
+  const names = useMemo(() => {
+    return extraFields.map((field) => field.name) as string[];
+  }, [extraFields]);
+
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
-    const fieldsValues = getValues(['title', 'tags', ...extraFields]);
+    const fieldsValues = getValues(['title', 'tags', ...fields]);
 
     if (value === 'Create item') {
       const newItem: IItem = {
@@ -31,7 +39,7 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
       };
 
       for (let i = 2; i < fieldsValues.length; i++) {
-        newItem[extraFields[i - 2]] = fieldsValues[i];
+        newItem[names[i - 2]] = fieldsValues[i];
       }
 
       dispatch(createItem([newItem, collectionId]));
@@ -42,7 +50,7 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
       };
 
       for (let i = 2; i < fieldsValues.length; i++) {
-        newItem[extraFields[i - 2]] = fieldsValues[i];
+        newItem[names[i - 2]] = fieldsValues[i];
       }
 
       dispatch(updateItem([newItem, collectionId, itemId as string]));

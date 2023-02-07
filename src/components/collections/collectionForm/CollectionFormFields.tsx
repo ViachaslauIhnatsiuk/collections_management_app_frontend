@@ -8,13 +8,13 @@ const CollectionFormFields: FC<CollectionFormFieldsProps> = ({ fieldsValues }) =
   return (
     <>
       <Box sx={{ width: '100%', gap: 2, display: 'flex' }}>
+        <CollectionTopicSelect type="topic" value="" />
         <CollectionFormField
           type="title"
           minLength={1}
           maxLength={25}
           value={fieldsValues.title}
         />
-        <CollectionTopicSelect type="topic" value="" />
       </Box>
       <CollectionFormField
         type="description"

@@ -4,19 +4,20 @@ import { useFormContext } from 'react-hook-form';
 import { ItemFieldProps } from '../../../models/itemFormProps';
 
 const ItemFormField: FC<ItemFieldProps> = (props) => {
-  const { value, type, minLength, maxLength, multi, rows } = props;
+  const { value, type, label, minLength, maxLength, multi, rows } = props;
   const [fieldValue, setFieldValue] = useState<string>(value as string);
   const { register } = useFormContext();
 
   return (
     <TextField
       size="small"
+      type={type}
       inputProps={{ minLength, maxLength }}
       fullWidth
       multiline={multi}
       rows={rows}
       value={fieldValue}
-      label={type.toUpperCase()}
+      label={type === 'date' ? '' : label}
       autoComplete="off"
       {...register(type)}
       onChange={(e) => setFieldValue(e.target.value)}

@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
+import { IExtraField } from './itemExtraFieldsProps';
 
 interface ItemFormProps {
   value: string;
@@ -8,12 +9,13 @@ interface ItemFormProps {
 }
 
 interface ItemFormButtonProps extends ItemFormProps {
-  extraFields: string[];
+  extraFields: IExtraField[];
 }
 
 interface ItemFieldProps {
   value?: string;
   type: string;
+  label: string;
   minLength?: number;
   maxLength?: number;
   multi?: boolean;

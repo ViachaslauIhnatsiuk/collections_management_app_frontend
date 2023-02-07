@@ -5,7 +5,9 @@ import { ItemCommentsList } from './ItemCommentsList';
 
 const ItemCard: FC<{ item: IItem }> = ({ item }) => {
   const { _id, collectionId, ownerId, tags, comments, likes, ...itemToRender } = item;
-  const itemKeys = Object.keys(itemToRender);
+  const itemKeys = Object.keys(itemToRender).map(
+    (key) => key.charAt(0).toUpperCase() + key.slice(1),
+  );
   const itemValues = Object.values(itemToRender);
 
   return (
@@ -25,7 +27,7 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
         {itemValues.map((value, index) => {
           return (
             <Typography key={index} variant="h6">
-              {itemKeys[index]}: {value}
+              {itemKeys[index]}: {value.toString()}
             </Typography>
           );
         })}

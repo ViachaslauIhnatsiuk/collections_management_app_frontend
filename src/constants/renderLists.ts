@@ -28,6 +28,6 @@ const sidebarList = [
   { title: 'Settings', link: '/settings' },
 ];
 
-const extraFieldsSelectItems = ['Number', 'String', 'Text', 'Date', 'Boolean'];
+const extraFieldsSelectItems = ['Number', 'Text', 'Textfield', 'Date', 'Checkbox'];
 
 export { tableHeaderTitles, sidebarList, extraFieldsSelectItems };

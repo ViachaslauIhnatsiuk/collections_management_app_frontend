@@ -6,6 +6,7 @@ import { ItemFormButton } from './ItemFormButton';
 import { ItemFormProps } from '../../../models/itemFormProps';
 import { IUserForm } from '../../../models/componentsModels';
 import { selectCollections, useAppSelector } from '../../../store/selectors';
+import { IExtraField } from '../../../models/itemExtraFieldsProps';
 
 const ItemForm: FC<ItemFormProps> = (props) => {
   const { value, itemId, collectionId, setOpen } = props;
@@ -15,8 +16,7 @@ const ItemForm: FC<ItemFormProps> = (props) => {
 
   const extraFields = useMemo(() => {
     const collection = collections.find(({ _id }) => _id === collectionId);
-    const fieldNames = collection?.itemExtraFields.map((field) => field.name) as string[];
-    return fieldNames;
+    return collection?.itemExtraFields;
   }, [collections, collectionId]);
 
   return (
@@ -33,12 +33,12 @@ const ItemForm: FC<ItemFormProps> = (props) => {
           rowGap: 2,
         }}
       >
-        <ItemFormFields extraFields={extraFields} />
+        <ItemFormFields extraFields={extraFields as IExtraField[]} />
         <ItemFormButton
           value={value}
           itemId={itemId}
           collectionId={collectionId}
-          extraFields={extraFields}
+          extraFields={extraFields as IExtraField[]}
           setOpen={setOpen}
         />
       </Box>
