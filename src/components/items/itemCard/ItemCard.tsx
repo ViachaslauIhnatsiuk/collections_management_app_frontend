@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Paper, Stack, Typography } from '@mui/material';
-import { IItem } from '../../../store/slices/itemSlice/itemModel';
+import { IItem, IItemComments } from '../../../store/slices/itemSlice/itemModel';
+import { ItemCommentsList } from './ItemCommentsList';
 
 const ItemCard: FC<{ item: IItem }> = ({ item }) => {
   const { _id, collectionId, ownerId, tags, comments, likes, ...itemsToRender } = item;
@@ -35,6 +36,7 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
         <Typography variant="h6">Tags: {tags}</Typography>
         <Typography variant="h6">Likes: {likes}</Typography>
       </Stack>
+      <ItemCommentsList comments={comments as IItemComments[]} />
     </Paper>
   );
 };

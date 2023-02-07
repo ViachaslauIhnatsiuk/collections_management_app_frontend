@@ -35,4 +35,4 @@ interface IItemsState {
 type ErrorPayload = PayloadAction<unknown | string>;
 
 export { ItemStatus, CollectionErrors };
-export type { IItem, NewItem, UpdatedItem, IItemsState, ErrorPayload };
+export type { IItem, NewItem, IItemComments, UpdatedItem, IItemsState, ErrorPayload };
