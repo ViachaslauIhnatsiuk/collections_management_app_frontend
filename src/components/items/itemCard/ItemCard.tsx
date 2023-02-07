@@ -4,9 +4,9 @@ import { IItem, IItemComments } from '../../../store/slices/itemSlice/itemModel'
 import { ItemCommentsList } from './ItemCommentsList';
 
 const ItemCard: FC<{ item: IItem }> = ({ item }) => {
-  const { _id, collectionId, ownerId, tags, comments, likes, ...itemsToRender } = item;
-  const itemKeys = Object.keys(itemsToRender);
-  const itemValues = Object.values(itemsToRender);
+  const { _id, collectionId, ownerId, tags, comments, likes, ...itemToRender } = item;
+  const itemKeys = Object.keys(itemToRender);
+  const itemValues = Object.values(itemToRender);
 
   return (
     <Paper
