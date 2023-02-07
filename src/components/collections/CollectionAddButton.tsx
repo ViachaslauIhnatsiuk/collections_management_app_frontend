@@ -22,7 +22,7 @@ const CollectionAddButton: FC = () => {
           },
         }}
       >
-        <DialogTitle>{'Collection form'}</DialogTitle>
+        <DialogTitle sx={{ pb: 0, textAlign: 'center' }}>{'Collection form'}</DialogTitle>
         <DialogContent>
           <CollectionCreationForm setOpen={setOpen} />
         </DialogContent>

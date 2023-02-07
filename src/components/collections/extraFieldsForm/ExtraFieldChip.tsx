@@ -15,8 +15,9 @@ const ExtraFieldChip: FC<ExtraFieldChipProps> = ({
 
   return (
     <Chip
+      sx={{ borderRadius: '3px' }}
       size="small"
-      color="primary"
+      color="info"
       label={`${name} (${type[0]})`}
       onDelete={deleteField}
     />
