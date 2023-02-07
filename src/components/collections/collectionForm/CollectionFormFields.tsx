@@ -1,21 +1,17 @@
 import { FC } from 'react';
-import { ICollection } from '../../../store/slices/collectionSlice/collectionModel';
 import { CollectionFormField } from './CollectionFormField';
+import { CollectionTopicSelect } from './CollectionTopicSelect';
+import { CollectionFormFieldsProps } from '../../../models/collectionFormProps';
 
-const CollectionFormFields: FC<{ fieldsValues: ICollection }> = ({ fieldsValues }) => {
+const CollectionFormFields: FC<CollectionFormFieldsProps> = ({ fieldsValues }) => {
   return (
     <>
+      <CollectionTopicSelect type="topic" value="" />
       <CollectionFormField
         type="title"
         minLength={1}
         maxLength={25}
         value={fieldsValues.title}
-      />
-      <CollectionFormField
-        type="topic"
-        minLength={1}
-        maxLength={25}
-        value={fieldsValues.topic}
       />
       <CollectionFormField
         type="description"

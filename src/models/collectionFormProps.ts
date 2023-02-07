@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
+import { ICollection } from '../store/slices/collectionSlice/collectionModel';
 import { IExtraField } from './itemExtraFieldsProps';
 
 interface CollectionFormProps {
@@ -13,7 +14,7 @@ interface CollectionEditFormButtonProps extends CollectionEditFormProps {
   value: string;
 }
 
-interface CollectionFieldProps {
+interface CollectionFormFieldProps {
   value?: string;
   type: string;
   minLength: number;
@@ -29,10 +30,21 @@ interface CollectionCreationFormButtonProps {
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+interface CollectionTopicSelectProps {
+  type: string;
+  value: string;
+}
+
+interface CollectionFormFieldsProps {
+  fieldsValues: ICollection;
+}
+
 export type {
   CollectionFormProps,
   CollectionEditFormProps,
-  CollectionFieldProps,
+  CollectionFormFieldProps,
   CollectionCreationFormButtonProps,
   CollectionEditFormButtonProps,
+  CollectionTopicSelectProps,
+  CollectionFormFieldsProps,
 };

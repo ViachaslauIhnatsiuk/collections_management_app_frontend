@@ -2,9 +2,9 @@ import { FC, useState } from 'react';
 import { TextField } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
 import { CollectionFormType, ICollectionForm } from '../../../models/componentsModels';
-import { CollectionFieldProps } from '../../../models/collectionFormProps';
+import { CollectionFormFieldProps } from '../../../models/collectionFormProps';
 
-const CollectionFormField: FC<CollectionFieldProps> = (props) => {
+const CollectionFormField: FC<CollectionFormFieldProps> = (props) => {
   const { value, type, minLength, maxLength, multi, rows } = props;
   const [fieldValue, setFieldValue] = useState<string>(value as string);
   const { register } = useFormContext<ICollectionForm>();
