@@ -56,4 +56,21 @@ const collectionImageBoxStyles = {
   },
 };
 
-export { customScrollbarStyles, dataGridStyles, collectionImageBoxStyles };
+const cardImageBoxStyles = {
+  width: '100%',
+  height: '200px',
+  borderRadius: '5px',
+  overflow: 'hidden',
+  img: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  },
+};
+
+export {
+  customScrollbarStyles,
+  dataGridStyles,
+  collectionImageBoxStyles,
+  cardImageBoxStyles,
+};
