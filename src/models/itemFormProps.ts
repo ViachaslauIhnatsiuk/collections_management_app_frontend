@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { IExtraField } from './itemExtraFieldsProps';
+import { IExtraField } from './componentsModels';
 
 interface ItemFormProps {
   value: string;

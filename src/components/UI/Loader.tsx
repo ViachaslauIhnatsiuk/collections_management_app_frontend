@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Container, LinearProgress, Typography } from '@mui/material';
-import { LoaderProps } from '../../models/componentsModels';
+import { LoaderProps } from '../../models/componentsProps';
 
 const Loader: FC<LoaderProps> = ({ status, error }) => {
   return (

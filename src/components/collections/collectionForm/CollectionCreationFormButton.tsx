@@ -17,6 +17,10 @@ const CollectionCreationFormButton: FC<CollectionCreationFormButtonProps> = (pro
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector(selectUser);
 
+  const itemExtraFields = extraFields
+    .filter(({ name }) => name)
+    .map(({ name, type }) => ({ name, type }));
+
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
     const fieldsValues = getValues(['title', 'description', 'topic']);
@@ -26,7 +30,7 @@ const CollectionCreationFormButton: FC<CollectionCreationFormButtonProps> = (pro
       description: fieldsValues[1],
       topic: fieldsValues[2],
       ownerId: currentUser.id,
-      itemExtraFields: extraFields,
+      itemExtraFields,
     };
 
     dispatch(createCollection(newCollectionData));

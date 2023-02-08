@@ -1,7 +1,7 @@
 import { Checkbox, FormControlLabel } from '@mui/material';
 import { FC, useMemo } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { IExtraField } from '../../../models/itemExtraFieldsProps';
+import { IExtraField } from '../../../models/componentsModels';
 import { ItemFormField } from './ItemFormField';
 
 const ItemFormFields: FC<{ extraFields: IExtraField[] }> = ({ extraFields }) => {
@@ -12,8 +12,8 @@ const ItemFormFields: FC<{ extraFields: IExtraField[] }> = ({ extraFields }) => 
 
   return (
     <>
-      <ItemFormField type="title" label="title" minLength={1} maxLength={25} value="" />
-      <ItemFormField type="tags" label="tags" minLength={1} maxLength={25} value="" />
+      <ItemFormField type="title" label="Title" minLength={1} maxLength={25} value="" />
+      <ItemFormField type="tags" label="Tags" minLength={1} maxLength={25} value="" />
       {types.map((type, index) => {
         return type === 'checkbox' ? (
           <FormControlLabel

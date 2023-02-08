@@ -7,7 +7,7 @@ import { CollectionFormFieldsProps } from '../../../models/collectionFormProps';
 const CollectionFormFields: FC<CollectionFormFieldsProps> = ({ fieldsValues }) => {
   return (
     <>
-      <Box sx={{ width: '100%', gap: 2, display: 'flex' }}>
+      <Box sx={{ width: '100%', gap: 1, display: 'flex' }}>
         <CollectionTopicSelect type="topic" value="" />
         <CollectionFormField
           type="title"

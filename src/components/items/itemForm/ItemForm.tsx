@@ -4,9 +4,8 @@ import { Box } from '@mui/material';
 import { ItemFormFields } from './ItemFromFields';
 import { ItemFormButton } from './ItemFormButton';
 import { ItemFormProps } from '../../../models/itemFormProps';
-import { IUserForm } from '../../../models/componentsModels';
+import { IExtraField, IUserForm } from '../../../models/componentsModels';
 import { selectCollections, useAppSelector } from '../../../store/selectors';
-import { IExtraField } from '../../../models/itemExtraFieldsProps';
 
 const ItemForm: FC<ItemFormProps> = (props) => {
   const { value, itemId, collectionId, setOpen } = props;

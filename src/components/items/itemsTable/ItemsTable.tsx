@@ -4,10 +4,9 @@ import { Paper } from '@mui/material';
 import { ItemRemoveButton } from '../ItemRemoveButton';
 import { ItemEditButton } from '../ItemEditButton';
 import { ItemViewButton } from '../ItemViewButton';
-import { ItemsTableProps } from '../../../models/itemsTableProps';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
 
-const ItemsTable: FC<ItemsTableProps> = ({ itemsToRender }) => {
+const ItemsTable: FC<{ itemsToRender: IItem[] }> = ({ itemsToRender }) => {
   const [pageSize, setPageSize] = useState<number>(5);
   const rows = itemsToRender.map((item) => ({ id: item._id, ...item }));
 

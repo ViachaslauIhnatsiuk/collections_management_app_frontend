@@ -12,11 +12,6 @@ interface ICollectionForm {
   topic: string;
 }
 
-interface LoaderProps {
-  status: string;
-  error: string;
-}
-
 interface ITableHeaderTitles {
   id: string;
   label: string;
@@ -24,10 +19,20 @@ interface ITableHeaderTitles {
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
 }
 
+interface IExtraField {
+  name: string;
+  type: string;
+}
+
+interface IExtraFieldValue extends IExtraField {
+  disabled: boolean;
+}
+
 export type {
   IUserForm,
   CollectionFormType,
   ICollectionForm,
-  LoaderProps,
   ITableHeaderTitles,
+  IExtraField,
+  IExtraFieldValue,
 };

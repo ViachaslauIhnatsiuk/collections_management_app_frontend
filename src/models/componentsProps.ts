@@ -6,6 +6,11 @@ interface MobileMenuProps {
   setMenuAnchorElement: Dispatch<SetStateAction<null | HTMLElement>>;
 }
 
+interface LoaderProps {
+  status: string;
+  error: string;
+}
+
 interface SidebarProps {
   isSidebarOpen: boolean;
   toggleSidebar: () => void;
@@ -42,6 +47,7 @@ interface RemoveConfirmationModalProps {
 
 export type {
   MobileMenuProps,
+  LoaderProps,
   SidebarProps,
   SidebarListItemProps,
   SubmitButtonProps,

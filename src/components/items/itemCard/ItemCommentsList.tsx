@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Typography, List } from '@mui/material';
 import { ItemComment } from './ItemComment';
 import { IItemComments } from '../../../store/slices/itemSlice/itemModel';
+import { customScrollbarStyles } from '../../../constants/componentsStyles';
 
 const ItemCommentsList: FC<{ comments: IItemComments[] }> = ({ comments }) => {
   return (
@@ -15,17 +16,7 @@ const ItemCommentsList: FC<{ comments: IItemComments[] }> = ({ comments }) => {
         display: 'flex',
         flexDirection: 'column',
         gap: 1,
-        '&::-webkit-scrollbar': {
-          width: 5,
-        },
-        '&::-webkit-scrollbar-track': {
-          backgroundColor: '#eeeeee',
-          borderRadius: '5px',
-        },
-        '&::-webkit-scrollbar-thumb': {
-          backgroundColor: '#d3d3d3',
-          borderRadius: '5px',
-        },
+        ...customScrollbarStyles,
       }}
     >
       <Typography variant="h6">Comments</Typography>

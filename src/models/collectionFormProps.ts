@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import { ICollection } from '../store/slices/collectionSlice/collectionModel';
-import { IExtraField } from './itemExtraFieldsProps';
+import { IExtraFieldValue } from './componentsModels';
 
 interface CollectionFormProps {
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -25,8 +25,8 @@ interface CollectionFormFieldProps {
 
 interface CollectionCreationFormButtonProps {
   value: string;
-  extraFields: IExtraField[];
-  setExtraFields: Dispatch<SetStateAction<IExtraField[]>>;
+  extraFields: IExtraFieldValue[];
+  setExtraFields: Dispatch<SetStateAction<IExtraFieldValue[]>>;
   setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
