@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Box } from '@mui/material';
+import { CollectionImage } from './CollectionImage';
 import { CollectionFormFields } from './CollectionFormFields';
 import { CollectionEditFormButton } from './CollectionEditFormButton';
 import { CollectionEditFormProps } from '../../../models/collectionFormProps';
@@ -9,6 +10,7 @@ import { ICollection } from '../../../store/slices/collectionSlice/collectionMod
 import { IUserForm } from '../../../models/componentsModels';
 
 const CollectionEditForm: FC<CollectionEditFormProps> = ({ id, setOpen }) => {
+  const [imageUrl, setImageUrl] = useState<string>('');
   const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
   const { collections } = useAppSelector(selectCollections);
@@ -31,8 +33,9 @@ const CollectionEditForm: FC<CollectionEditFormProps> = ({ id, setOpen }) => {
           rowGap: 2,
         }}
       >
+        <CollectionImage imageUrl={imageUrl} setImageUrl={setImageUrl} />
         <CollectionFormFields fieldsValues={collectionFieldsValues} />
-        <CollectionEditFormButton value="Edit collection" id={id} setOpen={setOpen} />
+        <CollectionEditFormButton id={id} imageUrl={imageUrl} setOpen={setOpen} />
       </Box>
     </FormProvider>
   );

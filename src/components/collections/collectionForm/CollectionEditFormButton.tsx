@@ -7,7 +7,7 @@ import { CollectionEditFormButtonProps } from '../../../models/collectionFormPro
 import { ICollectionForm } from '../../../models/componentsModels';
 
 const CollectionEditFormButton: FC<CollectionEditFormButtonProps> = (props) => {
-  const { id, value, setOpen } = props;
+  const { id, imageUrl, setOpen } = props;
   const {
     getValues,
     reset,
@@ -23,6 +23,7 @@ const CollectionEditFormButton: FC<CollectionEditFormButtonProps> = (props) => {
       title: fieldsValues[0],
       description: fieldsValues[1],
       topic: fieldsValues[2],
+      imageUrl,
     };
 
     dispatch(updateCollection([updatedCollectionData, id]));
@@ -41,7 +42,7 @@ const CollectionEditFormButton: FC<CollectionEditFormButtonProps> = (props) => {
       disabled={!isValid}
       onClick={handleSubmit}
     >
-      {value}
+      Edit collection
     </Button>
   );
 };

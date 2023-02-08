@@ -11,7 +11,7 @@ interface CollectionEditFormProps extends CollectionFormProps {
 }
 
 interface CollectionEditFormButtonProps extends CollectionEditFormProps {
-  value: string;
+  imageUrl: string;
 }
 
 interface CollectionFormFieldProps {
