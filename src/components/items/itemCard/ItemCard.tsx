@@ -1,10 +1,21 @@
 import { FC } from 'react';
-import { Paper, Stack, Typography } from '@mui/material';
+import { Box, Paper, Stack, Typography } from '@mui/material';
 import { IItem, IItemComments } from '../../../store/slices/itemSlice/itemModel';
 import { ItemCommentsList } from './ItemCommentsList';
+import ReactMarkdown from 'react-markdown';
 
 const ItemCard: FC<{ item: IItem }> = ({ item }) => {
-  const { _id, collectionId, ownerId, tags, comments, likes, ...itemToRender } = item;
+  const {
+    title,
+    description,
+    _id,
+    collectionId,
+    ownerId,
+    tags,
+    comments,
+    likes,
+    ...itemToRender
+  } = item;
   const itemKeys = Object.keys(itemToRender).map(
     (key) => key.charAt(0).toUpperCase() + key.slice(1),
   );
@@ -22,7 +33,10 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
         gap: 2,
       }}
     >
-      <Typography variant="h4">{item.title}</Typography>
+      <Typography variant="h4">{title}</Typography>
+      <Box sx={{ color: '#2475c5', textAlign: 'center' }}>
+        <ReactMarkdown>{description as string}</ReactMarkdown>
+      </Box>
       <Stack sx={{ width: '100%' }}>
         {itemValues.map((value, index) => {
           return (
