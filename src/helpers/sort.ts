@@ -9,11 +9,15 @@ const sortByTitle = (data: DataToSort, type: string): DataToSort => {
   switch (type) {
     case 'asc':
       return dataToSort.sort((a, b) =>
-        a.title.toLocaleLowerCase().localeCompare(b.title.toLocaleLowerCase()),
+        (a.title as string)
+          .toLocaleLowerCase()
+          .localeCompare((b.title as string).toLocaleLowerCase()),
       );
     case 'desc':
       return dataToSort.sort((a, b) =>
-        b.title.toLocaleLowerCase().localeCompare(a.title.toLocaleLowerCase()),
+        (b.title as string)
+          .toLocaleLowerCase()
+          .localeCompare((a.title as string).toLocaleLowerCase()),
       );
     default:
       return dataToSort;

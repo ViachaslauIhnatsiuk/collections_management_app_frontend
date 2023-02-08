@@ -21,7 +21,7 @@ const ItemFormFields: FC<{ extraFields: IExtraField[] }> = ({ extraFields }) => 
             control={<Checkbox />}
             labelPlacement="start"
             label={extraFields[index].name}
-            {...register(type)}
+            {...register(extraFields[index].name)}
           />
         ) : (
           <ItemFormField

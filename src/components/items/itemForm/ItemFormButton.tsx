@@ -17,17 +17,13 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector(selectUser);
 
-  const fields = useMemo(() => {
-    return extraFields.map((field) => field.type.toLowerCase()) as string[];
-  }, [extraFields]);
-
   const names = useMemo(() => {
     return extraFields.map((field) => field.name) as string[];
   }, [extraFields]);
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
-    const fieldsValues = getValues(['title', 'tags', ...fields]);
+    const fieldsValues = getValues(['Title', 'Tags', ...names]);
 
     if (value === 'Create item') {
       const newItem: IItem = {

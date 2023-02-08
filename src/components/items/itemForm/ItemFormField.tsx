@@ -19,7 +19,7 @@ const ItemFormField: FC<ItemFieldProps> = (props) => {
       value={fieldValue}
       label={type === 'date' ? '' : label}
       autoComplete="off"
-      {...register(type)}
+      {...register(label)}
       onChange={(e) => setFieldValue(e.target.value)}
     />
   );
