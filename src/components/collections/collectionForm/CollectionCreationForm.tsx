@@ -10,11 +10,13 @@ import {
 } from '../../../constants/initialFieldsValues';
 import { IExtraFieldValue, IUserForm } from '../../../models/componentsModels';
 import { CollectionFormProps } from '../../../models/collectionFormProps';
+import { CollectionImage } from './CollectionImage';
 
 const CollectionCreationForm: FC<CollectionFormProps> = ({ setOpen }) => {
   const [extraFields, setExtraFields] = useState<IExtraFieldValue[]>(
     extraFieldsInitialState,
   );
+  const [imageUrl, setImageUrl] = useState<string>('');
   const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
 
@@ -32,13 +34,14 @@ const CollectionCreationForm: FC<CollectionFormProps> = ({ setOpen }) => {
           gap: 1,
         }}
       >
+        <CollectionImage imageUrl={imageUrl} setImageUrl={setImageUrl} />
         <CollectionFormFields fieldsValues={initialFieldsValues} />
         <CollectionExtraFields
           extraFields={extraFields}
           setExtraFields={setExtraFields}
         />
         <CollectionCreationFormButton
-          value="Create collection"
+          imageUrl={imageUrl}
           extraFields={extraFields}
           setExtraFields={setExtraFields}
           setOpen={setOpen}

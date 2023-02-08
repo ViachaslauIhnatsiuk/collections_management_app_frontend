@@ -38,4 +38,22 @@ const dataGridStyles = {
   },
 };
 
-export { customScrollbarStyles, dataGridStyles };
+const collectionImageBoxStyles = {
+  width: '100%',
+  height: '120px',
+  mb: 1,
+  overflow: 'hidden',
+  border: '1px dashed #e6e6e6',
+  borderRadius: '5px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  cursor: 'pointer',
+  img: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  },
+};
+
+export { customScrollbarStyles, dataGridStyles, collectionImageBoxStyles };

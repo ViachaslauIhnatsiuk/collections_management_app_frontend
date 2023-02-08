@@ -24,7 +24,7 @@ interface CollectionFormFieldProps {
 }
 
 interface CollectionCreationFormButtonProps {
-  value: string;
+  imageUrl: string;
   extraFields: IExtraFieldValue[];
   setExtraFields: Dispatch<SetStateAction<IExtraFieldValue[]>>;
   setOpen: Dispatch<SetStateAction<boolean>>;
@@ -39,6 +39,11 @@ interface CollectionFormFieldsProps {
   fieldsValues: ICollection;
 }
 
+interface CollectionImageProps {
+  imageUrl: string;
+  setImageUrl: Dispatch<SetStateAction<string>>;
+}
+
 export type {
   CollectionFormProps,
   CollectionEditFormProps,
@@ -47,4 +52,5 @@ export type {
   CollectionEditFormButtonProps,
   CollectionTopicSelectProps,
   CollectionFormFieldsProps,
+  CollectionImageProps,
 };

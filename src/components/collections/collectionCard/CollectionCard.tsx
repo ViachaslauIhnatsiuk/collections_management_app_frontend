@@ -4,9 +4,23 @@ import { ICollection } from '../../../store/slices/collectionSlice/collectionMod
 import { CollectionRemoveButton } from './CollectionRemoveButton';
 import { CollectionEditButton } from './CollectionEditButton';
 import { CollectionViewButton } from './CollectionViewButton';
+import defaultImage from '../../../assets/default.jpg';
 import ReactMarkdown from 'react-markdown';
 
-const CollectionCard: FC<ICollection> = ({ title, topic, description, _id }) => {
+const boxStyles = {
+  width: '100%',
+  height: '200px',
+  borderRadius: '5px',
+  overflow: 'hidden',
+  img: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  },
+};
+
+const CollectionCard: FC<ICollection> = (props) => {
+  const { title, description, topic, imageUrl, _id } = props;
   return (
     <Paper
       sx={{
@@ -18,7 +32,16 @@ const CollectionCard: FC<ICollection> = ({ title, topic, description, _id }) => 
         gap: 2,
       }}
     >
-      <Stack sx={{ height: '100%' }}>
+      {imageUrl ? (
+        <Box sx={boxStyles}>
+          <Box component="img" src={imageUrl} alt="image" />
+        </Box>
+      ) : (
+        <Box sx={boxStyles}>
+          <Box component="img" src={defaultImage} alt="image" />
+        </Box>
+      )}
+      <Stack>
         <Typography variant="h4" sx={{ color: '#2475c5', textAlign: 'center' }}>
           {title}
         </Typography>

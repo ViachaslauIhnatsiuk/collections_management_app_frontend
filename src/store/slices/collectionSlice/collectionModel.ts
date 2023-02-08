@@ -23,6 +23,7 @@ interface ICollection {
   title: string;
   description: string;
   topic: string;
+  imageUrl?: string;
   ownerId: string;
   itemExtraFields: IItemExtraFields[];
 }

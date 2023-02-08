@@ -8,7 +8,7 @@ import { CollectionCreationFormButtonProps } from '../../../models/collectionFor
 import { ICollectionForm } from '../../../models/componentsModels';
 
 const CollectionCreationFormButton: FC<CollectionCreationFormButtonProps> = (props) => {
-  const { value, extraFields, setExtraFields, setOpen } = props;
+  const { extraFields, imageUrl, setExtraFields, setOpen } = props;
   const {
     getValues,
     reset,
@@ -29,6 +29,7 @@ const CollectionCreationFormButton: FC<CollectionCreationFormButtonProps> = (pro
       title: fieldsValues[0],
       description: fieldsValues[1],
       topic: fieldsValues[2],
+      imageUrl,
       ownerId: currentUser.id,
       itemExtraFields,
     };
@@ -50,7 +51,7 @@ const CollectionCreationFormButton: FC<CollectionCreationFormButtonProps> = (pro
       disabled={!isValid}
       onClick={handleSubmit}
     >
-      {value}
+      Create collection
     </Button>
   );
 };
