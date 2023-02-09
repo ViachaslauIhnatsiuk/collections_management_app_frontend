@@ -8,17 +8,16 @@ import { ItemFormButtonProps } from '../../../models/itemFormProps';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
 
 const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
-  const { value, itemId, collectionId, extraFields, setOpen } = props;
+  const { value, itemId, collectionId, extraFields } = props;
   const {
     getValues,
-    reset,
     formState: { isValid },
   } = useFormContext();
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector(selectUser);
 
   const names = useMemo(() => {
-    return extraFields.map((field) => field.name) as string[];
+    return extraFields.map((field) => field.name.toLowerCase()) as string[];
   }, [extraFields]);
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {
@@ -51,9 +50,6 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
 
       dispatch(updateItem([newItem, collectionId, itemId as string]));
     }
-
-    reset();
-    setOpen(false);
   };
 
   return (

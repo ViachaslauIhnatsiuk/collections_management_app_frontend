@@ -21,7 +21,7 @@ const CollectionFormButton: FC<CollectionFormButtonProps> = (props) => {
   const { currentUser } = useAppSelector(selectUser);
 
   const itemExtraFields = extraFields
-    .filter(({ name }) => name)
+    .filter(({ disabled }) => disabled)
     .map(({ name, type }) => ({ name, type }));
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {

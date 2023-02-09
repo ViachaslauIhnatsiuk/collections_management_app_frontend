@@ -3,17 +3,16 @@ import { IItem } from '../store/slices/itemSlice/itemModel';
 
 export const generateHeaderNames = (item: IItem) => {
   const {
-    description,
     _id,
     createdAt,
     updatedAt,
     collectionId,
     ownerId,
-    tags,
     comments,
     likes,
     ...tableItems
   } = item;
+
   const headerNamesList = [...Object.keys(tableItems), 'Actions'];
   const columns: GridColDef[] = headerNamesList.map((item) => ({
     field: item,
