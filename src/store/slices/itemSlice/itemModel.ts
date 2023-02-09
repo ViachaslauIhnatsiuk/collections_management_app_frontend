@@ -13,13 +13,13 @@ enum CollectionErrors {
   delete = 'Item removal error',
 }
 
-interface IItemComments {
+interface IItemComment {
   user: string;
   text: string;
 }
 
 interface IItem {
-  [key: string]: number | string | string[] | boolean | IItemComments[];
+  [key: string]: number | string | string[] | boolean | IItemComment[];
 }
 
 type NewItem = [IItem, string];
@@ -35,4 +35,4 @@ interface IItemsState {
 type ErrorPayload = PayloadAction<unknown | string>;
 
 export { ItemStatus, CollectionErrors };
-export type { IItem, NewItem, IItemComments, UpdatedItem, IItemsState, ErrorPayload };
+export type { IItem, NewItem, IItemComment, UpdatedItem, IItemsState, ErrorPayload };

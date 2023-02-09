@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Paper, Stack, Typography } from '@mui/material';
-import { IItemComments } from '../../../store/slices/itemSlice/itemModel';
+import { IItemComment } from '../../../store/slices/itemSlice/itemModel';
 
-const ItemComment: FC<{ comment: IItemComments }> = ({ comment }) => {
+const ItemComment: FC<{ comment: IItemComment }> = ({ comment }) => {
   return (
     <Paper
       sx={{

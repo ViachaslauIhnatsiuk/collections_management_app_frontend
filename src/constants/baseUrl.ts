@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://collections-management-application-backend.vercel.app';
+export const BASE_URL = 'https://collectionsappbackend-production.up.railway.app';
