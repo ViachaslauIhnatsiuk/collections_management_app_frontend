@@ -3,15 +3,9 @@ import { ICollection } from '../store/slices/collectionSlice/collectionModel';
 import { IExtraFieldValue } from './componentsModels';
 
 interface CollectionFormProps {
+  id?: string;
+  value: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
-}
-
-interface CollectionEditFormProps extends CollectionFormProps {
-  id: string;
-}
-
-interface CollectionEditFormButtonProps extends CollectionEditFormProps {
-  imageUrl: string;
 }
 
 interface CollectionFormFieldProps {
@@ -23,11 +17,10 @@ interface CollectionFormFieldProps {
   rows?: number;
 }
 
-interface CollectionCreationFormButtonProps {
+interface CollectionFormButtonProps extends CollectionFormProps {
   imageUrl: string;
   extraFields: IExtraFieldValue[];
   setExtraFields: Dispatch<SetStateAction<IExtraFieldValue[]>>;
-  setOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 interface CollectionTopicSelectProps {
@@ -46,10 +39,8 @@ interface CollectionImageProps {
 
 export type {
   CollectionFormProps,
-  CollectionEditFormProps,
   CollectionFormFieldProps,
-  CollectionCreationFormButtonProps,
-  CollectionEditFormButtonProps,
+  CollectionFormButtonProps,
   CollectionTopicSelectProps,
   CollectionFormFieldsProps,
   CollectionImageProps,

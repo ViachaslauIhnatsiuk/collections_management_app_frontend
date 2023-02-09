@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { Dialog, DialogTitle, DialogContent } from '@mui/material';
 import { IconButton } from '@mui/material';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
-import { CollectionEditForm } from '../collectionForm/CollectionEditForm';
+import { CollectionForm } from '../collectionForm/CollectionForm';
 
 const CollectionEditButton: FC<{ id: string }> = ({ id }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -17,7 +17,6 @@ const CollectionEditButton: FC<{ id: string }> = ({ id }) => {
         open={open}
         keepMounted
         onClose={() => setOpen(false)}
-        aria-describedby="alert-dialog"
         sx={{
           '& .MuiDialog-paper': {
             maxWidth: '350px',
@@ -26,7 +25,7 @@ const CollectionEditButton: FC<{ id: string }> = ({ id }) => {
       >
         <DialogTitle>{'Collection edit form'}</DialogTitle>
         <DialogContent>
-          <CollectionEditForm id={id} setOpen={setOpen} />
+          <CollectionForm id={id} value="Edit collection" setOpen={setOpen} />
         </DialogContent>
       </Dialog>
     </>

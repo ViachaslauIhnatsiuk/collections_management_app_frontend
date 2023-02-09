@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import { CollectionImage } from './CollectionImage';
 import { CollectionFormFields } from './CollectionFormFields';
 import { CollectionExtraFields } from './CollectionExtraFields';
-import { CollectionCreationFormButton } from './CollectionCreationFormButton';
+import { CollectionFormButton } from './CollectionFormButton';
 import {
   extraFieldsInitialState,
   initialFieldsValues,
@@ -12,7 +12,7 @@ import {
 import { IExtraFieldValue, IUserForm } from '../../../models/componentsModels';
 import { CollectionFormProps } from '../../../models/collectionFormProps';
 
-const CollectionCreationForm: FC<CollectionFormProps> = ({ setOpen }) => {
+const CollectionForm: FC<CollectionFormProps> = ({ id, value, setOpen }) => {
   const [extraFields, setExtraFields] = useState<IExtraFieldValue[]>(
     extraFieldsInitialState,
   );
@@ -36,11 +36,15 @@ const CollectionCreationForm: FC<CollectionFormProps> = ({ setOpen }) => {
       >
         <CollectionImage imageUrl={imageUrl} setImageUrl={setImageUrl} />
         <CollectionFormFields fieldsValues={initialFieldsValues} />
-        <CollectionExtraFields
-          extraFields={extraFields}
-          setExtraFields={setExtraFields}
-        />
-        <CollectionCreationFormButton
+        {value === 'Create collection' && (
+          <CollectionExtraFields
+            extraFields={extraFields}
+            setExtraFields={setExtraFields}
+          />
+        )}
+        <CollectionFormButton
+          id={id}
+          value={value}
           imageUrl={imageUrl}
           extraFields={extraFields}
           setExtraFields={setExtraFields}
@@ -51,4 +55,4 @@ const CollectionCreationForm: FC<CollectionFormProps> = ({ setOpen }) => {
   );
 };
 
-export { CollectionCreationForm };
+export { CollectionForm };

@@ -6,13 +6,17 @@ const CollectionExtraField: FC<ExtraFieldProps> = (props) => {
   const { label, index, extraFields, setExtraFields } = props;
 
   const setValue = (e: ChangeEvent<HTMLInputElement>): void => {
-    extraFields[index].name = e.target.value;
-    setExtraFields([...extraFields]);
+    const updatedFields = extraFields.map((field, i) => {
+      return i === index ? { ...field, name: e.target.value } : field;
+    });
+    setExtraFields(updatedFields);
   };
 
   const setChecked = (e: ChangeEvent<HTMLInputElement>): void => {
-    extraFields[index].disabled = e.target.checked;
-    setExtraFields([...extraFields]);
+    const updatedFields = extraFields.map((field, i) => {
+      return i === index ? { ...field, disabled: e.target.checked } : field;
+    });
+    setExtraFields(updatedFields);
   };
 
   return (
