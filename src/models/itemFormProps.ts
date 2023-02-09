@@ -12,6 +12,11 @@ interface ItemFormButtonProps extends ItemFormProps {
   extraFields: IExtraField[];
 }
 
+interface ItemFieldFieldsProps {
+  itemId: string;
+  extraFields: IExtraField[];
+}
+
 interface ItemFieldProps {
   value?: string;
   type: string;
@@ -28,4 +33,10 @@ interface ItemCommentsFormProps {
   postComment: () => void;
 }
 
-export type { ItemFormProps, ItemFormButtonProps, ItemFieldProps, ItemCommentsFormProps };
+export type {
+  ItemFormProps,
+  ItemFormButtonProps,
+  ItemFieldFieldsProps,
+  ItemFieldProps,
+  ItemCommentsFormProps,
+};

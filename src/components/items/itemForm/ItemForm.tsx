@@ -3,9 +3,9 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { Box } from '@mui/material';
 import { ItemFormFields } from './ItemFromFields';
 import { ItemFormButton } from './ItemFormButton';
+import { selectCollections, useAppSelector } from '../../../store/selectors';
 import { ItemFormProps } from '../../../models/itemFormProps';
 import { IExtraField, IUserForm } from '../../../models/componentsModels';
-import { selectCollections, useAppSelector } from '../../../store/selectors';
 
 const ItemForm: FC<ItemFormProps> = (props) => {
   const { value, itemId, collectionId, setOpen } = props;
@@ -32,7 +32,10 @@ const ItemForm: FC<ItemFormProps> = (props) => {
           rowGap: 2,
         }}
       >
-        <ItemFormFields extraFields={extraFields as IExtraField[]} />
+        <ItemFormFields
+          itemId={itemId as string}
+          extraFields={extraFields as IExtraField[]}
+        />
         <ItemFormButton
           value={value}
           itemId={itemId}
