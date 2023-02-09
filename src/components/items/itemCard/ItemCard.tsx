@@ -9,6 +9,8 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
     title,
     description,
     _id,
+    createdAt,
+    updatedAt,
     collectionId,
     ownerId,
     tags,
@@ -24,9 +26,8 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
   return (
     <Paper
       sx={{
-        mt: 10,
+        mt: 1,
         p: 3,
-        width: '350px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -40,7 +41,7 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
       <Stack sx={{ width: '100%' }}>
         {itemValues.map((value, index) => {
           return (
-            <Typography key={index} variant="h6">
+            <Typography key={index} sx={{ fontSize: 16 }}>
               {itemKeys[index]}: {value.toString()}
             </Typography>
           );
@@ -49,8 +50,8 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
       <Stack
         sx={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}
       >
-        <Typography variant="h6">Tags: {tags}</Typography>
-        <Typography variant="h6">Likes: {likes}</Typography>
+        <Typography sx={{ fontSize: 16 }}>Tags: {tags}</Typography>
+        <Typography sx={{ fontSize: 16 }}>Likes: {likes}</Typography>
       </Stack>
       <ItemCommentsList item={item} />
     </Paper>

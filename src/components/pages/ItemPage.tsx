@@ -16,14 +16,7 @@ const ItemPage: FC = () => {
     <>
       <Loader status={status} error={error} />
       {status !== 'loading' && !error && (
-        <Container
-          maxWidth="md"
-          sx={{
-            display: 'grid',
-            placeContent: 'center',
-            py: 5,
-          }}
-        >
+        <Container maxWidth="md" sx={{ py: 5 }}>
           <ItemCard item={itemToRender} />
         </Container>
       )}

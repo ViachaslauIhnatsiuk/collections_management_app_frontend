@@ -16,6 +16,9 @@ enum CollectionErrors {
 interface IItemComment {
   user: string;
   text: string;
+  _id?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 interface IItem {

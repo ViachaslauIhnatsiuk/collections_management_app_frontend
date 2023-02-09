@@ -12,6 +12,20 @@ const customScrollbarStyles = {
   },
 };
 
+const textareaScrollbarStyles = {
+  'textarea::-webkit-scrollbar': {
+    width: 5,
+  },
+  'textarea::-webkit-scrollbar-track': {
+    backgroundColor: '#eeeeee',
+    borderRadius: '5px',
+  },
+  'textarea::-webkit-scrollbar-thumb': {
+    backgroundColor: '#d3d3d3',
+    borderRadius: '5px',
+  },
+};
+
 const dataGridStyles = {
   p: 2,
   minWidth: '100%',
@@ -70,6 +84,7 @@ const cardImageBoxStyles = {
 
 export {
   customScrollbarStyles,
+  textareaScrollbarStyles,
   dataGridStyles,
   collectionImageBoxStyles,
   cardImageBoxStyles,

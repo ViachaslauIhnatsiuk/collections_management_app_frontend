@@ -22,4 +22,10 @@ interface ItemFieldProps {
   rows?: number;
 }
 
-export type { ItemFormProps, ItemFormButtonProps, ItemFieldProps };
+interface ItemCommentsFormProps {
+  comment: string;
+  setComment: Dispatch<SetStateAction<string>>;
+  postComment: () => void;
+}
+
+export type { ItemFormProps, ItemFormButtonProps, ItemFieldProps, ItemCommentsFormProps };

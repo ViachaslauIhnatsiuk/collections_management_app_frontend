@@ -1,14 +1,15 @@
 import { FC, useEffect, useState } from 'react';
-import { Button, List, TextField, Typography } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import { ItemComment } from './ItemComment';
-import { IItem, IItemComment } from '../../../store/slices/itemSlice/itemModel';
-import { customScrollbarStyles } from '../../../constants/componentsStyles';
+import { ItemCommentsForm } from './ItemCommentsForm';
 import { selectUser, useAppSelector } from '../../../store/selectors';
 import { useAppDispatch } from '../../../store/store';
 import {
   updateItem,
   updateSelectedItem,
 } from '../../../store/slices/itemSlice/itemSlice';
+import { customScrollbarStyles } from '../../../constants/componentsStyles';
+import { IItem, IItemComment } from '../../../store/slices/itemSlice/itemModel';
 import { BASE_URL } from '../../../constants/baseUrl';
 import io from 'socket.io-client';
 
@@ -38,54 +39,36 @@ const ItemCommentsList: FC<{ item: IItem }> = ({ item }) => {
     };
 
     dispatch(updateItem([updatedItem, item.collectionId as string, item._id as string]));
-
     newSocket.emit('send_comment', updatedItem);
-
     setComment('');
   };
 
   return (
     <>
-      <List
+      <Typography variant="h6">Comments</Typography>
+      <Paper
         sx={{
-          width: '100%',
-          maxHeight: '300px',
+          width: '95%',
+          maxHeight: '200px',
           overflow: 'auto',
-          bgcolor: 'background.paper',
-          px: 2,
+          p: 2,
           display: 'flex',
           flexDirection: 'column',
           gap: 1,
           ...customScrollbarStyles,
         }}
       >
-        <Typography variant="h6">Comments</Typography>
         {comments.length
           ? [...comments]
               .reverse()
               .map((comment, index) => <ItemComment key={index} comment={comment} />)
           : 'Write first comment'}
-      </List>
-      <TextField
-        required
-        fullWidth
-        label="Comment"
-        multiline
-        rows={2}
-        value={comment}
-        onChange={(e) => setComment(e.target.value)}
-        sx={customScrollbarStyles}
+      </Paper>
+      <ItemCommentsForm
+        comment={comment}
+        setComment={setComment}
+        postComment={postComment}
       />
-      <Button
-        type="button"
-        fullWidth
-        color="success"
-        variant="contained"
-        disabled={!comment}
-        onClick={postComment}
-      >
-        Post
-      </Button>
     </>
   );
 };
