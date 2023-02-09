@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction } from 'react';
-import { ICollection } from '../store/slices/collectionSlice/collectionModel';
 import { IExtraFieldValue } from './componentsModels';
 
 interface CollectionFormProps {
@@ -28,10 +27,6 @@ interface CollectionTopicSelectProps {
   value: string;
 }
 
-interface CollectionFormFieldsProps {
-  fieldsValues: ICollection;
-}
-
 interface CollectionImageProps {
   imageUrl: string;
   setImageUrl: Dispatch<SetStateAction<string>>;
@@ -42,6 +37,5 @@ export type {
   CollectionFormFieldProps,
   CollectionFormButtonProps,
   CollectionTopicSelectProps,
-  CollectionFormFieldsProps,
   CollectionImageProps,
 };

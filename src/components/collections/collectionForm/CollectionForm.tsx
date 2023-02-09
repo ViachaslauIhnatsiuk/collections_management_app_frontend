@@ -5,18 +5,19 @@ import { CollectionImage } from './CollectionImage';
 import { CollectionFormFields } from './CollectionFormFields';
 import { CollectionExtraFields } from './CollectionExtraFields';
 import { CollectionFormButton } from './CollectionFormButton';
-import {
-  extraFieldsInitialState,
-  initialFieldsValues,
-} from '../../../constants/initialFieldsValues';
+import { extraFieldsInitialState } from '../../../constants/initialFieldsValues';
 import { IExtraFieldValue, IUserForm } from '../../../models/componentsModels';
 import { CollectionFormProps } from '../../../models/collectionFormProps';
+import { selectCollections, useAppSelector } from '../../../store/selectors';
+import { ICollection } from '../../../store/slices/collectionSlice/collectionModel';
 
 const CollectionForm: FC<CollectionFormProps> = ({ id, value, setOpen }) => {
+  const { collections } = useAppSelector(selectCollections);
+  const collection = collections.find(({ _id }) => _id === id);
+  const [imageUrl, setImageUrl] = useState<string>(collection?.imageUrl || '');
   const [extraFields, setExtraFields] = useState<IExtraFieldValue[]>(
     extraFieldsInitialState,
   );
-  const [imageUrl, setImageUrl] = useState<string>('');
   const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
 
@@ -35,7 +36,7 @@ const CollectionForm: FC<CollectionFormProps> = ({ id, value, setOpen }) => {
         }}
       >
         <CollectionImage imageUrl={imageUrl} setImageUrl={setImageUrl} />
-        <CollectionFormFields fieldsValues={initialFieldsValues} />
+        <CollectionFormFields collection={collection as ICollection} />
         {value === 'Create collection' && (
           <CollectionExtraFields
             extraFields={extraFields}
