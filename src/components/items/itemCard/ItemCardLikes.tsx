@@ -1,0 +1,61 @@
+import { FC, useState } from 'react';
+import { Paper, Typography } from '@mui/material';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import { useAppDispatch } from '../../../store/store';
+import { selectUser, useAppSelector } from '../../../store/selectors';
+import { updateItem } from '../../../store/slices/itemSlice/itemSlice';
+import { IItem } from '../../../store/slices/itemSlice/itemModel';
+
+const ItemCardLikes: FC<{ item: IItem }> = ({ item }) => {
+  const likes = item.likes as string[];
+  const dispatch = useAppDispatch();
+  const { currentUser } = useAppSelector(selectUser);
+  const [like, setLike] = useState<boolean>(likes.includes(currentUser.id));
+
+  const toggleLike = () => {
+    if (!like) {
+      const updatedItem: IItem = {
+        ...item,
+        likes: [...likes, currentUser.id],
+      };
+
+      dispatch(
+        updateItem([updatedItem, item.collectionId as string, item._id as string]),
+      );
+    } else {
+      const updatedLikes = likes.filter((like) => like !== currentUser.id);
+      const updatedItem: IItem = {
+        ...item,
+        likes: [...updatedLikes],
+      };
+
+      dispatch(
+        updateItem([updatedItem, item.collectionId as string, item._id as string]),
+      );
+    }
+
+    setLike(!like);
+  };
+
+  return (
+    <Paper
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        px: 1.5,
+        width: '50px',
+        height: '30px',
+        borderRadius: '12px',
+        cursor: 'pointer',
+      }}
+      onClick={toggleLike}
+    >
+      {likes.includes(currentUser.id) ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
+      <Typography sx={{ fontSize: 18 }}>{likes.length}</Typography>
+    </Paper>
+  );
+};
+
+export { ItemCardLikes };

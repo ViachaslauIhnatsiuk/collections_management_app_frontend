@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Box, Paper, Stack, Typography } from '@mui/material';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
 import { ItemCommentsList } from './ItemCommentsList';
+import { ItemCardLikes } from './ItemCardLikes';
 import ReactMarkdown from 'react-markdown';
 
 const ItemCard: FC<{ item: IItem }> = ({ item }) => {
@@ -51,7 +52,7 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
         sx={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}
       >
         <Typography sx={{ fontSize: 16 }}>Tags: {tags}</Typography>
-        <Typography sx={{ fontSize: 16 }}>Likes: {likes}</Typography>
+        <ItemCardLikes item={item} />
       </Stack>
       <ItemCommentsList item={item} />
     </Paper>

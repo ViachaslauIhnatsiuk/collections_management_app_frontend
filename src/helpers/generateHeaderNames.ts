@@ -5,6 +5,8 @@ export const generateHeaderNames = (item: IItem) => {
   const {
     description,
     _id,
+    createdAt,
+    updatedAt,
     collectionId,
     ownerId,
     tags,
