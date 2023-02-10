@@ -3,14 +3,9 @@ import { useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { useAppDispatch } from '../../../store/store';
 import { createItem, updateItem } from '../../../store/slices/itemSlice/itemSlice';
-import { selectUser, useAppSelector } from '../../../store/selectors';
+import { selectAuth, useAppSelector } from '../../../store/selectors';
 import { ItemFormButtonProps } from '../../../models/itemFormProps';
-import {
-  IItem,
-  IItemComment,
-  IItemCreate,
-  IItemUpdate,
-} from '../../../store/slices/itemSlice/itemModel';
+import { IItemCreate, IItemUpdate } from '../../../store/slices/itemSlice/itemModel';
 
 const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
   const { value, itemId, collectionId, extraFields } = props;
@@ -19,7 +14,7 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
     formState: { isValid },
   } = useFormContext();
   const dispatch = useAppDispatch();
-  const { currentUser } = useAppSelector(selectUser);
+  const { currentUser } = useAppSelector(selectAuth);
 
   const names = useMemo(() => {
     return extraFields.map((field) => field.name.toLowerCase()) as string[];

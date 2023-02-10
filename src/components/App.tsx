@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { selectUser, useAppSelector } from '../store/selectors';
+import { selectAuth, useAppSelector } from '../store/selectors';
 import { Header } from './header/Header';
 import { CollectionsPage } from './pages/CollectionsPage';
 import { UserCollectionsPage } from './pages/UserCollectionsPage';
@@ -9,10 +9,10 @@ import { SigninPage } from './pages/SigninPage';
 import { SignupPage } from './pages/SignupPage';
 import { ItemsPage } from './pages/ItemsPage';
 import { ItemPage } from './pages/ItemPage';
-import { AdminPage } from './pages/adminPage';
+import { AdminPage } from './pages/AdminPage';
 
 const App: FC = () => {
-  const { isAuth } = useAppSelector(selectUser);
+  const { isAuth } = useAppSelector(selectAuth);
 
   return (
     <BrowserRouter>

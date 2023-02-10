@@ -3,7 +3,7 @@ import { useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { SubmitButtonProps } from '../../../models/componentsProps';
 import { useAppDispatch } from '../../../store/store';
-import { signIn, signUp } from '../../../store/slices/userSlice/userSlice';
+import { signIn, signUp } from '../../../store/slices/authSlice/authSlice';
 import { IUserForm } from '../../../models/componentsModels';
 
 const SubmitButton: FC<SubmitButtonProps> = ({ value }) => {

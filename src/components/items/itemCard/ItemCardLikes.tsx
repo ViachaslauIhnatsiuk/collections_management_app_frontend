@@ -3,14 +3,14 @@ import { Paper, Typography } from '@mui/material';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import { useAppDispatch } from '../../../store/store';
-import { selectUser, useAppSelector } from '../../../store/selectors';
+import { selectAuth, useAppSelector } from '../../../store/selectors';
 import { updateItem } from '../../../store/slices/itemSlice/itemSlice';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
 
 const ItemCardLikes: FC<{ item: IItem }> = ({ item }) => {
   const likes = item.likes;
   const dispatch = useAppDispatch();
-  const { currentUser } = useAppSelector(selectUser);
+  const { currentUser } = useAppSelector(selectAuth);
   const [like, setLike] = useState<boolean>(likes.includes(currentUser.id));
 
   const toggleLike = () => {

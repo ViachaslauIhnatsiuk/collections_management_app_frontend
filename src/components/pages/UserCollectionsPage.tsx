@@ -1,6 +1,6 @@
 import { FC, useEffect, useMemo, useState } from 'react';
 import { Container, Stack, Toolbar } from '@mui/material';
-import { selectCollections, selectUser, useAppSelector } from '../../store/selectors';
+import { selectCollections, selectAuth, useAppSelector } from '../../store/selectors';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
 import { CollectionCard } from '../collections/collectionCard/CollectionCard';
@@ -15,7 +15,7 @@ const UserCollectionsPage: FC = () => {
   const [filteredCollections, setFilteredCollections] = useState<string>('');
   const [sortType, setSortType] = useState<string>('asc');
   const { collections, status, error } = useAppSelector(selectCollections);
-  const { currentUser } = useAppSelector(selectUser);
+  const { currentUser } = useAppSelector(selectAuth);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { Paper, Typography } from '@mui/material';
 import { ItemComment } from './ItemComment';
 import { ItemCommentsForm } from './ItemCommentsForm';
-import { selectUser, useAppSelector } from '../../../store/selectors';
+import { selectAuth, useAppSelector } from '../../../store/selectors';
 import { useAppDispatch } from '../../../store/store';
 import {
   updateItem,
@@ -18,7 +18,7 @@ const newSocket = io(BASE_URL);
 const ItemCommentsList: FC<{ item: IItem }> = ({ item }) => {
   const comments = item.comments;
   const [comment, setComment] = useState<string>('');
-  const { currentUser } = useAppSelector(selectUser);
+  const { currentUser } = useAppSelector(selectAuth);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

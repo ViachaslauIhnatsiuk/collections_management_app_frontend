@@ -6,7 +6,7 @@ import {
   createCollection,
   updateCollection,
 } from '../../../store/slices/collectionSlice/collectionSlice';
-import { selectUser, useAppSelector } from '../../../store/selectors';
+import { selectAuth, useAppSelector } from '../../../store/selectors';
 import { extraFieldsInitialState } from '../../../constants/initialFieldsValues';
 import { CollectionFormButtonProps } from '../../../models/collectionFormProps';
 import { ICollectionForm } from '../../../models/componentsModels';
@@ -18,7 +18,7 @@ const CollectionFormButton: FC<CollectionFormButtonProps> = (props) => {
     formState: { isValid },
   } = useFormContext<ICollectionForm>();
   const dispatch = useAppDispatch();
-  const { currentUser } = useAppSelector(selectUser);
+  const { currentUser } = useAppSelector(selectAuth);
 
   const itemExtraFields = extraFields
     .filter(({ disabled }) => disabled)
