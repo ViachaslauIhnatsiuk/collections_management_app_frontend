@@ -9,6 +9,7 @@ import { SigninPage } from './pages/SigninPage';
 import { SignupPage } from './pages/SignupPage';
 import { ItemsPage } from './pages/ItemsPage';
 import { ItemPage } from './pages/ItemPage';
+import { AdminPage } from './pages/adminPage';
 
 const App: FC = () => {
   const { isAuth } = useAppSelector(selectUser);
@@ -18,6 +19,8 @@ const App: FC = () => {
       <Header />
       <Routes>
         <Route path="/" element={isAuth ? <MainPage /> : <Navigate to="/signin" />} />
+        <Route path="/signin" element={!isAuth ? <SigninPage /> : <Navigate to="/" />} />
+        <Route path="/signup" element={!isAuth ? <SignupPage /> : <Navigate to="/" />} />
         <Route
           path="/all-collections"
           element={isAuth ? <CollectionsPage /> : <Navigate to="/signin" />}
@@ -30,8 +33,7 @@ const App: FC = () => {
         />
         <Route path="/user-collections/:id" element={<ItemsPage />} />
         <Route path="/user-collections/:id/items/:id" element={<ItemPage />} />
-        <Route path="/signin" element={!isAuth ? <SigninPage /> : <Navigate to="/" />} />
-        <Route path="/signup" element={!isAuth ? <SignupPage /> : <Navigate to="/" />} />
+        <Route path="/admin" element={isAuth ? <AdminPage /> : <Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );
