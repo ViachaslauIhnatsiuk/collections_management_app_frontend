@@ -9,7 +9,6 @@ import { CollectionFormButton } from './CollectionFormButton';
 import { extraFieldsInitialState } from '../../../constants/initialFieldsValues';
 import { IExtraFieldValue, IUserForm } from '../../../models/componentsModels';
 import { CollectionFormProps } from '../../../models/collectionFormProps';
-import { ICollection } from '../../../store/slices/collectionSlice/collectionModel';
 
 const CollectionForm: FC<CollectionFormProps> = ({ id, value, setOpen }) => {
   const { getCollectionById } = useCollections();
@@ -36,7 +35,7 @@ const CollectionForm: FC<CollectionFormProps> = ({ id, value, setOpen }) => {
         }}
       >
         <CollectionImage imageUrl={imageUrl} setImageUrl={setImageUrl} />
-        <CollectionFormFields collection={collection as ICollection} />
+        <CollectionFormFields collection={collection} />
         {value === 'Create collection' && (
           <CollectionExtraFields
             extraFields={extraFields}

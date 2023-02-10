@@ -16,7 +16,7 @@ import io from 'socket.io-client';
 const newSocket = io(BASE_URL);
 
 const ItemCommentsList: FC<{ item: IItem }> = ({ item }) => {
-  const comments = item.comments as IItemComment[];
+  const comments = item.comments;
   const [comment, setComment] = useState<string>('');
   const { currentUser } = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
@@ -38,7 +38,7 @@ const ItemCommentsList: FC<{ item: IItem }> = ({ item }) => {
       comments: [...comments, newComment],
     };
 
-    dispatch(updateItem([updatedItem, item.collectionId as string, item._id as string]));
+    dispatch(updateItem([updatedItem, item.collectionId, item._id]));
     newSocket.emit('send_comment', updatedItem);
     setComment('');
   };

@@ -20,7 +20,7 @@ const LastAddedItem: FC<{ item: IItem }> = ({ item }) => {
       <Stack>
         <Typography sx={{ fontSize: 14 }}>Title: {item.title}</Typography>
         <Typography sx={{ fontSize: 14 }}>
-          Collection: {getCollectionById(item.collectionId as string).title}
+          Collection: {getCollectionById(item.collectionId)?.title}
         </Typography>
       </Stack>
       <Typography
@@ -32,7 +32,7 @@ const LastAddedItem: FC<{ item: IItem }> = ({ item }) => {
           right: '10px',
         }}
       >
-        Time: {convertDate(item.createdAt as string)}
+        Time: {convertDate(item.createdAt)}
       </Typography>
     </Paper>
   );

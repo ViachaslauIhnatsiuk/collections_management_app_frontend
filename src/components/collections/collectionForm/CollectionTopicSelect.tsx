@@ -11,7 +11,7 @@ import { useFormContext } from 'react-hook-form';
 import { CollectionFormType, ICollectionForm } from '../../../models/componentsModels';
 
 const CollectionTopicSelect: FC<CollectionTopicSelectProps> = ({ type, value }) => {
-  const [topic, setTopic] = useState<string>(value as string);
+  const [topic, setTopic] = useState<string>(value);
   const { register } = useFormContext<ICollectionForm>();
 
   const handleChange = (event: SelectChangeEvent): void => {

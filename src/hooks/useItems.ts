@@ -22,7 +22,7 @@ const useItems = () => {
   );
 
   const getLargestCollections = useCallback((): ICollection[] => {
-    const itemsCollectionsIds = items.map((item) => item.collectionId as string);
+    const itemsCollectionsIds = items.map((item) => item.collectionId);
 
     const groupedCollectionsIds = itemsCollectionsIds.reduce((acc, curr) => {
       if (acc[curr]) {

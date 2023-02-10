@@ -8,7 +8,7 @@ import { updateItem } from '../../../store/slices/itemSlice/itemSlice';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
 
 const ItemCardLikes: FC<{ item: IItem }> = ({ item }) => {
-  const likes = item.likes as string[];
+  const likes = item.likes;
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector(selectUser);
   const [like, setLike] = useState<boolean>(likes.includes(currentUser.id));
@@ -20,9 +20,7 @@ const ItemCardLikes: FC<{ item: IItem }> = ({ item }) => {
         likes: [...likes, currentUser.id],
       };
 
-      dispatch(
-        updateItem([updatedItem, item.collectionId as string, item._id as string]),
-      );
+      dispatch(updateItem([updatedItem, item.collectionId, item._id]));
     } else {
       const updatedLikes = likes.filter((like) => like !== currentUser.id);
       const updatedItem: IItem = {
@@ -30,9 +28,7 @@ const ItemCardLikes: FC<{ item: IItem }> = ({ item }) => {
         likes: [...updatedLikes],
       };
 
-      dispatch(
-        updateItem([updatedItem, item.collectionId as string, item._id as string]),
-      );
+      dispatch(updateItem([updatedItem, item.collectionId, item._id]));
     }
 
     setLike(!like);

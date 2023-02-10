@@ -19,7 +19,7 @@ const CollectionImage: FC<CollectionImageProps> = ({ imageUrl, setImageUrl }) =>
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     setLoading(true);
     const url = await uploadImage(acceptedFiles[0]);
-    setImageUrl(url as string);
+    setImageUrl(url);
     setLoading(false);
   }, []);
 

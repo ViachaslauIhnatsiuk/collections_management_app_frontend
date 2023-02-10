@@ -5,7 +5,7 @@ import { useCollections } from '../../../hooks/useCollections';
 import { ItemFormFields } from './ItemFromFields';
 import { ItemFormButton } from './ItemFormButton';
 import { ItemFormProps } from '../../../models/itemFormProps';
-import { IExtraField, IUserForm } from '../../../models/componentsModels';
+import { IUserForm } from '../../../models/componentsModels';
 
 const ItemForm: FC<ItemFormProps> = (props) => {
   const { value, itemId, collectionId, setOpen } = props;
@@ -14,7 +14,7 @@ const ItemForm: FC<ItemFormProps> = (props) => {
   const { getCollectionById } = useCollections();
 
   const extraFields = useMemo(() => {
-    const collection = getCollectionById(collectionId as string);
+    const collection = getCollectionById(collectionId);
     return collection?.itemExtraFields;
   }, [collectionId]);
 
@@ -32,15 +32,12 @@ const ItemForm: FC<ItemFormProps> = (props) => {
           rowGap: 2,
         }}
       >
-        <ItemFormFields
-          itemId={itemId as string}
-          extraFields={extraFields as IExtraField[]}
-        />
+        <ItemFormFields itemId={itemId as string} extraFields={extraFields} />
         <ItemFormButton
           value={value}
           itemId={itemId}
           collectionId={collectionId}
-          extraFields={extraFields as IExtraField[]}
+          extraFields={extraFields}
           setOpen={setOpen}
         />
       </Box>

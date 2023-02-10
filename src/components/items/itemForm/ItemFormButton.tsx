@@ -5,7 +5,12 @@ import { useAppDispatch } from '../../../store/store';
 import { createItem, updateItem } from '../../../store/slices/itemSlice/itemSlice';
 import { selectUser, useAppSelector } from '../../../store/selectors';
 import { ItemFormButtonProps } from '../../../models/itemFormProps';
-import { IItem } from '../../../store/slices/itemSlice/itemModel';
+import {
+  IItem,
+  IItemComment,
+  IItemCreate,
+  IItemUpdate,
+} from '../../../store/slices/itemSlice/itemModel';
 
 const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
   const { value, itemId, collectionId, extraFields } = props;
@@ -22,14 +27,15 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
-    const fieldsValues = getValues(['Title', 'Tags', ...names]);
+    const fieldsValues: string[] = getValues(['Title', 'Tags', ...names]);
 
     if (value === 'Create item') {
-      const newItem: IItem = {
+      const newItem: IItemCreate = {
         title: fieldsValues[0],
         tags: [fieldsValues[1]],
         collectionId: collectionId,
         ownerId: currentUser.id,
+        likes: [],
         comments: [],
       };
 
@@ -39,7 +45,7 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
 
       dispatch(createItem([newItem, collectionId]));
     } else {
-      const newItem: IItem = {
+      const newItem: IItemUpdate = {
         title: fieldsValues[0],
         tags: [fieldsValues[1]],
       };

@@ -12,11 +12,11 @@ const ItemFormFields: FC<ItemFieldFieldsProps> = ({ itemId, extraFields }) => {
   const currentItem = getItemById(itemId);
 
   const types = useMemo(() => {
-    return extraFields.map((field) => field.type.toLowerCase()) as string[];
+    return extraFields.map((field) => field.type.toLowerCase());
   }, [extraFields]);
 
   const names = useMemo(() => {
-    return extraFields.map((field) => field.name.toLowerCase()) as string[];
+    return extraFields.map((field) => field.name.toLowerCase());
   }, [extraFields]);
 
   return (
@@ -26,14 +26,14 @@ const ItemFormFields: FC<ItemFieldFieldsProps> = ({ itemId, extraFields }) => {
         label="Title"
         minLength={1}
         maxLength={25}
-        value={(currentItem?.title as string) || ''}
+        value={currentItem?.title || ''}
       />
       <ItemFormField
         type="tags"
         label="Tags"
         minLength={1}
         maxLength={25}
-        value={(currentItem?.tags as string) || ''}
+        value={currentItem?.tags.toString() || ''}
       />
       {types.map((type, index) => {
         return type === 'checkbox' ? (

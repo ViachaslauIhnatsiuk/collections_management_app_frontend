@@ -22,12 +22,37 @@ interface IItemComment {
 }
 
 interface IItem {
-  [key: string]: number | string | string[] | boolean | IItemComment[];
+  _id: string;
+  title: string;
+  tags: string[];
+  collectionId: string;
+  ownerId: string;
+  likes: string[];
+  comments: IItemComment[];
+  createdAt: string;
+  updatedAt: string;
+  [key: string]: number | string | string[] | boolean | IItemComment[] | undefined;
 }
 
-type NewItem = [IItem, string];
+interface IItemCreate {
+  title: string;
+  tags: string[];
+  collectionId: string;
+  ownerId: string;
+  likes: string[];
+  comments: IItemComment[];
+  [key: string]: number | string | string[] | boolean | IItemComment[] | undefined;
+}
 
-type UpdatedItem = [IItem, string, string];
+interface IItemUpdate {
+  title: string;
+  tags: string[];
+  [key: string]: number | string | string[] | boolean | IItemComment[] | undefined;
+}
+
+type NewItem = [IItemCreate, string];
+
+type UpdatedItem = [IItemUpdate, string, string];
 
 interface IItemsState {
   items: IItem[];
@@ -38,4 +63,13 @@ interface IItemsState {
 type ErrorPayload = PayloadAction<unknown | string>;
 
 export { ItemStatus, CollectionErrors };
-export type { IItem, NewItem, IItemComment, UpdatedItem, IItemsState, ErrorPayload };
+export type {
+  IItem,
+  IItemCreate,
+  IItemUpdate,
+  NewItem,
+  IItemComment,
+  UpdatedItem,
+  IItemsState,
+  ErrorPayload,
+};

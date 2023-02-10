@@ -43,7 +43,7 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
         {itemValues.map((value, index) => {
           return (
             <Typography key={index} sx={{ fontSize: 16 }}>
-              {itemKeys[index]}: {value.toString()}
+              {itemKeys[index]}: {value?.toString()}
             </Typography>
           );
         })}
