@@ -1,9 +1,11 @@
 import { useCallback } from 'react';
-import { selectItems, useAppSelector } from '../store/selectors';
+import { selectCollections, selectItems, useAppSelector } from '../store/selectors';
+import { ICollection } from '../store/slices/collectionSlice/collectionModel';
 import { IItem } from '../store/slices/itemSlice/itemModel';
 
 const useItems = () => {
   const { items, status, error } = useAppSelector(selectItems);
+  const { collections } = useAppSelector(selectCollections);
 
   const getItemById = useCallback(
     (itemId: string): IItem => {
@@ -19,7 +21,30 @@ const useItems = () => {
     [items],
   );
 
-  return { getItemById, getCollectionItems, status, error };
+  const getLargestCollections = useCallback((): ICollection[] => {
+    const itemsCollectionsIds = items.map((item) => item.collectionId as string);
+
+    const groupedCollectionsIds = itemsCollectionsIds.reduce((acc, curr) => {
+      if (acc[curr]) {
+        acc[curr] += 1;
+      } else {
+        acc[curr] = 1;
+      }
+      return acc;
+    }, {} as { [key: string]: number });
+
+    const sortedCollectionsIds = Object.keys(groupedCollectionsIds).sort(
+      (a, b) => groupedCollectionsIds[a] - groupedCollectionsIds[b],
+    );
+
+    const largestCollections = collections
+      .filter(({ _id }) => sortedCollectionsIds.includes(_id as string))
+      .slice(0, 3);
+
+    return largestCollections;
+  }, [items]);
+
+  return { getItemById, getCollectionItems, getLargestCollections, status, error };
 };
 
 export { useItems };
