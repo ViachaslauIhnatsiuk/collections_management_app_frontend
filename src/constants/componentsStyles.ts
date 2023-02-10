@@ -1,6 +1,7 @@
 const customScrollbarStyles = {
   '&::-webkit-scrollbar': {
     width: 5,
+    height: 5,
   },
   '&::-webkit-scrollbar-track': {
     backgroundColor: '#eeeeee',
@@ -15,6 +16,7 @@ const customScrollbarStyles = {
 const textareaScrollbarStyles = {
   'textarea::-webkit-scrollbar': {
     width: 5,
+    height: 5,
   },
   'textarea::-webkit-scrollbar-track': {
     backgroundColor: '#eeeeee',
