@@ -5,7 +5,10 @@ import { LargestCollectionsList } from '../main/LargestCollectionsList';
 
 const MainPage: FC = () => {
   return (
-    <Container maxWidth="md" sx={{ pt: 3 }}>
+    <Container
+      maxWidth="md"
+      sx={{ pt: 3, display: 'flex', flexDirection: 'column', gap: 4 }}
+    >
       <LastAddedItemsList />
       <LargestCollectionsList />
     </Container>

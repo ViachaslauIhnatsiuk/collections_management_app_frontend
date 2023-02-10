@@ -12,13 +12,14 @@ const CollectionCard: FC<ICollection> = (props) => {
   return (
     <Paper
       sx={{
-        p: 3,
+        p: 2,
         width: '300px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         gap: 2,
       }}
+      elevation={3}
     >
       <CollectionCardImage imageUrl={imageUrl as string} />
       <Stack>

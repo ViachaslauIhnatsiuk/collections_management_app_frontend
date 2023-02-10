@@ -39,7 +39,7 @@ const useItems = () => {
 
     const largestCollections = collections
       .filter(({ _id }) => sortedCollectionsIds.includes(_id as string))
-      .slice(0, 3);
+      .slice(0, 5);
 
     return largestCollections;
   }, [items]);

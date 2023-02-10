@@ -8,7 +8,7 @@ const LastAddedItemsList: FC = () => {
   const { items } = useAppSelector(selectItems);
 
   return (
-    <>
+    <Stack>
       <Typography variant="h6">Last added items</Typography>
       <Stack
         sx={{
@@ -16,6 +16,7 @@ const LastAddedItemsList: FC = () => {
           maxHeight: '250px',
           overflow: 'auto',
           p: 0.5,
+          pl: 0.2,
           display: 'flex',
           flexDirection: 'column',
           gap: 1,
@@ -29,7 +30,7 @@ const LastAddedItemsList: FC = () => {
               .map((item, index) => <LastAddedItem key={index} item={item} />)
           : 'No added items yet'}
       </Stack>
-    </>
+    </Stack>
   );
 };
 
