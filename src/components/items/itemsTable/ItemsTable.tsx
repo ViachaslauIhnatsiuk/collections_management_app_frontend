@@ -6,11 +6,11 @@ import { generateHeaderNames } from '../../../helpers/generateHeaderNames';
 import { dataGridStyles } from '../../../constants/componentsStyles';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
 
-const ItemsTable: FC<{ itemsToRender: IItem[] }> = ({ itemsToRender }) => {
+const ItemsTable: FC<{ collectionItems: IItem[] }> = ({ collectionItems }) => {
   const [pageSize, setPageSize] = useState<number>(5);
 
-  const rows = itemsToRender.map((item) => ({ id: item._id, ...item }));
-  const columns = generateHeaderNames(itemsToRender[0]).map((column) => {
+  const rows = collectionItems.map((item) => ({ id: item._id, ...item }));
+  const columns = generateHeaderNames(collectionItems[0]).map((column) => {
     if (column.field === 'Actions') {
       return {
         ...column,

@@ -20,7 +20,7 @@ const LastAddedItem: FC<{ item: IItem }> = ({ item }) => {
       <Stack>
         <Typography sx={{ fontSize: 14 }}>Title: {item.title}</Typography>
         <Typography sx={{ fontSize: 14 }}>
-          Collection: {getCollectionById(item.collectionId as string)}
+          Collection: {getCollectionById(item.collectionId as string).title}
         </Typography>
       </Stack>
       <Typography

@@ -1,9 +1,9 @@
 import { FC, useMemo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Box } from '@mui/material';
+import { useCollections } from '../../../hooks/useCollections';
 import { ItemFormFields } from './ItemFromFields';
 import { ItemFormButton } from './ItemFormButton';
-import { selectCollections, useAppSelector } from '../../../store/selectors';
 import { ItemFormProps } from '../../../models/itemFormProps';
 import { IExtraField, IUserForm } from '../../../models/componentsModels';
 
@@ -11,12 +11,12 @@ const ItemForm: FC<ItemFormProps> = (props) => {
   const { value, itemId, collectionId, setOpen } = props;
   const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
-  const { collections } = useAppSelector(selectCollections);
+  const { getCollectionById } = useCollections();
 
   const extraFields = useMemo(() => {
-    const collection = collections.find(({ _id }) => _id === collectionId);
+    const collection = getCollectionById(collectionId as string);
     return collection?.itemExtraFields;
-  }, [collections, collectionId]);
+  }, [collectionId]);
 
   return (
     <FormProvider {...methods}>

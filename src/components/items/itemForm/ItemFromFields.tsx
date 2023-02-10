@@ -1,15 +1,15 @@
-import { Checkbox, FormControlLabel } from '@mui/material';
 import { FC, useMemo } from 'react';
+import { Checkbox, FormControlLabel } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
+import { useItems } from '../../../hooks/useItems';
 import { ItemFormField } from './ItemFormField';
 import { ItemFieldFieldsProps } from '../../../models/itemFormProps';
-import { selectItems, useAppSelector } from '../../../store/selectors';
 
 const ItemFormFields: FC<ItemFieldFieldsProps> = ({ itemId, extraFields }) => {
   const { register } = useFormContext();
-  const { items } = useAppSelector(selectItems);
+  const { getItemById } = useItems();
 
-  const currentItem = useMemo(() => items.find(({ _id }) => _id === itemId), [items]);
+  const currentItem = getItemById(itemId);
 
   const types = useMemo(() => {
     return extraFields.map((field) => field.type.toLowerCase()) as string[];

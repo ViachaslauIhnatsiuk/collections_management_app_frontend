@@ -1,16 +1,15 @@
 import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container } from '@mui/material';
-import { selectItems, useAppSelector } from '../../store/selectors';
+import { useItems } from '../../hooks/useItems';
 import { Loader } from '../UI/Loader';
 import { ItemCard } from '../items/itemCard/ItemCard';
-import { IItem } from '../../store/slices/itemSlice/itemModel';
 
 const ItemPage: FC = () => {
-  const { items, status, error } = useAppSelector(selectItems);
+  const { getItemById, status, error } = useItems();
   const { id } = useParams();
 
-  const itemToRender = items.find((item) => item._id === id) as IItem;
+  const itemToRender = getItemById(id as string);
 
   return (
     <>

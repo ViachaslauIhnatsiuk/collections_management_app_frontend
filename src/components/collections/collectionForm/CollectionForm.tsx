@@ -1,6 +1,7 @@
 import { FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Box } from '@mui/material';
+import { useCollections } from '../../../hooks/useCollections';
 import { CollectionImage } from './CollectionImage';
 import { CollectionFormFields } from './CollectionFormFields';
 import { CollectionExtraFields } from './CollectionExtraFields';
@@ -8,12 +9,11 @@ import { CollectionFormButton } from './CollectionFormButton';
 import { extraFieldsInitialState } from '../../../constants/initialFieldsValues';
 import { IExtraFieldValue, IUserForm } from '../../../models/componentsModels';
 import { CollectionFormProps } from '../../../models/collectionFormProps';
-import { selectCollections, useAppSelector } from '../../../store/selectors';
 import { ICollection } from '../../../store/slices/collectionSlice/collectionModel';
 
 const CollectionForm: FC<CollectionFormProps> = ({ id, value, setOpen }) => {
-  const { collections } = useAppSelector(selectCollections);
-  const collection = collections.find(({ _id }) => _id === id);
+  const { getCollectionById } = useCollections();
+  const collection = getCollectionById(id as string);
   const [imageUrl, setImageUrl] = useState<string>(collection?.imageUrl || '');
   const [extraFields, setExtraFields] = useState<IExtraFieldValue[]>(
     extraFieldsInitialState,

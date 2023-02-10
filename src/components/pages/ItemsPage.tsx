@@ -1,7 +1,7 @@
-import { FC, useEffect, useMemo } from 'react';
+import { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Stack, Toolbar } from '@mui/material';
-import { selectItems, useAppSelector } from '../../store/selectors';
+import { useItems } from '../../hooks/useItems';
 import { useAppDispatch } from '../../store/store';
 import { getItems } from '../../store/slices/itemSlice/itemSlice';
 import { ItemsTable } from '../items/itemsTable/ItemsTable';
@@ -9,7 +9,7 @@ import { Loader } from '../UI/Loader';
 import { ItemAddButton } from '../items/ItemAddButton';
 
 const ItemsPage: FC = () => {
-  const { items, status, error } = useAppSelector(selectItems);
+  const { getCollectionItems, status, error } = useItems();
   const { id } = useParams();
   const dispatch = useAppDispatch();
 
@@ -17,10 +17,7 @@ const ItemsPage: FC = () => {
     dispatch(getItems());
   }, [dispatch]);
 
-  const itemsToRender = useMemo(
-    () => items.filter(({ collectionId }) => collectionId === id),
-    [items],
-  );
+  const collectionItems = getCollectionItems(id as string);
 
   return (
     <>
@@ -31,9 +28,9 @@ const ItemsPage: FC = () => {
             <Toolbar sx={{ gap: 2 }}>
               <ItemAddButton />
             </Toolbar>
-            {itemsToRender.length ? (
+            {collectionItems.length ? (
               <Stack>
-                <ItemsTable itemsToRender={itemsToRender} />
+                <ItemsTable collectionItems={collectionItems} />
               </Stack>
             ) : (
               'There are no items yet'
