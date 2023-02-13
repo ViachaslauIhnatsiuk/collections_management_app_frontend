@@ -18,18 +18,15 @@ const App: FC = () => {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={isAuth ? <MainPage /> : <Navigate to="/signin" />} />
+        <Route path="/" element={<MainPage />} />
         <Route path="/signin" element={!isAuth ? <SigninPage /> : <Navigate to="/" />} />
         <Route path="/signup" element={!isAuth ? <SignupPage /> : <Navigate to="/" />} />
-        <Route
-          path="/all-collections"
-          element={isAuth ? <CollectionsPage /> : <Navigate to="/signin" />}
-        />
+        <Route path="/all-collections" element={<CollectionsPage />} />
         <Route path="/all-collections/:id" element={<ItemsPage />} />
         <Route path="/all-collections/:id/items/:id" element={<ItemPage />} />
         <Route
           path="/user-collections"
-          element={isAuth ? <UserCollectionsPage /> : <Navigate to="/signin" />}
+          element={isAuth ? <UserCollectionsPage /> : <Navigate to="/" />}
         />
         <Route path="/user-collections/:id" element={<ItemsPage />} />
         <Route path="/user-collections/:id/items/:id" element={<ItemPage />} />

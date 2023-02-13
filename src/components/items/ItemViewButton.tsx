@@ -8,7 +8,7 @@ const ItemViewButton: FC<{ itemId: string }> = ({ itemId }) => {
 
   return (
     <Link to={`${pathname}/items/${itemId}`} style={{ textDecoration: 'none' }}>
-      <IconButton aria-label="view" color="primary">
+      <IconButton color="primary">
         <VisibilityIcon />
       </IconButton>
     </Link>

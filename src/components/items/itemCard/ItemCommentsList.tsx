@@ -64,11 +64,13 @@ const ItemCommentsList: FC<{ item: IItem }> = ({ item }) => {
               .map((comment, index) => <ItemComment key={index} comment={comment} />)
           : 'Write first comment'}
       </Paper>
-      <ItemCommentsForm
-        comment={comment}
-        setComment={setComment}
-        postComment={postComment}
-      />
+      {currentUser.id === item.ownerId && (
+        <ItemCommentsForm
+          comment={comment}
+          setComment={setComment}
+          postComment={postComment}
+        />
+      )}
     </>
   );
 };

@@ -1,15 +1,14 @@
 import { useCallback } from 'react';
 import { selectAuth, selectUsers, useAppSelector } from '../store/selectors';
+import { resetAuthState } from '../store/slices/authSlice/authSlice';
 import { IUser } from '../store/slices/usersSlice/usersModel';
 import { deleteUser, updateUser } from '../store/slices/usersSlice/usersSlice';
 import { useAppDispatch } from '../store/store';
-import { useResetState } from './useResetState';
 
 const useUsers = (userId: string) => {
   const { users } = useAppSelector(selectUsers);
   const { currentUser } = useAppSelector(selectAuth);
   const dispatch = useAppDispatch();
-  const resetAppState = useResetState();
 
   const getUserById = useCallback(
     (userId: string): IUser => {
@@ -21,14 +20,14 @@ const useUsers = (userId: string) => {
 
   const removeUser = (): void => {
     dispatch(deleteUser(userId));
-    if (currentUser.id === userId) resetAppState();
+    if (currentUser.id === userId) dispatch(resetAuthState());
   };
 
   const toggleBlockStatus = (): void => {
     const user = getUserById(userId);
     const updatedUserData = { ...user, isBlocked: !user.isBlocked };
     dispatch(updateUser(updatedUserData));
-    if (currentUser.id === userId) resetAppState();
+    if (currentUser.id === userId) dispatch(resetAuthState());
   };
 
   const toggleAdminStatus = (): void => {

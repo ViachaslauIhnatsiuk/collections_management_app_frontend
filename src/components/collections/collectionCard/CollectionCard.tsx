@@ -8,7 +8,7 @@ import { ICollection } from '../../../store/slices/collectionSlice/collectionMod
 import ReactMarkdown from 'react-markdown';
 
 const CollectionCard: FC<ICollection> = (props) => {
-  const { title, description, topic, imageUrl, _id } = props;
+  const { _id, title, description, topic, imageUrl, ownerId } = props;
   return (
     <Paper
       sx={{
@@ -42,8 +42,8 @@ const CollectionCard: FC<ICollection> = (props) => {
           alignItems: 'center',
         }}
       >
-        <CollectionRemoveButton id={_id as string} />
-        <CollectionEditButton id={_id as string} />
+        <CollectionRemoveButton id={_id as string} ownerId={ownerId} />
+        <CollectionEditButton id={_id as string} ownerId={ownerId} />
       </Stack>
       <CollectionViewButton id={_id as string} />
     </Paper>

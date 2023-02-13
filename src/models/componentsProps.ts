@@ -19,6 +19,7 @@ interface SidebarProps {
 interface SidebarListItemProps {
   title: string;
   link: string;
+  visible: boolean;
 }
 
 interface SubmitButtonProps {

@@ -13,7 +13,6 @@ const AdminTable: FC<{ users: IUser[] }> = ({ users }) => {
     if (name.field === 'actions') {
       return {
         ...name,
-        width: 200,
         renderCell: (params: GridCellParams) => {
           return <UsersManagementButtons userData={params.row} />;
         },
@@ -23,7 +22,7 @@ const AdminTable: FC<{ users: IUser[] }> = ({ users }) => {
   });
 
   return (
-    <Paper sx={{ width: '100%' }}>
+    <Paper>
       <DataGrid
         sx={dataGridStyles}
         rowHeight={35}

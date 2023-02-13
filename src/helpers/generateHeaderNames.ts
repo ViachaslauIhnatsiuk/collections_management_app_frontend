@@ -14,10 +14,13 @@ export const generateHeaderNames = (item: IItem) => {
   } = item;
 
   const headerNamesList = [...Object.keys(tableItems), 'Actions'];
+
   const columns: GridColDef[] = headerNamesList.map((item) => ({
     field: item,
     headerName: item.charAt(0).toUpperCase() + item.slice(1),
     type: typeof tableItems[item] === 'boolean' ? 'boolean' : 'string',
+    minWidth: 120,
+    flex: 1,
   }));
 
   return columns;

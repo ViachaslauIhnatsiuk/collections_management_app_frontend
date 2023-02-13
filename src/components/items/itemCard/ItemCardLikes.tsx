@@ -46,7 +46,7 @@ const ItemCardLikes: FC<{ item: IItem }> = ({ item }) => {
         borderRadius: '12px',
         cursor: 'pointer',
       }}
-      onClick={toggleLike}
+      onClick={() => currentUser.id === item.ownerId && toggleLike()}
     >
       {likes.includes(currentUser.id) ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
       <Typography sx={{ fontSize: 18 }}>{likes.length}</Typography>

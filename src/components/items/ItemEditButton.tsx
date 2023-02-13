@@ -3,14 +3,21 @@ import { useParams } from 'react-router-dom';
 import { Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import { ItemForm } from './itemForm/ItemForm';
+import { selectAuth, useAppSelector } from '../../store/selectors';
+import { IItem } from '../../store/slices/itemSlice/itemModel';
 
-const ItemEditButton: FC<{ itemId: string }> = ({ itemId }) => {
+const ItemEditButton: FC<{ itemData: IItem }> = ({ itemData }) => {
   const [open, setOpen] = useState<boolean>(false);
   const { id } = useParams();
+  const { currentUser } = useAppSelector(selectAuth);
 
   return (
     <>
-      <IconButton aria-label="edit" color="primary" onClick={() => setOpen(true)}>
+      <IconButton
+        sx={{ display: currentUser.id === itemData.ownerId ? 'inline-flex' : 'none' }}
+        color="primary"
+        onClick={() => setOpen(true)}
+      >
         <BorderColorIcon />
       </IconButton>
       <Dialog
@@ -28,7 +35,7 @@ const ItemEditButton: FC<{ itemId: string }> = ({ itemId }) => {
         <DialogContent>
           <ItemForm
             value="Edit item"
-            itemId={itemId}
+            itemId={itemData.id as string}
             collectionId={id as string}
             setOpen={setOpen}
           />
