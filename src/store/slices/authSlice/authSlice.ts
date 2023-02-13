@@ -41,7 +41,7 @@ const signUp = createAsyncThunk(
 
       const newUser = await response.json();
 
-      dispatch(setUserState(newUser));
+      dispatch(setAuthState(newUser));
     } catch (error) {
       return rejectWithValue(AuthErrors.signUp);
     }
@@ -64,7 +64,7 @@ const signIn = createAsyncThunk(
 
       const user = await response.json();
 
-      dispatch(setUserState(user));
+      dispatch(setAuthState(user));
     } catch (error) {
       return rejectWithValue(AuthErrors.signIn);
     }
@@ -75,7 +75,7 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setUserState: (state, { payload: user }: PayloadAction<ICurrentUserState>) => {
+    setAuthState: (state, { payload: user }: PayloadAction<ICurrentUserState>) => {
       state.isAuth = true;
       const { currentUser } = state;
       const { id, token, name, email, isBlocked, isAdmin, language, theme } = user;
@@ -88,7 +88,7 @@ const authSlice = createSlice({
       if (language) currentUser.language = language;
       if (theme) currentUser.theme = theme;
     },
-    resetUserState: () => initialState,
+    resetAuthState: () => initialState,
   },
   extraReducers(builder) {
     builder.addCase(signUp.pending, setPending);
@@ -102,5 +102,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { resetUserState, setUserState } = authSlice.actions;
+export const { resetAuthState, setAuthState } = authSlice.actions;
 export { authSlice, signUp, signIn };

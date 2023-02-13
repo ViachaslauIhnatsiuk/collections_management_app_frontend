@@ -1,16 +1,15 @@
 import { FC } from 'react';
 import { Box } from '@mui/material';
 import { selectAuth, useAppSelector } from '../../../store/selectors';
-import { useAppDispatch } from '../../../store/store';
-import { resetUserState } from '../../../store/slices/authSlice/authSlice';
 import { HeaderAuthButton } from './HeaderAuthButton';
+import { useResetState } from '../../../hooks/useResetState';
 
 const HeaderAuthButtons: FC = () => {
   const { isAuth } = useAppSelector(selectAuth);
-  const dispatch = useAppDispatch();
+  const resetAppState = useResetState();
 
   const signOut = (): void => {
-    dispatch(resetUserState());
+    resetAppState();
   };
 
   return (

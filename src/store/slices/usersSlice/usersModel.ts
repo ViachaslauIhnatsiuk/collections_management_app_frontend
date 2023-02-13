@@ -13,7 +13,7 @@ enum UsersErrors {
 }
 
 interface IUser {
-  _id: string;
+  id: string;
   token: string;
   name: string;
   email: string;

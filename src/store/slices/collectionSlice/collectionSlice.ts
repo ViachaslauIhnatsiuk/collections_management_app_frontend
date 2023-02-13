@@ -124,6 +124,7 @@ const collectionSlice = createSlice({
         (collection) => collection._id !== payload,
       );
     },
+    resetCollectionsState: () => initialState,
   },
   extraReducers(builder) {
     builder.addCase(getCollections.pending, setPending);
@@ -148,6 +149,7 @@ export const {
   createNewCollection,
   updateSelectedCollection,
   deleteSelectedCollection,
+  resetCollectionsState,
 } = collectionSlice.actions;
 export {
   collectionSlice,

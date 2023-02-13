@@ -88,6 +88,7 @@ const usersSlice = createSlice({
     deleteSelectedUser: (state, { payload }: PayloadAction<string>) => {
       state.users = state.users.filter((user) => user.id !== payload);
     },
+    resetUsersState: () => initialState,
   },
   extraReducers(builder) {
     builder.addCase(getUsers.pending, setPending);
@@ -104,5 +105,6 @@ const usersSlice = createSlice({
   },
 });
 
-export const { setUsers, updateSelectedUser, deleteSelectedUser } = usersSlice.actions;
+export const { setUsers, updateSelectedUser, deleteSelectedUser, resetUsersState } =
+  usersSlice.actions;
 export { usersSlice, getUsers, updateUser, deleteUser };

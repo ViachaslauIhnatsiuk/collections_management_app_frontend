@@ -120,6 +120,7 @@ const itemSlice = createSlice({
     deleteSelectedItem: (state, { payload }: PayloadAction<string>) => {
       state.items = state.items.filter((items) => items._id !== payload);
     },
+    resetItemsState: () => initialState,
   },
   extraReducers(builder) {
     builder.addCase(getItems.pending, setPending);
@@ -138,6 +139,11 @@ const itemSlice = createSlice({
   },
 });
 
-export const { setItems, createNewItem, updateSelectedItem, deleteSelectedItem } =
-  itemSlice.actions;
+export const {
+  setItems,
+  createNewItem,
+  updateSelectedItem,
+  deleteSelectedItem,
+  resetItemsState,
+} = itemSlice.actions;
 export { itemSlice, getItems, createItem, updateItem, deleteItem };
