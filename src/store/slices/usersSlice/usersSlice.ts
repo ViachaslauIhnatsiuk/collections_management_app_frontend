@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../../constants/baseUrl';
 import { setError, setPending, setResolved } from './usersHelpers';
-import { IUser, IUsersState, UpdateUser, UsersErrors } from './usersModel';
+import { IUser, IUsersState, UsersErrors } from './usersModel';
 
 const initialState: IUsersState = {
   users: [],
@@ -30,7 +30,7 @@ const getUsers = createAsyncThunk(
 
 const updateUser = createAsyncThunk(
   'users/updateUser',
-  async ([updatedUserData, id]: UpdateUser, { rejectWithValue, dispatch }) => {
+  async ({ id, ...updatedUserData }: IUser, { rejectWithValue, dispatch }) => {
     try {
       const response = await fetch(`${BASE_URL}/users/${id}`, {
         method: 'PUT',

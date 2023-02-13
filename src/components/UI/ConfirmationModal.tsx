@@ -7,9 +7,9 @@ import {
   DialogContentText,
   DialogTitle,
 } from '@mui/material';
-import { RemoveConfirmationModalProps } from '../../models/componentsProps';
+import { ConfirmationModalProps } from '../../models/componentsProps';
 
-const RemoveConfirmationModal: FC<RemoveConfirmationModalProps> = (props) => {
+const ConfirmationModal: FC<ConfirmationModalProps> = (props) => {
   const { open, setOpen, actionHandler } = props;
 
   const closeDialog = (): void => {
@@ -38,4 +38,4 @@ const RemoveConfirmationModal: FC<RemoveConfirmationModalProps> = (props) => {
   );
 };
 
-export { RemoveConfirmationModal };
+export { ConfirmationModal };

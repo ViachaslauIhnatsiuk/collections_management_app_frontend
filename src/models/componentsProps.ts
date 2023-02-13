@@ -39,7 +39,7 @@ interface SortButtonProps {
   setSortType: Dispatch<SetStateAction<string>>;
 }
 
-interface RemoveConfirmationModalProps {
+interface ConfirmationModalProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   actionHandler: () => void;
@@ -54,5 +54,5 @@ export type {
   AuthButtonProps,
   FilterBarProps,
   SortButtonProps,
-  RemoveConfirmationModalProps,
+  ConfirmationModalProps,
 };

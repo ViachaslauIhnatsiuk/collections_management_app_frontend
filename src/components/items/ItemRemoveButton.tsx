@@ -3,7 +3,7 @@ import { IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppDispatch } from '../../store/store';
 import { deleteItem } from '../../store/slices/itemSlice/itemSlice';
-import { RemoveConfirmationModal } from '../UI/RemoveConfirmationModal';
+import { ConfirmationModal } from '../UI/ConfirmationModal';
 
 const ItemRemoveButton: FC<{ itemId: string }> = ({ itemId }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -18,11 +18,7 @@ const ItemRemoveButton: FC<{ itemId: string }> = ({ itemId }) => {
       <IconButton aria-label="delete" color="primary" onClick={() => setOpen(true)}>
         <DeleteIcon />
       </IconButton>
-      <RemoveConfirmationModal
-        open={open}
-        setOpen={setOpen}
-        actionHandler={removeCollection}
-      />
+      <ConfirmationModal open={open} setOpen={setOpen} actionHandler={removeCollection} />
     </>
   );
 };

@@ -7,7 +7,7 @@ import { dataGridStyles } from '../../constants/componentsStyles';
 import { IUser } from '../../store/slices/usersSlice/usersModel';
 
 const AdminTable: FC<{ users: IUser[] }> = ({ users }) => {
-  const [pageSize, setPageSize] = useState<number>(5);
+  const [pageSize, setPageSize] = useState<number>(10);
 
   const columns = usersTableHeaderNames.map((name) => {
     if (name.field === 'actions') {
@@ -23,7 +23,7 @@ const AdminTable: FC<{ users: IUser[] }> = ({ users }) => {
   });
 
   return (
-    <Paper sx={{ maxHeight: 600, width: '100%' }}>
+    <Paper sx={{ width: '100%' }}>
       <DataGrid
         sx={dataGridStyles}
         rowHeight={35}

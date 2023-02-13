@@ -29,9 +29,7 @@ interface IUsersState {
   error: string;
 }
 
-type UpdateUser = [IUser, string];
-
 type ErrorPayload = PayloadAction<unknown | string>;
 
 export { UsersStatus, UsersErrors };
-export type { IUser, IUsersState, UpdateUser, ErrorPayload };
+export type { IUser, IUsersState, ErrorPayload };
