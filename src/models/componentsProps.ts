@@ -41,6 +41,7 @@ interface SortButtonProps {
 
 interface ConfirmationModalProps {
   open: boolean;
+  message: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
   actionHandler: () => void;
 }

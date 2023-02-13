@@ -10,7 +10,7 @@ import {
 import { ConfirmationModalProps } from '../../models/componentsProps';
 
 const ConfirmationModal: FC<ConfirmationModalProps> = (props) => {
-  const { open, setOpen, actionHandler } = props;
+  const { open, message, setOpen, actionHandler } = props;
 
   const closeDialog = (): void => {
     setOpen(false);
@@ -27,7 +27,7 @@ const ConfirmationModal: FC<ConfirmationModalProps> = (props) => {
       <DialogTitle>{'Action confirmation'}</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog">
-          Do you really want to do this?
+          Do you really want to {message}?
         </DialogContentText>
       </DialogContent>
       <DialogActions>

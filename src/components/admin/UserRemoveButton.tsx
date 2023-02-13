@@ -3,6 +3,7 @@ import { IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useUsers } from '../../hooks/useUsers';
 import { ConfirmationModal } from '../UI/ConfirmationModal';
+import { ConfirmationMessages } from '../../models/componentsModels';
 
 const UserRemoveButton: FC<{ userId: string }> = ({ userId }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -13,7 +14,12 @@ const UserRemoveButton: FC<{ userId: string }> = ({ userId }) => {
       <IconButton color="primary" onClick={() => setOpen(true)}>
         <DeleteIcon />
       </IconButton>
-      <ConfirmationModal open={open} setOpen={setOpen} actionHandler={removeUser} />
+      <ConfirmationModal
+        open={open}
+        message={ConfirmationMessages.deleteUser}
+        setOpen={setOpen}
+        actionHandler={removeUser}
+      />
     </>
   );
 };

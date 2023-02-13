@@ -28,6 +28,15 @@ interface IExtraFieldValue extends IExtraField {
   disabled: boolean;
 }
 
+enum ConfirmationMessages {
+  deleteUser = 'delete this user',
+  blockUser = 'block this user',
+  changeUserStatus = 'change the status of this user',
+  deleteItem = 'delete this item',
+  deleteCollection = 'delete this collection',
+}
+
+export { ConfirmationMessages };
 export type {
   IUserForm,
   CollectionFormType,

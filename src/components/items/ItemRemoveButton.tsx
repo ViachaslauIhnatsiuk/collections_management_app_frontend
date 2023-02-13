@@ -4,21 +4,27 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppDispatch } from '../../store/store';
 import { deleteItem } from '../../store/slices/itemSlice/itemSlice';
 import { ConfirmationModal } from '../UI/ConfirmationModal';
+import { ConfirmationMessages } from '../../models/componentsModels';
 
 const ItemRemoveButton: FC<{ itemId: string }> = ({ itemId }) => {
   const [open, setOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
-  const removeCollection = (): void => {
+  const removeItem = (): void => {
     dispatch(deleteItem(itemId));
   };
 
   return (
     <>
-      <IconButton aria-label="delete" color="primary" onClick={() => setOpen(true)}>
+      <IconButton color="primary" onClick={() => setOpen(true)}>
         <DeleteIcon />
       </IconButton>
-      <ConfirmationModal open={open} setOpen={setOpen} actionHandler={removeCollection} />
+      <ConfirmationModal
+        open={open}
+        message={ConfirmationMessages.deleteItem}
+        setOpen={setOpen}
+        actionHandler={removeItem}
+      />
     </>
   );
 };
