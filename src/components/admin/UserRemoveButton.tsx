@@ -2,15 +2,20 @@ import { FC, useState } from 'react';
 import { IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppDispatch } from '../../store/store';
-import { deleteItem } from '../../store/slices/itemSlice/itemSlice';
+import { deleteUser } from '../../store/slices/usersSlice/usersSlice';
 import { RemoveConfirmationModal } from '../UI/RemoveConfirmationModal';
+import { selectAuth, useAppSelector } from '../../store/selectors';
+import { useResetState } from '../../hooks/useResetState';
 
 const UserRemoveButton: FC<{ userId: string }> = ({ userId }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const { currentUser } = useAppSelector(selectAuth);
   const dispatch = useAppDispatch();
+  const resetAppState = useResetState();
 
-  const removeCollection = (): void => {
-    dispatch(deleteItem(userId));
+  const removeUser = (): void => {
+    dispatch(deleteUser(userId));
+    if (currentUser.id === userId) resetAppState();
   };
 
   return (
@@ -18,11 +23,7 @@ const UserRemoveButton: FC<{ userId: string }> = ({ userId }) => {
       <IconButton aria-label="delete" color="primary" onClick={() => setOpen(true)}>
         <DeleteIcon />
       </IconButton>
-      <RemoveConfirmationModal
-        open={open}
-        setOpen={setOpen}
-        actionHandler={removeCollection}
-      />
+      <RemoveConfirmationModal open={open} setOpen={setOpen} actionHandler={removeUser} />
     </>
   );
 };
