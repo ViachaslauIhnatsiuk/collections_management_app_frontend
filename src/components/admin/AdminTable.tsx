@@ -15,7 +15,7 @@ const AdminTable: FC<{ users: IUser[] }> = ({ users }) => {
         ...name,
         width: 200,
         renderCell: (params: GridCellParams) => {
-          return <UsersManagementButtons userId={String(params.id)} />;
+          return <UsersManagementButtons userData={params.row} />;
         },
       };
     }

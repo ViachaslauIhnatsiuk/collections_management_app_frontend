@@ -24,7 +24,7 @@ const ConfirmationModal: FC<ConfirmationModalProps> = (props) => {
       onClose={closeDialog}
       aria-describedby="alert-dialog"
     >
-      <DialogTitle>{'Action confirmation'}</DialogTitle>
+      <DialogTitle>Action confirmation</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog">
           Do you really want to {message}?

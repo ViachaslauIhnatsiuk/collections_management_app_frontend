@@ -4,14 +4,15 @@ import BlockIcon from '@mui/icons-material/Block';
 import { useUsers } from '../../hooks/useUsers';
 import { ConfirmationModal } from '../UI/ConfirmationModal';
 import { ConfirmationMessages } from '../../models/componentsModels';
+import { BlockButtonProps } from '../../models/adminButtonsProps';
 
-const UserBlockButton: FC<{ userId: string }> = ({ userId }) => {
+const UserBlockButton: FC<BlockButtonProps> = ({ userId, isBlocked }) => {
   const [open, setOpen] = useState<boolean>(false);
   const { toggleBlockStatus } = useUsers(userId);
 
   return (
     <>
-      <IconButton color="primary" onClick={() => setOpen(true)}>
+      <IconButton color={isBlocked ? 'error' : 'success'} onClick={() => setOpen(true)}>
         <BlockIcon />
       </IconButton>
       <ConfirmationModal

@@ -11,7 +11,7 @@ const UserRemoveButton: FC<{ userId: string }> = ({ userId }) => {
 
   return (
     <>
-      <IconButton color="primary" onClick={() => setOpen(true)}>
+      <IconButton color="info" onClick={() => setOpen(true)}>
         <DeleteIcon />
       </IconButton>
       <ConfirmationModal

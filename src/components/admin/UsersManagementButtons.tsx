@@ -2,15 +2,14 @@ import { FC } from 'react';
 import { UserAdminStatusButton } from './UserAdminStatusButton';
 import { UserBlockButton } from './UserBlockButton';
 import { UserRemoveButton } from './UserRemoveButton';
-import { UserViewButton } from './UserViewButton';
+import { IUser } from '../../store/slices/usersSlice/usersModel';
 
-const UsersManagementButtons: FC<{ userId: string }> = ({ userId }) => {
+const UsersManagementButtons: FC<{ userData: IUser }> = ({ userData }) => {
   return (
     <>
-      <UserRemoveButton userId={userId} />
-      <UserBlockButton userId={userId} />
-      <UserAdminStatusButton userId={userId} />
-      <UserViewButton userId={userId} />
+      <UserRemoveButton userId={userData.id} />
+      <UserBlockButton userId={userData.id} isBlocked={userData.isBlocked} />
+      <UserAdminStatusButton userId={userData.id} isAdmin={userData.isAdmin} />
     </>
   );
 };
