@@ -1,4 +1,5 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, HTMLAttributes, SetStateAction } from 'react';
+import { IItem } from '../store/slices/itemSlice/itemModel';
 
 interface MobileMenuProps {
   isMenuOpen: boolean;
@@ -47,6 +48,11 @@ interface ConfirmationModalProps {
   actionHandler: () => void;
 }
 
+interface HeaderSearchFieldProps {
+  props: HTMLAttributes<HTMLLIElement>;
+  option: IItem;
+}
+
 export type {
   MobileMenuProps,
   LoaderProps,
@@ -57,4 +63,5 @@ export type {
   FilterBarProps,
   SortButtonProps,
   ConfirmationModalProps,
+  HeaderSearchFieldProps,
 };
