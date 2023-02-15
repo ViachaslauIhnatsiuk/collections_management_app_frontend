@@ -1,43 +1,50 @@
-import { FC } from 'react';
-import { styled, alpha, InputBase } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-
-const SearchBar = styled('div')(({ theme }) => ({
-  position: 'relative',
-  flexGrow: 2,
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    width: 'auto',
-  },
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    paddingRight: '8px',
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
-  },
-}));
+import { FC, useState } from 'react';
+import { TextField, Stack, Autocomplete, Grid } from '@mui/material';
+import { BASE_URL } from '../../../constants/baseUrl';
+import { IItem } from '../../../store/slices/itemSlice/itemModel';
 
 const HeaderSearch: FC = () => {
+  const [itemsList, setItemsList] = useState<IItem[]>([]);
+  const [open, setOpen] = useState(false);
+
+  const searchItems = async (newValue: string): Promise<void> => {
+    if (newValue.length > 2) {
+      const response = await fetch(`${BASE_URL}/items?search=${newValue}`);
+      const items = await response.json();
+      setItemsList(items);
+      setOpen(true);
+    } else {
+      setItemsList([]);
+      setOpen(false);
+    }
+  };
+
   return (
-    <SearchBar>
-      <SearchIcon
-        sx={{ position: 'absolute', top: '50%', transform: 'translate(10px, -50%)' }}
+    <Stack spacing={2} sx={{ width: 300 }}>
+      <Autocomplete
+        open={open}
+        onInputChange={(_, newValue) => {
+          searchItems(newValue);
+        }}
+        clearOnBlur={false}
+        noOptionsText="No results"
+        options={itemsList}
+        filterOptions={(options) => options}
+        getOptionLabel={(option) => option.title || ''}
+        renderOption={(props, option) => {
+          return (
+            <Grid container {...(props as IItem)}>
+              <Grid item xs={6}>
+                {option.title}
+              </Grid>
+            </Grid>
+          );
+        }}
+        renderInput={(params) => {
+          return <TextField {...params} size="small" placeholder="Search..." />;
+        }}
       />
-      <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
-    </SearchBar>
+    </Stack>
   );
 };
 
