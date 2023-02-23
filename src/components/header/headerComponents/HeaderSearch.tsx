@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { TextField, Stack, Autocomplete } from '@mui/material';
 import { BASE_URL } from '../../../constants/baseUrl';
-import { HeaderSearchField } from './HeaderSearchField';
+import { HeaderSearchOption } from './HeaderSearchOption';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
 
 const HeaderSearch: FC = () => {
@@ -34,7 +34,7 @@ const HeaderSearch: FC = () => {
         getOptionLabel={(option) => option.title || ''}
         isOptionEqualToValue={(option, value) => option.title === value.title}
         renderOption={(props, option) => {
-          return <HeaderSearchField key={option._id} props={props} option={option} />;
+          return <HeaderSearchOption key={option._id} props={props} option={option} />;
         }}
         renderInput={(params) => {
           return <TextField {...params} size="small" placeholder="Search..." />;

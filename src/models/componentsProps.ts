@@ -48,7 +48,7 @@ interface ConfirmationModalProps {
   actionHandler: () => void;
 }
 
-interface HeaderSearchFieldProps {
+interface HeaderSearchOptionProps {
   props: HTMLAttributes<HTMLLIElement>;
   option: IItem;
 }
@@ -63,5 +63,5 @@ export type {
   FilterBarProps,
   SortButtonProps,
   ConfirmationModalProps,
-  HeaderSearchFieldProps,
+  HeaderSearchOptionProps,
 };

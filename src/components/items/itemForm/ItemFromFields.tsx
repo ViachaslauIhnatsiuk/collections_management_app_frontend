@@ -4,6 +4,7 @@ import { useFormContext } from 'react-hook-form';
 import { useItems } from '../../../hooks/useItems';
 import { ItemFormField } from './ItemFormField';
 import { ItemFieldFieldsProps } from '../../../models/itemFormProps';
+import { ItemFromAutocompleteFields } from './ItemFromAutocompleteFields';
 
 const ItemFormFields: FC<ItemFieldFieldsProps> = ({ itemId, extraFields }) => {
   const { register } = useFormContext();
@@ -28,13 +29,7 @@ const ItemFormFields: FC<ItemFieldFieldsProps> = ({ itemId, extraFields }) => {
         maxLength={25}
         value={currentItem?.title || ''}
       />
-      <ItemFormField
-        type="tags"
-        label="Tags"
-        minLength={1}
-        maxLength={25}
-        value={currentItem?.tags.toString() || ''}
-      />
+      <ItemFromAutocompleteFields />
       {types.map((type, index) => {
         return type === 'checkbox' ? (
           <FormControlLabel

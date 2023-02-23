@@ -22,16 +22,12 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
-    const [title, tags, ...fieldsNames]: string[] = getValues([
-      'Title',
-      'Tags',
-      ...names,
-    ]);
+    const [title, tags, ...fieldsNames] = getValues(['Title', 'Tags', ...names]);
 
     if (value === 'Create item') {
       const newItem: IItemCreate = {
         title,
-        tags: [tags],
+        tags,
         collectionId: collectionId,
         ownerId: currentUser.id,
         likes: [],
