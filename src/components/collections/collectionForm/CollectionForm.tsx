@@ -4,19 +4,17 @@ import { Box } from '@mui/material';
 import { useCollections } from '../../../hooks/useCollections';
 import { CollectionImage } from './CollectionImage';
 import { CollectionFormFields } from './CollectionFormFields';
-import { CollectionExtraFields } from './CollectionExtraFields';
+import { CollectionExtraFields } from './collectionExtraFields/CollectionExtraFields';
+import { CollectionExtraFieldsForm } from './collectionExtraFields/CollectionExtraFieldsForm';
 import { CollectionFormButton } from './CollectionFormButton';
-import { extraFieldsInitialState } from '../../../constants/initialFieldsValues';
-import { IExtraFieldValue, IUserForm } from '../../../models/componentsModels';
+import { IExtraField, IUserForm } from '../../../models/componentsModels';
 import { CollectionFormProps } from '../../../models/collectionFormProps';
 
 const CollectionForm: FC<CollectionFormProps> = ({ id, value, setOpen }) => {
   const { getCollectionById } = useCollections();
   const collection = getCollectionById(id as string);
   const [imageUrl, setImageUrl] = useState<string>(collection?.imageUrl || '');
-  const [extraFields, setExtraFields] = useState<IExtraFieldValue[]>(
-    extraFieldsInitialState,
-  );
+  const [extraFields, setExtraFields] = useState<IExtraField[]>([]);
   const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
 
@@ -36,8 +34,12 @@ const CollectionForm: FC<CollectionFormProps> = ({ id, value, setOpen }) => {
       >
         <CollectionImage imageUrl={imageUrl} setImageUrl={setImageUrl} />
         <CollectionFormFields collection={collection} />
+        <CollectionExtraFields
+          extraFields={extraFields}
+          setExtraFields={setExtraFields}
+        />
         {value === 'Create collection' && (
-          <CollectionExtraFields
+          <CollectionExtraFieldsForm
             extraFields={extraFields}
             setExtraFields={setExtraFields}
           />

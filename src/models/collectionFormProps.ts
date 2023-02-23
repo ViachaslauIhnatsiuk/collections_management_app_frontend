@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { IExtraFieldValue } from './componentsModels';
+import { IExtraField } from './componentsModels';
 
 interface CollectionFormProps {
   id?: string;
@@ -18,11 +18,32 @@ interface CollectionFormFieldProps {
 
 interface CollectionFormButtonProps extends CollectionFormProps {
   imageUrl: string;
-  extraFields: IExtraFieldValue[];
-  setExtraFields: Dispatch<SetStateAction<IExtraFieldValue[]>>;
+  extraFields: IExtraField[];
+  setExtraFields: Dispatch<SetStateAction<IExtraField[]>>;
 }
 
-interface CollectionTopicSelectProps {
+interface CollectionExtraFieldProps {
+  extraField: IExtraField;
+  extraFields: IExtraField[];
+  setExtraFields: Dispatch<SetStateAction<IExtraField[]>>;
+}
+
+interface CollectionExtraFieldsProps {
+  newExtraField: IExtraField;
+  setNewExtraField: Dispatch<SetStateAction<IExtraField>>;
+}
+
+interface CollectionExtraFieldsFormProps {
+  extraFields: IExtraField[];
+  setExtraFields: Dispatch<SetStateAction<IExtraField[]>>;
+}
+
+interface CollectionExtraFieldsButtonProps extends CollectionExtraFieldsFormProps {
+  newExtraField: IExtraField;
+  setNewExtraField: Dispatch<SetStateAction<IExtraField>>;
+}
+
+interface CollectionSelectProps {
   type: string;
   value: string;
 }
@@ -36,6 +57,10 @@ export type {
   CollectionFormProps,
   CollectionFormFieldProps,
   CollectionFormButtonProps,
-  CollectionTopicSelectProps,
+  CollectionExtraFieldProps,
+  CollectionExtraFieldsProps,
+  CollectionExtraFieldsFormProps,
+  CollectionExtraFieldsButtonProps,
+  CollectionSelectProps,
   CollectionImageProps,
 };

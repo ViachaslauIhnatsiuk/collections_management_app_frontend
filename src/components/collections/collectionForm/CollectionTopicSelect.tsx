@@ -6,11 +6,11 @@ import {
   Select,
   SelectChangeEvent,
 } from '@mui/material';
-import { CollectionTopicSelectProps } from '../../../models/collectionFormProps';
+import { CollectionSelectProps } from '../../../models/collectionFormProps';
 import { useFormContext } from 'react-hook-form';
 import { CollectionFormType, ICollectionForm } from '../../../models/componentsModels';
 
-const CollectionTopicSelect: FC<CollectionTopicSelectProps> = ({ type, value }) => {
+const CollectionTopicSelect: FC<CollectionSelectProps> = ({ type, value }) => {
   const [topic, setTopic] = useState<string>(value);
   const { register } = useFormContext<ICollectionForm>();
 

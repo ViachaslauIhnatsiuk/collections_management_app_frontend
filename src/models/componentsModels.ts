@@ -12,6 +12,11 @@ interface ICollectionForm {
   topic: string;
 }
 
+interface ICollectionExtraFieldForm {
+  name: string;
+  type: string;
+}
+
 interface ITableHeaderTitles {
   id: string;
   label: string;
@@ -20,12 +25,9 @@ interface ITableHeaderTitles {
 }
 
 interface IExtraField {
+  id: string;
   name: string;
   type: string;
-}
-
-interface IExtraFieldValue extends IExtraField {
-  disabled: boolean;
 }
 
 enum ConfirmationMessages {
@@ -42,7 +44,7 @@ export type {
   IUserForm,
   CollectionFormType,
   ICollectionForm,
+  ICollectionExtraFieldForm,
   ITableHeaderTitles,
   IExtraField,
-  IExtraFieldValue,
 };

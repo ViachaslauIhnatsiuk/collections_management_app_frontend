@@ -7,7 +7,6 @@ import {
   updateCollection,
 } from '../../../store/slices/collectionSlice/collectionSlice';
 import { selectAuth, useAppSelector } from '../../../store/selectors';
-import { extraFieldsInitialState } from '../../../constants/initialFieldsValues';
 import { CollectionFormButtonProps } from '../../../models/collectionFormProps';
 import { ICollectionForm } from '../../../models/componentsModels';
 
@@ -20,12 +19,10 @@ const CollectionFormButton: FC<CollectionFormButtonProps> = (props) => {
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector(selectAuth);
 
-  const itemExtraFields = extraFields
-    .filter(({ disabled }) => disabled)
-    .map(({ name, type }) => ({ name, type }));
-
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
+
+    const itemExtraFields = extraFields.map(({ name, type }) => ({ name, type }));
 
     const [title, description, topic] = getValues(['title', 'description', 'topic']);
 
@@ -51,7 +48,7 @@ const CollectionFormButton: FC<CollectionFormButtonProps> = (props) => {
       dispatch(updateCollection([updatedCollectionData, id as string]));
     }
 
-    setExtraFields(extraFieldsInitialState);
+    setExtraFields([]);
   };
 
   return (

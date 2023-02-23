@@ -20,22 +20,4 @@ const tableHeaderTitles: ITableHeaderTitles[] = [
   },
 ];
 
-const extraFieldsRenderList = [
-  'Number',
-  'Number',
-  'Number',
-  'Text',
-  'Text',
-  'Text',
-  'Textfield',
-  'Textfield',
-  'Textfield',
-  'Date',
-  'Date',
-  'Date',
-  'Checkbox',
-  'Checkbox',
-  'Checkbox',
-];
-
-export { tableHeaderTitles, extraFieldsRenderList };
+export { tableHeaderTitles };
