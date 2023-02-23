@@ -22,31 +22,35 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
-    const fieldsValues: string[] = getValues(['Title', 'Tags', ...names]);
+    const [title, tags, ...fieldsNames]: string[] = getValues([
+      'Title',
+      'Tags',
+      ...names,
+    ]);
 
     if (value === 'Create item') {
       const newItem: IItemCreate = {
-        title: fieldsValues[0],
-        tags: [fieldsValues[1]],
+        title,
+        tags: [tags],
         collectionId: collectionId,
         ownerId: currentUser.id,
         likes: [],
         comments: [],
       };
 
-      for (let i = 2; i < fieldsValues.length; i++) {
-        newItem[names[i - 2]] = fieldsValues[i];
+      for (let i = 0; i < fieldsNames.length; i++) {
+        newItem[names[i]] = fieldsNames[i];
       }
 
       dispatch(createItem([newItem, collectionId]));
     } else {
       const newItem: IItemUpdate = {
-        title: fieldsValues[0],
-        tags: [fieldsValues[1]],
+        title: fieldsNames[0],
+        tags: [fieldsNames[1]],
       };
 
-      for (let i = 2; i < fieldsValues.length; i++) {
-        newItem[names[i - 2]] = fieldsValues[i];
+      for (let i = 0; i < fieldsNames.length; i++) {
+        newItem[names[i]] = fieldsNames[i];
       }
 
       dispatch(updateItem([newItem, collectionId, itemId as string]));

@@ -17,7 +17,9 @@ const UserBlockButton: FC<BlockButtonProps> = ({ userId, isBlocked }) => {
       </IconButton>
       <ConfirmationModal
         open={open}
-        message={ConfirmationMessages.blockUser}
+        message={
+          isBlocked ? ConfirmationMessages.unblockUser : ConfirmationMessages.blockUser
+        }
         setOpen={setOpen}
         actionHandler={toggleBlockStatus}
       />

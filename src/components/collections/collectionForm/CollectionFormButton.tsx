@@ -27,13 +27,13 @@ const CollectionFormButton: FC<CollectionFormButtonProps> = (props) => {
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
 
-    const fieldsValues = getValues(['title', 'description', 'topic']);
+    const [title, description, topic] = getValues(['title', 'description', 'topic']);
 
     if (value === 'Create collection') {
       const newCollectionData = {
-        title: fieldsValues[0],
-        description: fieldsValues[1],
-        topic: fieldsValues[2],
+        title,
+        description,
+        topic,
         imageUrl,
         ownerId: currentUser.id,
         itemExtraFields,
@@ -42,9 +42,9 @@ const CollectionFormButton: FC<CollectionFormButtonProps> = (props) => {
       dispatch(createCollection(newCollectionData));
     } else {
       const updatedCollectionData = {
-        title: fieldsValues[0],
-        description: fieldsValues[1],
-        topic: fieldsValues[2],
+        title,
+        description,
+        topic,
         imageUrl,
       };
 

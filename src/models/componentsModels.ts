@@ -31,6 +31,7 @@ interface IExtraFieldValue extends IExtraField {
 enum ConfirmationMessages {
   deleteUser = 'delete this user',
   blockUser = 'block this user',
+  unblockUser = 'unblock this user',
   changeUserStatus = 'change the status of this user',
   deleteItem = 'delete this item',
   deleteCollection = 'delete this collection',

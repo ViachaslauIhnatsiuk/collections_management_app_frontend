@@ -15,22 +15,13 @@ const SubmitButton: FC<SubmitButtonProps> = ({ value }) => {
   const dispatch = useAppDispatch();
 
   const handleSubmit = (): void => {
-    const fieldsValues = getValues(['name', 'email', 'password']);
+    const [name, email, password] = getValues(['name', 'email', 'password']);
 
     if (value === 'Sign Up') {
-      const signUpData = {
-        name: fieldsValues[0],
-        email: fieldsValues[1],
-        password: fieldsValues[2],
-      };
-
+      const signUpData = { name, email, password };
       dispatch(signUp(signUpData));
     } else {
-      const signInData = {
-        email: fieldsValues[1],
-        password: fieldsValues[2],
-      };
-
+      const signInData = { email, password };
       dispatch(signIn(signInData));
     }
 
