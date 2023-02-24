@@ -7,6 +7,7 @@ import { CollectionCard } from '../collections/collectionCard/CollectionCard';
 import { Loader } from '../UI/Loader';
 import { FilterBar } from '../UI/FilterBar';
 import { SortButton } from '../UI/SortButton';
+import { NoCollections } from '../UI/NoCollections';
 import { sortByTitle } from '../../helpers/sort';
 import { ICollection } from '../../store/slices/collectionSlice/collectionModel';
 
@@ -31,32 +32,27 @@ const CollectionsPage: FC = () => {
     <>
       <Loader status={status} error={error} />
       {status !== 'loading' && !error && (
-        <Container
-          maxWidth="lg"
-          sx={{
-            display: 'grid',
-            placeContent: 'center',
-            py: 5,
-          }}
-        >
-          <Stack>
+        <Container maxWidth="lg" sx={{ display: 'flex', placeContent: 'center', py: 5 }}>
+          <Stack sx={{ width: '100%', gap: 3 }}>
             <Toolbar sx={{ gap: 2 }}>
               <FilterBar setFiltered={setFilteredCollections} />
               <SortButton sortType={sortType} setSortType={setSortType} />
             </Toolbar>
-            <Box
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-                gap: 4,
-              }}
-            >
-              {collectionsToRender.length
-                ? collectionsToRender.map((collection) => (
-                    <CollectionCard key={collection._id} {...collection} />
-                  ))
-                : 'There are no collections yet'}
-            </Box>
+            {collectionsToRender.length ? (
+              <Box
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+                  gap: 4,
+                }}
+              >
+                {collectionsToRender.map((collection) => (
+                  <CollectionCard key={collection._id} {...collection} />
+                ))}
+              </Box>
+            ) : (
+              <NoCollections />
+            )}
           </Stack>
         </Container>
       )}

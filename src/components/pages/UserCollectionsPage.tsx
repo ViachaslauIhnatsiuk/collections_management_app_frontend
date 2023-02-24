@@ -8,6 +8,7 @@ import { Loader } from '../UI/Loader';
 import { FilterBar } from '../UI/FilterBar';
 import { SortButton } from '../UI/SortButton';
 import { CollectionAddButton } from '../collections/CollectionAddButton';
+import { NoCollections } from '../UI/NoCollections';
 import { sortByTitle } from '../../helpers/sort';
 import { ICollection } from '../../store/slices/collectionSlice/collectionModel';
 
@@ -38,30 +39,32 @@ const UserCollectionsPage: FC = () => {
         <Container
           maxWidth="lg"
           sx={{
-            display: 'grid',
+            display: 'flex',
             placeContent: 'center',
             py: 5,
           }}
         >
-          <Stack sx={{ gap: 3 }}>
+          <Stack sx={{ flexGrow: 1, gap: 3 }}>
             <Toolbar sx={{ gap: 2 }}>
               <FilterBar setFiltered={setFilteredCollections} />
               <SortButton sortType={sortType} setSortType={setSortType} />
               <CollectionAddButton />
             </Toolbar>
-            <Box
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-                gap: 4,
-              }}
-            >
-              {collectionsToRender.length
-                ? collectionsToRender.map((collection) => (
-                    <CollectionCard key={collection._id} {...collection} />
-                  ))
-                : 'There are no collections yet'}
-            </Box>
+            {collectionsToRender.length ? (
+              <Box
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+                  gap: 4,
+                }}
+              >
+                {collectionsToRender.map((collection) => (
+                  <CollectionCard key={collection._id} {...collection} />
+                ))}
+              </Box>
+            ) : (
+              <NoCollections />
+            )}
           </Stack>
         </Container>
       )}
