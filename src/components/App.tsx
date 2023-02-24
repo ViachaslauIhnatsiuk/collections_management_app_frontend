@@ -10,6 +10,7 @@ import { SignupPage } from './pages/SignupPage';
 import { ItemsPage } from './pages/ItemsPage';
 import { ItemPage } from './pages/ItemPage';
 import { AdminPage } from './pages/AdminPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 const App: FC = () => {
   const { isAuth } = useAppSelector(selectAuth);
@@ -31,6 +32,7 @@ const App: FC = () => {
         <Route path="/user-collections/:id" element={<ItemsPage />} />
         <Route path="/user-collections/:id/items/:id" element={<ItemPage />} />
         <Route path="/admin" element={isAuth ? <AdminPage /> : <Navigate to="/" />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
