@@ -1,13 +1,14 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { Typography } from '@mui/material';
+import { Box } from '@mui/material';
+import logo from '../../../assets/logo.png';
 
 const HeaderLogo: FC = () => {
   return (
     <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-      <Typography variant="h6" sx={{ display: { xs: 'none', sm: 'block' } }}>
-        Logo
-      </Typography>
+      <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+        <Box component="img" sx={{ height: 22 }} src={logo} alt="logo" />
+      </Box>
     </Link>
   );
 };
