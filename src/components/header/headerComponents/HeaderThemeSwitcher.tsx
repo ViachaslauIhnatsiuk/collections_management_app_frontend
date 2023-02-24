@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { styled, Switch } from '@mui/material';
 import { darkThemeIcon, lightThemeIcon } from '../../../constants/themeSwitcherIcons';
+import { ColorModeContext } from '../../AppThemeProvider';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 58,
@@ -46,7 +47,9 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const HeaderThemeSwitcher: FC = () => {
-  return <MaterialUISwitch />;
+  const { toggleColorMode } = useContext(ColorModeContext);
+
+  return <MaterialUISwitch onClick={toggleColorMode} />;
 };
 
 export { HeaderThemeSwitcher };
