@@ -5,7 +5,7 @@ import { BASE_URL } from '../../../constants/baseUrl';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
 import { v4 as uuidv4 } from 'uuid';
 
-const ItemFromAutocompleteFields: FC = () => {
+const ItemFormTagsAutocomplete: FC = () => {
   const [tagsList, setTagsList] = useState<string[]>([]);
   const { register, setValue } = useFormContext();
 
@@ -45,12 +45,12 @@ const ItemFromAutocompleteFields: FC = () => {
       renderInput={(params) => (
         <TextField {...params} size="small" placeholder="Search..." />
       )}
-      {...register('Tags')}
+      {...register('tags')}
       onChange={(_, value) => {
-        setValue('Tags', value);
+        setValue('tags', value);
       }}
     />
   );
 };
 
-export { ItemFromAutocompleteFields };
+export { ItemFormTagsAutocomplete };
