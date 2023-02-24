@@ -8,6 +8,7 @@ import { HeaderThemeSwitcher } from './headerComponents/HeaderThemeSwitcher';
 import { HeaderLocalization } from './headerComponents/HeaderLocalization';
 import { HeaderMobileMenu } from './headerComponents/HeaderMobileMenu';
 import { SidebarToggleButton } from '../sidebar/SidebarToggleButton';
+import logo from '../../assets/logo.png';
 
 const Header: FC = () => {
   const [menuAnchorElement, setMenuAnchorElement] = useState<null | HTMLElement>(null);
@@ -17,7 +18,7 @@ const Header: FC = () => {
     <AppBar position="sticky">
       <Toolbar sx={{ columnGap: 2 }}>
         <SidebarToggleButton />
-        <HeaderLogo />
+        <HeaderLogo src={logo} />
         <HeaderSearch />
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ columnGap: 2, display: { xs: 'none', md: 'flex' } }}>

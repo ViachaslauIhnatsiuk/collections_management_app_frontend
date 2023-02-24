@@ -1,4 +1,4 @@
-import { Dispatch, HTMLAttributes, SetStateAction } from 'react';
+import { Dispatch, HTMLAttributes, ReactNode, SetStateAction } from 'react';
 import { IItem } from '../store/slices/itemSlice/itemModel';
 
 interface MobileMenuProps {
@@ -21,6 +21,7 @@ interface SidebarListItemProps {
   title: string;
   link: string;
   visible: boolean;
+  children: ReactNode;
 }
 
 interface SubmitButtonProps {

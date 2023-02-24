@@ -1,21 +1,27 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+import {
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  useTheme,
+} from '@mui/material';
 import { SidebarListItemProps } from '../../models/componentsProps';
 
-const SidebarListItem: FC<SidebarListItemProps> = ({ link, title, visible }) => {
+const SidebarListItem: FC<SidebarListItemProps> = (props) => {
+  const theme = useTheme();
+  const { link, title, visible, children } = props;
+
   return (
-    <ListItem disablePadding sx={{ display: visible ? 'flex' : 'none' }}>
-      <Link to={link} style={{ textDecoration: 'none' }}>
+    <Link to={link} style={{ textDecoration: 'none' }}>
+      <ListItem disablePadding sx={{ display: visible ? 'flex' : 'none' }}>
         <ListItemButton>
-          <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon>
-          <ListItemText primary={title} />
+          <ListItemIcon>{children}</ListItemIcon>
+          <ListItemText sx={{ color: theme.palette.text.primary }} primary={title} />
         </ListItemButton>
-      </Link>
-    </ListItem>
+      </ListItem>
+    </Link>
   );
 };
 
