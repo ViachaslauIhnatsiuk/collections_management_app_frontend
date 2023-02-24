@@ -1,5 +1,5 @@
 import { FC, useEffect, useMemo, useState } from 'react';
-import { Container, Stack, Toolbar } from '@mui/material';
+import { Box, Container, Stack, Toolbar } from '@mui/material';
 import { selectCollections, selectAuth, useAppSelector } from '../../store/selectors';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
@@ -36,35 +36,32 @@ const UserCollectionsPage: FC = () => {
       <Loader status={status} error={error} />
       {status !== 'loading' && !error && (
         <Container
-          maxWidth="md"
+          maxWidth="lg"
           sx={{
             display: 'grid',
             placeContent: 'center',
             py: 5,
-            gap: 2,
           }}
         >
-          <Stack>
+          <Stack sx={{ gap: 3 }}>
             <Toolbar sx={{ gap: 2 }}>
               <FilterBar setFiltered={setFilteredCollections} />
               <SortButton sortType={sortType} setSortType={setSortType} />
               <CollectionAddButton />
             </Toolbar>
-            {collections.length ? (
-              <Stack
-                sx={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(3, 1fr)',
-                  gap: 2,
-                }}
-              >
-                {collectionsToRender.map((collection) => (
-                  <CollectionCard key={collection._id} {...collection} />
-                ))}
-              </Stack>
-            ) : (
-              'There are no collections yet'
-            )}
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+                gap: 4,
+              }}
+            >
+              {collectionsToRender.length
+                ? collectionsToRender.map((collection) => (
+                    <CollectionCard key={collection._id} {...collection} />
+                  ))
+                : 'There are no collections yet'}
+            </Box>
           </Stack>
         </Container>
       )}

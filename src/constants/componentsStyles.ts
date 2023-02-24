@@ -74,7 +74,7 @@ const collectionImageBoxStyles = {
 
 const cardImageBoxStyles = {
   width: '100%',
-  height: '200px',
+  maxHeight: '120px',
   borderRadius: '3px',
   overflow: 'hidden',
   img: {

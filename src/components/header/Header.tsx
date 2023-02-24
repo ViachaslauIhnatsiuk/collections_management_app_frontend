@@ -14,7 +14,7 @@ const Header: FC = () => {
   const isMenuOpen = Boolean(menuAnchorElement);
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Toolbar sx={{ columnGap: 2 }}>
         <SidebarToggleButton />
         <HeaderLogo />

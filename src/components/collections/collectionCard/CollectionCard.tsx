@@ -6,14 +6,17 @@ import { CollectionEditButton } from './CollectionEditButton';
 import { CollectionViewButton } from './CollectionViewButton';
 import { ICollection } from '../../../store/slices/collectionSlice/collectionModel';
 import ReactMarkdown from 'react-markdown';
+import { selectAuth, useAppSelector } from '../../../store/selectors';
 
 const CollectionCard: FC<ICollection> = (props) => {
   const { _id, title, description, topic, imageUrl, ownerId } = props;
+  const { currentUser } = useAppSelector(selectAuth);
+
   return (
     <Paper
       sx={{
-        p: 2,
-        width: '300px',
+        position: 'relative',
+        padding: '20px 15px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -22,29 +25,31 @@ const CollectionCard: FC<ICollection> = (props) => {
       elevation={3}
     >
       <CollectionCardImage imageUrl={imageUrl as string} />
-      <Stack>
-        <Typography variant="h4" sx={{ color: '#2475c5', textAlign: 'center' }}>
-          {title}
-        </Typography>
-        <Typography variant="h5" sx={{ color: '#2475c5', textAlign: 'center' }}>
-          {topic}
-        </Typography>
-        <Box sx={{ color: '#2475c5', textAlign: 'center' }}>
+      <Paper
+        elevation={4}
+        sx={{ position: 'absolute', top: '-4px', right: '-4px', px: 0.5, fontSize: 12 }}
+      >
+        {topic}
+      </Paper>
+      <Stack sx={{ width: '100%', flexGrow: 1, px: 1 }}>
+        <Typography sx={{ fontSize: 18 }}>{title}</Typography>
+        <Box sx={{ fontSize: 12, lineHeight: 1.2, mt: '-8px' }}>
           <ReactMarkdown>{description}</ReactMarkdown>
         </Box>
       </Stack>
-      <Stack
+      <Paper
         sx={{
-          width: '100%',
+          position: 'absolute',
+          bottom: '-3px',
+          right: '-3px',
           display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          flexDirection: 'column',
+          visibility: currentUser.id === ownerId ? 'visible' : 'hidden',
         }}
       >
-        <CollectionRemoveButton id={_id as string} ownerId={ownerId} />
-        <CollectionEditButton id={_id as string} ownerId={ownerId} />
-      </Stack>
+        <CollectionRemoveButton id={_id as string} />
+        <CollectionEditButton id={_id as string} />
+      </Paper>
       <CollectionViewButton id={_id as string} />
     </Paper>
   );

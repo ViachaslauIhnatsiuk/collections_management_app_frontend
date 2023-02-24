@@ -7,7 +7,9 @@ const CollectionViewButton: FC<{ id: string }> = ({ id }) => {
 
   return (
     <Link to={`${pathname}/${id}`} style={{ textDecoration: 'none' }}>
-      <Button variant="contained">View collection</Button>
+      <Button size="small" sx={{ fontSize: 12 }} variant="contained">
+        View collection
+      </Button>
     </Link>
   );
 };

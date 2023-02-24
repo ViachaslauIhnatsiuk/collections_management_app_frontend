@@ -3,3 +3,18 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #eeeeee;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #d3d3d3;
+  border-radius: 5px;
+}

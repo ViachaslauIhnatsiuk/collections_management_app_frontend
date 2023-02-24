@@ -1,5 +1,5 @@
 import { FC, useEffect, useMemo, useState } from 'react';
-import { Container, Stack, Toolbar } from '@mui/material';
+import { Box, Container, Stack, Toolbar } from '@mui/material';
 import { selectCollections, useAppSelector } from '../../store/selectors';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
@@ -32,7 +32,7 @@ const CollectionsPage: FC = () => {
       <Loader status={status} error={error} />
       {status !== 'loading' && !error && (
         <Container
-          maxWidth="md"
+          maxWidth="lg"
           sx={{
             display: 'grid',
             placeContent: 'center',
@@ -44,11 +44,11 @@ const CollectionsPage: FC = () => {
               <FilterBar setFiltered={setFilteredCollections} />
               <SortButton sortType={sortType} setSortType={setSortType} />
             </Toolbar>
-            <Stack
+            <Box
               sx={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap: 2,
+                gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+                gap: 4,
               }}
             >
               {collectionsToRender.length
@@ -56,7 +56,7 @@ const CollectionsPage: FC = () => {
                     <CollectionCard key={collection._id} {...collection} />
                   ))
                 : 'There are no collections yet'}
-            </Stack>
+            </Box>
           </Stack>
         </Container>
       )}

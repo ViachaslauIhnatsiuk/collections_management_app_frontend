@@ -16,7 +16,7 @@ const MainPage: FC = () => {
 
   return (
     <Container
-      maxWidth="md"
+      maxWidth="lg"
       sx={{ pt: 3, display: 'flex', flexDirection: 'column', gap: 4 }}
     >
       <LastAddedItemsList />

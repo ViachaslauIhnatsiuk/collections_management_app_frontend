@@ -4,16 +4,16 @@ import { darkThemeIcon, lightThemeIcon } from '../../../constants/themeSwitcherI
 import { ColorModeContext } from '../../AppThemeProvider';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
-  width: 58,
-  height: 34,
+  width: 56,
+  height: 30,
   padding: 7,
   '& .MuiSwitch-switchBase': {
-    margin: 4,
+    margin: 3,
     padding: 0,
     transform: 'translateX(2px)',
     '&.Mui-checked': {
       color: '#fff',
-      transform: 'translateX(22px)',
+      transform: 'translateX(24px)',
       '& .MuiSwitch-thumb:before': {
         backgroundImage: `url('${darkThemeIcon}')`,
       },
@@ -24,9 +24,9 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     },
   },
   '& .MuiSwitch-thumb': {
-    backgroundColor: theme.palette.mode === 'dark' ? '#003892' : '#001e3c',
-    width: 26,
-    height: 26,
+    backgroundColor: theme.palette.mode === 'dark' ? '#275459' : '#121212',
+    width: 24,
+    height: 24,
     '&:before': {
       content: "''",
       position: 'absolute',
