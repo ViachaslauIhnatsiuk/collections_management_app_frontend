@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 import { DataGrid, GridAlignment, GridCellParams } from '@mui/x-data-grid';
 import { Paper } from '@mui/material';
 import { ItemManagementButtons } from '../ItemManagementButtons';
+import { ItemsTableToolbar } from './ItemsTableToolbar';
 import { generateHeaderNames } from '../../../helpers/generateHeaderNames';
 import { dataGridStyles } from '../../../constants/componentsStyles';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
@@ -37,6 +38,7 @@ const ItemsTable: FC<{ collectionItems: IItem[] }> = ({ collectionItems }) => {
         rowsPerPageOptions={[5, 10, 15]}
         disableSelectionOnClick
         autoHeight
+        components={{ Toolbar: ItemsTableToolbar }}
       />
     </Paper>
   );
