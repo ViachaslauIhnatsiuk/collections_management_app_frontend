@@ -7,7 +7,7 @@ import { CollectionCard } from '../collections/collectionCard/CollectionCard';
 import { Loader } from '../UI/Loader';
 import { FilterBar } from '../UI/FilterBar';
 import { SortButton } from '../UI/SortButton';
-import { NoCollections } from '../UI/NoCollections';
+import { NoContent } from '../UI/NoContent';
 import { sortByTitle } from '../../helpers/sort';
 import { ICollection } from '../../store/slices/collectionSlice/collectionModel';
 
@@ -51,7 +51,7 @@ const CollectionsPage: FC = () => {
                 ))}
               </Box>
             ) : (
-              <NoCollections />
+              <NoContent text="COLLECTIONS" />
             )}
           </Stack>
         </Container>

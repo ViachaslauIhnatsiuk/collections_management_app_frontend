@@ -1,19 +1,19 @@
 import { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Stack, Toolbar } from '@mui/material';
+import { Container, Stack, Typography } from '@mui/material';
 import { useItems } from '../../hooks/useItems';
 import { useCollections } from '../../hooks/useCollections';
-import { selectAuth, useAppSelector } from '../../store/selectors';
 import { useAppDispatch } from '../../store/store';
 import { getItems } from '../../store/slices/itemSlice/itemSlice';
 import { ItemsTable } from '../items/itemsTable/ItemsTable';
 import { Loader } from '../UI/Loader';
 import { ItemAddButton } from '../items/ItemAddButton';
+import { NoContent } from '../UI/NoContent';
+import { BackButton } from '../UI/BackButton';
 
 const ItemsPage: FC = () => {
   const { getCollectionItems, status, error } = useItems();
   const { getCollectionById } = useCollections();
-  const { currentUser } = useAppSelector(selectAuth);
   const { id } = useParams();
   const dispatch = useAppDispatch();
 
@@ -29,23 +29,19 @@ const ItemsPage: FC = () => {
       <Loader status={status} error={error} />
       {status !== 'loading' && !error && (
         <Container maxWidth="md">
-          <Stack>
-            <Toolbar
-              sx={{
-                gap: 2,
-                visibility:
-                  currentUser.id === currentCollection.ownerId ? 'visible' : 'hidden',
-              }}
-            >
-              <ItemAddButton />
-            </Toolbar>
+          <Stack sx={{ pt: 3 }}>
+            <BackButton />
             {collectionItems.length ? (
               <Stack>
+                <Typography sx={{ textAlign: 'center', fontSize: 30 }}>
+                  {currentCollection.title}
+                </Typography>
                 <ItemsTable collectionItems={collectionItems} />
               </Stack>
             ) : (
-              'There are no items yet'
+              <NoContent text="ITEMS" />
             )}
+            <ItemAddButton ownerId={currentCollection.ownerId} />
           </Stack>
         </Container>
       )}

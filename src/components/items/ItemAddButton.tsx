@@ -2,14 +2,21 @@ import { FC, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Button, Dialog, DialogTitle, DialogContent } from '@mui/material';
 import { ItemForm } from './itemForm/ItemForm';
+import { selectAuth, useAppSelector } from '../../store/selectors';
 
-const ItemAddButton: FC = () => {
+const ItemAddButton: FC<{ ownerId: string }> = ({ ownerId }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const { currentUser } = useAppSelector(selectAuth);
   const { id } = useParams();
 
   return (
     <>
-      <Button variant="contained" size="small" onClick={() => setOpen(true)}>
+      <Button
+        sx={{ mt: 2, visibility: currentUser.id === ownerId ? 'visible' : 'hidden' }}
+        variant="contained"
+        size="small"
+        onClick={() => setOpen(true)}
+      >
         Add item
       </Button>
       <Dialog

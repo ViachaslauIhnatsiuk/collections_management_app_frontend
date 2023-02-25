@@ -4,6 +4,7 @@ import { Container } from '@mui/material';
 import { useItems } from '../../hooks/useItems';
 import { Loader } from '../UI/Loader';
 import { ItemCard } from '../items/itemCard/ItemCard';
+import { BackButton } from '../UI/BackButton';
 
 const ItemPage: FC = () => {
   const { getItemById, status, error } = useItems();
@@ -16,6 +17,7 @@ const ItemPage: FC = () => {
       <Loader status={status} error={error} />
       {status !== 'loading' && !error && (
         <Container maxWidth="md" sx={{ py: 5 }}>
+          <BackButton />
           <ItemCard item={itemToRender} />
         </Container>
       )}

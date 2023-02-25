@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Box, useTheme } from '@mui/material';
 
-const NoCollections: FC = () => {
+const NoContent: FC<{ text: string }> = ({ text }) => {
   const theme = useTheme();
 
   return (
@@ -17,9 +17,9 @@ const NoCollections: FC = () => {
         color: theme.palette.text.secondary,
       }}
     >
-      THERE ARE NO COLLECTIONS YET
+      THERE ARE NO {text} YET
     </Box>
   );
 };
 
-export { NoCollections };
+export { NoContent };
