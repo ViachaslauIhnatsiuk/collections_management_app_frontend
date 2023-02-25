@@ -10,6 +10,11 @@ const UserBlockButton: FC<BlockButtonProps> = ({ userId, isBlocked }) => {
   const [open, setOpen] = useState<boolean>(false);
   const { toggleBlockStatus } = useUsers(userId);
 
+  const handleAction = (): void => {
+    toggleBlockStatus();
+    setOpen(false);
+  };
+
   return (
     <>
       <IconButton color={isBlocked ? 'error' : 'success'} onClick={() => setOpen(true)}>
@@ -21,7 +26,7 @@ const UserBlockButton: FC<BlockButtonProps> = ({ userId, isBlocked }) => {
           isBlocked ? ConfirmationMessages.unblockUser : ConfirmationMessages.blockUser
         }
         setOpen={setOpen}
-        actionHandler={toggleBlockStatus}
+        actionHandler={handleAction}
       />
     </>
   );

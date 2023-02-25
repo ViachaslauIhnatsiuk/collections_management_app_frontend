@@ -30,9 +30,9 @@ const getUsers = createAsyncThunk(
 
 const updateUser = createAsyncThunk(
   'users/updateUser',
-  async ({ id, ...updatedUserData }: IUser, { rejectWithValue, dispatch }) => {
+  async ({ _id, ...updatedUserData }: IUser, { rejectWithValue, dispatch }) => {
     try {
-      const response = await fetch(`${BASE_URL}/users/${id}`, {
+      const response = await fetch(`${BASE_URL}/users/${_id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedUserData),
@@ -79,14 +79,14 @@ const usersSlice = createSlice({
     },
     updateSelectedUser: (state, { payload }: PayloadAction<IUser>) => {
       state.users = state.users.map((user) => {
-        if (user.id === payload.id) {
+        if (user._id === payload._id) {
           return payload;
         }
         return user;
       });
     },
     deleteSelectedUser: (state, { payload }: PayloadAction<string>) => {
-      state.users = state.users.filter((user) => user.id !== payload);
+      state.users = state.users.filter((user) => user._id !== payload);
     },
     resetUsersState: () => initialState,
   },

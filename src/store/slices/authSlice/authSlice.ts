@@ -12,7 +12,7 @@ import {
 const initialState: IAuthState = {
   isAuth: false,
   currentUser: {
-    id: '',
+    _id: '',
     token: '',
     name: '',
     email: '',
@@ -78,8 +78,8 @@ const authSlice = createSlice({
     setAuthState: (state, { payload: user }: PayloadAction<ICurrentUserState>) => {
       state.isAuth = true;
       const { currentUser } = state;
-      const { id, token, name, email, isBlocked, isAdmin, language, theme } = user;
-      currentUser.id = id;
+      const { _id, token, name, email, isBlocked, isAdmin, language, theme } = user;
+      currentUser._id = _id;
       currentUser.token = token;
       currentUser.name = name;
       currentUser.email = email;

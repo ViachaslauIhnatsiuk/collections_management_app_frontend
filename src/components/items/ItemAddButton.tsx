@@ -12,7 +12,7 @@ const ItemAddButton: FC<{ ownerId: string }> = ({ ownerId }) => {
   return (
     <>
       <Button
-        sx={{ mt: 2, visibility: currentUser.id === ownerId ? 'visible' : 'hidden' }}
+        sx={{ mt: 2, visibility: currentUser._id === ownerId ? 'visible' : 'hidden' }}
         variant="contained"
         size="small"
         onClick={() => setOpen(true)}

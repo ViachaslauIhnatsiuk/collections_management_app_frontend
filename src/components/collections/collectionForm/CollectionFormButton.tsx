@@ -32,7 +32,7 @@ const CollectionFormButton: FC<CollectionFormButtonProps> = (props) => {
         description,
         topic,
         imageUrl,
-        ownerId: currentUser.id,
+        ownerId: currentUser._id,
         itemExtraFields,
       };
 

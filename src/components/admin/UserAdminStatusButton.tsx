@@ -10,16 +10,21 @@ const UserAdminStatusButton: FC<AdminStatusButtonProps> = ({ userId, isAdmin }) 
   const [open, setOpen] = useState<boolean>(false);
   const { toggleAdminStatus } = useUsers(userId);
 
+  const handleAction = (): void => {
+    toggleAdminStatus();
+    setOpen(false);
+  };
+
   return (
     <>
-      <IconButton color={isAdmin ? 'error' : 'success'} onClick={() => setOpen(true)}>
+      <IconButton color={isAdmin ? 'success' : 'error'} onClick={() => setOpen(true)}>
         <AdminPanelSettingsIcon />
       </IconButton>
       <ConfirmationModal
         open={open}
         message={ConfirmationMessages.changeUserStatus}
         setOpen={setOpen}
-        actionHandler={toggleAdminStatus}
+        actionHandler={handleAction}
       />
     </>
   );

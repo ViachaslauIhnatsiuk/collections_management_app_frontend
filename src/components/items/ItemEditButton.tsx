@@ -14,7 +14,7 @@ const ItemEditButton: FC<{ itemData: IItem }> = ({ itemData }) => {
   return (
     <>
       <IconButton
-        sx={{ display: currentUser.id === itemData.ownerId ? 'inline-flex' : 'none' }}
+        sx={{ display: currentUser._id === itemData.ownerId ? 'inline-flex' : 'none' }}
         color="primary"
         onClick={() => setOpen(true)}
       >

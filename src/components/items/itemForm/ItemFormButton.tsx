@@ -26,7 +26,7 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
         title,
         tags,
         collectionId: collectionId,
-        ownerId: currentUser.id,
+        ownerId: currentUser._id,
         likes: [],
         comments: [],
       };

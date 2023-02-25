@@ -19,7 +19,9 @@ const CollectionFormField: FC<CollectionFormFieldProps> = (props) => {
       value={fieldValue}
       label={type.toUpperCase()}
       autoComplete="off"
-      {...register(type as CollectionFormType)}
+      {...register(type as CollectionFormType, {
+        required: true,
+      })}
       onChange={(e) => setFieldValue(e.target.value)}
     />
   );

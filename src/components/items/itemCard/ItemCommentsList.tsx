@@ -71,7 +71,7 @@ const ItemCommentsList: FC<{ item: IItem }> = ({ item }) => {
       ) : (
         <NoContent text="COMMENTS" size={18} />
       )}
-      {currentUser.id === item.ownerId && (
+      {currentUser._id === item.ownerId && (
         <ItemCommentsForm
           comment={comment}
           setComment={setComment}

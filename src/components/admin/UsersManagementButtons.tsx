@@ -7,9 +7,9 @@ import { IUser } from '../../store/slices/usersSlice/usersModel';
 const UsersManagementButtons: FC<{ userData: IUser }> = ({ userData }) => {
   return (
     <>
-      <UserRemoveButton userId={userData.id} />
-      <UserBlockButton userId={userData.id} isBlocked={userData.isBlocked} />
-      <UserAdminStatusButton userId={userData.id} isAdmin={userData.isAdmin} />
+      <UserRemoveButton userId={userData._id} />
+      <UserBlockButton userId={userData._id} isBlocked={userData.isBlocked} />
+      <UserAdminStatusButton userId={userData._id} isAdmin={userData.isAdmin} />
     </>
   );
 };

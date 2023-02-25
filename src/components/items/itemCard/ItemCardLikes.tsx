@@ -11,18 +11,18 @@ const ItemCardLikes: FC<{ item: IItem }> = ({ item }) => {
   const likes = item.likes;
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector(selectAuth);
-  const [like, setLike] = useState<boolean>(likes.includes(currentUser.id));
+  const [like, setLike] = useState<boolean>(likes.includes(currentUser._id));
 
   const toggleLike = () => {
     if (!like) {
       const updatedItem: IItem = {
         ...item,
-        likes: [...likes, currentUser.id],
+        likes: [...likes, currentUser._id],
       };
 
       dispatch(updateItem([updatedItem, item.collectionId, item._id]));
     } else {
-      const updatedLikes = likes.filter((like) => like !== currentUser.id);
+      const updatedLikes = likes.filter((like) => like !== currentUser._id);
       const updatedItem: IItem = {
         ...item,
         likes: [...updatedLikes],
@@ -44,11 +44,11 @@ const ItemCardLikes: FC<{ item: IItem }> = ({ item }) => {
         gap: 1,
         height: '30px',
         borderRadius: '12px',
-        cursor: currentUser.id === item.ownerId ? 'pointer' : 'default',
+        cursor: currentUser._id === item.ownerId ? 'pointer' : 'default',
       }}
-      onClick={() => currentUser.id === item.ownerId && toggleLike()}
+      onClick={() => currentUser._id === item.ownerId && toggleLike()}
     >
-      {likes.includes(currentUser.id) ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
+      {likes.includes(currentUser._id) ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
       <Typography sx={{ fontSize: 18 }}>{likes.length}</Typography>
     </Paper>
   );

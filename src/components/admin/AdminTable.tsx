@@ -9,6 +9,7 @@ import { IUser } from '../../store/slices/usersSlice/usersModel';
 const AdminTable: FC<{ users: IUser[] }> = ({ users }) => {
   const [pageSize, setPageSize] = useState<number>(10);
 
+  const rows = users.map((user) => ({ id: user._id, ...user }));
   const columns = usersTableHeaderNames.map((name) => {
     if (name.field === 'actions') {
       return {
@@ -26,7 +27,7 @@ const AdminTable: FC<{ users: IUser[] }> = ({ users }) => {
       <DataGrid
         sx={dataGridStyles}
         rowHeight={35}
-        rows={users}
+        rows={rows}
         columns={columns}
         pageSize={pageSize}
         onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}

@@ -27,7 +27,7 @@ const UserCollectionsPage: FC = () => {
     const collectionsToSort = collections.filter(
       ({ title, ownerId }) =>
         title.toLowerCase().includes(filteredCollections.toLowerCase()) &&
-        ownerId === currentUser.id,
+        ownerId === currentUser._id,
     );
     return sortByTitle(collectionsToSort, sortType) as ICollection[];
   }, [collections, currentUser, filteredCollections, sortType]);

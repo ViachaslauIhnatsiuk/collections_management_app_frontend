@@ -37,7 +37,7 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
           <SidebarListItem
             title="My collections"
             link="/user-collections"
-            visible={Boolean(currentUser.id)}
+            visible={Boolean(currentUser._id)}
           >
             <ViewQuiltIcon />
           </SidebarListItem>

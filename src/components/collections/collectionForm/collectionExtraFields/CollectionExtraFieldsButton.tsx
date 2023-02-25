@@ -16,7 +16,7 @@ const CollectionExtraFieldsButton: FC<CollectionExtraFieldsButtonProps> = (props
     <Button
       sx={{ mt: 2 }}
       variant="contained"
-      color="success"
+      color="secondary"
       type="button"
       fullWidth
       disabled={!newExtraField.name || !newExtraField.type}

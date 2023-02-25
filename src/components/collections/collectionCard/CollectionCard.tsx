@@ -13,7 +13,7 @@ const CollectionCard: FC<ICollection> = (props) => {
   const { currentUser } = useAppSelector(selectAuth);
   const { users } = useAppSelector(selectUsers);
 
-  const collectionOwnerName = users.find((user) => user.id === ownerId)?.name;
+  const collectionOwnerName = users.find((user) => user._id === ownerId)?.name;
 
   return (
     <Paper
@@ -48,7 +48,7 @@ const CollectionCard: FC<ICollection> = (props) => {
           right: '-3px',
           display: 'flex',
           flexDirection: 'column',
-          visibility: currentUser.id === ownerId ? 'visible' : 'hidden',
+          visibility: currentUser._id === ownerId ? 'visible' : 'hidden',
         }}
       >
         <CollectionRemoveButton id={_id as string} />
