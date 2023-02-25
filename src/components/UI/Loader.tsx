@@ -1,29 +1,36 @@
 import { FC } from 'react';
-import { Container, LinearProgress, Typography } from '@mui/material';
+import { Alert, Container, LinearProgress } from '@mui/material';
 import { LoaderProps } from '../../models/componentsProps';
 
 const Loader: FC<LoaderProps> = ({ status, error }) => {
   return (
-    <Container
-      maxWidth="md"
-      sx={{
-        display: 'grid',
-        placeContent: 'center',
-      }}
-    >
+    <Container maxWidth="md" sx={{ display: 'grid', placeContent: 'center' }}>
       {status === 'loading' && (
         <LinearProgress
           color="secondary"
-          sx={{ position: 'absolute', top: '64px', left: '0px', width: '100%' }}
+          sx={{
+            position: 'absolute',
+            top: { md: 64, sm: 56 },
+            left: '0px',
+            width: '100%',
+          }}
         />
       )}
       {error && (
-        <Typography
-          variant="h4"
-          sx={{ mt: '300px', color: '#2475c5', textAlign: 'center' }}
+        <Alert
+          sx={{
+            alignItems: 'center',
+            mt: '300px',
+            fontSize: 24,
+            textAlign: 'center',
+            '& .MuiAlert-icon': {
+              fontSize: 30,
+            },
+          }}
+          severity="error"
         >
           {error}
-        </Typography>
+        </Alert>
       )}
     </Container>
   );
