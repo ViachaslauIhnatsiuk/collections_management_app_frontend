@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Paper, Stack, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { useCollections } from '../../hooks/useCollections';
 import { convertDate } from '../../helpers/convertDate';
 import { IItem } from '../../store/slices/itemSlice/itemModel';
@@ -8,33 +9,38 @@ const LastAddedItem: FC<{ item: IItem }> = ({ item }) => {
   const { getCollectionById } = useCollections();
 
   return (
-    <Paper
-      sx={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: 2,
-        px: 2,
-        position: 'relative',
-      }}
+    <Link
+      to={`/all-collections/${item.collectionId}/items/${item._id}`}
+      style={{ textDecoration: 'none' }}
     >
-      <Stack>
-        <Typography sx={{ fontSize: 14 }}>Title: {item.title}</Typography>
-        <Typography sx={{ fontSize: 14 }}>
-          Collection: {getCollectionById(item.collectionId)?.title}
-        </Typography>
-      </Stack>
-      <Typography
+      <Paper
         sx={{
-          alignSelf: 'flex-end',
-          fontSize: 11,
-          position: 'absolute',
-          top: '5px',
-          right: '10px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 2,
+          px: 2,
+          position: 'relative',
         }}
       >
-        Time: {convertDate(item.createdAt)}
-      </Typography>
-    </Paper>
+        <Stack>
+          <Typography sx={{ fontSize: 14 }}>Title: {item.title}</Typography>
+          <Typography sx={{ fontSize: 14 }}>
+            Collection: {getCollectionById(item.collectionId)?.title}
+          </Typography>
+        </Stack>
+        <Typography
+          sx={{
+            alignSelf: 'flex-end',
+            fontSize: 11,
+            position: 'absolute',
+            top: '5px',
+            right: '10px',
+          }}
+        >
+          Time: {convertDate(item.createdAt)}
+        </Typography>
+      </Paper>
+    </Link>
   );
 };
 
