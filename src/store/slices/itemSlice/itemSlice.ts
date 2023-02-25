@@ -125,7 +125,6 @@ const itemSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(getItems.pending, setPending);
     builder.addCase(createItem.pending, setPending);
-    builder.addCase(deleteItem.pending, setPending);
 
     builder.addCase(getItems.fulfilled, setResolved);
     builder.addCase(createItem.fulfilled, setResolved);

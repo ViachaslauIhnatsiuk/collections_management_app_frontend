@@ -55,7 +55,6 @@ const CollectionFormButton: FC<CollectionFormButtonProps> = (props) => {
     <Button
       sx={{ mt: 2 }}
       variant="contained"
-      color="success"
       type="submit"
       fullWidth
       disabled={!isValid}

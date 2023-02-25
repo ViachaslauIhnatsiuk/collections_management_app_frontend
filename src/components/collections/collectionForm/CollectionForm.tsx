@@ -16,13 +16,11 @@ const CollectionForm: FC<CollectionFormProps> = ({ id, value, setOpen }) => {
   const [imageUrl, setImageUrl] = useState<string>(collection?.imageUrl || '');
   const [extraFields, setExtraFields] = useState<IExtraField[]>([]);
   const methods = useForm<IUserForm>({ mode: 'onBlur' });
-  const { handleSubmit, reset } = methods;
 
   return (
     <FormProvider {...methods}>
       <Box
         component="form"
-        onSubmit={handleSubmit(() => reset())}
         sx={{
           width: '100%',
           mt: 2,

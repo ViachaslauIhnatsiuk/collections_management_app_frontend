@@ -15,7 +15,7 @@ const ItemCommentsForm: FC<ItemCommentsFormProps> = (props) => {
         rows={2}
         value={comment}
         onChange={(e) => setComment(e.target.value)}
-        sx={textareaScrollbarStyles}
+        sx={{ '& .MuiInputBase-root': { py: 1 }, ...textareaScrollbarStyles }}
       />
       <Button
         type="button"

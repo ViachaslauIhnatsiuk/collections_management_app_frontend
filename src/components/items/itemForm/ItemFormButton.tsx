@@ -1,5 +1,5 @@
 import { FC, MouseEvent, useMemo } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { FieldValues, useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { useAppDispatch } from '../../../store/store';
 import { createItem, updateItem } from '../../../store/slices/itemSlice/itemSlice';
@@ -8,8 +8,8 @@ import { ItemFormButtonProps } from '../../../models/itemFormProps';
 import { IItemCreate, IItemUpdate } from '../../../store/slices/itemSlice/itemModel';
 
 const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
-  const { value, itemId, collectionId, extraFields } = props;
-  const { getValues } = useFormContext();
+  const { value, itemId, collectionId, extraFields, setOpen } = props;
+  const { getValues } = useFormContext<FieldValues>();
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector(selectAuth);
 
@@ -48,6 +48,8 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
 
       dispatch(updateItem([newItem, collectionId, itemId as string]));
     }
+
+    setOpen(false);
   };
 
   return (

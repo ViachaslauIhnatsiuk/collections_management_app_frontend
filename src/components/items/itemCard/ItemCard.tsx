@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Box, Divider, Paper, Stack, Typography } from '@mui/material';
+import { Box, Paper, Stack, Typography } from '@mui/material';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
 import { ItemCommentsList } from './ItemCommentsList';
 import { ItemCardLikes } from './ItemCardLikes';
@@ -20,6 +20,7 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
     likes,
     ...itemToRender
   } = item;
+
   const itemKeys = Object.keys(itemToRender).map(
     (key) => key.charAt(0).toUpperCase() + key.slice(1),
   );
@@ -38,7 +39,7 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
       }}
     >
       <Typography variant="h4">{title}</Typography>
-      <Box sx={{ color: '#2475c5', textAlign: 'center' }}>
+      <Box sx={{ color: '#2475c5', textAlign: 'center', lineHeight: 1.1 }}>
         <ReactMarkdown>{description as string}</ReactMarkdown>
       </Box>
       <Stack sx={{ width: '100%' }}>
@@ -56,7 +57,6 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
         <Typography sx={{ fontSize: 16 }}>Tags: {tags}</Typography>
         <ItemCardLikes item={item} />
       </Stack>
-      <Divider sx={{ width: '100%', my: 2 }} />
       <ItemCommentsCounter count={comments.length} />
       <ItemCommentsList item={item} />
     </Paper>

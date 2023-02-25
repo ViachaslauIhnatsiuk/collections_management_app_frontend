@@ -5,12 +5,10 @@ import { useCollections } from '../../../hooks/useCollections';
 import { ItemFormFields } from './ItemFromFields';
 import { ItemFormButton } from './ItemFormButton';
 import { ItemFormProps } from '../../../models/itemFormProps';
-import { IUserForm } from '../../../models/componentsModels';
 
 const ItemForm: FC<ItemFormProps> = (props) => {
   const { value, itemId, collectionId, setOpen } = props;
-  const methods = useForm<IUserForm>({ mode: 'onBlur' });
-  const { handleSubmit, reset } = methods;
+  const methods = useForm({ mode: 'onBlur' });
   const { getCollectionById } = useCollections();
 
   const extraFields = useMemo(() => {
@@ -22,7 +20,6 @@ const ItemForm: FC<ItemFormProps> = (props) => {
     <FormProvider {...methods}>
       <Box
         component="form"
-        onSubmit={handleSubmit(() => reset())}
         sx={{
           mt: 2,
           display: 'flex',
