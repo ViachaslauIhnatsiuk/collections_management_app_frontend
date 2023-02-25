@@ -1,9 +1,10 @@
 import { FC } from 'react';
-import { Box, Paper, Stack, Typography } from '@mui/material';
+import { Box, Divider, Paper, Stack, Typography } from '@mui/material';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
 import { ItemCommentsList } from './ItemCommentsList';
 import { ItemCardLikes } from './ItemCardLikes';
 import ReactMarkdown from 'react-markdown';
+import { ItemCommentsCounter } from './ItemCommentsCounter';
 
 const ItemCard: FC<{ item: IItem }> = ({ item }) => {
   const {
@@ -26,6 +27,7 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
 
   return (
     <Paper
+      elevation={4}
       sx={{
         mt: 1,
         p: 3,
@@ -54,6 +56,8 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
         <Typography sx={{ fontSize: 16 }}>Tags: {tags}</Typography>
         <ItemCardLikes item={item} />
       </Stack>
+      <Divider sx={{ width: '100%', my: 2 }} />
+      <ItemCommentsCounter count={comments.length} />
       <ItemCommentsList item={item} />
     </Paper>
   );

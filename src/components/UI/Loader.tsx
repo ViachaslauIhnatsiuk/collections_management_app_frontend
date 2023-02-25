@@ -13,7 +13,7 @@ const Loader: FC<LoaderProps> = ({ status, error }) => {
     >
       {status === 'loading' && (
         <LinearProgress
-          color="success"
+          color="secondary"
           sx={{ position: 'absolute', top: '64px', left: '0px', width: '100%' }}
         />
       )}

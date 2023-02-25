@@ -9,10 +9,7 @@ import { IItemCreate, IItemUpdate } from '../../../store/slices/itemSlice/itemMo
 
 const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
   const { value, itemId, collectionId, extraFields } = props;
-  const {
-    getValues,
-    formState: { isValid },
-  } = useFormContext();
+  const { getValues } = useFormContext();
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector(selectAuth);
 
@@ -57,10 +54,8 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
     <Button
       sx={{ mt: 2 }}
       variant="contained"
-      color="success"
       type="submit"
       fullWidth
-      disabled={!isValid}
       onClick={handleSubmit}
     >
       {value}

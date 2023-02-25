@@ -25,7 +25,7 @@ interface ITableHeaderTitles {
 }
 
 interface IExtraField {
-  id: string;
+  id?: string;
   name: string;
   type: string;
 }

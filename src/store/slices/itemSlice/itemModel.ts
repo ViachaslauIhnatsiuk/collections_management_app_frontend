@@ -17,8 +17,7 @@ interface IItemComment {
   user: string;
   text: string;
   _id?: string;
-  createdAt?: string;
-  updatedAt?: string;
+  createdAt: number;
 }
 
 interface IItem {

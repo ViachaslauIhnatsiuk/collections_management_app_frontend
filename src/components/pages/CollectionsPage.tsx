@@ -51,7 +51,7 @@ const CollectionsPage: FC = () => {
                 ))}
               </Box>
             ) : (
-              <NoContent text="COLLECTIONS" />
+              <NoContent text="COLLECTIONS" size={26} />
             )}
           </Stack>
         </Container>

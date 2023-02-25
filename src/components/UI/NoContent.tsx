@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Box, useTheme } from '@mui/material';
 
-const NoContent: FC<{ text: string }> = ({ text }) => {
+const NoContent: FC<{ text: string; size: number }> = ({ text, size }) => {
   const theme = useTheme();
 
   return (
@@ -12,7 +12,7 @@ const NoContent: FC<{ text: string }> = ({ text }) => {
         placeContent: 'center',
         pt: 2,
         textAlign: 'center',
-        fontSize: 26,
+        fontSize: size,
         fontWeight: 500,
         color: theme.palette.text.secondary,
       }}

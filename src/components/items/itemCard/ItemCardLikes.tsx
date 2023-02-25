@@ -36,15 +36,15 @@ const ItemCardLikes: FC<{ item: IItem }> = ({ item }) => {
 
   return (
     <Paper
+      elevation={2}
       sx={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
         px: 1.5,
-        width: '50px',
+        gap: 1,
         height: '30px',
         borderRadius: '12px',
-        cursor: 'pointer',
+        cursor: currentUser.id === item.ownerId ? 'pointer' : 'default',
       }}
       onClick={() => currentUser.id === item.ownerId && toggleLike()}
     >

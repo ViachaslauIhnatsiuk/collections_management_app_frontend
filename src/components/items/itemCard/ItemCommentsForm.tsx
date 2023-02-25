@@ -20,7 +20,6 @@ const ItemCommentsForm: FC<ItemCommentsFormProps> = (props) => {
       <Button
         type="button"
         fullWidth
-        color="success"
         variant="contained"
         disabled={!comment}
         onClick={postComment}

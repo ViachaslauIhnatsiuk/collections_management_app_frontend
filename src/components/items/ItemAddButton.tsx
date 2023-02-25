@@ -27,10 +27,11 @@ const ItemAddButton: FC<{ ownerId: string }> = ({ ownerId }) => {
         sx={{
           '& .MuiDialog-paper': {
             maxWidth: '350px',
+            m: 2,
           },
         }}
       >
-        <DialogTitle>{'Item create form'}</DialogTitle>
+        <DialogTitle sx={{ pb: 0, textAlign: 'center' }}>{'Item form'}</DialogTitle>
         <DialogContent>
           <ItemForm value="Create item" collectionId={id as string} setOpen={setOpen} />
         </DialogContent>

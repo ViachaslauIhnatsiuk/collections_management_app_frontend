@@ -1,4 +1,5 @@
 import { PayloadAction } from '@reduxjs/toolkit';
+import { IExtraField } from '../../../models/componentsModels';
 
 enum CollectionStatus {
   loading = 'loading',
@@ -13,11 +14,6 @@ enum CollectionErrors {
   delete = 'Сollection removal error',
 }
 
-interface IItemExtraFields {
-  name: string;
-  type: string;
-}
-
 interface ICollection {
   _id?: string;
   title: string;
@@ -25,7 +21,7 @@ interface ICollection {
   topic: string;
   imageUrl?: string;
   ownerId: string;
-  itemExtraFields: IItemExtraFields[];
+  itemExtraFields: IExtraField[];
 }
 
 type UpdateCollection = [Pick<ICollection, 'title' | 'description' | 'topic'>, string];

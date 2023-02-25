@@ -39,7 +39,7 @@ const ItemsPage: FC = () => {
                 <ItemsTable collectionItems={collectionItems} />
               </Stack>
             ) : (
-              <NoContent text="ITEMS" />
+              <NoContent text="ITEMS" size={26} />
             )}
             <ItemAddButton ownerId={currentCollection.ownerId} />
           </Stack>

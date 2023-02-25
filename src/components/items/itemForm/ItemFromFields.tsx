@@ -1,5 +1,5 @@
 import { FC, useMemo } from 'react';
-import { Checkbox, FormControlLabel } from '@mui/material';
+import { Box, Checkbox, FormControlLabel } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
 import { useItems } from '../../../hooks/useItems';
 import { ItemFormField } from './ItemFormField';
@@ -21,7 +21,19 @@ const ItemFormFields: FC<ItemFieldFieldsProps> = ({ itemId, extraFields }) => {
   }, [extraFields]);
 
   return (
-    <>
+    <Box
+      sx={{
+        maxHeight: 350,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 1,
+        py: 1,
+        pr: 0.5,
+        mr: -1,
+        overflow: 'auto',
+      }}
+    >
       <ItemFormField
         type="title"
         label="title"
@@ -52,7 +64,7 @@ const ItemFormFields: FC<ItemFieldFieldsProps> = ({ itemId, extraFields }) => {
           />
         );
       })}
-    </>
+    </Box>
   );
 };
 

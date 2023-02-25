@@ -1,7 +1,8 @@
-import { FC, useEffect, useState } from 'react';
-import { Paper, Typography } from '@mui/material';
+import { FC, Fragment, useEffect, useState } from 'react';
+import { Divider, Paper } from '@mui/material';
 import { ItemComment } from './ItemComment';
 import { ItemCommentsForm } from './ItemCommentsForm';
+import { NoContent } from '../../UI/NoContent';
 import { selectAuth, useAppSelector } from '../../../store/selectors';
 import { useAppDispatch } from '../../../store/store';
 import {
@@ -31,6 +32,7 @@ const ItemCommentsList: FC<{ item: IItem }> = ({ item }) => {
     const newComment: IItemComment = {
       user: currentUser.name,
       text: comment,
+      createdAt: Date.now(),
     };
 
     const updatedItem: IItem = {
@@ -45,25 +47,30 @@ const ItemCommentsList: FC<{ item: IItem }> = ({ item }) => {
 
   return (
     <>
-      <Typography variant="h6">Comments</Typography>
-      <Paper
-        sx={{
-          width: '95%',
-          maxHeight: '200px',
-          overflow: 'auto',
-          p: 2,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 1,
-          ...customScrollbarStyles,
-        }}
-      >
-        {comments.length
-          ? [...comments]
-              .reverse()
-              .map((comment, index) => <ItemComment key={index} comment={comment} />)
-          : 'Write first comment'}
-      </Paper>
+      {comments.length ? (
+        <Paper
+          sx={{
+            width: '100%',
+            maxHeight: '200px',
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'auto',
+            gap: 1,
+            px: 2,
+            py: 1,
+            ...customScrollbarStyles,
+          }}
+        >
+          {[...comments].reverse().map((comment, index) => (
+            <Fragment key={index}>
+              <ItemComment comment={comment} />
+              {comments.length !== index + 1 && <Divider variant="fullWidth" />}
+            </Fragment>
+          ))}
+        </Paper>
+      ) : (
+        <NoContent text="COMMENTS" size={18} />
+      )}
       {currentUser.id === item.ownerId && (
         <ItemCommentsForm
           comment={comment}

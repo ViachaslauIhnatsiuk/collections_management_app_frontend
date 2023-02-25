@@ -1,29 +1,27 @@
 import { FC } from 'react';
-import { Avatar, Divider, Grid, Typography } from '@mui/material';
+import { Avatar, Box, Typography, useTheme } from '@mui/material';
 import { IItemComment } from '../../../store/slices/itemSlice/itemModel';
+import { convertDate } from '../../../helpers/convertDate';
 
 const ItemComment: FC<{ comment: IItemComment }> = ({ comment }) => {
+  const theme = useTheme();
+
   return (
     <>
-      <Grid container wrap="nowrap" spacing={2}>
-        <Grid item>
-          <Avatar alt="avatar">{'U'.toUpperCase()}</Avatar>
-        </Grid>
-        <Grid justifyContent="left" item xs zeroMinWidth>
-          <Typography
-            sx={{ fontSize: 15, fontWeight: 600, margin: 0, textAlign: 'left' }}
-          >
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        <Avatar alt="avatar" sx={{ backgroundColor: theme.palette.primary.main }}>
+          {comment.user[0].toUpperCase()}
+        </Avatar>
+        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+          <Typography sx={{ fontSize: 20, fontWeight: 600, lineHeight: 1 }}>
             {comment.user}
           </Typography>
-          <Typography sx={{ fontSize: 12, lineHeight: 1.15, my: 1, textAlign: 'left' }}>
-            {comment.text}
+          <Typography sx={{ fontSize: 13, mt: 0.3 }}>{comment.text}</Typography>
+          <Typography sx={{ fontSize: 10, mt: 1 }}>
+            Posted: {convertDate(comment.createdAt)}
           </Typography>
-          <Typography sx={{ fontSize: 9, margin: 0, textAlign: 'left' }}>
-            Posted: {comment.createdAt}
-          </Typography>
-        </Grid>
-      </Grid>
-      <Divider variant="fullWidth" />
+        </Box>
+      </Box>
     </>
   );
 };

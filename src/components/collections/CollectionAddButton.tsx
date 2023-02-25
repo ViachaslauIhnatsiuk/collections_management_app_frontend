@@ -15,10 +15,10 @@ const CollectionAddButton: FC = () => {
         open={open}
         keepMounted
         onClose={() => setOpen(false)}
-        aria-describedby="alert-dialog"
         sx={{
           '& .MuiDialog-paper': {
             maxWidth: '350px',
+            m: 2,
           },
         }}
       >

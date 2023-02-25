@@ -24,12 +24,10 @@ const ItemForm: FC<ItemFormProps> = (props) => {
         component="form"
         onSubmit={handleSubmit(() => reset())}
         sx={{
-          width: '100%',
           mt: 2,
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
-          rowGap: 2,
+          gap: 1,
         }}
       >
         <ItemFormFields itemId={itemId as string} extraFields={extraFields} />

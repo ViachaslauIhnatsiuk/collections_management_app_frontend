@@ -6,11 +6,14 @@ import { CollectionEditButton } from './CollectionEditButton';
 import { CollectionViewButton } from './CollectionViewButton';
 import { ICollection } from '../../../store/slices/collectionSlice/collectionModel';
 import ReactMarkdown from 'react-markdown';
-import { selectAuth, useAppSelector } from '../../../store/selectors';
+import { selectAuth, selectUsers, useAppSelector } from '../../../store/selectors';
 
 const CollectionCard: FC<ICollection> = (props) => {
   const { _id, title, description, topic, imageUrl, ownerId } = props;
   const { currentUser } = useAppSelector(selectAuth);
+  const { users } = useAppSelector(selectUsers);
+
+  const collectionOwnerName = users.find((user) => user.id === ownerId)?.name;
 
   return (
     <Paper
@@ -27,12 +30,13 @@ const CollectionCard: FC<ICollection> = (props) => {
       <CollectionCardImage imageUrl={imageUrl as string} />
       <Paper
         elevation={4}
-        sx={{ position: 'absolute', top: '-4px', right: '-4px', px: 0.5, fontSize: 12 }}
+        sx={{ position: 'absolute', top: '-4px', left: '-4px', px: 0.5, fontSize: 12 }}
       >
-        {topic}
+        {collectionOwnerName}
       </Paper>
       <Stack sx={{ width: '100%', flexGrow: 1, px: 1 }}>
         <Typography sx={{ fontSize: 18 }}>{title}</Typography>
+        <Typography sx={{ fontSize: 14 }}>{topic}</Typography>
         <Box sx={{ fontSize: 12, lineHeight: 1.2, mt: '-8px' }}>
           <ReactMarkdown>{description}</ReactMarkdown>
         </Box>
