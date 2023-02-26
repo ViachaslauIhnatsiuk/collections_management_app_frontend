@@ -17,7 +17,7 @@ const LastAddedItemsList: FC = () => {
             .slice(0, 5)
             .map((item, index) => <LastAddedItem key={index} item={item} />)
         ) : (
-          <NoContent text="ITEMS" size={16} />
+          <NoContent text="LAST ADDED ITEMS" size={16} />
         )}
       </Stack>
     </Stack>

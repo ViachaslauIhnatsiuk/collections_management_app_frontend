@@ -1,11 +1,13 @@
 import { createContext, FC, ReactNode, useMemo, useState } from 'react';
 import { createTheme, CssBaseline, PaletteMode, ThemeProvider } from '@mui/material';
 import { themePalette } from '../constants/themePalette';
+import { selectAuth, useAppSelector } from '../store/selectors';
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 const AppThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [mode, setMode] = useState<PaletteMode>('light');
+  const { theme } = useAppSelector(selectAuth);
+  const [mode, setMode] = useState<PaletteMode>(theme);
 
   const getDesignTokens = (mode: PaletteMode) => ({
     palette: {
@@ -23,11 +25,11 @@ const AppThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
     [],
   );
 
-  const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+  const providerTheme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={providerTheme}>
         <CssBaseline />
         {children}
       </ThemeProvider>

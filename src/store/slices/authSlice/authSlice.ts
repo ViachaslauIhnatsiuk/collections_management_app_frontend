@@ -18,9 +18,9 @@ const initialState: IAuthState = {
     email: '',
     isBlocked: false,
     isAdmin: false,
-    language: 'EN',
-    theme: 'light',
   },
+  language: 'EN',
+  theme: 'light',
   status: '',
   error: '',
 };
@@ -80,15 +80,16 @@ const authSlice = createSlice({
     setAuthState: (state, { payload: user }: PayloadAction<ICurrentUserState>) => {
       state.isAuth = true;
       const { currentUser } = state;
-      const { _id, token, name, email, isBlocked, isAdmin, language, theme } = user;
+      const { _id, token, name, email, isBlocked, isAdmin } = user;
       currentUser._id = _id;
       currentUser.token = token;
       currentUser.name = name;
       currentUser.email = email;
       if (isBlocked) currentUser.isBlocked = isBlocked;
       if (isAdmin) currentUser.isAdmin = isAdmin;
-      if (language) currentUser.language = language;
-      if (theme) currentUser.theme = theme;
+    },
+    updateTheme: (state, { payload }: PayloadAction<'light' | 'dark'>) => {
+      state.theme = payload;
     },
     resetAuthState: () => initialState,
   },
@@ -104,5 +105,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { resetAuthState, setAuthState } = authSlice.actions;
+export const { setAuthState, resetAuthState, updateTheme } = authSlice.actions;
 export { authSlice, signUp, signIn };

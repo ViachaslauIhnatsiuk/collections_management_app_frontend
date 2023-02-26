@@ -18,13 +18,13 @@ interface ICurrentUserState {
   email: string;
   isBlocked: boolean;
   isAdmin: boolean;
-  language: string;
-  theme: string;
 }
 
 interface IAuthState {
   isAuth: boolean;
   currentUser: ICurrentUserState;
+  language: 'EN' | 'RU';
+  theme: 'light' | 'dark';
   status: string;
   error: string;
 }

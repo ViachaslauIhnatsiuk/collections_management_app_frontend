@@ -30,7 +30,7 @@ const LargestCollectionsList: FC = () => {
             <LargestCollectionCard key={collection._id} {...collection} />
           ))
         ) : (
-          <NoContent text="COLLECTIONS" size={16} />
+          <NoContent text="LARGEST COLLECTIONS" size={16} />
         )}
       </Stack>
     </Stack>

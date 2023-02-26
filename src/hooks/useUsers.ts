@@ -20,12 +20,14 @@ const useUsers = (userId: string) => {
 
   const removeUser = useCallback((): void => {
     dispatch(deleteUser(userId));
+
     if (currentUser._id === userId) dispatch(resetAuthState());
   }, [users]);
 
   const toggleBlockStatus = useCallback((): void => {
     const user = getUserById(userId);
     const updatedUserData = { ...user, isBlocked: !user.isBlocked };
+
     dispatch(updateUser(updatedUserData));
     if (currentUser._id === userId) dispatch(resetAuthState());
   }, [users]);
@@ -33,10 +35,16 @@ const useUsers = (userId: string) => {
   const toggleAdminStatus = useCallback((): void => {
     const user = getUserById(userId);
     const updatedUserData = { ...user, isAdmin: !user.isAdmin };
+
     dispatch(updateUser(updatedUserData));
   }, [users]);
 
-  return { getUserById, removeUser, toggleBlockStatus, toggleAdminStatus };
+  return {
+    getUserById,
+    removeUser,
+    toggleBlockStatus,
+    toggleAdminStatus,
+  };
 };
 
 export { useUsers };

@@ -1,7 +1,10 @@
-import { FC, useContext } from 'react';
+import { FC, useContext, useState } from 'react';
 import { styled, Switch } from '@mui/material';
 import { darkThemeIcon, lightThemeIcon } from '../../../constants/themeSwitcherIcons';
 import { ColorModeContext } from '../../AppThemeProvider';
+import { selectAuth, useAppSelector } from '../../../store/selectors';
+import { useAppDispatch } from '../../../store/store';
+import { updateTheme } from '../../../store/slices/authSlice/authSlice';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 56,
@@ -47,9 +50,20 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 const HeaderThemeSwitcher: FC = () => {
+  const { theme } = useAppSelector(selectAuth);
+  const [checked, setChecked] = useState(theme === 'light' ? false : true);
   const { toggleColorMode } = useContext(ColorModeContext);
+  const dispatch = useAppDispatch();
 
-  return <MaterialUISwitch onClick={toggleColorMode} />;
+  const handleThemeToggle = (): void => {
+    toggleColorMode();
+    setChecked(!checked);
+    const updatedTheme = theme === 'light' ? 'dark' : 'light';
+
+    dispatch(updateTheme(updatedTheme));
+  };
+
+  return <MaterialUISwitch checked={checked} onClick={handleThemeToggle} />;
 };
 
 export { HeaderThemeSwitcher };
