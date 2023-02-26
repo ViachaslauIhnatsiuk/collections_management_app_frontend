@@ -1,14 +1,12 @@
 import { FC, useEffect, useMemo, useState } from 'react';
-import { Box, Container, Stack, Toolbar } from '@mui/material';
+import { Box, Container, Stack } from '@mui/material';
+import { CollectionsToolbar } from '../collections/CollectionsToolbar';
+import { CollectionCard } from '../collections/collectionCard/CollectionCard';
+import { Loader } from '../UI/Loader';
+import { NoContent } from '../UI/NoContent';
 import { selectCollections, selectAuth, useAppSelector } from '../../store/selectors';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
-import { CollectionCard } from '../collections/collectionCard/CollectionCard';
-import { Loader } from '../UI/Loader';
-import { FilterBar } from '../UI/FilterBar';
-import { SortButton } from '../UI/SortButton';
-import { CollectionAddButton } from '../collections/CollectionAddButton';
-import { NoContent } from '../UI/NoContent';
 import { sortByTitle } from '../../helpers/sort';
 import { ICollection } from '../../store/slices/collectionSlice/collectionModel';
 
@@ -38,18 +36,14 @@ const UserCollectionsPage: FC = () => {
       {status !== 'loading' && !error && (
         <Container
           maxWidth="lg"
-          sx={{
-            display: 'flex',
-            placeContent: 'center',
-            py: 5,
-          }}
+          sx={{ display: 'flex', placeContent: 'center', pt: 1, pb: 5 }}
         >
           <Stack sx={{ flexGrow: 1, gap: 3 }}>
-            <Toolbar sx={{ gap: 2 }}>
-              <FilterBar setFiltered={setFilteredCollections} />
-              <SortButton sortType={sortType} setSortType={setSortType} />
-              <CollectionAddButton />
-            </Toolbar>
+            <CollectionsToolbar
+              sortType={sortType}
+              setSortType={setSortType}
+              setFilteredCollections={setFilteredCollections}
+            />
             {collectionsToRender.length ? (
               <Box
                 sx={{

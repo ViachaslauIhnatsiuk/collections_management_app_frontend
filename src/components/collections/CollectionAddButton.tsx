@@ -1,5 +1,6 @@
 import { FC, useState } from 'react';
 import { Button, Dialog, DialogTitle, DialogContent } from '@mui/material';
+import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import { CollectionForm } from './collectionForm/CollectionForm';
 
 const CollectionAddButton: FC = () => {
@@ -7,7 +8,12 @@ const CollectionAddButton: FC = () => {
 
   return (
     <>
-      <Button variant="contained" size="small" onClick={() => setOpen(true)}>
+      <Button
+        variant="contained"
+        size="small"
+        startIcon={<AddToPhotosIcon />}
+        onClick={() => setOpen(true)}
+      >
         Add collection
       </Button>
       <Dialog

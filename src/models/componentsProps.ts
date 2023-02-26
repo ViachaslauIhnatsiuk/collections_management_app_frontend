@@ -54,6 +54,12 @@ interface HeaderSearchOptionProps {
   option: IItem;
 }
 
+interface CollectionsToolbarProps {
+  sortType: string;
+  setSortType: Dispatch<SetStateAction<string>>;
+  setFilteredCollections: Dispatch<SetStateAction<string>>;
+}
+
 export type {
   MobileMenuProps,
   LoaderProps,
@@ -65,4 +71,5 @@ export type {
   SortButtonProps,
   ConfirmationModalProps,
   HeaderSearchOptionProps,
+  CollectionsToolbarProps,
 };

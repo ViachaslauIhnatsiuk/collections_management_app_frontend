@@ -16,18 +16,19 @@ const Header: FC = () => {
 
   return (
     <AppBar position="sticky">
-      <Toolbar sx={{ columnGap: 2 }}>
+      <Toolbar sx={{ gap: { sm: 2, xs: 1 } }}>
         <SidebarToggleButton />
         <HeaderLogo src={logo} />
         <HeaderSearch />
         <Box sx={{ flexGrow: 1 }} />
-        <Box sx={{ columnGap: 2, display: { xs: 'none', md: 'flex' } }}>
+        <Box sx={{ gap: 2, display: { xs: 'none', md: 'flex' } }}>
           <HeaderAuthButtons />
           <HeaderLocalization />
           <HeaderThemeSwitcher />
         </Box>
         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
           <IconButton
+            sx={{ p: 0 }}
             color="inherit"
             onClick={(e) => setMenuAnchorElement(e.currentTarget)}
           >

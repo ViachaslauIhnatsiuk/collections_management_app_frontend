@@ -26,13 +26,13 @@ const HeaderMobileMenu: FC<MobileMenuProps> = ({
       open={isMenuOpen}
       onClose={() => setMenuAnchorElement(null)}
     >
-      <MenuItem>
+      <MenuItem disableRipple sx={{ '&:hover': { backgroundColor: 'transparent' } }}>
         <HeaderAuthButtons />
       </MenuItem>
-      <MenuItem>
+      <MenuItem disableRipple sx={{ '&:hover': { backgroundColor: 'transparent' } }}>
         <HeaderLocalization />
       </MenuItem>
-      <MenuItem>
+      <MenuItem disableRipple sx={{ '&:hover': { backgroundColor: 'transparent' } }}>
         <HeaderThemeSwitcher />
       </MenuItem>
     </Menu>

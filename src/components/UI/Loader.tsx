@@ -10,7 +10,7 @@ const Loader: FC<LoaderProps> = ({ status, error }) => {
           color="secondary"
           sx={{
             position: 'absolute',
-            top: { md: 64, sm: 56 },
+            top: { sm: 64, xs: 56 },
             left: '0px',
             width: '100%',
           }}

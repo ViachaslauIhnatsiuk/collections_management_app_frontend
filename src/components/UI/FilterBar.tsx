@@ -5,7 +5,6 @@ import { FilterBarProps } from '../../models/componentsProps';
 const FilterBar: FC<FilterBarProps> = ({ setFiltered }) => {
   return (
     <TextField
-      variant="outlined"
       inputProps={{
         style: {
           padding: '4px 10px',
@@ -13,7 +12,7 @@ const FilterBar: FC<FilterBarProps> = ({ setFiltered }) => {
       }}
       autoComplete="off"
       size="small"
-      placeholder="Filter..."
+      placeholder="Filter collections"
       onChange={(e) => setFiltered(e.target.value)}
     />
   );

@@ -1,8 +1,7 @@
 import { FC } from 'react';
 import { Button } from '@mui/material';
 import { SortButtonProps } from '../../models/componentsProps';
-import NorthIcon from '@mui/icons-material/North';
-import SouthIcon from '@mui/icons-material/South';
+import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
 
 const SortButton: FC<SortButtonProps> = ({ sortType, setSortType }) => {
   const handleSort = () => {
@@ -17,11 +16,10 @@ const SortButton: FC<SortButtonProps> = ({ sortType, setSortType }) => {
     <Button
       variant="contained"
       size="small"
-      sx={{ width: 100 }}
-      startIcon={sortType === 'asc' ? <SouthIcon /> : <NorthIcon />}
+      startIcon={<SortByAlphaIcon />}
       onClick={handleSort}
     >
-      {sortType === 'asc' ? 'A-Z' : 'Z-A'}
+      SORT COLLECTIONS
     </Button>
   );
 };

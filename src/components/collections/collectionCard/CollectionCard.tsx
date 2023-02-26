@@ -29,7 +29,6 @@ const CollectionCard: FC<ICollection> = (props) => {
     >
       <CollectionCardImage imageUrl={imageUrl as string} />
       <Paper
-        elevation={4}
         sx={{ position: 'absolute', top: '-4px', left: '-4px', px: 0.5, fontSize: 12 }}
       >
         {collectionOwnerName}
@@ -44,8 +43,8 @@ const CollectionCard: FC<ICollection> = (props) => {
       <Paper
         sx={{
           position: 'absolute',
-          bottom: '-3px',
-          right: '-3px',
+          bottom: '-2px',
+          right: '-2px',
           display: 'flex',
           flexDirection: 'column',
           visibility: currentUser._id === ownerId ? 'visible' : 'hidden',
