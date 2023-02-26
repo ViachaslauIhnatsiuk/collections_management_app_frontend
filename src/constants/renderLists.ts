@@ -20,4 +20,16 @@ const tableHeaderTitles: ITableHeaderTitles[] = [
   },
 ];
 
-export { tableHeaderTitles };
+const collectionTopics = [
+  'Paper money',
+  'Coins',
+  'Model cars',
+  'Books',
+  'Baseball cards',
+  'Stamps',
+  'Fridge magnets',
+];
+
+const collectionExtraFieldsTypes = ['number', 'text', 'textfield', 'date', 'checkbox'];
+
+export { tableHeaderTitles, collectionTopics, collectionExtraFieldsTypes };

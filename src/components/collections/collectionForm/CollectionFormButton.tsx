@@ -6,7 +6,6 @@ import {
   createCollection,
   updateCollection,
 } from '../../../store/slices/collectionSlice/collectionSlice';
-import { selectAuth, useAppSelector } from '../../../store/selectors';
 import { CollectionFormButtonProps } from '../../../models/collectionFormProps';
 import { ICollectionForm } from '../../../models/componentsModels';
 
@@ -17,14 +16,18 @@ const CollectionFormButton: FC<CollectionFormButtonProps> = (props) => {
     formState: { isValid },
   } = useFormContext<ICollectionForm>();
   const dispatch = useAppDispatch();
-  const { currentUser } = useAppSelector(selectAuth);
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
 
     const itemExtraFields = extraFields.map(({ name, type }) => ({ name, type }));
 
-    const [title, description, topic] = getValues(['title', 'description', 'topic']);
+    const [title, description, topic, user] = getValues([
+      'title',
+      'description',
+      'topic',
+      'user',
+    ]);
 
     if (value === 'Create collection') {
       const newCollectionData = {
@@ -32,7 +35,7 @@ const CollectionFormButton: FC<CollectionFormButtonProps> = (props) => {
         description,
         topic,
         imageUrl,
-        ownerId: currentUser._id,
+        ownerId: user,
         itemExtraFields,
       };
 

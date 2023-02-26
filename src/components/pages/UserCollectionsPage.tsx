@@ -24,8 +24,9 @@ const UserCollectionsPage: FC = () => {
   const collectionsToRender = useMemo(() => {
     const collectionsToSort = collections.filter(
       ({ title, ownerId }) =>
-        title.toLowerCase().includes(filteredCollections.toLowerCase()) &&
-        ownerId === currentUser._id,
+        (title.toLowerCase().includes(filteredCollections.toLowerCase()) &&
+          ownerId === currentUser._id) ||
+        currentUser.isAdmin,
     );
     return sortByTitle(collectionsToSort, sortType) as ICollection[];
   }, [collections, currentUser, filteredCollections, sortType]);

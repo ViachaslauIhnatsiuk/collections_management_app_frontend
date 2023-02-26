@@ -4,9 +4,10 @@ interface IUserForm {
   password: string;
 }
 
-type CollectionFormType = 'title' | 'description' | 'topic';
+type CollectionFormType = 'user' | 'title' | 'description' | 'topic';
 
 interface ICollectionForm {
+  user: string;
   title: string;
   description: string;
   topic: string;

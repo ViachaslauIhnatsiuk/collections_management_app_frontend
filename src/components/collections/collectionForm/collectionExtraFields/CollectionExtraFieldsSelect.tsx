@@ -7,6 +7,7 @@ import {
   SelectChangeEvent,
 } from '@mui/material';
 import { CollectionExtraFieldsProps } from '../../../../models/collectionFormProps';
+import { collectionExtraFieldsTypes } from '../../../../constants/renderLists';
 
 const CollectionExtraFieldsSelect: FC<CollectionExtraFieldsProps> = (props) => {
   const { newExtraField, setNewExtraField } = props;
@@ -19,11 +20,11 @@ const CollectionExtraFieldsSelect: FC<CollectionExtraFieldsProps> = (props) => {
     <FormControl size="small" fullWidth style={{ maxWidth: 120 }}>
       <InputLabel>Data type</InputLabel>
       <Select value={newExtraField.type} label="Data type" onChange={handleChange}>
-        <MenuItem value="number">Number</MenuItem>
-        <MenuItem value="text">Text</MenuItem>
-        <MenuItem value="textfield">Textfield</MenuItem>
-        <MenuItem value="date">Date</MenuItem>
-        <MenuItem value="checkbox">Checkbox</MenuItem>
+        {collectionExtraFieldsTypes.map((type, index) => (
+          <MenuItem key={index} value={type}>
+            {type}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   );

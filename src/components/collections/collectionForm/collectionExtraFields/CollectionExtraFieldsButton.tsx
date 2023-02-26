@@ -14,7 +14,6 @@ const CollectionExtraFieldsButton: FC<CollectionExtraFieldsButtonProps> = (props
 
   return (
     <Button
-      sx={{ mt: 2 }}
       variant="contained"
       color="secondary"
       type="button"

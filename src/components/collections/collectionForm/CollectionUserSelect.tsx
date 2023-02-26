@@ -9,28 +9,36 @@ import {
 import { CollectionSelectProps } from '../../../models/collectionFormProps';
 import { useFormContext } from 'react-hook-form';
 import { CollectionFormType, ICollectionForm } from '../../../models/componentsModels';
-import { collectionTopics } from '../../../constants/renderLists';
+import { selectUsers, useAppSelector } from '../../../store/selectors';
 
-const CollectionTopicSelect: FC<CollectionSelectProps> = ({ type, value }) => {
-  const [topic, setTopic] = useState<string>(value);
+const CollectionUserSelect: FC<CollectionSelectProps> = ({ type, value }) => {
+  const [user, setUser] = useState<string>(value);
   const { register } = useFormContext<ICollectionForm>();
+  const { users } = useAppSelector(selectUsers);
 
   const handleChange = (event: SelectChangeEvent): void => {
-    setTopic(event.target.value);
+    setUser(event.target.value);
   };
 
   return (
     <FormControl size="small" fullWidth style={{ alignSelf: 'flex-end' }}>
-      <InputLabel>topic</InputLabel>
+      <InputLabel>user</InputLabel>
       <Select
-        value={topic}
-        label="topic"
+        MenuProps={{
+          PaperProps: {
+            style: {
+              maxHeight: 250,
+            },
+          },
+        }}
+        value={user}
+        label="user"
         {...register(type as CollectionFormType)}
         onChange={handleChange}
       >
-        {collectionTopics.map((topic, index) => (
-          <MenuItem key={index} value={topic}>
-            {topic}
+        {users.map((user, index) => (
+          <MenuItem key={index} value={user._id}>
+            {user.name}
           </MenuItem>
         ))}
       </Select>
@@ -38,4 +46,4 @@ const CollectionTopicSelect: FC<CollectionSelectProps> = ({ type, value }) => {
   );
 };
 
-export { CollectionTopicSelect };
+export { CollectionUserSelect };
