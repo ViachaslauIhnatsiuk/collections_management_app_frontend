@@ -7,8 +7,8 @@ enum AuthStatus {
 }
 
 enum AuthErrors {
-  signUp = 'User sign up error',
-  signIn = 'User sign in error',
+  signUp = 'Sign up error',
+  signIn = 'Sign in error',
 }
 
 interface ICurrentUserState {

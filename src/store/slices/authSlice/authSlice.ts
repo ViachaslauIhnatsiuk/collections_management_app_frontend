@@ -36,14 +36,15 @@ const signUp = createAsyncThunk(
       });
 
       if (!response.ok) {
-        throw new Error(AuthErrors.signUp);
+        const { error } = await response.json();
+        throw error;
       }
 
       const newUser = await response.json();
 
       dispatch(setAuthState(newUser));
     } catch (error) {
-      return rejectWithValue(AuthErrors.signUp);
+      return rejectWithValue(`${AuthErrors.signUp}: ${error}`);
     }
   },
 );
@@ -59,14 +60,15 @@ const signIn = createAsyncThunk(
       });
 
       if (!response.ok) {
-        throw new Error(AuthErrors.signIn);
+        const { error } = await response.json();
+        throw error;
       }
 
       const user = await response.json();
 
       dispatch(setAuthState(user));
     } catch (error) {
-      return rejectWithValue(AuthErrors.signIn);
+      return rejectWithValue(`${AuthErrors.signIn}: ${error}`);
     }
   },
 );

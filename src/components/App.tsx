@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { selectAuth, useAppSelector } from '../store/selectors';
 import { AppThemeProvider } from './AppThemeProvider';
 import { Header } from './header/Header';
+import { ToastNotification } from './UI/ToastNotification';
 import { CollectionsPage } from './pages/CollectionsPage';
 import { UserCollectionsPage } from './pages/UserCollectionsPage';
 import { MainPage } from './pages/MainPage';
@@ -20,6 +21,7 @@ const App: FC = () => {
     <AppThemeProvider>
       <BrowserRouter>
         <Header />
+        <ToastNotification />
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route
