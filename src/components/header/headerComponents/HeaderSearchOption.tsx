@@ -11,7 +11,7 @@ const HeaderSearchOption: FC<HeaderSearchOptionProps> = ({ props, option }) => {
       style={{ textDecoration: 'none' }}
     >
       <Grid container {...(props as IItem)}>
-        <Grid item xs={6}>
+        <Grid item xs={6} sx={{ color: 'text.primary' }}>
           {option.title}
         </Grid>
       </Grid>

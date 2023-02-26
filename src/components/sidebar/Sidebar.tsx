@@ -29,20 +29,20 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
           </Box>
           <Divider variant="middle" />
           <SidebarListItem title="Main" link="/" visible>
-            <AppsOutlinedIcon />
+            <AppsOutlinedIcon sx={{ color: 'primary.main' }} />
           </SidebarListItem>
           <SidebarListItem title="All collections" link="/all-collections" visible>
-            <ViewListIcon />
+            <ViewListIcon sx={{ color: 'primary.main' }} />
           </SidebarListItem>
           <SidebarListItem
             title="My collections"
             link="/user-collections"
             visible={Boolean(currentUser._id)}
           >
-            <ViewQuiltIcon />
+            <ViewQuiltIcon sx={{ color: 'primary.main' }} />
           </SidebarListItem>
           <SidebarListItem title="Admin" link="/admin" visible={currentUser.isAdmin}>
-            <SupervisorAccountIcon />
+            <SupervisorAccountIcon sx={{ color: 'primary.main' }} />
           </SidebarListItem>
         </List>
       </Box>

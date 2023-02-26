@@ -85,10 +85,26 @@ const cardImageBoxStyles = {
   },
 };
 
+const headerSearchInputStyles = {
+  py: '2px',
+  input: {
+    color: '#ffffff',
+    fontWeight: 100,
+  },
+  '& input::placeholder': {
+    color: '#ffffff',
+    fontWeight: 100,
+  },
+  '& .MuiOutlinedInput-root': {
+    '& > fieldset': { border: 'none' },
+  },
+};
+
 export {
   customScrollbarStyles,
   textareaScrollbarStyles,
   dataGridStyles,
   collectionImageBoxStyles,
   cardImageBoxStyles,
+  headerSearchInputStyles,
 };
