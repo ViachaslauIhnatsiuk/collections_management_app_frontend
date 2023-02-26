@@ -1,22 +1,21 @@
 import { FC } from 'react';
 import { Box, Paper, Stack, Typography } from '@mui/material';
-import { IItem } from '../../../store/slices/itemSlice/itemModel';
 import { ItemCommentsList } from './ItemCommentsList';
 import { ItemCardLikes } from './ItemCardLikes';
-import ReactMarkdown from 'react-markdown';
+import { ItemCardField } from './ItemCardField';
 import { ItemCommentsCounter } from './ItemCommentsCounter';
+import { IItem } from '../../../store/slices/itemSlice/itemModel';
 
 const ItemCard: FC<{ item: IItem }> = ({ item }) => {
   const {
     title,
-    description,
+    tags,
+    comments,
     _id,
     createdAt,
     updatedAt,
     collectionId,
     ownerId,
-    tags,
-    comments,
     likes,
     ...itemToRender
   } = item;
@@ -30,33 +29,32 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
     <Paper
       elevation={4}
       sx={{
-        mt: 1,
-        p: 3,
+        position: 'relative',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        px: 4,
+        py: 2,
         gap: 2,
       }}
     >
-      <Typography variant="h4">{title}</Typography>
-      <Box sx={{ color: '#2475c5', textAlign: 'center', lineHeight: 1.1 }}>
-        <ReactMarkdown>{description as string}</ReactMarkdown>
-      </Box>
-      <Stack sx={{ width: '100%' }}>
+      <Typography sx={{ fontSize: 26 }}>{title}</Typography>
+      <Stack sx={{ width: '100%', maxHeight: 150, overflow: 'auto' }}>
         {itemValues.map((value, index) => {
           return (
-            <Typography key={index} sx={{ fontSize: 16 }}>
-              {itemKeys[index]}: {value?.toString()}
-            </Typography>
+            <ItemCardField
+              key={index}
+              title={itemKeys[index]}
+              value={value?.toString() as string}
+            />
           );
         })}
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+          <Typography sx={{ fontSize: 14, fontWeight: 600 }}>Tags:</Typography>
+          <Typography sx={{ fontSize: 14 }}> {tags}</Typography>
+        </Box>
       </Stack>
-      <Stack
-        sx={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}
-      >
-        <Typography sx={{ fontSize: 16 }}>Tags: {tags}</Typography>
-        <ItemCardLikes item={item} />
-      </Stack>
+      <ItemCardLikes item={item} />
       <ItemCommentsCounter count={comments.length} />
       <ItemCommentsList item={item} />
     </Paper>

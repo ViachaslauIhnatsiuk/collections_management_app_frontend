@@ -5,16 +5,16 @@ import { ICollection } from '../../store/slices/collectionSlice/collectionModel'
 import defaultImage from '../../assets/default.jpg';
 
 const LargestCollectionCard: FC<ICollection> = (props) => {
-  const { _id, title, description, imageUrl } = props;
+  const { _id, title, topic, imageUrl } = props;
 
   return (
     <Link to={`/all-collections/${_id}`} style={{ textDecoration: 'none' }}>
-      <Card sx={{ minWidth: 170 }}>
-        <CardMedia sx={{ height: 100 }} image={imageUrl || defaultImage} title="image" />
+      <Card>
+        <CardMedia sx={{ height: 80 }} image={imageUrl || defaultImage} title="image" />
         <CardContent sx={{ pt: 1 }}>
-          <Typography variant="subtitle2">{title}</Typography>
-          <Typography variant="caption" color="text.secondary">
-            {description}
+          <Typography sx={{ fontSize: 13 }}>{title}</Typography>
+          <Typography sx={{ fontSize: 11 }} color="text.secondary">
+            {topic}
           </Typography>
         </CardContent>
       </Card>

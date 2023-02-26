@@ -5,7 +5,7 @@ import { convertDate } from '../../../helpers/convertDate';
 
 const ItemComment: FC<{ comment: IItemComment }> = ({ comment }) => {
   return (
-    <>
+    <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
         <Avatar variant="rounded" sx={{ backgroundColor: 'primary.main' }}>
           {comment.user[0].toUpperCase()}
@@ -22,7 +22,7 @@ const ItemComment: FC<{ comment: IItemComment }> = ({ comment }) => {
       <Typography sx={{ fontSize: 10, textAlign: 'end' }}>
         Posted: {convertDate(comment.createdAt)}
       </Typography>
-    </>
+    </Box>
   );
 };
 

@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { Container } from '@mui/material';
+import { Stack, Container } from '@mui/material';
 import { LastAddedItemsList } from '../main/LastAddedItemsList';
 import { LargestCollectionsList } from '../main/LargestCollectionsList';
 import { useAppDispatch } from '../../store/store';
@@ -19,8 +19,15 @@ const MainPage: FC = () => {
       maxWidth="lg"
       sx={{ pt: 3, display: 'flex', flexDirection: 'column', gap: 4 }}
     >
-      <LastAddedItemsList />
-      <LargestCollectionsList />
+      <Stack
+        sx={{
+          flexDirection: { md: 'row', sm: 'column', xs: 'column' },
+          gap: 3,
+        }}
+      >
+        <LastAddedItemsList />
+        <LargestCollectionsList />
+      </Stack>
     </Container>
   );
 };

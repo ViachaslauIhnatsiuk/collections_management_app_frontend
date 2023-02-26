@@ -52,6 +52,9 @@ const dataGridStyles = {
   '& .MuiDataGrid-columnSeparator--sideRight': {
     display: 'none',
   },
+  '& .MuiDataGrid-columnHeaders': {
+    fontSize: 16,
+  },
 };
 
 const collectionImageBoxStyles = {

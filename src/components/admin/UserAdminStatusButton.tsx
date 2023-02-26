@@ -17,7 +17,7 @@ const UserAdminStatusButton: FC<AdminStatusButtonProps> = ({ userId, isAdmin }) 
 
   return (
     <>
-      <IconButton color={isAdmin ? 'success' : 'error'} onClick={() => setOpen(true)}>
+      <IconButton color={isAdmin ? 'primary' : 'default'} onClick={() => setOpen(true)}>
         <AdminPanelSettingsIcon />
       </IconButton>
       <ConfirmationModal

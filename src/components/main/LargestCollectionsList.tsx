@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Stack, Typography } from '@mui/material';
-import { useItems } from '../../hooks/useItems';
 import { LargestCollectionCard } from './LargestCollectionCard';
+import { NoContent } from '../UI/NoContent';
+import { useItems } from '../../hooks/useItems';
 import { customScrollbarStyles } from '../../constants/componentsStyles';
 
 const LargestCollectionsList: FC = () => {
@@ -10,23 +11,27 @@ const LargestCollectionsList: FC = () => {
   const largetsCollections = getLargestCollections();
 
   return (
-    <Stack>
-      <Typography variant="h6">The largest collections</Typography>
+    <Stack sx={{ flex: '1 1 60%', alignItems: 'center' }}>
+      <Typography sx={{ fontSize: 18, textAlign: 'center' }}>
+        THE LARGEST COLLECTIONS
+      </Typography>
       <Stack
         sx={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(185px, 1fr))',
+          gap: 2,
           p: 1,
-          width: '100%',
-          flexDirection: 'row',
           overflowX: 'auto',
-          gap: 3,
           ...customScrollbarStyles,
         }}
       >
-        {largetsCollections.length
-          ? largetsCollections.map((collection) => (
-              <LargestCollectionCard key={collection._id} {...collection} />
-            ))
-          : 'There are no collections yet'}
+        {largetsCollections.length ? (
+          largetsCollections.map((collection) => (
+            <LargestCollectionCard key={collection._id} {...collection} />
+          ))
+        ) : (
+          <NoContent text="COLLECTIONS" size={16} />
+        )}
       </Stack>
     </Stack>
   );

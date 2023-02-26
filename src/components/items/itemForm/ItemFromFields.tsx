@@ -46,7 +46,19 @@ const ItemFormFields: FC<ItemFieldFieldsProps> = ({ itemId, extraFields }) => {
         return type === 'checkbox' ? (
           <FormControlLabel
             key={index}
-            control={<Checkbox />}
+            sx={{
+              width: '100%',
+              height: 40,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              m: 0,
+              pl: 1.5,
+              border: '1px solid #d3d3d3',
+              borderRadius: 1,
+              color: 'text.secondary',
+            }}
+            control={<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 26 } }} />}
             labelPlacement="start"
             label={names[index]}
             {...register(names[index])}

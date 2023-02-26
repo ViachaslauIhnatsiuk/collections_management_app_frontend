@@ -27,11 +27,13 @@ const CollectionTopicSelect: FC<CollectionSelectProps> = ({ type, value }) => {
         {...register(type as CollectionFormType)}
         onChange={handleChange}
       >
+        <MenuItem value="Paper money">Paper money</MenuItem>
         <MenuItem value="Coins">Coins</MenuItem>
-        <MenuItem value="Books">Books</MenuItem>
-        <MenuItem value="Stamps">Stamps</MenuItem>
-        <MenuItem value="Vinyl">Vinyl</MenuItem>
         <MenuItem value="Model cars">Model cars</MenuItem>
+        <MenuItem value="Books">Books</MenuItem>
+        <MenuItem value="Baseball cards">Baseball cards</MenuItem>
+        <MenuItem value="Stamps">Stamps</MenuItem>
+        <MenuItem value="Fridge magnets">Fridge magnets</MenuItem>
       </Select>
     </FormControl>
   );

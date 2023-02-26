@@ -17,7 +17,10 @@ const UserBlockButton: FC<BlockButtonProps> = ({ userId, isBlocked }) => {
 
   return (
     <>
-      <IconButton color={isBlocked ? 'error' : 'success'} onClick={() => setOpen(true)}>
+      <IconButton
+        color={isBlocked ? 'secondary' : 'default'}
+        onClick={() => setOpen(true)}
+      >
         <BlockIcon />
       </IconButton>
       <ConfirmationModal

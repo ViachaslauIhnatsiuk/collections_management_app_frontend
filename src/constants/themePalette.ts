@@ -3,7 +3,7 @@ const themePalette = {
     main: '#275459',
   },
   secondary: {
-    main: '#f50057',
+    main: '#bf0243',
   },
   warning: {
     main: '#fec400',

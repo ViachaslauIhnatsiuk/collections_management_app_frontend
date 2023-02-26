@@ -1,34 +1,24 @@
 import { FC } from 'react';
 import { Stack, Typography } from '@mui/material';
 import { selectItems, useAppSelector } from '../../store/selectors';
-import { customScrollbarStyles } from '../../constants/componentsStyles';
 import { LastAddedItem } from './LastAddedItem';
+import { NoContent } from '../UI/NoContent';
 
 const LastAddedItemsList: FC = () => {
   const { items } = useAppSelector(selectItems);
 
   return (
-    <Stack>
-      <Typography variant="h6">Last added items</Typography>
-      <Stack
-        sx={{
-          width: '100%',
-          maxHeight: '250px',
-          overflow: 'auto',
-          p: 0.5,
-          pl: 0.2,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 1,
-          ...customScrollbarStyles,
-        }}
-      >
-        {items.length
-          ? [...items]
-              .reverse()
-              .slice(0, 5)
-              .map((item, index) => <LastAddedItem key={index} item={item} />)
-          : 'No added items yet'}
+    <Stack sx={{ flex: '1 1 40%' }}>
+      <Typography sx={{ fontSize: 18, textAlign: 'center' }}>LAST ADDED ITEMS</Typography>
+      <Stack sx={{ display: 'flex', flexDirection: 'column', gap: 1, p: 1 }}>
+        {items.length ? (
+          [...items]
+            .reverse()
+            .slice(0, 5)
+            .map((item, index) => <LastAddedItem key={index} item={item} />)
+        ) : (
+          <NoContent text="ITEMS" size={16} />
+        )}
       </Stack>
     </Stack>
   );
