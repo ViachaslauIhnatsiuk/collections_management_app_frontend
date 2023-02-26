@@ -19,7 +19,11 @@ const NameField: FC = () => {
         autoComplete="off"
         {...register('name', nameRegister)}
       />
-      <Typography sx={{ fontSize: 10 }}>{errors.name?.message}</Typography>
+      <Typography
+        sx={{ fontSize: 11, alignSelf: 'flex-start', pl: 1, color: 'secondary.main' }}
+      >
+        {errors.name?.message}
+      </Typography>
     </>
   );
 };

@@ -1,9 +1,7 @@
 import { FC } from 'react';
-import { Box, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 
 const NoContent: FC<{ text: string; size: number }> = ({ text, size }) => {
-  const theme = useTheme();
-
   return (
     <Box
       sx={{
@@ -14,7 +12,7 @@ const NoContent: FC<{ text: string; size: number }> = ({ text, size }) => {
         textAlign: 'center',
         fontSize: size,
         fontWeight: 500,
-        color: theme.palette.text.secondary,
+        color: 'text.secondary',
       }}
     >
       THERE ARE NO {text} YET

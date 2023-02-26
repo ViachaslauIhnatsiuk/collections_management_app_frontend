@@ -1,15 +1,13 @@
 import { FC } from 'react';
-import { Avatar, Box, Typography, useTheme } from '@mui/material';
+import { Avatar, Box, Typography } from '@mui/material';
 import { IItemComment } from '../../../store/slices/itemSlice/itemModel';
 import { convertDate } from '../../../helpers/convertDate';
 
 const ItemComment: FC<{ comment: IItemComment }> = ({ comment }) => {
-  const theme = useTheme();
-
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <Avatar variant="rounded" sx={{ backgroundColor: theme.palette.primary.main }}>
+        <Avatar variant="rounded" sx={{ backgroundColor: 'primary.main' }}>
           {comment.user[0].toUpperCase()}
         </Avatar>
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>

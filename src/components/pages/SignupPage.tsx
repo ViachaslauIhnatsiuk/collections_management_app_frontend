@@ -4,14 +4,7 @@ import { SignupForm } from '../forms/SignupForm';
 
 const SignupPage: FC = () => {
   return (
-    <Container
-      maxWidth="md"
-      sx={{
-        display: 'grid',
-        placeContent: 'center',
-        py: 5,
-      }}
-    >
+    <Container maxWidth="xs" sx={{ mt: 20 }}>
       <SignupForm />
     </Container>
   );

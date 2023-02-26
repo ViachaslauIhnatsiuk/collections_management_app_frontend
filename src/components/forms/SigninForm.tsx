@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Avatar, Box, Typography, Container } from '@mui/material';
+import { Avatar, Box, Typography } from '@mui/material';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { EmailField } from './formComponents/EmailField';
 import { PasswordField } from './formComponents/PasswordField';
@@ -13,44 +13,36 @@ const SigninForm: FC = () => {
   const { handleSubmit, reset } = methods;
 
   return (
-    <Container
-      component="main"
-      maxWidth="xs"
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        rowGap: 1,
-        mt: 20,
-      }}
-    >
-      <Avatar sx={{ bgcolor: 'primary.main' }}>
-        <LockOpenIcon />
-      </Avatar>
-      <Typography variant="h5">Sign in</Typography>
-      <FormProvider {...methods}>
-        <Box
-          component="form"
-          onSubmit={handleSubmit(() => reset())}
-          sx={{
-            width: '100%',
-            mt: 2,
-            display: 'flex',
-            flexDirection: 'column',
-            rowGap: 1,
-          }}
-        >
-          <EmailField />
-          <PasswordField />
-          <SubmitButton value="Sign In" />
+    <FormProvider {...methods}>
+      <Box
+        component="form"
+        onSubmit={handleSubmit(() => reset())}
+        sx={{
+          width: '100%',
+          mt: 2,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 1,
+        }}
+      >
+        <Avatar sx={{ backgroundColor: 'primary.main' }}>
+          <LockOpenIcon />
+        </Avatar>
+        <Typography variant="h5">Sign in</Typography>
+        <EmailField />
+        <PasswordField />
+        <SubmitButton value="Sign In" />
+        <Typography sx={{ fontSize: 14 }}>
+          Don`t have an account?{' '}
           <Link to="/signup" style={{ textDecoration: 'none' }}>
-            <Typography sx={{ fontSize: 14, color: '#000000' }}>
-              Don`t have an account? Sign Up
+            <Typography variant="caption" sx={{ fontSize: 14, color: 'primary.main' }}>
+              Sign Up
             </Typography>
           </Link>
-        </Box>
-      </FormProvider>
-    </Container>
+        </Typography>
+      </Box>
+    </FormProvider>
   );
 };
 

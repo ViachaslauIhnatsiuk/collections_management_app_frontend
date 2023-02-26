@@ -19,7 +19,11 @@ const EmailField: FC = () => {
         autoComplete="off"
         {...register('email', emailRegister)}
       />
-      <Typography sx={{ fontSize: 10 }}>{errors.email?.message}</Typography>
+      <Typography
+        sx={{ fontSize: 11, alignSelf: 'flex-start', pl: 1, color: 'secondary.main' }}
+      >
+        {errors.email?.message}
+      </Typography>
     </>
   );
 };

@@ -21,7 +21,7 @@ const PasswordField: FC = () => {
 
   return (
     <>
-      <FormControl variant="outlined" required>
+      <FormControl variant="outlined" required fullWidth>
         <InputLabel htmlFor="password">Password</InputLabel>
         <OutlinedInput
           type={showPassword ? 'text' : 'password'}
@@ -36,7 +36,11 @@ const PasswordField: FC = () => {
           {...register('password', passwordRegister)}
         />
       </FormControl>
-      <Typography sx={{ fontSize: 10 }}>{errors.password?.message}</Typography>
+      <Typography
+        sx={{ fontSize: 11, alignSelf: 'flex-start', pl: 1, color: 'secondary.main' }}
+      >
+        {errors.password?.message}
+      </Typography>
     </>
   );
 };
