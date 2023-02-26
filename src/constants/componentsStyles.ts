@@ -58,6 +58,7 @@ const collectionImageBoxStyles = {
   width: '100%',
   height: '120px',
   mb: 1,
+  px: 1,
   overflow: 'hidden',
   border: '1px dashed #e6e6e6',
   borderRadius: '5px',

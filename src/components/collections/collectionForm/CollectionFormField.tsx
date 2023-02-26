@@ -17,7 +17,7 @@ const CollectionFormField: FC<CollectionFormFieldProps> = (props) => {
       multiline={multi}
       rows={rows}
       value={fieldValue}
-      label={type.toUpperCase()}
+      label={type}
       autoComplete="off"
       {...register(type as CollectionFormType, {
         required: true,

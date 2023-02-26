@@ -32,7 +32,7 @@ const CollectionImage: FC<CollectionImageProps> = ({ imageUrl, setImageUrl }) =>
       ) : loading ? (
         <CircularProgress />
       ) : (
-        <Typography variant="caption" align="center">
+        <Typography variant="subtitle1" align="center">
           Drag and drop your image here or click to select file
         </Typography>
       )}

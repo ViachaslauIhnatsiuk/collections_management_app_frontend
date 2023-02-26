@@ -21,7 +21,7 @@ const CollectionFormFields: FC<{ collection: ICollection }> = ({ collection }) =
         minLength={1}
         maxLength={100}
         multi={true}
-        rows={3}
+        rows={2}
         value={collection?.description || ''}
       />
     </>

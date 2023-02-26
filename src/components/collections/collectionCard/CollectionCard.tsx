@@ -36,7 +36,7 @@ const CollectionCard: FC<ICollection> = (props) => {
       <Stack sx={{ width: '100%', flexGrow: 1, px: 1 }}>
         <Typography sx={{ fontSize: 18 }}>{title}</Typography>
         <Typography sx={{ fontSize: 14 }}>{topic}</Typography>
-        <Box sx={{ fontSize: 12, lineHeight: 1.2, mt: '-8px' }}>
+        <Box sx={{ fontSize: 12, lineHeight: 1.2, mt: '-8px', wordBreak: 'break-word' }}>
           <ReactMarkdown>{description}</ReactMarkdown>
         </Box>
       </Stack>

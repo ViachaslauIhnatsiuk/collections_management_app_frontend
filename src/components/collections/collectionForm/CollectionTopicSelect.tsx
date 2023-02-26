@@ -20,10 +20,10 @@ const CollectionTopicSelect: FC<CollectionSelectProps> = ({ type, value }) => {
 
   return (
     <FormControl size="small" fullWidth style={{ alignSelf: 'flex-end' }}>
-      <InputLabel>Topic</InputLabel>
+      <InputLabel>topic</InputLabel>
       <Select
         value={topic}
-        label="Topic"
+        label="topic"
         {...register(type as CollectionFormType)}
         onChange={handleChange}
       >

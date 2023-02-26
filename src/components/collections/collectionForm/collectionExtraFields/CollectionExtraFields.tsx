@@ -11,13 +11,13 @@ const CollectionExtraFields: FC<CollectionExtraFieldsFormProps> = (props) => {
     <List
       sx={{
         width: '100%',
-        maxHeight: '90px',
+        maxHeight: '100px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: 0.5,
-        py: 0,
-        pr: 0.2,
+        gap: 0.7,
+        py: 0.5,
+        px: 0.4,
         overflow: 'auto',
         ...customScrollbarStyles,
       }}

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Box, ListItem } from '@mui/material';
+import { Box, Paper, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { CollectionExtraFieldProps } from '../../../../models/collectionFormProps';
 
@@ -12,21 +12,21 @@ const CollectionExtraField: FC<CollectionExtraFieldProps> = (props) => {
   };
 
   return (
-    <ListItem
+    <Paper
+      elevation={4}
       sx={{
-        width: '95%',
+        width: '100%',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        gap: 1,
-        border: '1px solid #dddddd',
         borderRadius: 0.5,
-        px: 0.5,
-        py: 0.1,
+        px: 0.7,
+        py: 0.5,
       }}
     >
-      <Box>Name: {extraField.name}</Box>
-      <Box>Type: {extraField.type}</Box>
+      <Typography sx={{ fontSize: 13 }}>
+        {extraField.name} ({extraField.type})
+      </Typography>
       <Box
         sx={{
           display: 'flex',
@@ -36,9 +36,9 @@ const CollectionExtraField: FC<CollectionExtraFieldProps> = (props) => {
         }}
         onClick={removeExtraField}
       >
-        <DeleteIcon />
+        <DeleteIcon color="primary" />
       </Box>
-    </ListItem>
+    </Paper>
   );
 };
 
