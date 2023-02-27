@@ -2,8 +2,11 @@ import { FC } from 'react';
 import { Button } from '@mui/material';
 import { SortButtonProps } from '../../models/componentsProps';
 import SortByAlphaIcon from '@mui/icons-material/SortByAlpha';
+import { useTranslation } from 'react-i18next';
 
 const SortButton: FC<SortButtonProps> = ({ sortType, setSortType }) => {
+  const { t } = useTranslation();
+
   const handleSort = () => {
     if (sortType === 'asc') {
       setSortType('desc');
@@ -19,7 +22,7 @@ const SortButton: FC<SortButtonProps> = ({ sortType, setSortType }) => {
       startIcon={<SortByAlphaIcon />}
       onClick={handleSort}
     >
-      SORT COLLECTIONS
+      {t('collections.sortButton')}
     </Button>
   );
 };

@@ -10,12 +10,14 @@ import { Loader } from '../UI/Loader';
 import { ItemAddButton } from '../items/ItemAddButton';
 import { NoContent } from '../UI/NoContent';
 import { BackButton } from '../UI/BackButton';
+import { useTranslation } from 'react-i18next';
 
 const ItemsPage: FC = () => {
   const { getCollectionItems, status, error } = useItems();
   const { getCollectionById } = useCollections();
   const { id } = useParams();
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getItems());
@@ -33,13 +35,13 @@ const ItemsPage: FC = () => {
             <BackButton />
             {collectionItems.length ? (
               <Stack>
-                <Typography sx={{ textAlign: 'center', fontSize: 30 }}>
+                <Typography sx={{ textAlign: 'center', fontSize: 30, mb: 1 }}>
                   {currentCollection.title}
                 </Typography>
                 <ItemsTable collectionItems={collectionItems} />
               </Stack>
             ) : (
-              <NoContent text="ITEMS" size={26} />
+              <NoContent text={t('notifications.lastAddedItemsNoContent')} size={26} />
             )}
             <ItemAddButton ownerId={currentCollection.ownerId} />
           </Stack>

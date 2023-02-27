@@ -3,7 +3,6 @@ import { FieldValues, useFormContext } from 'react-hook-form';
 import { Button } from '@mui/material';
 import { useAppDispatch } from '../../../store/store';
 import { createItem, updateItem } from '../../../store/slices/itemSlice/itemSlice';
-import { selectAuth, useAppSelector } from '../../../store/selectors';
 import { ItemFormButtonProps } from '../../../models/itemFormProps';
 import { IItemCreate, IItemUpdate } from '../../../store/slices/itemSlice/itemModel';
 import { useCollections } from '../../../hooks/useCollections';
@@ -12,7 +11,6 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
   const { value, itemId, collectionId, extraFields, setOpen } = props;
   const { getValues } = useFormContext<FieldValues>();
   const dispatch = useAppDispatch();
-  const { currentUser } = useAppSelector(selectAuth);
   const { getCollectionById } = useCollections();
 
   const collection = getCollectionById(collectionId);
@@ -29,8 +27,8 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
       const newItem: IItemCreate = {
         title,
         tags,
-        collectionId: collection.ownerId,
-        ownerId: currentUser._id,
+        collectionId,
+        ownerId: collection.ownerId,
         likes: [],
         comments: [],
       };

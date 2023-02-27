@@ -4,14 +4,15 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppDispatch } from '../../store/store';
 import { deleteItem } from '../../store/slices/itemSlice/itemSlice';
 import { ConfirmationModal } from '../UI/ConfirmationModal';
-import { ConfirmationMessages } from '../../models/componentsModels';
 import { selectAuth, useAppSelector } from '../../store/selectors';
 import { IItem } from '../../store/slices/itemSlice/itemModel';
+import { useTranslation } from 'react-i18next';
 
 const ItemRemoveButton: FC<{ itemData: IItem }> = ({ itemData }) => {
   const [open, setOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector(selectAuth);
+  const { t } = useTranslation();
 
   const removeItem = (): void => {
     dispatch(deleteItem(itemData.id as string));
@@ -20,7 +21,12 @@ const ItemRemoveButton: FC<{ itemData: IItem }> = ({ itemData }) => {
   return (
     <>
       <IconButton
-        sx={{ display: currentUser._id === itemData.ownerId ? 'inline-flex' : 'none' }}
+        sx={{
+          display:
+            currentUser._id === itemData.ownerId || currentUser.isAdmin
+              ? 'inline-flex'
+              : 'none',
+        }}
         color="primary"
         onClick={() => setOpen(true)}
       >
@@ -28,7 +34,7 @@ const ItemRemoveButton: FC<{ itemData: IItem }> = ({ itemData }) => {
       </IconButton>
       <ConfirmationModal
         open={open}
-        message={ConfirmationMessages.deleteItem}
+        message={t('confirmationModal.deleteItem')}
         setOpen={setOpen}
         actionHandler={removeItem}
       />

@@ -3,9 +3,11 @@ import { Dialog, DialogTitle, DialogContent } from '@mui/material';
 import { IconButton } from '@mui/material';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import { CollectionForm } from '../collectionForm/CollectionForm';
+import { useTranslation } from 'react-i18next';
 
 const CollectionEditButton: FC<{ id: string }> = ({ id }) => {
   const [open, setOpen] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -23,9 +25,16 @@ const CollectionEditButton: FC<{ id: string }> = ({ id }) => {
           },
         }}
       >
-        <DialogTitle>{'Collection edit form'}</DialogTitle>
+        <DialogTitle sx={{ pb: 0, textAlign: 'center' }}>
+          {t('collectionForm.collectionEditFormTitle')}
+        </DialogTitle>
         <DialogContent>
-          <CollectionForm id={id} value="Edit collection" setOpen={setOpen} />
+          <CollectionForm
+            id={id}
+            type="edit"
+            value={t('collectionForm.editCollectionButton')}
+            setOpen={setOpen}
+          />
         </DialogContent>
       </Dialog>
     </>

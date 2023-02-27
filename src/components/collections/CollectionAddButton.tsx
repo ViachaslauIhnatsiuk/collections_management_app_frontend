@@ -2,9 +2,11 @@ import { FC, useState } from 'react';
 import { Button, Dialog, DialogTitle, DialogContent } from '@mui/material';
 import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 import { CollectionForm } from './collectionForm/CollectionForm';
+import { useTranslation } from 'react-i18next';
 
 const CollectionAddButton: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -14,7 +16,7 @@ const CollectionAddButton: FC = () => {
         startIcon={<AddToPhotosIcon />}
         onClick={() => setOpen(true)}
       >
-        Add collection
+        {t('collections.addCollectionButton')}
       </Button>
       <Dialog
         transitionDuration={400}
@@ -28,9 +30,15 @@ const CollectionAddButton: FC = () => {
           },
         }}
       >
-        <DialogTitle sx={{ pb: 0, textAlign: 'center' }}>{'Collection form'}</DialogTitle>
+        <DialogTitle sx={{ pb: 0, textAlign: 'center' }}>
+          {t('collectionForm.collectionCreactionFormTitle')}
+        </DialogTitle>
         <DialogContent>
-          <CollectionForm value="Create collection" setOpen={setOpen} />
+          <CollectionForm
+            type="create"
+            value={t('collectionForm.createCollectionButton')}
+            setOpen={setOpen}
+          />
         </DialogContent>
       </Dialog>
     </>

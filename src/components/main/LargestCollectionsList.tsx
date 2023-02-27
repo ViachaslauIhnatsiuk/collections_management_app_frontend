@@ -4,16 +4,18 @@ import { LargestCollectionCard } from './LargestCollectionCard';
 import { NoContent } from '../UI/NoContent';
 import { useItems } from '../../hooks/useItems';
 import { customScrollbarStyles } from '../../constants/componentsStyles';
+import { useTranslation } from 'react-i18next';
 
 const LargestCollectionsList: FC = () => {
   const { getLargestCollections } = useItems();
+  const { t } = useTranslation();
 
-  const largetsCollections = getLargestCollections();
+  const largestCollections = getLargestCollections();
 
   return (
     <Stack sx={{ flex: '1 1 60%', alignItems: 'center' }}>
       <Typography sx={{ fontSize: 18, textAlign: 'center' }}>
-        THE LARGEST COLLECTIONS
+        {t('notifications.largestCollections')}
       </Typography>
       <Stack
         sx={{
@@ -25,12 +27,12 @@ const LargestCollectionsList: FC = () => {
           ...customScrollbarStyles,
         }}
       >
-        {largetsCollections.length ? (
-          largetsCollections.map((collection) => (
+        {largestCollections.length ? (
+          largestCollections.map((collection) => (
             <LargestCollectionCard key={collection._id} {...collection} />
           ))
         ) : (
-          <NoContent text="LARGEST COLLECTIONS" size={16} />
+          <NoContent text={t('notifications.largestCollectionsNoContent')} size={16} />
         )}
       </Stack>
     </Stack>

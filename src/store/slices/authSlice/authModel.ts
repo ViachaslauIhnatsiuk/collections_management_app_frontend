@@ -11,6 +11,10 @@ enum AuthErrors {
   signIn = 'Sign in error',
 }
 
+type LanguageType = 'en' | 'ru';
+
+type ThemeType = 'light' | 'dark';
+
 interface ICurrentUserState {
   _id: string;
   token: string;
@@ -23,8 +27,8 @@ interface ICurrentUserState {
 interface IAuthState {
   isAuth: boolean;
   currentUser: ICurrentUserState;
-  language: 'EN' | 'RU';
-  theme: 'light' | 'dark';
+  language: LanguageType;
+  theme: ThemeType;
   status: string;
   error: string;
 }
@@ -41,4 +45,12 @@ interface ISignUpData extends ISignInData {
 type ErrorPayload = PayloadAction<unknown | string>;
 
 export { AuthStatus, AuthErrors };
-export type { ICurrentUserState, IAuthState, ISignUpData, ISignInData, ErrorPayload };
+export type {
+  ICurrentUserState,
+  IAuthState,
+  ISignUpData,
+  ISignInData,
+  ErrorPayload,
+  LanguageType,
+  ThemeType,
+};

@@ -4,11 +4,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppDispatch } from '../../../store/store';
 import { deleteCollection } from '../../../store/slices/collectionSlice/collectionSlice';
 import { ConfirmationModal } from '../../UI/ConfirmationModal';
-import { ConfirmationMessages } from '../../../models/componentsModels';
+import { useTranslation } from 'react-i18next';
 
 const CollectionRemoveButton: FC<{ id: string }> = ({ id }) => {
   const [open, setOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const removeCollection = (): void => {
     dispatch(deleteCollection(id));
@@ -21,7 +22,7 @@ const CollectionRemoveButton: FC<{ id: string }> = ({ id }) => {
       </IconButton>
       <ConfirmationModal
         open={open}
-        message={ConfirmationMessages.deleteCollection}
+        message={t('confirmationModal.deleteCollection')}
         setOpen={setOpen}
         actionHandler={removeCollection}
       />

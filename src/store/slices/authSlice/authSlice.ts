@@ -7,6 +7,8 @@ import {
   ISignInData,
   AuthErrors,
   IAuthState,
+  LanguageType,
+  ThemeType,
 } from './authModel';
 
 const initialState: IAuthState = {
@@ -19,7 +21,7 @@ const initialState: IAuthState = {
     isBlocked: false,
     isAdmin: false,
   },
-  language: 'EN',
+  language: 'en',
   theme: 'light',
   status: '',
   error: '',
@@ -88,8 +90,11 @@ const authSlice = createSlice({
       if (isBlocked) currentUser.isBlocked = isBlocked;
       if (isAdmin) currentUser.isAdmin = isAdmin;
     },
-    updateTheme: (state, { payload }: PayloadAction<'light' | 'dark'>) => {
+    updateTheme: (state, { payload }: PayloadAction<ThemeType>) => {
       state.theme = payload;
+    },
+    changeLanguage: (state, { payload }: PayloadAction<LanguageType>) => {
+      state.language = payload;
     },
     resetAuthState: () => initialState,
   },
@@ -105,5 +110,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { setAuthState, resetAuthState, updateTheme } = authSlice.actions;
+export const { setAuthState, resetAuthState, updateTheme, changeLanguage } =
+  authSlice.actions;
 export { authSlice, signUp, signIn };

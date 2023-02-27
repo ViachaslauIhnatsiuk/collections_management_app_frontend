@@ -4,6 +4,7 @@ import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
+import { useTranslation } from 'react-i18next';
 import { SidebarProps } from '../../models/componentsProps';
 import { SidebarListItem } from './SidebarListItem';
 import { selectAuth, useAppSelector } from '../../store/selectors';
@@ -14,6 +15,7 @@ import logoDark from '../../assets/logo-dark.png';
 const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
   const { currentUser } = useAppSelector(selectAuth);
   const theme = useTheme();
+  const { t } = useTranslation();
 
   return (
     <Drawer
@@ -28,20 +30,28 @@ const Sidebar: FC<SidebarProps> = ({ isSidebarOpen, toggleSidebar }) => {
             <HeaderLogo src={theme.palette.mode === 'light' ? logoDark : logo} />
           </Box>
           <Divider variant="middle" />
-          <SidebarListItem title="Main" link="/" visible>
+          <SidebarListItem title={t('sidebar.main')} link="/" visible>
             <AppsOutlinedIcon sx={{ color: 'primary.main' }} />
           </SidebarListItem>
-          <SidebarListItem title="All collections" link="/all-collections" visible>
+          <SidebarListItem
+            title={t('sidebar.allCollections')}
+            link="/all-collections"
+            visible
+          >
             <ViewListIcon sx={{ color: 'primary.main' }} />
           </SidebarListItem>
           <SidebarListItem
-            title="My collections"
+            title={t('sidebar.userCollections')}
             link="/user-collections"
             visible={Boolean(currentUser._id)}
           >
             <ViewQuiltIcon sx={{ color: 'primary.main' }} />
           </SidebarListItem>
-          <SidebarListItem title="Admin" link="/admin" visible={currentUser.isAdmin}>
+          <SidebarListItem
+            title={t('sidebar.admin')}
+            link="/admin"
+            visible={currentUser.isAdmin}
+          >
             <SupervisorAccountIcon sx={{ color: 'primary.main' }} />
           </SidebarListItem>
         </List>

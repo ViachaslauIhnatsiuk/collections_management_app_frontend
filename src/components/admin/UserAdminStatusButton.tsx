@@ -3,12 +3,13 @@ import { IconButton } from '@mui/material';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { useUsers } from '../../hooks/useUsers';
 import { ConfirmationModal } from '../UI/ConfirmationModal';
-import { ConfirmationMessages } from '../../models/componentsModels';
 import { AdminStatusButtonProps } from '../../models/componentsProps';
+import { useTranslation } from 'react-i18next';
 
 const UserAdminStatusButton: FC<AdminStatusButtonProps> = ({ userId, isAdmin }) => {
   const [open, setOpen] = useState<boolean>(false);
   const { toggleAdminStatus } = useUsers(userId);
+  const { t } = useTranslation();
 
   const handleAction = (): void => {
     toggleAdminStatus();
@@ -22,7 +23,7 @@ const UserAdminStatusButton: FC<AdminStatusButtonProps> = ({ userId, isAdmin }) 
       </IconButton>
       <ConfirmationModal
         open={open}
-        message={ConfirmationMessages.changeUserStatus}
+        message={t('confirmationModal.changeUserStatus')}
         setOpen={setOpen}
         actionHandler={handleAction}
       />

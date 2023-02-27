@@ -1,7 +1,10 @@
 import { FC } from 'react';
 import { Box } from '@mui/material';
+import { selectAuth, useAppSelector } from '../../store/selectors';
 
 const NoContent: FC<{ text: string; size: number }> = ({ text, size }) => {
+  const { language } = useAppSelector(selectAuth);
+
   return (
     <Box
       sx={{
@@ -15,7 +18,7 @@ const NoContent: FC<{ text: string; size: number }> = ({ text, size }) => {
         color: 'text.secondary',
       }}
     >
-      THERE ARE NO {text} YET
+      {language === 'en' ? `THERE ARE NO ${text} YET` : `${text} ПОКА НЕТ`}
     </Box>
   );
 };

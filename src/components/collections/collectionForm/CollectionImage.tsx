@@ -3,11 +3,13 @@ import { Box, CircularProgress, Typography } from '@mui/material';
 import { storage, ref, getDownloadURL, uploadBytes } from '../../../firebase/firebase';
 import { useDropzone } from 'react-dropzone';
 import { v4 as uuidv4 } from 'uuid';
+import { useTranslation } from 'react-i18next';
 import { collectionImageBoxStyles } from '../../../constants/componentsStyles';
 import { CollectionImageProps } from '../../../models/collectionFormProps';
 
 const CollectionImage: FC<CollectionImageProps> = ({ imageUrl, setImageUrl }) => {
   const [loading, setLoading] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   const uploadImage = async (image: File) => {
     const imageRef = ref(storage, `collectionImages/${uuidv4()}`);
@@ -33,7 +35,7 @@ const CollectionImage: FC<CollectionImageProps> = ({ imageUrl, setImageUrl }) =>
         <CircularProgress />
       ) : (
         <Typography variant="subtitle1" align="center">
-          Drag and drop your image here or click to select file
+          {t('collectionForm.dragAndDropMessage')}
         </Typography>
       )}
     </Box>

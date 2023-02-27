@@ -3,9 +3,11 @@ import { Button } from '@mui/material';
 import { CollectionExtraFieldsButtonProps } from '../../../../models/collectionFormProps';
 import { initialExtraFieldValue } from '../../../../constants/initialFieldsValues';
 import { v4 as uuidv4 } from 'uuid';
+import { useTranslation } from 'react-i18next';
 
 const CollectionExtraFieldsButton: FC<CollectionExtraFieldsButtonProps> = (props) => {
   const { extraFields, newExtraField, setExtraFields, setNewExtraField } = props;
+  const { t } = useTranslation();
 
   const handleSubmit = (): void => {
     setExtraFields([...extraFields, { ...newExtraField, id: uuidv4() }]);
@@ -21,7 +23,7 @@ const CollectionExtraFieldsButton: FC<CollectionExtraFieldsButtonProps> = (props
       disabled={!newExtraField.name || !newExtraField.type}
       onClick={handleSubmit}
     >
-      Add extra field
+      {t('collectionForm.addExtraFieldButton')}
     </Button>
   );
 };

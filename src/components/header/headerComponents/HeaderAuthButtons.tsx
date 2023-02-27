@@ -4,10 +4,12 @@ import { selectAuth, useAppSelector } from '../../../store/selectors';
 import { HeaderAuthButton } from './HeaderAuthButton';
 import { useAppDispatch } from '../../../store/store';
 import { resetAuthState } from '../../../store/slices/authSlice/authSlice';
+import { useTranslation } from 'react-i18next';
 
 const HeaderAuthButtons: FC = () => {
   const { isAuth } = useAppSelector(selectAuth);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const signOut = (): void => {
     dispatch(resetAuthState());
@@ -16,11 +18,11 @@ const HeaderAuthButtons: FC = () => {
   return (
     <Box sx={{ display: 'flex', columnGap: 2 }}>
       {isAuth ? (
-        <HeaderAuthButton value="Sign Out" path="/signin" handler={signOut} />
+        <HeaderAuthButton value={t('header.signOut')} path="/signin" handler={signOut} />
       ) : (
         <>
-          <HeaderAuthButton value="Sign In" path="/signin" />
-          <HeaderAuthButton value="Sign Up" path="/signup" />
+          <HeaderAuthButton value={t('header.signIn')} path="/signin" />
+          <HeaderAuthButton value={t('header.signUp')} path="/signup" />
         </>
       )}
     </Box>

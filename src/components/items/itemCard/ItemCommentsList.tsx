@@ -13,6 +13,7 @@ import { customScrollbarStyles } from '../../../constants/componentsStyles';
 import { IItem, IItemComment } from '../../../store/slices/itemSlice/itemModel';
 import { BASE_URL } from '../../../constants/baseUrl';
 import io from 'socket.io-client';
+import { useTranslation } from 'react-i18next';
 
 const newSocket = io(BASE_URL);
 
@@ -21,6 +22,7 @@ const ItemCommentsList: FC<{ item: IItem }> = ({ item }) => {
   const [comment, setComment] = useState<string>('');
   const { currentUser } = useAppSelector(selectAuth);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     newSocket.on('recieve_comment', (data) => {
@@ -69,15 +71,16 @@ const ItemCommentsList: FC<{ item: IItem }> = ({ item }) => {
           ))}
         </Paper>
       ) : (
-        <NoContent text="COMMENTS" size={18} />
+        <NoContent text={t('items.commentsNoContent')} size={18} />
       )}
-      {currentUser._id === item.ownerId && (
-        <ItemCommentsForm
-          comment={comment}
-          setComment={setComment}
-          postComment={postComment}
-        />
-      )}
+      {currentUser._id === item.ownerId ||
+        (currentUser.isAdmin && (
+          <ItemCommentsForm
+            comment={comment}
+            setComment={setComment}
+            postComment={postComment}
+          />
+        ))}
     </>
   );
 };

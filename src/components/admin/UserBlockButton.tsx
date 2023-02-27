@@ -3,12 +3,13 @@ import { IconButton } from '@mui/material';
 import BlockIcon from '@mui/icons-material/Block';
 import { useUsers } from '../../hooks/useUsers';
 import { ConfirmationModal } from '../UI/ConfirmationModal';
-import { ConfirmationMessages } from '../../models/componentsModels';
 import { BlockButtonProps } from '../../models/componentsProps';
+import { useTranslation } from 'react-i18next';
 
 const UserBlockButton: FC<BlockButtonProps> = ({ userId, isBlocked }) => {
   const [open, setOpen] = useState<boolean>(false);
   const { toggleBlockStatus } = useUsers(userId);
+  const { t } = useTranslation();
 
   const handleAction = (): void => {
     toggleBlockStatus();
@@ -26,7 +27,9 @@ const UserBlockButton: FC<BlockButtonProps> = ({ userId, isBlocked }) => {
       <ConfirmationModal
         open={open}
         message={
-          isBlocked ? ConfirmationMessages.unblockUser : ConfirmationMessages.blockUser
+          isBlocked
+            ? t('confirmationModal.unblockUser')
+            : t('confirmationModal.blockUser')
         }
         setOpen={setOpen}
         actionHandler={handleAction}

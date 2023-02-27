@@ -9,12 +9,14 @@ import { getCollections } from '../../store/slices/collectionSlice/collectionSli
 import { useAppDispatch } from '../../store/store';
 import { sortByTitle } from '../../helpers/sort';
 import { ICollection } from '../../store/slices/collectionSlice/collectionModel';
+import { useTranslation } from 'react-i18next';
 
 const CollectionsPage: FC = () => {
   const [filteredCollections, setFilteredCollections] = useState<string>('');
   const [sortType, setSortType] = useState<string>('asc');
   const { collections, status, error } = useAppSelector(selectCollections);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getCollections());
@@ -54,7 +56,10 @@ const CollectionsPage: FC = () => {
                 ))}
               </Box>
             ) : (
-              <NoContent text="COLLECTIONS" size={26} />
+              <NoContent
+                text={t('notifications.largestCollectionsNoContent')}
+                size={26}
+              />
             )}
           </Stack>
         </Container>
