@@ -1,3 +1,4 @@
+import { AuthProvider } from 'firebase/auth';
 import { Dispatch, HTMLAttributes, ReactNode, SetStateAction } from 'react';
 import { IItem } from '../store/slices/itemSlice/itemModel';
 
@@ -60,6 +61,22 @@ interface CollectionsToolbarProps {
   setFilteredCollections: Dispatch<SetStateAction<string>>;
 }
 
+interface SocialAuthButtonProps {
+  provider: AuthProvider;
+  value: string;
+  icon: JSX.Element;
+}
+
+interface AdminStatusButtonProps {
+  userId: string;
+  isAdmin: boolean;
+}
+
+interface BlockButtonProps {
+  userId: string;
+  isBlocked: boolean;
+}
+
 export type {
   MobileMenuProps,
   LoaderProps,
@@ -72,4 +89,7 @@ export type {
   ConfirmationModalProps,
   HeaderSearchOptionProps,
   CollectionsToolbarProps,
+  SocialAuthButtonProps,
+  AdminStatusButtonProps,
+  BlockButtonProps,
 };

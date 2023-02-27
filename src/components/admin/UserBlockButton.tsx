@@ -4,7 +4,7 @@ import BlockIcon from '@mui/icons-material/Block';
 import { useUsers } from '../../hooks/useUsers';
 import { ConfirmationModal } from '../UI/ConfirmationModal';
 import { ConfirmationMessages } from '../../models/componentsModels';
-import { BlockButtonProps } from '../../models/adminButtonsProps';
+import { BlockButtonProps } from '../../models/componentsProps';
 
 const UserBlockButton: FC<BlockButtonProps> = ({ userId, isBlocked }) => {
   const [open, setOpen] = useState<boolean>(false);

@@ -4,7 +4,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { useUsers } from '../../hooks/useUsers';
 import { ConfirmationModal } from '../UI/ConfirmationModal';
 import { ConfirmationMessages } from '../../models/componentsModels';
-import { AdminStatusButtonProps } from '../../models/adminButtonsProps';
+import { AdminStatusButtonProps } from '../../models/componentsProps';
 
 const UserAdminStatusButton: FC<AdminStatusButtonProps> = ({ userId, isAdmin }) => {
   const [open, setOpen] = useState<boolean>(false);

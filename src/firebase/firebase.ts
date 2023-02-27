@@ -1,5 +1,12 @@
 import { initializeApp } from 'firebase/app';
 import { getStorage, ref, getDownloadURL, uploadBytes } from 'firebase/storage';
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  GithubAuthProvider,
+} from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -13,4 +20,19 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
 
-export { storage, ref, getDownloadURL, uploadBytes };
+const auth = getAuth();
+const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
+const githubProvider = new GithubAuthProvider();
+
+export {
+  storage,
+  auth,
+  googleProvider,
+  facebookProvider,
+  githubProvider,
+  ref,
+  getDownloadURL,
+  uploadBytes,
+  signInWithPopup,
+};

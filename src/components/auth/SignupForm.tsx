@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Avatar, Box, Typography } from '@mui/material';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
-import { NameField } from './formComponents/NameField';
-import { EmailField } from './formComponents/EmailField';
-import { PasswordField } from './formComponents/PasswordField';
-import { SubmitButton } from './formComponents/SubmitButton';
+import { NameField } from './authComponents/NameField';
+import { EmailField } from './authComponents/EmailField';
+import { PasswordField } from './authComponents/PasswordField';
+import { SubmitButton } from './authComponents/SubmitButton';
 import { IUserForm } from '../../models/componentsModels';
 
 const SignupForm: FC = () => {
