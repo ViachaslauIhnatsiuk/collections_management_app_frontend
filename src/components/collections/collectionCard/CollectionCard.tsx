@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Box, Paper, Stack, Typography } from '@mui/material';
 import { CollectionCardImage } from './CollectionCardImage';
 import { CollectionRemoveButton } from './CollectionRemoveButton';
@@ -12,6 +13,11 @@ const CollectionCard: FC<ICollection> = (props) => {
   const { _id, title, description, topic, imageUrl, ownerId } = props;
   const { currentUser } = useAppSelector(selectAuth);
   const { users } = useAppSelector(selectUsers);
+  const location = useLocation();
+
+  const editButtonsVisibility =
+    (currentUser._id === ownerId || currentUser.isAdmin) &&
+    location.pathname.includes('/user-collections');
 
   const collectionOwnerName = users.find((user) => user._id === ownerId)?.name;
 
@@ -47,7 +53,7 @@ const CollectionCard: FC<ICollection> = (props) => {
           right: '-2px',
           display: 'flex',
           flexDirection: 'column',
-          visibility: currentUser._id === ownerId ? 'visible' : 'hidden',
+          visibility: editButtonsVisibility ? 'visible' : 'hidden',
         }}
       >
         <CollectionRemoveButton id={_id as string} />
