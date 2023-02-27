@@ -14,6 +14,9 @@ const AppThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
       mode,
       ...themePalette,
     },
+    typography: {
+      fontFamily: "'Urbanist', sans-serif",
+    },
   });
 
   const colorMode = useMemo(
