@@ -32,4 +32,26 @@ const collectionTopics = [
 
 const collectionExtraFieldsTypes = ['number', 'text', 'textfield', 'date', 'checkbox'];
 
-export { tableHeaderTitles, collectionTopics, collectionExtraFieldsTypes };
+const cloudTagsPalette = [
+  '#1d4348',
+  '#6be8ff',
+  '#173a3e',
+  '#00c6eb',
+  '#05d9ff',
+  '#234d51',
+  '#476e72',
+  '#0e292e',
+  '#68878b',
+  '#becccd',
+  '#275459',
+  '#38e0ff',
+  '#e5eaeb',
+  '#93aaac',
+];
+
+export {
+  tableHeaderTitles,
+  collectionTopics,
+  collectionExtraFieldsTypes,
+  cloudTagsPalette,
+};

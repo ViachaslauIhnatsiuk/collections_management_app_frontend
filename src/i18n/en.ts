@@ -38,6 +38,7 @@ export const en = {
     createItemButton: 'Create item',
     editItemButton: 'Edit item',
     commentsNoContent: 'COMMENTS',
+    tagsModal: 'Items with selected tag',
   },
   confirmationModal: {
     actionConfirmation: 'Action confirmation',

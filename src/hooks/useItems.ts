@@ -1,7 +1,15 @@
 import { useCallback } from 'react';
 import { selectCollections, selectItems, useAppSelector } from '../store/selectors';
 import { ICollection } from '../store/slices/collectionSlice/collectionModel';
+import { groupElementsBySize } from '../helpers/groupElements';
+import { cloudTagsPalette } from '../constants/renderLists';
 import { IItem } from '../store/slices/itemSlice/itemModel';
+import { ICloudTag } from '../models/componentsModels';
+import {
+  MAX_COLLECTIONS_LENGTH,
+  MAX_CLOUD_TAGS_LENGTH,
+  MIN_LIST_LENGTH,
+} from '../constants/commonConstants';
 
 const useItems = () => {
   const { items, status, error } = useAppSelector(selectItems);
@@ -21,30 +29,53 @@ const useItems = () => {
     [items],
   );
 
+  const getCloudTagsFromItems = useCallback((): ICloudTag[] => {
+    const itemsTags = items.map((item) => item.tags).flat();
+
+    const groupedTags = groupElementsBySize(itemsTags);
+
+    const tagsList = Object.entries(groupedTags)
+      .sort(([, a], [, b]) => b - a)
+      .slice(MIN_LIST_LENGTH, MAX_CLOUD_TAGS_LENGTH);
+
+    const cloudTagsList = tagsList.map(([value, count], index) => ({
+      value,
+      count,
+      props: {
+        style: {
+          cursor: 'pointer',
+          color: cloudTagsPalette[index],
+        },
+      },
+    }));
+
+    return cloudTagsList;
+  }, [items]);
+
   const getLargestCollections = useCallback((): ICollection[] => {
     const itemsCollectionsIds = items.map((item) => item.collectionId);
 
-    const groupedCollectionsIds = itemsCollectionsIds.reduce((acc, curr) => {
-      if (acc[curr]) {
-        acc[curr] += 1;
-      } else {
-        acc[curr] = 1;
-      }
-      return acc;
-    }, {} as { [key: string]: number });
+    const groupedCollectionsIds = groupElementsBySize(itemsCollectionsIds);
 
     const sortedCollectionsIds = Object.entries(groupedCollectionsIds)
       .sort(([, a], [, b]) => b - a)
-      .map((item) => item[0]);
+      .map(([id]) => id);
 
     const largestCollections = sortedCollectionsIds
       .map((id) => collections.find(({ _id }) => _id === id) as ICollection)
-      .slice(0, 6);
+      .slice(MIN_LIST_LENGTH, MAX_COLLECTIONS_LENGTH);
 
     return largestCollections;
   }, [items]);
 
-  return { getItemById, getCollectionItems, getLargestCollections, status, error };
+  return {
+    getItemById,
+    getCollectionItems,
+    getCloudTagsFromItems,
+    getLargestCollections,
+    status,
+    error,
+  };
 };
 
 export { useItems };

@@ -38,6 +38,7 @@ export const ru = {
     createItemButton: 'Создать элемент',
     editItemButton: 'Обновить элемент',
     commentsNoContent: 'КОММЕНТАРИЕВ',
+    tagsModal: 'Элементы с выбранным тегом',
   },
   confirmationModal: {
     actionConfirmation: 'Подтверждение действия',

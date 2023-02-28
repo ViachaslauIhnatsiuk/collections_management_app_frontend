@@ -18,6 +18,7 @@ const LargestCollectionsList: FC = () => {
       </Typography>
       <Stack
         sx={{
+          maxHeight: 330,
           width: '100%',
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fill, minmax(185px, 1fr))',

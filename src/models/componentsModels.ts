@@ -31,6 +31,16 @@ interface IExtraField {
   type: string;
 }
 
+interface ICloudTag {
+  value: string;
+  count: number;
+  props?: {
+    style: {
+      cursor: string;
+    };
+  };
+}
+
 export type {
   IUserForm,
   CollectionFormType,
@@ -38,4 +48,5 @@ export type {
   ICollectionExtraFieldForm,
   ITableHeaderTitles,
   IExtraField,
+  ICloudTag,
 };

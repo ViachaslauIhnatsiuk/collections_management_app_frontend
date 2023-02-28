@@ -16,7 +16,7 @@ const LastAddedItemsList: FC = () => {
       </Typography>
       <Stack
         sx={{
-          maxHeight: 300,
+          maxHeight: 310,
           display: 'flex',
           flexDirection: 'column',
           gap: 1,
