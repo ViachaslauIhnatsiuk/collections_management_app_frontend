@@ -18,29 +18,21 @@ const LastAddedItem: FC<{ item: IItem }> = ({ item }) => {
         sx={{
           display: 'flex',
           alignItems: 'center',
-          gap: 2,
-          px: 2,
-          py: 0.5,
-          position: 'relative',
+          px: 1,
+          pt: 1,
         }}
       >
         <Stack>
-          <Typography sx={{ fontSize: 15 }}>Title: {item.title}</Typography>
-          <Typography sx={{ fontSize: 12 }}>
+          <Typography sx={{ fontSize: 15, lineHeight: 1 }}>
+            Title: {item.title}
+          </Typography>
+          <Typography sx={{ fontSize: 13 }}>
             Collection: {getCollectionById(item.collectionId)?.title}
           </Typography>
+          <Typography sx={{ fontSize: 11, mt: 0.5 }}>
+            Added: {convertDate(item.createdAt)}
+          </Typography>
         </Stack>
-        <Typography
-          sx={{
-            alignSelf: 'flex-end',
-            fontSize: 11,
-            position: 'absolute',
-            top: '5px',
-            right: '10px',
-          }}
-        >
-          Added: {convertDate(item.createdAt)}
-        </Typography>
       </Paper>
     </Link>
   );

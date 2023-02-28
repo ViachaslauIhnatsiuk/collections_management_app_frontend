@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { List } from '@mui/material';
 import { CollectionExtraField } from './CollectionExtraField';
-import { customScrollbarStyles } from '../../../../constants/componentsStyles';
 import { CollectionExtraFieldsFormProps } from '../../../../models/collectionFormProps';
 
 const CollectionExtraFields: FC<CollectionExtraFieldsFormProps> = (props) => {
@@ -19,7 +18,6 @@ const CollectionExtraFields: FC<CollectionExtraFieldsFormProps> = (props) => {
         py: 0.5,
         px: 0.4,
         overflow: 'auto',
-        ...customScrollbarStyles,
       }}
     >
       {extraFields.map((extraField, index) => (

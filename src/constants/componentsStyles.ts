@@ -1,48 +1,6 @@
-const customScrollbarStyles = {
-  '&::-webkit-scrollbar': {
-    width: 5,
-    height: 5,
-  },
-  '&::-webkit-scrollbar-track': {
-    backgroundColor: '#eeeeee',
-    borderRadius: '5px',
-  },
-  '&::-webkit-scrollbar-thumb': {
-    backgroundColor: '#d3d3d3',
-    borderRadius: '5px',
-  },
-};
-
-const textareaScrollbarStyles = {
-  'textarea::-webkit-scrollbar': {
-    width: 5,
-    height: 5,
-  },
-  'textarea::-webkit-scrollbar-track': {
-    backgroundColor: '#eeeeee',
-    borderRadius: '5px',
-  },
-  'textarea::-webkit-scrollbar-thumb': {
-    backgroundColor: '#d3d3d3',
-    borderRadius: '5px',
-  },
-};
-
 const dataGridStyles = {
   p: 2,
   minWidth: '100%',
-  '& .MuiDataGrid-virtualScroller::-webkit-scrollbar': {
-    width: 5,
-    height: 5,
-  },
-  '& .MuiDataGrid-virtualScroller::-webkit-scrollbar-track': {
-    backgroundColor: '#eeeeee',
-    borderRadius: '5px',
-  },
-  '& .MuiDataGrid-virtualScroller::-webkit-scrollbar-thumb': {
-    backgroundColor: '#d3d3d3',
-    borderRadius: '5px',
-  },
   '& .MuiDataGrid-cell:focus-within, & .MuiDataGrid-cell:focus': {
     outline: 'none',
   },
@@ -104,8 +62,6 @@ const headerSearchInputStyles = {
 };
 
 export {
-  customScrollbarStyles,
-  textareaScrollbarStyles,
   dataGridStyles,
   collectionImageBoxStyles,
   cardImageBoxStyles,

@@ -33,12 +33,12 @@ const useItems = () => {
       return acc;
     }, {} as { [key: string]: number });
 
-    const sortedCollectionsIds = Object.keys(groupedCollectionsIds).sort(
-      (a, b) => groupedCollectionsIds[a] - groupedCollectionsIds[b],
-    );
+    const sortedCollectionsIds = Object.entries(groupedCollectionsIds)
+      .sort(([, a], [, b]) => b - a)
+      .map((item) => item[0]);
 
-    const largestCollections = collections
-      .filter(({ _id }) => sortedCollectionsIds.includes(_id as string))
+    const largestCollections = sortedCollectionsIds
+      .map((id) => collections.find(({ _id }) => _id === id) as ICollection)
       .slice(0, 6);
 
     return largestCollections;

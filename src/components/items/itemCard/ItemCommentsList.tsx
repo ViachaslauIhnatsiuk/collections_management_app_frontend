@@ -9,7 +9,6 @@ import {
   updateItem,
   updateSelectedItem,
 } from '../../../store/slices/itemSlice/itemSlice';
-import { customScrollbarStyles } from '../../../constants/componentsStyles';
 import { IItem, IItemComment } from '../../../store/slices/itemSlice/itemModel';
 import { BASE_URL } from '../../../constants/baseUrl';
 import io from 'socket.io-client';
@@ -60,7 +59,6 @@ const ItemCommentsList: FC<{ item: IItem }> = ({ item }) => {
             gap: 1,
             px: 2,
             py: 1,
-            ...customScrollbarStyles,
           }}
         >
           {[...comments].reverse().map((comment, index) => (

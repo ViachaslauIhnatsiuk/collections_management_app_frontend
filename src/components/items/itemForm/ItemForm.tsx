@@ -21,6 +21,7 @@ const ItemForm: FC<ItemFormProps> = (props) => {
       <Box
         component="form"
         sx={{
+          width: { sm: 300, xs: 240 },
           mt: 2,
           display: 'flex',
           flexDirection: 'column',

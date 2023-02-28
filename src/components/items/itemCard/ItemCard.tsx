@@ -33,7 +33,7 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        px: 4,
+        px: { sm: 4, xs: 1.5 },
         py: 2,
         gap: 2,
       }}
@@ -51,7 +51,7 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
         })}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <Typography sx={{ fontSize: 14, fontWeight: 600 }}>Tags:</Typography>
-          <Typography sx={{ fontSize: 14 }}> {tags}</Typography>
+          <Typography sx={{ fontSize: 14 }}> {tags.join(', ')}</Typography>
         </Box>
       </Stack>
       <ItemCardLikes item={item} />

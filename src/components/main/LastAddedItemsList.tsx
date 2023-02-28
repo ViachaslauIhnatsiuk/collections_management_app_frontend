@@ -10,15 +10,25 @@ const LastAddedItemsList: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <Stack sx={{ flex: '1 1 40%' }}>
+    <Stack sx={{ flex: '1 1 30%' }}>
       <Typography sx={{ fontSize: 18, textAlign: 'center' }}>
         {t('notifications.lastAddedItems')}
       </Typography>
-      <Stack sx={{ display: 'flex', flexDirection: 'column', gap: 1, p: 1 }}>
+      <Stack
+        sx={{
+          maxHeight: 300,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 1,
+          px: 1,
+          py: 0.2,
+          overflow: 'auto',
+        }}
+      >
         {items.length ? (
           [...items]
             .reverse()
-            .slice(0, 5)
+            .slice(0, 15)
             .map((item, index) => <LastAddedItem key={index} item={item} />)
         ) : (
           <NoContent text={t('notifications.lastAddedItemsNoContent')} size={16} />

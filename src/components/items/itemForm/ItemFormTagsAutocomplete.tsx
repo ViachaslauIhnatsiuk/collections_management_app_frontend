@@ -4,19 +4,21 @@ import { useFormContext } from 'react-hook-form';
 import { BASE_URL } from '../../../constants/baseUrl';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
 import { v4 as uuidv4 } from 'uuid';
+import { useTranslation } from 'react-i18next';
 
 const ItemFormTagsAutocomplete: FC = () => {
   const [tagsList, setTagsList] = useState<string[]>([]);
   const { register, setValue } = useFormContext();
+  const { t } = useTranslation();
 
   const searchTags = async (newValue: string): Promise<void> => {
-    if (newValue.length > 2) {
+    if (newValue.length > 1) {
       const response = await fetch(`${BASE_URL}/items?search=${newValue}`);
       const items: IItem[] = await response.json();
-      const tags = items
-        .map((item) => item.tags)
-        .reduce((acc, curr) => [...acc, ...curr], []);
-      setTagsList(tags);
+
+      const tags = items.map((item) => item.tags).flat();
+      const listOfUniqueTags = [...new Set(tags)];
+      setTagsList(listOfUniqueTags);
     } else {
       setTagsList([]);
     }
@@ -28,11 +30,11 @@ const ItemFormTagsAutocomplete: FC = () => {
       fullWidth
       onInputChange={(_, newValue) => {
         searchTags(newValue);
+        setValue('tags', newValue);
       }}
+      freeSolo
       clearOnBlur={false}
-      noOptionsText="No results"
       options={tagsList}
-      filterOptions={(options) => options}
       getOptionLabel={(option) => option || ''}
       isOptionEqualToValue={(option, value) => option === value}
       renderOption={(props, option) => {
@@ -43,7 +45,11 @@ const ItemFormTagsAutocomplete: FC = () => {
         );
       }}
       renderInput={(params) => (
-        <TextField {...params} size="small" placeholder="Search..." />
+        <TextField
+          {...params}
+          size="small"
+          placeholder={t('header.searchPlaceholder') as string}
+        />
       )}
       {...register('tags')}
       onChange={(_, value) => {

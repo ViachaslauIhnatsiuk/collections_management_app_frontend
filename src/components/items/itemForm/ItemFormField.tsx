@@ -1,7 +1,6 @@
 import { FC, useState } from 'react';
 import { TextField } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
-import { textareaScrollbarStyles } from '../../../constants/componentsStyles';
 import { ItemFieldProps } from '../../../models/itemFormProps';
 
 const ItemFormField: FC<ItemFieldProps> = (props) => {
@@ -11,7 +10,6 @@ const ItemFormField: FC<ItemFieldProps> = (props) => {
 
   return (
     <TextField
-      sx={textareaScrollbarStyles}
       size="small"
       type={type}
       inputProps={{ minLength, maxLength }}

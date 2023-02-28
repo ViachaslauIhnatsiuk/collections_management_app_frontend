@@ -23,10 +23,27 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
     e.preventDefault();
     const [title, tags, ...fieldsNames] = getValues(['title', 'tags', ...names]);
 
+    let changedTags: string[] = [];
+
+    if (!Array.isArray(tags)) {
+      changedTags = tags
+        .split(' ')
+        .filter((item: string) => item !== '')
+        .map((tag: string) => {
+          if (tag.includes('#')) {
+            return tag.trim();
+          } else {
+            return `#${tag.trim()}`;
+          }
+        });
+    } else {
+      changedTags = tags;
+    }
+
     if (value === 'Create item') {
       const newItem: IItemCreate = {
         title,
-        tags,
+        tags: changedTags,
         collectionId,
         ownerId: collection.ownerId,
         likes: [],
@@ -40,8 +57,8 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
       dispatch(createItem([newItem, collectionId]));
     } else {
       const newItem: IItemUpdate = {
-        title: fieldsNames[0],
-        tags: [fieldsNames[1]],
+        title,
+        tags: changedTags,
       };
 
       for (let i = 0; i < fieldsNames.length; i++) {
