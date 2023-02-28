@@ -3,8 +3,8 @@ import { Autocomplete, TextField } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
 import { BASE_URL } from '../../../constants/baseUrl';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
-import { v4 as uuidv4 } from 'uuid';
 import { useTranslation } from 'react-i18next';
+import { v4 as uuidv4 } from 'uuid';
 
 const ItemFormTagsAutocomplete: FC = () => {
   const [tagsList, setTagsList] = useState<string[]>([]);
@@ -26,17 +26,18 @@ const ItemFormTagsAutocomplete: FC = () => {
 
   return (
     <Autocomplete
-      multiple
-      fullWidth
       onInputChange={(_, newValue) => {
         searchTags(newValue);
         setValue('tags', newValue);
       }}
       freeSolo
+      multiple
+      fullWidth
+      size="small"
+      limitTags={2}
       clearOnBlur={false}
       options={tagsList}
       getOptionLabel={(option) => option || ''}
-      isOptionEqualToValue={(option, value) => option === value}
       renderOption={(props, option) => {
         return (
           <li {...props} key={uuidv4()}>

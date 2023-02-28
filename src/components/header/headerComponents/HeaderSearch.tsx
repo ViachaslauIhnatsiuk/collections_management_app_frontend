@@ -12,6 +12,7 @@ const HeaderSearch: FC = () => {
     if (newValue.length > 2) {
       const response = await fetch(`${BASE_URL}/items?search=${newValue}`);
       const items = await response.json();
+
       setItemsList(items);
     } else {
       setItemsList([]);
@@ -28,8 +29,8 @@ const HeaderSearch: FC = () => {
         freeSolo
         clearOnBlur={false}
         options={itemsList}
+        filterOptions={(option) => option}
         getOptionLabel={(option) => (option as IItem).title || ''}
-        isOptionEqualToValue={(option, value) => option.title === value.title}
         renderOption={(props, option) => {
           return <HeaderSearchOption key={option._id} props={props} option={option} />;
         }}
