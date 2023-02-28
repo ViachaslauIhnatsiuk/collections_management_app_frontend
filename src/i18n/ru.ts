@@ -51,4 +51,5 @@ export const ru = {
     yes: 'да',
     no: 'нет',
   },
+  notFoundPage: 'Страница не найдена',
 };

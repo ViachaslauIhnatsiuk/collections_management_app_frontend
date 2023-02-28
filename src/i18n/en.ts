@@ -51,4 +51,5 @@ export const en = {
     yes: 'yes',
     no: 'no',
   },
+  notFoundPage: 'Page not found',
 };

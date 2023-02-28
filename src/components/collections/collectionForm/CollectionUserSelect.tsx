@@ -33,7 +33,9 @@ const CollectionUserSelect: FC<CollectionSelectProps> = ({ type, value }) => {
         }}
         value={user}
         label="user"
-        {...register(type as CollectionFormType)}
+        {...register(type as CollectionFormType, {
+          required: true,
+        })}
         onChange={handleChange}
       >
         {users.map((user, index) => (

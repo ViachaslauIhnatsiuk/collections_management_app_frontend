@@ -1,10 +1,12 @@
 import { FC } from 'react';
 import { Container, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 const NotFoundPage: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <Container
-      maxWidth="lg"
       sx={{
         height: '90vh',
         display: 'flex',
@@ -14,7 +16,7 @@ const NotFoundPage: FC = () => {
       }}
     >
       <Typography sx={{ fontSize: 60 }}>404</Typography>
-      <Typography sx={{ fontSize: 40 }}>Page not found</Typography>
+      <Typography sx={{ fontSize: 40 }}>{t('notFoundPage')}</Typography>
     </Container>
   );
 };

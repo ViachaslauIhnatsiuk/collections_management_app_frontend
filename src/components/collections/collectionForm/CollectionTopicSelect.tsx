@@ -25,7 +25,9 @@ const CollectionTopicSelect: FC<CollectionSelectProps> = ({ type, value }) => {
       <Select
         value={topic}
         label="topic"
-        {...register(type as CollectionFormType)}
+        {...register(type as CollectionFormType, {
+          required: true,
+        })}
         onChange={handleChange}
       >
         {collectionTopics.map((topic, index) => (

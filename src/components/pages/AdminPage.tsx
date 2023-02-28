@@ -18,7 +18,7 @@ const AdminPage: FC = () => {
     <>
       <Loader status={status} error={error} />
       {!error && (
-        <Container maxWidth="lg" sx={{ pt: 3 }}>
+        <Container sx={{ pt: 3 }}>
           <AdminTable users={users} />
         </Container>
       )}

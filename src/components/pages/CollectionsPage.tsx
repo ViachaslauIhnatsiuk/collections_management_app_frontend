@@ -33,10 +33,7 @@ const CollectionsPage: FC = () => {
     <>
       <Loader status={status} error={error} />
       {status !== 'loading' && !error && (
-        <Container
-          maxWidth="lg"
-          sx={{ display: 'flex', placeContent: 'center', pt: 1, pb: 5 }}
-        >
+        <Container sx={{ display: 'flex', placeContent: 'center', pt: 1, pb: 5 }}>
           <Stack sx={{ width: '100%', gap: 3 }}>
             <CollectionsToolbar
               sortType={sortType}

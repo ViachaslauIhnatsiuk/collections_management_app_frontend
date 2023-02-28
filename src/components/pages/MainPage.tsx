@@ -15,10 +15,7 @@ const MainPage: FC = () => {
   }, [dispatch]);
 
   return (
-    <Container
-      maxWidth="lg"
-      sx={{ pt: 3, display: 'flex', flexDirection: 'column', gap: 4 }}
-    >
+    <Container sx={{ pt: 3, display: 'flex', flexDirection: 'column', gap: 4 }}>
       <Stack
         sx={{
           flexDirection: { md: 'row', sm: 'column', xs: 'column' },

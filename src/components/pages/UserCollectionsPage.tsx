@@ -28,7 +28,8 @@ const UserCollectionsPage: FC = () => {
       ({ title, ownerId }) =>
         (title.toLowerCase().includes(filteredCollections.toLowerCase()) &&
           ownerId === currentUser._id) ||
-        currentUser.isAdmin,
+        (title.toLowerCase().includes(filteredCollections.toLowerCase()) &&
+          currentUser.isAdmin),
     );
     return sortByTitle(collectionsToSort, sortType) as ICollection[];
   }, [collections, currentUser, filteredCollections, sortType]);
@@ -37,10 +38,7 @@ const UserCollectionsPage: FC = () => {
     <>
       <Loader status={status} error={error} />
       {status !== 'loading' && !error && (
-        <Container
-          maxWidth="lg"
-          sx={{ display: 'flex', placeContent: 'center', pt: 1, pb: 5 }}
-        >
+        <Container sx={{ display: 'flex', placeContent: 'center', pt: 1, pb: 5 }}>
           <Stack sx={{ flexGrow: 1, gap: 3 }}>
             <CollectionsToolbar
               sortType={sortType}
