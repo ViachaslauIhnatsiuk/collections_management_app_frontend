@@ -5,6 +5,10 @@ import { useItems } from '../../../hooks/useItems';
 import { ItemFormField } from './ItemFormField';
 import { ItemFieldFieldsProps } from '../../../models/itemFormProps';
 import { ItemFormTagsAutocomplete } from './ItemFormTagsAutocomplete';
+import {
+  itemCheckboxStyles,
+  itemFormFieldsStyles,
+} from '../../../constants/componentsStyles';
 
 const ItemFormFields: FC<ItemFieldFieldsProps> = ({ itemId, extraFields }) => {
   const { register } = useFormContext();
@@ -21,19 +25,7 @@ const ItemFormFields: FC<ItemFieldFieldsProps> = ({ itemId, extraFields }) => {
   }, [extraFields]);
 
   return (
-    <Box
-      sx={{
-        maxHeight: 350,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: 1,
-        py: 1,
-        pr: 0.5,
-        mr: -1,
-        overflow: 'auto',
-      }}
-    >
+    <Box sx={itemFormFieldsStyles}>
       <ItemFormField
         type="title"
         label="title"
@@ -46,18 +38,7 @@ const ItemFormFields: FC<ItemFieldFieldsProps> = ({ itemId, extraFields }) => {
         return type === 'checkbox' ? (
           <FormControlLabel
             key={index}
-            sx={{
-              width: '100%',
-              height: 40,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              m: 0,
-              pl: 1.5,
-              border: '1px solid #d3d3d3',
-              borderRadius: 1,
-              color: 'text.secondary',
-            }}
+            sx={itemCheckboxStyles}
             control={<Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 26 } }} />}
             labelPlacement="start"
             label={names[index]}

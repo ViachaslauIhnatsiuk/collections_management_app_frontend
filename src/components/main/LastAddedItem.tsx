@@ -13,15 +13,7 @@ const LastAddedItem: FC<{ item: IItem }> = ({ item }) => {
       to={`/all-collections/${item.collectionId}/items/${item._id}`}
       style={{ textDecoration: 'none' }}
     >
-      <Paper
-        elevation={2}
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          px: 1,
-          pt: 1,
-        }}
-      >
+      <Paper elevation={2} sx={{ display: 'flex', alignItems: 'center', px: 1, pt: 1 }}>
         <Stack>
           <Typography sx={{ fontSize: 15, lineHeight: 1 }}>
             Title: {item.title}

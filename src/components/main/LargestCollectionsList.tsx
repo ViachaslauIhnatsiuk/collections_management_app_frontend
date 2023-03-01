@@ -3,6 +3,7 @@ import { Stack, Typography } from '@mui/material';
 import { LargestCollectionCard } from './LargestCollectionCard';
 import { NoContent } from '../UI/NoContent';
 import { useItems } from '../../hooks/useItems';
+import { largestCollectionsListStyles } from '../../constants/componentsStyles';
 import { useTranslation } from 'react-i18next';
 
 const LargestCollectionsList: FC = () => {
@@ -16,17 +17,7 @@ const LargestCollectionsList: FC = () => {
       <Typography sx={{ fontSize: 18, textAlign: 'center' }}>
         {t('notifications.largestCollections')}
       </Typography>
-      <Stack
-        sx={{
-          maxHeight: 330,
-          width: '100%',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(185px, 1fr))',
-          gap: 2,
-          p: 0.5,
-          overflowX: 'auto',
-        }}
-      >
+      <Stack sx={largestCollectionsListStyles}>
         {largestCollections.length ? (
           largestCollections.map((collection) => (
             <LargestCollectionCard key={collection?._id} {...collection} />

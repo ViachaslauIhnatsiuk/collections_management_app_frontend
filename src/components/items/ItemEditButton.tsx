@@ -9,20 +9,17 @@ import { useTranslation } from 'react-i18next';
 
 const ItemEditButton: FC<{ itemData: IItem }> = ({ itemData }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const { id } = useParams();
   const { currentUser } = useAppSelector(selectAuth);
+  const { id } = useParams();
   const { t } = useTranslation();
+
+  const isVisible = currentUser._id === itemData.ownerId || currentUser.isAdmin;
 
   return (
     <>
       <Tooltip title={t('tooltips.editItem')}>
         <IconButton
-          sx={{
-            display:
-              currentUser._id === itemData.ownerId || currentUser.isAdmin
-                ? 'inline-flex'
-                : 'none',
-          }}
+          sx={{ display: isVisible ? 'inline-flex' : 'none' }}
           color="primary"
           onClick={() => setOpen(true)}
         >
@@ -34,11 +31,7 @@ const ItemEditButton: FC<{ itemData: IItem }> = ({ itemData }) => {
         open={open}
         keepMounted
         onClose={() => setOpen(false)}
-        sx={{
-          '& .MuiDialog-paper': {
-            maxWidth: '350px',
-          },
-        }}
+        sx={{ '& .MuiDialog-paper': { maxWidth: '350px' } }}
       >
         <DialogTitle sx={{ pb: 0, textAlign: 'center' }}>
           {t('items.itemEditFormTitle')}

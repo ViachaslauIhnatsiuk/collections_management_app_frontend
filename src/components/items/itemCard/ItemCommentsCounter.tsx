@@ -8,10 +8,7 @@ const ItemCommentsCounter: FC<{ count: number }> = ({ count }) => {
       {count !== 0 && (
         <Badge
           sx={{ alignSelf: 'flex-start', mb: -3, ml: -1 }}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'left',
-          }}
+          anchorOrigin={{ vertical: 'top', horizontal: 'left' }}
           badgeContent={count}
           color="primary"
         >

@@ -23,12 +23,7 @@ const CollectionAddButton: FC = () => {
         open={open}
         keepMounted
         onClose={() => setOpen(false)}
-        sx={{
-          '& .MuiDialog-paper': {
-            maxWidth: '350px',
-            m: 2,
-          },
-        }}
+        sx={{ '& .MuiDialog-paper': { maxWidth: '350px', m: 2 } }}
       >
         <DialogTitle sx={{ pb: 0, textAlign: 'center' }}>
           {t('collectionForm.collectionCreactionFormTitle')}

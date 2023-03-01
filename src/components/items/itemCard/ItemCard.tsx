@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import { Box, Paper, Stack, Typography } from '@mui/material';
 import { ItemCommentsList } from './ItemCommentsList';
 import { ItemCardLikes } from './ItemCardLikes';
@@ -20,10 +20,13 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
     ...itemToRender
   } = item;
 
-  const itemKeys = Object.keys(itemToRender).map(
-    (key) => key.charAt(0).toUpperCase() + key.slice(1),
+  const itemKeys = useMemo(
+    () =>
+      Object.keys(itemToRender).map((key) => key.charAt(0).toUpperCase() + key.slice(1)),
+    [itemToRender],
   );
-  const itemValues = Object.values(itemToRender);
+
+  const itemValues = useMemo(() => Object.values(itemToRender), [itemToRender]);
 
   return (
     <Paper

@@ -6,12 +6,15 @@ import { useAppDispatch } from '../../../store/store';
 import { selectAuth, useAppSelector } from '../../../store/selectors';
 import { updateItem } from '../../../store/slices/itemSlice/itemSlice';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
+import { itemCardLikesStyles } from '../../../constants/componentsStyles';
 
 const ItemCardLikes: FC<{ item: IItem }> = ({ item }) => {
-  const likes = item.likes;
-  const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector(selectAuth);
+  const dispatch = useAppDispatch();
+  const { likes } = item;
   const [like, setLike] = useState<boolean>(likes.includes(currentUser._id));
+
+  const isActive = currentUser._id || currentUser.isAdmin;
 
   const toggleLike = () => {
     if (!like) {
@@ -37,20 +40,8 @@ const ItemCardLikes: FC<{ item: IItem }> = ({ item }) => {
   return (
     <Paper
       elevation={2}
-      sx={{
-        position: 'absolute',
-        top: -3,
-        right: -3,
-        display: 'flex',
-        alignItems: 'center',
-        alignSelf: 'flex-end',
-        px: 1.5,
-        gap: 1,
-        height: '30px',
-        borderRadius: 1,
-        cursor: currentUser._id || currentUser.isAdmin ? 'pointer' : 'default',
-      }}
-      onClick={() => (currentUser._id || currentUser.isAdmin) && toggleLike()}
+      sx={{ ...itemCardLikesStyles, cursor: isActive ? 'pointer' : 'default' }}
+      onClick={() => isActive && toggleLike()}
     >
       {likes.includes(currentUser._id) ? <ThumbUpAltIcon /> : <ThumbUpOffAltIcon />}
       <Typography sx={{ fontSize: 18 }}>{likes.length}</Typography>

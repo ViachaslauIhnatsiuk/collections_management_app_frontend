@@ -19,11 +19,7 @@ const CollectionEditButton: FC<{ id: string }> = ({ id }) => {
         open={open}
         keepMounted
         onClose={() => setOpen(false)}
-        sx={{
-          '& .MuiDialog-paper': {
-            maxWidth: '350px',
-          },
-        }}
+        sx={{ '& .MuiDialog-paper': { maxWidth: '350px' } }}
       >
         <DialogTitle sx={{ pb: 0, textAlign: 'center' }}>
           {t('collectionForm.collectionEditFormTitle')}

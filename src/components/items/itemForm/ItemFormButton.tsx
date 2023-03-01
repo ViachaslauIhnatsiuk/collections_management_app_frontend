@@ -6,12 +6,13 @@ import { createItem, updateItem } from '../../../store/slices/itemSlice/itemSlic
 import { ItemFormButtonProps } from '../../../models/itemFormProps';
 import { IItemCreate, IItemUpdate } from '../../../store/slices/itemSlice/itemModel';
 import { useCollections } from '../../../hooks/useCollections';
+import { normalizeTags } from '../../../helpers/normalizeTags';
 
 const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
   const { type, value, itemId, collectionId, extraFields, setOpen } = props;
   const { getValues } = useFormContext<FieldValues>();
-  const dispatch = useAppDispatch();
   const { getCollectionById } = useCollections();
+  const dispatch = useAppDispatch();
 
   const collection = getCollectionById(collectionId);
 
@@ -25,19 +26,10 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
 
     let changedTags: string[] = [];
 
-    if (!Array.isArray(tags)) {
-      changedTags = tags
-        .split(' ')
-        .filter((item: string) => item !== '')
-        .map((tag: string) => {
-          if (tag.includes('#')) {
-            return tag.trim();
-          } else {
-            return `#${tag.trim()}`;
-          }
-        });
-    } else {
+    if (Array.isArray(tags)) {
       changedTags = tags;
+    } else {
+      changedTags = normalizeTags(tags);
     }
 
     if (type === 'create') {
@@ -72,13 +64,7 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
   };
 
   return (
-    <Button
-      sx={{ mt: 2 }}
-      variant="contained"
-      type="submit"
-      fullWidth
-      onClick={handleSubmit}
-    >
+    <Button sx={{ mt: 2 }} variant="contained" fullWidth onClick={handleSubmit}>
       {value}
     </Button>
   );

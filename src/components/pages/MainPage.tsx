@@ -7,6 +7,7 @@ import { useAppDispatch } from '../../store/store';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { getItems } from '../../store/slices/itemSlice/itemSlice';
 import { getUsers } from '../../store/slices/usersSlice/usersSlice';
+import { mainPageContainerStyles } from '../../constants/componentsStyles';
 
 const MainPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -18,20 +19,8 @@ const MainPage: FC = () => {
   }, [dispatch]);
 
   return (
-    <Container
-      sx={{
-        pt: 3,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: { md: 10, sm: 6, xs: 3 },
-      }}
-    >
-      <Stack
-        sx={{
-          flexDirection: { md: 'row', sm: 'column', xs: 'column' },
-          gap: 3,
-        }}
-      >
+    <Container sx={mainPageContainerStyles}>
+      <Stack sx={{ flexDirection: { md: 'row', sm: 'column', xs: 'column' }, gap: 3 }}>
         <LastAddedItemsList />
         <LargestCollectionsList />
       </Stack>

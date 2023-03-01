@@ -11,14 +11,12 @@ const ItemAddButton: FC<{ ownerId: string }> = ({ ownerId }) => {
   const { id } = useParams();
   const { t } = useTranslation();
 
+  const isVisible = currentUser._id === ownerId || currentUser.isAdmin;
+
   return (
     <>
       <Button
-        sx={{
-          mt: 2,
-          visibility:
-            currentUser._id === ownerId || currentUser.isAdmin ? 'visible' : 'hidden',
-        }}
+        sx={{ mt: 2, visibility: isVisible ? 'visible' : 'hidden' }}
         variant="contained"
         size="small"
         onClick={() => setOpen(true)}
@@ -30,12 +28,7 @@ const ItemAddButton: FC<{ ownerId: string }> = ({ ownerId }) => {
         open={open}
         keepMounted
         onClose={() => setOpen(false)}
-        sx={{
-          '& .MuiDialog-paper': {
-            maxWidth: '350px',
-            m: 2,
-          },
-        }}
+        sx={{ '& .MuiDialog-paper': { maxWidth: '350px', m: 2 } }}
       >
         <DialogTitle sx={{ pb: 0, textAlign: 'center' }}>
           {t('items.itemCreationFormTitle')}

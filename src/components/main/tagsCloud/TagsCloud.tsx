@@ -30,10 +30,7 @@ const TagsCloud: FC = () => {
         tags={getCloudTagsFromItems()}
         shuffle={false}
         disableRandomColor={true}
-        colorOptions={{
-          luminosity: 'random',
-          hue: '#275459',
-        }}
+        colorOptions={{ luminosity: 'random', hue: '#275459' }}
         onClick={handleTagClick}
       />
       <Dialog

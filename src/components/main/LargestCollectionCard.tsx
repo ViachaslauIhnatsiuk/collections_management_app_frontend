@@ -14,13 +14,7 @@ const LargestCollectionCard: FC<ICollection> = (props) => {
       <Card sx={{ position: 'relative' }}>
         <Paper
           elevation={3}
-          sx={{
-            position: 'absolute',
-            top: 3,
-            right: 3,
-            px: 0.5,
-            fontSize: 12,
-          }}
+          sx={{ position: 'absolute', top: 3, right: 3, px: 0.5, fontSize: 12 }}
         >
           {getCollectionItems(_id as string).length} items
         </Paper>
@@ -31,9 +25,7 @@ const LargestCollectionCard: FC<ICollection> = (props) => {
         />
         <CardContent sx={{ pt: 1 }}>
           <Typography sx={{ fontSize: 13 }}>{title}</Typography>
-          <Typography sx={{ fontSize: 11 }} color="text.secondary">
-            {topic}
-          </Typography>
+          <Typography sx={{ fontSize: 11, color: 'text.secondary' }}>{topic}</Typography>
         </CardContent>
       </Card>
     </Link>

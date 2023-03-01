@@ -9,10 +9,11 @@ import {
   updateItem,
   updateSelectedItem,
 } from '../../../store/slices/itemSlice/itemSlice';
+import { itemsCommentsListStyles } from '../../../constants/componentsStyles';
 import { IItem, IItemComment } from '../../../store/slices/itemSlice/itemModel';
+import { BASE_URL } from '../../../constants/commonConstants';
 import io from 'socket.io-client';
 import { useTranslation } from 'react-i18next';
-import { BASE_URL } from '../../../constants/commonConstants';
 
 const newSocket = io(BASE_URL);
 
@@ -49,18 +50,7 @@ const ItemCommentsList: FC<{ item: IItem }> = ({ item }) => {
   return (
     <>
       {comments.length ? (
-        <Paper
-          sx={{
-            width: '100%',
-            maxHeight: '200px',
-            display: 'flex',
-            flexDirection: 'column',
-            overflow: 'auto',
-            gap: 1,
-            px: 2,
-            py: 1,
-          }}
-        >
+        <Paper sx={itemsCommentsListStyles}>
           {[...comments].reverse().map((comment, index) => (
             <Fragment key={index}>
               <ItemComment comment={comment} />

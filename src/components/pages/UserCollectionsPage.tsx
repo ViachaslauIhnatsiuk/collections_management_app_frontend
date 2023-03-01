@@ -9,6 +9,7 @@ import { getCollections } from '../../store/slices/collectionSlice/collectionSli
 import { useAppDispatch } from '../../store/store';
 import { useTranslation } from 'react-i18next';
 import { useCollections } from '../../hooks/useCollections';
+import { collectionsListStyles } from '../../constants/componentsStyles';
 
 const UserCollectionsPage: FC = () => {
   const [filteredCollections, setFilteredCollections] = useState<string>('');
@@ -43,13 +44,7 @@ const UserCollectionsPage: FC = () => {
               setFilteredCollections={setFilteredCollections}
             />
             {collectionsToRender.length ? (
-              <Box
-                sx={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-                  gap: 4,
-                }}
-              >
+              <Box sx={collectionsListStyles}>
                 {collectionsToRender.map((collection) => (
                   <CollectionCard key={collection._id} {...collection} />
                 ))}

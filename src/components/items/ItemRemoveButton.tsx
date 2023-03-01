@@ -10,24 +10,21 @@ import { useTranslation } from 'react-i18next';
 
 const ItemRemoveButton: FC<{ itemData: IItem }> = ({ itemData }) => {
   const [open, setOpen] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector(selectAuth);
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   const removeItem = (): void => {
     dispatch(deleteItem(itemData.id as string));
   };
 
+  const isVisible = currentUser._id === itemData.ownerId || currentUser.isAdmin;
+
   return (
     <>
       <Tooltip title={t('tooltips.deleteItem')}>
         <IconButton
-          sx={{
-            display:
-              currentUser._id === itemData.ownerId || currentUser.isAdmin
-                ? 'inline-flex'
-                : 'none',
-          }}
+          sx={{ display: isVisible ? 'inline-flex' : 'none' }}
           color="primary"
           onClick={() => setOpen(true)}
         >

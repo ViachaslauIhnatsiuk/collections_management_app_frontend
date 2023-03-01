@@ -67,6 +67,8 @@ export const en = {
     editItemButton: 'Edit item',
     commentsNoContent: 'COMMENTS',
     tagsModal: 'Items with selected tag',
+    commentLabel: 'Comment',
+    commentButton: 'Post',
   },
   confirmationModal: {
     actionConfirmation: 'Action confirmation',

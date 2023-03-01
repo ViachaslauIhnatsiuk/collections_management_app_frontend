@@ -68,6 +68,8 @@ export const ru = {
     editItemButton: 'Обновить элемент',
     commentsNoContent: 'КОММЕНТАРИЕВ',
     tagsModal: 'Элементы с выбранным тегом',
+    commentLabel: 'Комментарий',
+    commentButton: 'Разместить',
   },
   confirmationModal: {
     actionConfirmation: 'Подтверждение действия',
