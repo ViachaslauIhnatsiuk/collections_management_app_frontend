@@ -6,7 +6,7 @@ import { useAppDispatch } from '../../../store/store';
 import { signIn, signUp } from '../../../store/slices/authSlice/authSlice';
 import { IUserForm } from '../../../models/componentsModels';
 
-const SubmitButton: FC<SubmitButtonProps> = ({ value }) => {
+const SubmitButton: FC<SubmitButtonProps> = ({ type, value }) => {
   const {
     getValues,
     reset,
@@ -17,7 +17,7 @@ const SubmitButton: FC<SubmitButtonProps> = ({ value }) => {
   const handleSubmit = (): void => {
     const [name, email, password] = getValues(['name', 'email', 'password']);
 
-    if (value === 'Sign Up') {
+    if (type === 'Sign Up') {
       const signUpData = { name, email, password };
       dispatch(signUp(signUpData));
     } else {

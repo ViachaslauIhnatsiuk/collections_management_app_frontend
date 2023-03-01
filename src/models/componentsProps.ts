@@ -26,6 +26,7 @@ interface SidebarListItemProps {
 }
 
 interface SubmitButtonProps {
+  type?: string;
   value: string;
 }
 

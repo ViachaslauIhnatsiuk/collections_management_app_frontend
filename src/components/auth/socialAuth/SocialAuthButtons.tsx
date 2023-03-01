@@ -9,24 +9,27 @@ import {
   googleProvider,
 } from '../../../firebase/firebase';
 import { SocialAuthButton } from './SocialAuthButton';
+import { useTranslation } from 'react-i18next';
 
 const SocialAuthButtons: FC = () => {
+  const { t } = useTranslation();
+
   return (
     <Stack sx={{ width: '100%', alignItems: 'center', gap: 1 }}>
-      <Divider sx={{ width: '90%', my: 1 }}>or</Divider>
+      <Divider sx={{ width: '90%', my: 1 }}>{t('auth.or')}</Divider>
       <SocialAuthButton
         provider={googleProvider}
-        value="Continue with Google"
+        value={t('auth.googleAuth')}
         icon={<GoogleIcon style={{ fontSize: 22 }} />}
       />
       <SocialAuthButton
         provider={facebookProvider}
-        value="Continue with Facebook"
+        value={t('auth.facebookAuth')}
         icon={<FacebookIcon style={{ fontSize: 24 }} />}
       />
       <SocialAuthButton
         provider={githubProvider}
-        value="Continue with Github"
+        value={t('auth.githubAuth')}
         icon={<GitHubIcon style={{ fontSize: 20 }} />}
       />
     </Stack>

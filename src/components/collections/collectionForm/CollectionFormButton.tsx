@@ -11,7 +11,7 @@ import { CollectionFormButtonProps } from '../../../models/collectionFormProps';
 import { ICollectionForm } from '../../../models/componentsModels';
 
 const CollectionFormButton: FC<CollectionFormButtonProps> = (props) => {
-  const { id, value, extraFields, imageUrl, setExtraFields } = props;
+  const { id, type, value, extraFields, imageUrl, setExtraFields } = props;
   const {
     getValues,
     formState: { isValid },
@@ -31,7 +31,7 @@ const CollectionFormButton: FC<CollectionFormButtonProps> = (props) => {
       'user',
     ]);
 
-    if (value === 'Create collection') {
+    if (type === 'create') {
       const newCollectionData = {
         title,
         description,

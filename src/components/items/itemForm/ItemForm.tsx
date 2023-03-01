@@ -7,7 +7,7 @@ import { ItemFormButton } from './ItemFormButton';
 import { ItemFormProps } from '../../../models/itemFormProps';
 
 const ItemForm: FC<ItemFormProps> = (props) => {
-  const { value, itemId, collectionId, setOpen } = props;
+  const { type, value, itemId, collectionId, setOpen } = props;
   const methods = useForm({ mode: 'onBlur' });
   const { getCollectionById } = useCollections();
 
@@ -30,6 +30,7 @@ const ItemForm: FC<ItemFormProps> = (props) => {
       >
         <ItemFormFields itemId={itemId as string} extraFields={extraFields} />
         <ItemFormButton
+          type={type}
           value={value}
           itemId={itemId}
           collectionId={collectionId}

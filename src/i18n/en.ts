@@ -5,6 +5,19 @@ export const en = {
     signOut: 'Sign Out',
     searchPlaceholder: 'Search...',
   },
+  auth: {
+    signIn: 'Sign In',
+    signUp: 'Sign Up',
+    namePlaceholder: 'Name',
+    emailPlaceholder: 'Email',
+    passwordPlaceholder: 'Password',
+    or: 'or',
+    googleAuth: 'Continue with Google',
+    facebookAuth: 'Continue with Facebook',
+    githubAuth: 'Continue with Github',
+    noAccount: 'Don`t have an account?',
+    haveAccount: 'Already have an account?',
+  },
   sidebar: {
     main: 'Main',
     allCollections: 'All collections',
@@ -53,4 +66,7 @@ export const en = {
     no: 'no',
   },
   notFoundPage: 'Page not found',
+  adminPage: {
+    title: 'Users management',
+  },
 };

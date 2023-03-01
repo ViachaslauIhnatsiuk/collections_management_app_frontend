@@ -8,10 +8,12 @@ import { EmailField } from './authComponents/EmailField';
 import { PasswordField } from './authComponents/PasswordField';
 import { SubmitButton } from './authComponents/SubmitButton';
 import { IUserForm } from '../../models/componentsModels';
+import { useTranslation } from 'react-i18next';
 
 const SignupForm: FC = () => {
   const methods = useForm<IUserForm>({ mode: 'onBlur' });
   const { handleSubmit, reset } = methods;
+  const { t } = useTranslation();
 
   return (
     <FormProvider {...methods}>
@@ -30,16 +32,16 @@ const SignupForm: FC = () => {
         <Avatar sx={{ backgroundColor: 'primary.main' }}>
           <HowToRegIcon />
         </Avatar>
-        <Typography variant="h5">Sign up</Typography>
+        <Typography variant="h5">{t('auth.signUp')}</Typography>
         <NameField />
         <EmailField />
         <PasswordField />
-        <SubmitButton value="Sign Up" />
+        <SubmitButton type="Sign Up" value={t('auth.signUp')} />
         <Typography sx={{ fontSize: 14 }}>
-          Already have an account?{' '}
+          {t('auth.haveAccount')}{' '}
           <Link to="/signin" style={{ textDecoration: 'none' }}>
             <Typography variant="caption" sx={{ fontSize: 14, color: 'primary.main' }}>
-              Sign In
+              {t('auth.signIn')}
             </Typography>
           </Link>
         </Typography>

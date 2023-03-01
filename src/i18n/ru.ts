@@ -5,6 +5,19 @@ export const ru = {
     signOut: 'Выйти',
     searchPlaceholder: 'Поиск...',
   },
+  auth: {
+    signIn: 'Войти',
+    signUp: 'Зарегистрироваться',
+    namePlaceholder: 'Имя',
+    emailPlaceholder: 'Электронная почта',
+    passwordPlaceholder: 'Пароль',
+    or: 'или',
+    googleAuth: 'Продолжить с Google',
+    facebookAuth: 'Продолжить с Facebook',
+    githubAuth: 'Продолжить с Github',
+    noAccount: 'У вас ещё нет учетной записи?',
+    haveAccount: 'У вас уже есть учётная запись?',
+  },
   sidebar: {
     main: 'Главная',
     allCollections: 'Все коллекции',
@@ -53,4 +66,7 @@ export const ru = {
     no: 'нет',
   },
   notFoundPage: 'Страница не найдена',
+  adminPage: {
+    title: 'Управление пользователями',
+  },
 };

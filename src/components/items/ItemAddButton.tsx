@@ -42,6 +42,7 @@ const ItemAddButton: FC<{ ownerId: string }> = ({ ownerId }) => {
         </DialogTitle>
         <DialogContent>
           <ItemForm
+            type="create"
             value={t('items.createItemButton')}
             collectionId={id as string}
             setOpen={setOpen}

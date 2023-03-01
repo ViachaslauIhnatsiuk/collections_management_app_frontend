@@ -44,6 +44,7 @@ const CollectionForm: FC<CollectionFormProps> = ({ id, type, value, setOpen }) =
         )}
         <CollectionFormButton
           id={id}
+          type={type}
           value={value}
           imageUrl={imageUrl}
           extraFields={extraFields}

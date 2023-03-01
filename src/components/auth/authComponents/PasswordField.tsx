@@ -11,6 +11,7 @@ import {
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { passwordRegister } from '../../../constants/formValidation';
 import { IUserForm } from '../../../models/componentsModels';
+import { useTranslation } from 'react-i18next';
 
 const PasswordField: FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -18,11 +19,12 @@ const PasswordField: FC = () => {
     register,
     formState: { errors },
   } = useFormContext<IUserForm>();
+  const { t } = useTranslation();
 
   return (
     <>
       <FormControl variant="outlined" required fullWidth>
-        <InputLabel htmlFor="password">Password</InputLabel>
+        <InputLabel htmlFor="password">{t('auth.passwordPlaceholder')}</InputLabel>
         <OutlinedInput
           type={showPassword ? 'text' : 'password'}
           endAdornment={
@@ -32,7 +34,7 @@ const PasswordField: FC = () => {
               </IconButton>
             </InputAdornment>
           }
-          label="Password"
+          label={t('auth.passwordPlaceholder')}
           {...register('password', passwordRegister)}
         />
       </FormControl>

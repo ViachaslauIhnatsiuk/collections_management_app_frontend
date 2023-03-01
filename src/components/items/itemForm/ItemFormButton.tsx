@@ -8,7 +8,7 @@ import { IItemCreate, IItemUpdate } from '../../../store/slices/itemSlice/itemMo
 import { useCollections } from '../../../hooks/useCollections';
 
 const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
-  const { value, itemId, collectionId, extraFields, setOpen } = props;
+  const { type, value, itemId, collectionId, extraFields, setOpen } = props;
   const { getValues } = useFormContext<FieldValues>();
   const dispatch = useAppDispatch();
   const { getCollectionById } = useCollections();
@@ -40,7 +40,7 @@ const ItemFormButton: FC<ItemFormButtonProps> = (props) => {
       changedTags = tags;
     }
 
-    if (value === 'Create item') {
+    if (type === 'create') {
       const newItem: IItemCreate = {
         title,
         tags: changedTags,

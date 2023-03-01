@@ -3,6 +3,7 @@ import { IExtraField } from './componentsModels';
 
 interface ItemFormProps {
   value: string;
+  type?: string;
   itemId?: string;
   collectionId: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
