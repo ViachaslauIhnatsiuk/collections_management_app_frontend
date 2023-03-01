@@ -6,6 +6,7 @@ import { TagsCloud } from '../main/tagsCloud/TagsCloud';
 import { useAppDispatch } from '../../store/store';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { getItems } from '../../store/slices/itemSlice/itemSlice';
+import { getUsers } from '../../store/slices/usersSlice/usersSlice';
 
 const MainPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -13,6 +14,7 @@ const MainPage: FC = () => {
   useEffect(() => {
     dispatch(getCollections());
     dispatch(getItems());
+    dispatch(getUsers());
   }, [dispatch]);
 
   return (

@@ -71,14 +71,13 @@ const ItemCommentsList: FC<{ item: IItem }> = ({ item }) => {
       ) : (
         <NoContent text={t('items.commentsNoContent')} size={18} />
       )}
-      {currentUser._id === item.ownerId ||
-        (currentUser.isAdmin && (
-          <ItemCommentsForm
-            comment={comment}
-            setComment={setComment}
-            postComment={postComment}
-          />
-        ))}
+      {(currentUser._id || currentUser.isAdmin) && (
+        <ItemCommentsForm
+          comment={comment}
+          setComment={setComment}
+          postComment={postComment}
+        />
+      )}
     </>
   );
 };
