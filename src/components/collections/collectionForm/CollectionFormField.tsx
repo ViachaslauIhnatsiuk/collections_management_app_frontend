@@ -5,7 +5,7 @@ import { CollectionFormType, ICollectionForm } from '../../../models/componentsM
 import { CollectionFormFieldProps } from '../../../models/collectionFormProps';
 
 const CollectionFormField: FC<CollectionFormFieldProps> = (props) => {
-  const { value, type, minLength, maxLength, multi, rows } = props;
+  const { value, type, label, minLength, maxLength, multi, rows } = props;
   const [fieldValue, setFieldValue] = useState<string>(value as string);
   const { register } = useFormContext<ICollectionForm>();
 
@@ -17,7 +17,7 @@ const CollectionFormField: FC<CollectionFormFieldProps> = (props) => {
       multiline={multi}
       rows={rows}
       value={fieldValue}
-      label={type}
+      label={label}
       autoComplete="off"
       {...register(type as CollectionFormType, {
         required: true,

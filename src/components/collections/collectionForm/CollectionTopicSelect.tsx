@@ -11,7 +11,7 @@ import { useFormContext } from 'react-hook-form';
 import { CollectionFormType, ICollectionForm } from '../../../models/componentsModels';
 import { collectionTopics } from '../../../constants/renderLists';
 
-const CollectionTopicSelect: FC<CollectionSelectProps> = ({ type, value }) => {
+const CollectionTopicSelect: FC<CollectionSelectProps> = ({ type, value, label }) => {
   const [topic, setTopic] = useState<string>(value);
   const { register } = useFormContext<ICollectionForm>();
 
@@ -21,10 +21,10 @@ const CollectionTopicSelect: FC<CollectionSelectProps> = ({ type, value }) => {
 
   return (
     <FormControl size="small" fullWidth style={{ alignSelf: 'flex-end' }}>
-      <InputLabel>topic</InputLabel>
+      <InputLabel>{label}</InputLabel>
       <Select
         value={topic}
-        label="topic"
+        label={label}
         {...register(type as CollectionFormType, {
           required: true,
         })}

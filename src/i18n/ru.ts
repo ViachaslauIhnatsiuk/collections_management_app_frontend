@@ -53,6 +53,12 @@ export const ru = {
     createCollectionButton: 'Создать коллекцию',
     editCollectionButton: 'Обновить коллекцию',
     dragAndDropMessage: 'Перетащите сюда изобращение или нажмите для выбора файла',
+    userSelect: 'пользователь',
+    topicSelect: 'тема',
+    title: 'название',
+    description: 'описание',
+    extraField: 'дополнительное поле',
+    dataTypeSelect: 'тип',
   },
   items: {
     addItemButton: 'Добавить элемент',

@@ -11,6 +11,7 @@ interface CollectionFormProps {
 interface CollectionFormFieldProps {
   value?: string;
   type: string;
+  label: string;
   minLength: number;
   maxLength: number;
   multi?: boolean;
@@ -47,6 +48,7 @@ interface CollectionExtraFieldsButtonProps extends CollectionExtraFieldsFormProp
 interface CollectionSelectProps {
   type: string;
   value: string;
+  label: string;
 }
 
 interface CollectionImageProps {

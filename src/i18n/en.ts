@@ -52,6 +52,12 @@ export const en = {
     createCollectionButton: 'Create collection',
     editCollectionButton: 'Edit collection',
     dragAndDropMessage: 'Drag and drop your image here or click to select file',
+    userSelect: 'user',
+    topicSelect: 'topic',
+    title: 'title',
+    description: 'description',
+    extraField: 'extra field',
+    dataTypeSelect: 'type',
   },
   items: {
     addItemButton: 'Add item',

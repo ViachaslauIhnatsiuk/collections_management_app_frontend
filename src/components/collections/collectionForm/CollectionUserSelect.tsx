@@ -11,7 +11,7 @@ import { useFormContext } from 'react-hook-form';
 import { CollectionFormType, ICollectionForm } from '../../../models/componentsModels';
 import { selectUsers, useAppSelector } from '../../../store/selectors';
 
-const CollectionUserSelect: FC<CollectionSelectProps> = ({ type, value }) => {
+const CollectionUserSelect: FC<CollectionSelectProps> = ({ type, value, label }) => {
   const [user, setUser] = useState<string>(value);
   const { register } = useFormContext<ICollectionForm>();
   const { users } = useAppSelector(selectUsers);
@@ -22,7 +22,7 @@ const CollectionUserSelect: FC<CollectionSelectProps> = ({ type, value }) => {
 
   return (
     <FormControl size="small" fullWidth style={{ alignSelf: 'flex-end' }}>
-      <InputLabel>user</InputLabel>
+      <InputLabel>{label}</InputLabel>
       <Select
         MenuProps={{
           PaperProps: {
@@ -32,7 +32,7 @@ const CollectionUserSelect: FC<CollectionSelectProps> = ({ type, value }) => {
           },
         }}
         value={user}
-        label="user"
+        label={label}
         {...register(type as CollectionFormType, {
           required: true,
         })}
