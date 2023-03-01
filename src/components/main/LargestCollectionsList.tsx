@@ -29,7 +29,7 @@ const LargestCollectionsList: FC = () => {
       >
         {largestCollections.length ? (
           largestCollections.map((collection) => (
-            <LargestCollectionCard key={collection._id} {...collection} />
+            <LargestCollectionCard key={collection?._id} {...collection} />
           ))
         ) : (
           <NoContent text={t('notifications.largestCollectionsNoContent')} size={16} />

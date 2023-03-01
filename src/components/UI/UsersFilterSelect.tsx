@@ -15,7 +15,7 @@ const UsersFilterSelect: FC<UsersFilterSelectProps> = ({ filterUser, setFilterUs
   const { t } = useTranslation();
 
   const handleChange = (event: SelectChangeEvent): void => {
-    setFilterUser(event.target.value);
+    setFilterUser?.(event.target.value);
   };
 
   return (

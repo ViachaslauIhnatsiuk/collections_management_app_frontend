@@ -9,8 +9,8 @@ interface MobileMenuProps {
 }
 
 interface LoaderProps {
-  status: string;
-  error: string;
+  status?: string;
+  error?: string;
 }
 
 interface SidebarProps {
