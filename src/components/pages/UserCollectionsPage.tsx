@@ -1,22 +1,21 @@
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Box, Container, Stack } from '@mui/material';
 import { CollectionsToolbar } from '../collections/CollectionsToolbar';
 import { CollectionCard } from '../collections/collectionCard/CollectionCard';
 import { Loader } from '../UI/Loader';
 import { NoContent } from '../UI/NoContent';
-import { selectCollections, selectAuth, useAppSelector } from '../../store/selectors';
+import { selectCollections, useAppSelector } from '../../store/selectors';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
-import { sortByTitle } from '../../helpers/sort';
-import { ICollection } from '../../store/slices/collectionSlice/collectionModel';
 import { useTranslation } from 'react-i18next';
+import { useCollections } from '../../hooks/useCollections';
 
 const UserCollectionsPage: FC = () => {
-  const { currentUser } = useAppSelector(selectAuth);
   const [filteredCollections, setFilteredCollections] = useState<string>('');
   const [sortType, setSortType] = useState<string>('asc');
   const [filterUser, setFilterUser] = useState<string>('All');
-  const { collections, status, error } = useAppSelector(selectCollections);
+  const { getUserPageCollections } = useCollections();
+  const { status, error } = useAppSelector(selectCollections);
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
@@ -24,20 +23,11 @@ const UserCollectionsPage: FC = () => {
     dispatch(getCollections());
   }, [dispatch]);
 
-  const collectionsToRender = useMemo(() => {
-    const filtered = collections.filter(
-      ({ title, ownerId }) =>
-        (title.toLowerCase().includes(filteredCollections.toLowerCase()) &&
-          ownerId === currentUser._id) ||
-        (title.toLowerCase().includes(filteredCollections.toLowerCase()) &&
-          currentUser.isAdmin),
-    );
-    const collectionsToSort =
-      filterUser !== 'All'
-        ? filtered.filter(({ ownerId }) => ownerId === filterUser)
-        : filtered;
-    return sortByTitle(collectionsToSort, sortType) as ICollection[];
-  }, [collections, currentUser, filteredCollections, sortType, filterUser]);
+  const collectionsToRender = getUserPageCollections(
+    filteredCollections,
+    sortType,
+    filterUser,
+  );
 
   return (
     <>

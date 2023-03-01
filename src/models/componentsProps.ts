@@ -79,8 +79,8 @@ interface BlockButtonProps {
 }
 
 interface UsersFilterSelectProps {
-  filterUser: string;
-  setFilterUser: Dispatch<SetStateAction<string>>;
+  filterUser?: string;
+  setFilterUser?: Dispatch<SetStateAction<string>>;
 }
 
 export type {

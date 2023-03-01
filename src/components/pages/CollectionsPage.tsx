@@ -1,4 +1,4 @@
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Box, Container, Stack } from '@mui/material';
 import { CollectionsToolbar } from '../collections/CollectionsToolbar';
 import { CollectionCard } from '../collections/collectionCard/CollectionCard';
@@ -7,14 +7,14 @@ import { NoContent } from '../UI/NoContent';
 import { selectCollections, useAppSelector } from '../../store/selectors';
 import { getCollections } from '../../store/slices/collectionSlice/collectionSlice';
 import { useAppDispatch } from '../../store/store';
-import { sortByTitle } from '../../helpers/sort';
-import { ICollection } from '../../store/slices/collectionSlice/collectionModel';
 import { useTranslation } from 'react-i18next';
+import { useCollections } from '../../hooks/useCollections';
 
 const CollectionsPage: FC = () => {
   const [filteredCollections, setFilteredCollections] = useState<string>('');
   const [sortType, setSortType] = useState<string>('asc');
-  const { collections, status, error } = useAppSelector(selectCollections);
+  const { getAllCollections } = useCollections();
+  const { status, error } = useAppSelector(selectCollections);
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
@@ -22,12 +22,7 @@ const CollectionsPage: FC = () => {
     dispatch(getCollections());
   }, [dispatch]);
 
-  const collectionsToRender = useMemo(() => {
-    const collectionsToSort = collections.filter(({ title }) =>
-      title.toLowerCase().includes(filteredCollections.toLowerCase()),
-    );
-    return sortByTitle(collectionsToSort, sortType) as ICollection[];
-  }, [collections, filteredCollections, sortType]);
+  const collectionsToRender = getAllCollections(filteredCollections, sortType);
 
   return (
     <>
