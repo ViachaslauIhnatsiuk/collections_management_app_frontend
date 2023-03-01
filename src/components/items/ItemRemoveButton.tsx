@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { IconButton } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useAppDispatch } from '../../store/store';
 import { deleteItem } from '../../store/slices/itemSlice/itemSlice';
@@ -20,18 +20,20 @@ const ItemRemoveButton: FC<{ itemData: IItem }> = ({ itemData }) => {
 
   return (
     <>
-      <IconButton
-        sx={{
-          display:
-            currentUser._id === itemData.ownerId || currentUser.isAdmin
-              ? 'inline-flex'
-              : 'none',
-        }}
-        color="primary"
-        onClick={() => setOpen(true)}
-      >
-        <DeleteIcon />
-      </IconButton>
+      <Tooltip title={t('tooltips.deleteItem')}>
+        <IconButton
+          sx={{
+            display:
+              currentUser._id === itemData.ownerId || currentUser.isAdmin
+                ? 'inline-flex'
+                : 'none',
+          }}
+          color="primary"
+          onClick={() => setOpen(true)}
+        >
+          <DeleteIcon />
+        </IconButton>
+      </Tooltip>
       <ConfirmationModal
         open={open}
         message={t('confirmationModal.deleteItem')}

@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { IconButton } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { useUsers } from '../../hooks/useUsers';
 import { ConfirmationModal } from '../UI/ConfirmationModal';
@@ -18,9 +18,11 @@ const UserAdminStatusButton: FC<AdminStatusButtonProps> = ({ userId, isAdmin }) 
 
   return (
     <>
-      <IconButton color={isAdmin ? 'primary' : 'default'} onClick={() => setOpen(true)}>
-        <AdminPanelSettingsIcon />
-      </IconButton>
+      <Tooltip title={isAdmin ? t('tooltips.admin') : t('tooltips.notAdmin')}>
+        <IconButton color={isAdmin ? 'primary' : 'default'} onClick={() => setOpen(true)}>
+          <AdminPanelSettingsIcon />
+        </IconButton>
+      </Tooltip>
       <ConfirmationModal
         open={open}
         message={t('confirmationModal.changeUserStatus')}

@@ -88,4 +88,14 @@ export const ru = {
   userPage: {
     selectLabel: 'пользователь',
   },
+  tooltips: {
+    admin: 'Администратор',
+    notAdmin: 'Не администратор',
+    blockUser: 'Заблокировать пользователя',
+    unblockUser: 'Разблокировать пользователя',
+    deleteUser: 'Удалить пользователя',
+    viewItem: 'Просмотреть элемент',
+    editItem: 'Редактировать элемент',
+    deleteItem: 'Удалить элемент',
+  },
 };

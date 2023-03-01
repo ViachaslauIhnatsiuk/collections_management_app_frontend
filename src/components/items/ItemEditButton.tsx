@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, IconButton, Tooltip } from '@mui/material';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import { ItemForm } from './itemForm/ItemForm';
 import { selectAuth, useAppSelector } from '../../store/selectors';
@@ -15,18 +15,20 @@ const ItemEditButton: FC<{ itemData: IItem }> = ({ itemData }) => {
 
   return (
     <>
-      <IconButton
-        sx={{
-          display:
-            currentUser._id === itemData.ownerId || currentUser.isAdmin
-              ? 'inline-flex'
-              : 'none',
-        }}
-        color="primary"
-        onClick={() => setOpen(true)}
-      >
-        <BorderColorIcon />
-      </IconButton>
+      <Tooltip title={t('tooltips.editItem')}>
+        <IconButton
+          sx={{
+            display:
+              currentUser._id === itemData.ownerId || currentUser.isAdmin
+                ? 'inline-flex'
+                : 'none',
+          }}
+          color="primary"
+          onClick={() => setOpen(true)}
+        >
+          <BorderColorIcon />
+        </IconButton>
+      </Tooltip>
       <Dialog
         transitionDuration={400}
         open={open}

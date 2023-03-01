@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { IconButton } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useUsers } from '../../hooks/useUsers';
 import { ConfirmationModal } from '../UI/ConfirmationModal';
@@ -12,9 +12,11 @@ const UserRemoveButton: FC<{ userId: string }> = ({ userId }) => {
 
   return (
     <>
-      <IconButton color="primary" onClick={() => setOpen(true)}>
-        <DeleteIcon />
-      </IconButton>
+      <Tooltip title={t('tooltips.deleteUser')}>
+        <IconButton color="primary" onClick={() => setOpen(true)}>
+          <DeleteIcon />
+        </IconButton>
+      </Tooltip>
       <ConfirmationModal
         open={open}
         message={t('confirmationModal.deleteUser')}

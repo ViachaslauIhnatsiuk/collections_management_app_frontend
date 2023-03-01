@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { IconButton } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
 import BlockIcon from '@mui/icons-material/Block';
 import { useUsers } from '../../hooks/useUsers';
 import { ConfirmationModal } from '../UI/ConfirmationModal';
@@ -18,12 +18,14 @@ const UserBlockButton: FC<BlockButtonProps> = ({ userId, isBlocked }) => {
 
   return (
     <>
-      <IconButton
-        color={isBlocked ? 'secondary' : 'default'}
-        onClick={() => setOpen(true)}
-      >
-        <BlockIcon />
-      </IconButton>
+      <Tooltip title={isBlocked ? t('tooltips.unblockUser') : t('tooltips.blockUser')}>
+        <IconButton
+          color={isBlocked ? 'secondary' : 'default'}
+          onClick={() => setOpen(true)}
+        >
+          <BlockIcon />
+        </IconButton>
+      </Tooltip>
       <ConfirmationModal
         open={open}
         message={

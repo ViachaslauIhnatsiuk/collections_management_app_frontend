@@ -87,4 +87,14 @@ export const en = {
   userPage: {
     selectLabel: 'user',
   },
+  tooltips: {
+    admin: 'Admin',
+    notAdmin: 'Not admin',
+    blockUser: 'Block user',
+    unblockUser: 'Unblock user',
+    deleteUser: 'Delete user',
+    viewItem: 'View item',
+    editItem: 'Edit item',
+    deleteItem: 'Delete item',
+  },
 };
