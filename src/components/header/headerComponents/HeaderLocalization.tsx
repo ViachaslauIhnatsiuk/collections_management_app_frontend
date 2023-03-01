@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
-import { ButtonGroup, Button } from '@mui/material';
-import { useTranslation } from 'react-i18next';
+import { ToggleButtonGroup, ToggleButton } from '@mui/material';
 import { selectAuth, useAppSelector } from '../../../store/selectors';
 import { useAppDispatch } from '../../../store/store';
 import { changeLanguage } from '../../../store/slices/authSlice/authSlice';
+import { useTranslation } from 'react-i18next';
 import { LanguageType } from '../../../store/slices/authSlice/authModel';
 
 const HeaderLocalization: FC = () => {
@@ -19,22 +19,19 @@ const HeaderLocalization: FC = () => {
   };
 
   return (
-    <ButtonGroup size="small">
-      <Button
-        sx={{ color: '#ffffff' }}
-        variant={localization === 'en' ? 'contained' : 'text'}
-        onClick={() => switchLanguage('en')}
-      >
+    <ToggleButtonGroup
+      sx={{ maxHeight: 31 }}
+      exclusive
+      value={localization}
+      onChange={(_, language) => switchLanguage(language)}
+    >
+      <ToggleButton sx={{ color: '#ffffff' }} value="en">
         EN
-      </Button>
-      <Button
-        sx={{ color: '#ffffff' }}
-        variant={localization === 'ru' ? 'contained' : 'text'}
-        onClick={() => switchLanguage('ru')}
-      >
+      </ToggleButton>
+      <ToggleButton sx={{ color: '#ffffff' }} value="ru">
         RU
-      </Button>
-    </ButtonGroup>
+      </ToggleButton>
+    </ToggleButtonGroup>
   );
 };
 
