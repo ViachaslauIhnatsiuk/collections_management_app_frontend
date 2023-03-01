@@ -56,7 +56,7 @@ interface HeaderSearchOptionProps {
   option: IItem;
 }
 
-interface CollectionsToolbarProps {
+interface CollectionsToolbarProps extends UsersFilterSelectProps {
   sortType: string;
   setSortType: Dispatch<SetStateAction<string>>;
   setFilteredCollections: Dispatch<SetStateAction<string>>;
@@ -78,6 +78,11 @@ interface BlockButtonProps {
   isBlocked: boolean;
 }
 
+interface UsersFilterSelectProps {
+  filterUser: string;
+  setFilterUser: Dispatch<SetStateAction<string>>;
+}
+
 export type {
   MobileMenuProps,
   LoaderProps,
@@ -93,4 +98,5 @@ export type {
   SocialAuthButtonProps,
   AdminStatusButtonProps,
   BlockButtonProps,
+  UsersFilterSelectProps,
 };

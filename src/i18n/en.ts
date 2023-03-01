@@ -84,4 +84,7 @@ export const en = {
   adminPage: {
     title: 'Users management',
   },
+  userPage: {
+    selectLabel: 'user',
+  },
 };

@@ -12,10 +12,11 @@ import { ICollection } from '../../store/slices/collectionSlice/collectionModel'
 import { useTranslation } from 'react-i18next';
 
 const UserCollectionsPage: FC = () => {
+  const { currentUser } = useAppSelector(selectAuth);
   const [filteredCollections, setFilteredCollections] = useState<string>('');
   const [sortType, setSortType] = useState<string>('asc');
+  const [filterUser, setFilterUser] = useState<string>('All');
   const { collections, status, error } = useAppSelector(selectCollections);
-  const { currentUser } = useAppSelector(selectAuth);
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
@@ -24,15 +25,19 @@ const UserCollectionsPage: FC = () => {
   }, [dispatch]);
 
   const collectionsToRender = useMemo(() => {
-    const collectionsToSort = collections.filter(
+    const filtered = collections.filter(
       ({ title, ownerId }) =>
         (title.toLowerCase().includes(filteredCollections.toLowerCase()) &&
           ownerId === currentUser._id) ||
         (title.toLowerCase().includes(filteredCollections.toLowerCase()) &&
           currentUser.isAdmin),
     );
+    const collectionsToSort =
+      filterUser !== 'All'
+        ? filtered.filter(({ ownerId }) => ownerId === filterUser)
+        : filtered;
     return sortByTitle(collectionsToSort, sortType) as ICollection[];
-  }, [collections, currentUser, filteredCollections, sortType]);
+  }, [collections, currentUser, filteredCollections, sortType, filterUser]);
 
   return (
     <>
@@ -42,6 +47,8 @@ const UserCollectionsPage: FC = () => {
           <Stack sx={{ flexGrow: 1, gap: 3 }}>
             <CollectionsToolbar
               sortType={sortType}
+              filterUser={filterUser}
+              setFilterUser={setFilterUser}
               setSortType={setSortType}
               setFilteredCollections={setFilteredCollections}
             />

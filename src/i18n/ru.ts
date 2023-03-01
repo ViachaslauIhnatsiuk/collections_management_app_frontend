@@ -85,4 +85,7 @@ export const ru = {
   adminPage: {
     title: 'Управление пользователями',
   },
+  userPage: {
+    selectLabel: 'пользователь',
+  },
 };
