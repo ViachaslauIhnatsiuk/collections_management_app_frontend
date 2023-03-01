@@ -18,13 +18,6 @@ interface ICollectionExtraFieldForm {
   type: string;
 }
 
-interface ITableHeaderTitles {
-  id: string;
-  label: string;
-  minWidth: number;
-  align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
-}
-
 interface IExtraField {
   id?: string;
   name: string;
@@ -46,7 +39,6 @@ export type {
   CollectionFormType,
   ICollectionForm,
   ICollectionExtraFieldForm,
-  ITableHeaderTitles,
   IExtraField,
   ICloudTag,
 };

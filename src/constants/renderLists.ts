@@ -1,22 +1,24 @@
-import { ITableHeaderTitles } from '../models/componentsModels';
+import { GridAlignment } from '@mui/x-data-grid';
 
-const tableHeaderTitles: ITableHeaderTitles[] = [
-  { id: 'id', label: 'ID', minWidth: 30 },
+export const usersTableHeaderNames = [
+  { field: 'name', headerName: 'Name', type: 'string', flex: 1, minWidth: 100 },
+  { field: 'email', headerName: 'Email', type: 'string', flex: 1, minWidth: 100 },
   {
-    id: 'title',
-    label: 'Title',
+    field: 'isBlocked',
+    headerName: 'IsBlocked',
+    type: 'boolean',
+    flex: 1,
     minWidth: 100,
   },
+  { field: 'isAdmin', headerName: 'IsAdmin', type: 'boolean', flex: 1, minWidth: 100 },
   {
-    id: 'tags',
-    label: 'Tags',
-    minWidth: 300,
-  },
-  {
-    id: 'actions',
-    label: 'Actions',
-    minWidth: 100,
-    align: 'center',
+    field: 'actions',
+    headerName: 'Actions',
+    type: 'string',
+    headerAlign: 'center' as GridAlignment,
+    align: 'center' as GridAlignment,
+    flex: 1,
+    minWidth: 150,
   },
 ];
 
@@ -49,9 +51,4 @@ const cloudTagsPalette = [
   '#93aaac',
 ];
 
-export {
-  tableHeaderTitles,
-  collectionTopics,
-  collectionExtraFieldsTypes,
-  cloudTagsPalette,
-};
+export { collectionTopics, collectionExtraFieldsTypes, cloudTagsPalette };

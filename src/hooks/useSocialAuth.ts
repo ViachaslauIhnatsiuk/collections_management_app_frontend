@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { BASE_URL } from '../constants/baseUrl';
+import { AuthProvider } from 'firebase/auth';
 import { auth, signInWithPopup } from '../firebase/firebase';
-import { ICurrentUserState } from '../store/slices/authSlice/authModel';
 import { setAuthState, signUp } from '../store/slices/authSlice/authSlice';
 import { useAppDispatch } from '../store/store';
-import { AuthProvider } from 'firebase/auth';
+import { ICurrentUserState } from '../store/slices/authSlice/authModel';
+import { BASE_URL } from '../constants/commonConstants';
 
 const useSocialAuth = () => {
   const [socialAuthError, setSocialAuthError] = useState<string>('');

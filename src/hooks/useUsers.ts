@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 import { selectAuth, selectUsers, useAppSelector } from '../store/selectors';
-import { resetAuthState } from '../store/slices/authSlice/authSlice';
-import { IUser } from '../store/slices/usersSlice/usersModel';
 import { deleteUser, updateUser } from '../store/slices/usersSlice/usersSlice';
+import { resetAuthState } from '../store/slices/authSlice/authSlice';
 import { useAppDispatch } from '../store/store';
+import { IUser } from '../store/slices/usersSlice/usersModel';
 
 const useUsers = (userId: string) => {
   const { users } = useAppSelector(selectUsers);

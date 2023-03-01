@@ -6,9 +6,10 @@ import { ItemsTableToolbar } from './ItemsTableToolbar';
 import { generateHeaderNames } from '../../../helpers/generateHeaderNames';
 import { dataGridStyles } from '../../../constants/componentsStyles';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
+import { TABLE_PAGE_SIZE, tableRowsPerPage } from '../../../constants/commonConstants';
 
 const ItemsTable: FC<{ collectionItems: IItem[] }> = ({ collectionItems }) => {
-  const [pageSize, setPageSize] = useState<number>(10);
+  const [pageSize, setPageSize] = useState<number>(TABLE_PAGE_SIZE);
 
   const rows = collectionItems.map((item) => ({ id: item._id, ...item }));
   const columns = generateHeaderNames(collectionItems[0]).map((column) => {
@@ -35,7 +36,7 @@ const ItemsTable: FC<{ collectionItems: IItem[] }> = ({ collectionItems }) => {
         columns={columns}
         pageSize={pageSize}
         onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-        rowsPerPageOptions={[5, 10, 15]}
+        rowsPerPageOptions={tableRowsPerPage}
         disableSelectionOnClick
         autoHeight
         components={{ Toolbar: ItemsTableToolbar }}

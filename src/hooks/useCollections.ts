@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
-import { sortByTitle } from '../helpers/sort';
 import { selectAuth, selectCollections, useAppSelector } from '../store/selectors';
+import { sortByTitle } from '../helpers/sort';
 import { ICollection } from '../store/slices/collectionSlice/collectionModel';
 
 const useCollections = () => {

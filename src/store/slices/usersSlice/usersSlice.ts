@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { BASE_URL } from '../../../constants/baseUrl';
 import { setError, setPending, setResolved } from './usersHelpers';
 import { IUser, IUsersState, UsersErrors } from './usersModel';
+import { BASE_URL } from '../../../constants/commonConstants';
 
 const initialState: IUsersState = {
   users: [],

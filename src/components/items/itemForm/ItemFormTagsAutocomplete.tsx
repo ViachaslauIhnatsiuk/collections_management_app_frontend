@@ -4,8 +4,8 @@ import { useFormContext } from 'react-hook-form';
 import { useDebounce } from '../../../hooks/useDebounce';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
-import { BASE_URL } from '../../../constants/baseUrl';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
+import { BASE_URL } from '../../../constants/commonConstants';
 
 const ItemFormTagsAutocomplete: FC = () => {
   const [tagsList, setTagsList] = useState<string[]>([]);

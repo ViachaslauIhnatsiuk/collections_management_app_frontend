@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { BASE_URL } from '../../../constants/baseUrl';
 import { setError, setPending, setResolved } from './itemHelpers';
 import { CollectionErrors, IItem, IItemsState, NewItem, UpdatedItem } from './itemModel';
+import { BASE_URL } from '../../../constants/commonConstants';
 
 const initialState: IItemsState = {
   items: [],

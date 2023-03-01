@@ -10,9 +10,9 @@ import {
   updateSelectedItem,
 } from '../../../store/slices/itemSlice/itemSlice';
 import { IItem, IItemComment } from '../../../store/slices/itemSlice/itemModel';
-import { BASE_URL } from '../../../constants/baseUrl';
 import io from 'socket.io-client';
 import { useTranslation } from 'react-i18next';
+import { BASE_URL } from '../../../constants/commonConstants';
 
 const newSocket = io(BASE_URL);
 

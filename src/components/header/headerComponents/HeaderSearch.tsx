@@ -3,8 +3,8 @@ import { Autocomplete, Paper } from '@mui/material';
 import { HeaderSearchOption } from './HeaderSearchOption';
 import { HeaderSearchTextField } from './HeaderSearchTextField';
 import { useDebounce } from '../../../hooks/useDebounce';
-import { BASE_URL } from '../../../constants/baseUrl';
 import { IItem } from '../../../store/slices/itemSlice/itemModel';
+import { BASE_URL } from '../../../constants/commonConstants';
 
 const HeaderSearch: FC = () => {
   const [itemsList, setItemsList] = useState<IItem[]>([]);

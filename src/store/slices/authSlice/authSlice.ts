@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { BASE_URL } from '../../../constants/baseUrl';
 import { setError, setPending, setResolved } from './authHelpers';
 import {
   ICurrentUserState,
@@ -10,6 +9,7 @@ import {
   LanguageType,
   ThemeType,
 } from './authModel';
+import { BASE_URL } from '../../../constants/commonConstants';
 
 const initialState: IAuthState = {
   isAuth: false,
@@ -79,16 +79,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    setAuthState: (state, { payload: user }: PayloadAction<ICurrentUserState>) => {
+    setAuthState: (state, { payload }: PayloadAction<ICurrentUserState>) => {
       state.isAuth = true;
-      const { currentUser } = state;
-      const { _id, token, name, email, isBlocked, isAdmin } = user;
-      currentUser._id = _id;
-      currentUser.token = token;
-      currentUser.name = name;
-      currentUser.email = email;
-      if (isBlocked) currentUser.isBlocked = isBlocked;
-      if (isAdmin) currentUser.isAdmin = isAdmin;
+      state.currentUser = payload;
     },
     updateTheme: (state, { payload }: PayloadAction<ThemeType>) => {
       state.theme = payload;

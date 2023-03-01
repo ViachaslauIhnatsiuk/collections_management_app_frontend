@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { BASE_URL } from '../../../constants/baseUrl';
 import { setError, setPending, setResolved } from './collectionHelpers';
 import {
   CollectionErrors,
@@ -7,6 +6,7 @@ import {
   ICollectionsState,
   UpdateCollection,
 } from './collectionModel';
+import { BASE_URL } from '../../../constants/commonConstants';
 
 const initialState: ICollectionsState = {
   collections: [],

@@ -15,8 +15,8 @@ import { useTranslation } from 'react-i18next';
 const ItemsPage: FC = () => {
   const { getCollectionItems, status, error } = useItems();
   const { getCollectionById } = useCollections();
-  const { id } = useParams();
   const dispatch = useAppDispatch();
+  const { id } = useParams();
   const { t } = useTranslation();
 
   useEffect(() => {
