@@ -1,17 +1,19 @@
 import { FC, useState } from 'react';
 import { Autocomplete, TextField } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
-import { BASE_URL } from '../../../constants/baseUrl';
-import { IItem } from '../../../store/slices/itemSlice/itemModel';
+import { useDebounce } from '../../../hooks/useDebounce';
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
+import { BASE_URL } from '../../../constants/baseUrl';
+import { IItem } from '../../../store/slices/itemSlice/itemModel';
 
 const ItemFormTagsAutocomplete: FC = () => {
   const [tagsList, setTagsList] = useState<string[]>([]);
   const { register, setValue } = useFormContext();
+  const debouncedFunction = useDebounce(searchTags, 700);
   const { t } = useTranslation();
 
-  const searchTags = async (newValue: string): Promise<void> => {
+  async function searchTags(newValue: string): Promise<void> {
     if (newValue.length > 1) {
       const response = await fetch(`${BASE_URL}/items?search=${newValue}`);
       const items: IItem[] = await response.json();
@@ -22,12 +24,12 @@ const ItemFormTagsAutocomplete: FC = () => {
     } else {
       setTagsList([]);
     }
-  };
+  }
 
   return (
     <Autocomplete
       onInputChange={(_, newValue) => {
-        searchTags(newValue);
+        debouncedFunction(newValue);
         setValue('tags', newValue);
       }}
       freeSolo
