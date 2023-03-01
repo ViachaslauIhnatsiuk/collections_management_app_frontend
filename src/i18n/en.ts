@@ -18,6 +18,15 @@ export const en = {
     noAccount: 'Don`t have an account?',
     haveAccount: 'Already have an account?',
   },
+  validation: {
+    emptyFieldReport: 'Field can not be empty',
+    minNameLengthReport: 'Minimum 3 characters required',
+    maxNameLengthReport: 'Maximum 15 characters',
+    invalidEmailReport: 'Invalid email address. Please correct and try again',
+    invalidPasswordReport:
+      'Password must contain at least one number and uppercase character',
+    minPasswordLengthReport: 'Minimum 8 characters required',
+  },
   sidebar: {
     main: 'Main',
     allCollections: 'All collections',

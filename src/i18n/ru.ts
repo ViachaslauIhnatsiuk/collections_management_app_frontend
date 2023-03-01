@@ -18,6 +18,16 @@ export const ru = {
     noAccount: 'У вас ещё нет учетной записи?',
     haveAccount: 'У вас уже есть учётная запись?',
   },
+  validation: {
+    emptyFieldReport: 'Поле не может быть пустым',
+    minNameLengthReport: 'Требуется не менее 3 символов',
+    maxNameLengthReport: 'Требуется не более 15 символов',
+    invalidEmailReport:
+      'Неверный адрес электронной почты. Пожалуйста, исправьте и повторите попытку',
+    invalidPasswordReport:
+      'Пароль должен содержать хотя бы одну цифру и символ верхнего регистра',
+    minPasswordLengthReport: 'Требуется не менее 8 символов',
+  },
   sidebar: {
     main: 'Главная',
     allCollections: 'Все коллекции',

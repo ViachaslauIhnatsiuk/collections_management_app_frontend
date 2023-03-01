@@ -9,9 +9,9 @@ import {
   Typography,
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { passwordRegister } from '../../../constants/formValidation';
 import { IUserForm } from '../../../models/componentsModels';
 import { useTranslation } from 'react-i18next';
+import { useValidation } from '../../../hooks/useValidation';
 
 const PasswordField: FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -19,6 +19,7 @@ const PasswordField: FC = () => {
     register,
     formState: { errors },
   } = useFormContext<IUserForm>();
+  const { passwordRegister } = useValidation();
   const { t } = useTranslation();
 
   return (

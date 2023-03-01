@@ -1,15 +1,16 @@
 import { FC } from 'react';
 import { TextField, Typography } from '@mui/material';
 import { useFormContext } from 'react-hook-form';
-import { emailRegister } from '../../../constants/formValidation';
 import { IUserForm } from '../../../models/componentsModels';
 import { useTranslation } from 'react-i18next';
+import { useValidation } from '../../../hooks/useValidation';
 
 const EmailField: FC = () => {
   const {
     register,
     formState: { errors },
   } = useFormContext<IUserForm>();
+  const { emailRegister } = useValidation();
   const { t } = useTranslation();
 
   return (
