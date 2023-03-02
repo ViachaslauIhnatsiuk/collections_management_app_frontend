@@ -23,7 +23,7 @@ const TagsCloud: FC = () => {
   };
 
   return (
-    <Stack sx={{ maxWidth: 600, alignSelf: 'center' }}>
+    <Stack sx={{ maxWidth: 600, alignSelf: 'center' }} data-testid="tags-cloud">
       <TagCloud
         minSize={20}
         maxSize={40}

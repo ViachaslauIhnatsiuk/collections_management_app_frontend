@@ -20,6 +20,7 @@ const EmailField: FC = () => {
         fullWidth
         label={t('auth.emailPlaceholder')}
         autoComplete="off"
+        inputProps={{ 'data-testid': 'email-field' }}
         {...register('email', emailRegister)}
       />
       <Typography

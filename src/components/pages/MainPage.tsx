@@ -19,12 +19,12 @@ const MainPage: FC = () => {
   }, [dispatch]);
 
   return (
-    <Container sx={mainPageContainerStyles}>
+    <Container sx={mainPageContainerStyles} data-testid="main-page">
       <Stack sx={{ flexDirection: { md: 'row', sm: 'column', xs: 'column' }, gap: 3 }}>
         <LastAddedItemsList />
         <LargestCollectionsList />
       </Stack>
-      <TagsCloud />
+      <TagsCloud data-testid="tags-cloud" />
     </Container>
   );
 };

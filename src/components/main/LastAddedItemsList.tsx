@@ -12,7 +12,7 @@ const LastAddedItemsList: FC = () => {
   const { t } = useTranslation();
 
   return (
-    <Stack sx={{ flex: '1 1 30%' }}>
+    <Stack sx={{ flex: '1 1 30%' }} data-testid="last-added-items">
       <Typography sx={{ fontSize: 18, textAlign: 'center' }}>
         {t('notifications.lastAddedItems')}
       </Typography>

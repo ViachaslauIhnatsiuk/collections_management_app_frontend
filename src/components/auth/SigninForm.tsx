@@ -28,6 +28,7 @@ const SigninForm: FC = () => {
           alignItems: 'center',
           gap: 1,
         }}
+        data-testid="signIn-form"
       >
         <Avatar sx={{ backgroundColor: 'primary.main' }}>
           <LockOpenIcon />

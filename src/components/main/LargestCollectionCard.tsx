@@ -11,7 +11,7 @@ const LargestCollectionCard: FC<ICollection> = (props) => {
 
   return (
     <Link to={`/all-collections/${_id}`} style={{ textDecoration: 'none' }}>
-      <Card sx={{ position: 'relative' }}>
+      <Card sx={{ position: 'relative' }} data-testid="largest-card">
         <Paper
           elevation={3}
           sx={{ position: 'absolute', top: 3, right: 3, px: 0.5, fontSize: 12 }}
@@ -24,8 +24,15 @@ const LargestCollectionCard: FC<ICollection> = (props) => {
           title="image"
         />
         <CardContent sx={{ pt: 1 }}>
-          <Typography sx={{ fontSize: 13 }}>{title}</Typography>
-          <Typography sx={{ fontSize: 11, color: 'text.secondary' }}>{topic}</Typography>
+          <Typography sx={{ fontSize: 13 }} data-testid="largest-card-title">
+            {title}
+          </Typography>
+          <Typography
+            sx={{ fontSize: 11, color: 'text.secondary' }}
+            data-testid="largest-card-topic"
+          >
+            {topic}
+          </Typography>
         </CardContent>
       </Card>
     </Link>

@@ -28,6 +28,7 @@ const SignupForm: FC = () => {
           alignItems: 'center',
           gap: 1,
         }}
+        data-testid="signUp-form"
       >
         <Avatar sx={{ backgroundColor: 'primary.main' }}>
           <HowToRegIcon />

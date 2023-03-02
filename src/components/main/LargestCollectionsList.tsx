@@ -13,7 +13,10 @@ const LargestCollectionsList: FC = () => {
   const largestCollections = getLargestCollections();
 
   return (
-    <Stack sx={{ flex: '1 1 60%', alignItems: 'center' }}>
+    <Stack
+      sx={{ flex: '1 1 60%', alignItems: 'center' }}
+      data-testid="largest-collections"
+    >
       <Typography sx={{ fontSize: 18, textAlign: 'center' }}>
         {t('notifications.largestCollections')}
       </Typography>

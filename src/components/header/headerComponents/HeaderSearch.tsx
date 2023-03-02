@@ -22,7 +22,11 @@ const HeaderSearch: FC = () => {
   }
 
   return (
-    <Paper elevation={4} sx={{ width: 300, backgroundColor: 'transparent' }}>
+    <Paper
+      elevation={4}
+      sx={{ width: 300, backgroundColor: 'transparent' }}
+      data-testid="search"
+    >
       <Autocomplete
         sx={{ width: '100%', '& .MuiSvgIcon-root': { color: '#ffffff' } }}
         onInputChange={(_, newValue) => {
@@ -39,6 +43,7 @@ const HeaderSearch: FC = () => {
         renderInput={(params) => {
           return <HeaderSearchTextField {...params} />;
         }}
+        data-testid="header-search"
       />
     </Paper>
   );

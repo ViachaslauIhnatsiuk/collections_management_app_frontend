@@ -15,7 +15,7 @@ const Header: FC = () => {
   const isMenuOpen = Boolean(menuAnchorElement);
 
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" data-testid="header">
       <Toolbar sx={{ gap: { sm: 2, xs: 1 } }}>
         <SidebarToggleButton />
         <HeaderLogo src={logo} />

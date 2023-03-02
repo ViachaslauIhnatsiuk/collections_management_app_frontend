@@ -35,6 +35,7 @@ const PasswordField: FC = () => {
               </IconButton>
             </InputAdornment>
           }
+          inputProps={{ 'data-testid': 'password-field' }}
           label={t('auth.passwordPlaceholder')}
           {...register('password', passwordRegister)}
         />

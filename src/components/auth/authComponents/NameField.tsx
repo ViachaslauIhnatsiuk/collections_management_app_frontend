@@ -20,6 +20,7 @@ const NameField: FC = () => {
         fullWidth
         label={t('auth.namePlaceholder')}
         autoComplete="off"
+        inputProps={{ 'data-testid': 'name-field' }}
         {...register('name', nameRegister)}
       />
       <Typography

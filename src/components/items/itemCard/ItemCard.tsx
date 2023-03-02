@@ -40,8 +40,11 @@ const ItemCard: FC<{ item: IItem }> = ({ item }) => {
         py: 2,
         gap: 2,
       }}
+      data-testid="item-card"
     >
-      <Typography sx={{ fontSize: 26 }}>{title}</Typography>
+      <Typography sx={{ fontSize: 26 }} data-testid="item-card-title">
+        {title}
+      </Typography>
       <Stack sx={{ width: '100%', maxHeight: 150, overflow: 'auto' }}>
         {itemValues.map((value, index) => {
           return (

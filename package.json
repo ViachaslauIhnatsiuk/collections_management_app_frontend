@@ -10,7 +10,8 @@
     "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
     "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
     "lint": "yarn lint:format && yarn lint:fix ",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "test": "vitest"
   },
   "dependencies": {
     "@babel/core": "^7.0.0-0",
@@ -39,6 +40,8 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "12.1.2",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "@types/react-tagcloud": "^1.1.7",
@@ -52,10 +55,12 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "jsdom": "^21.1.0",
     "pre-commit": "^1.2.2",
     "prettier": "^2.5.1",
     "typescript": "^4.5.5",
-    "vite": "^2.9.12"
+    "vite": "^2.9.12",
+    "vitest": "^0.29.2"
   },
   "resolutions": {
     "@types/react": "17.0.2",

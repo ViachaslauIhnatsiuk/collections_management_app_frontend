@@ -29,7 +29,13 @@ const SubmitButton: FC<SubmitButtonProps> = ({ type, value }) => {
   };
 
   return (
-    <Button variant="contained" fullWidth disabled={!isValid} onClick={handleSubmit}>
+    <Button
+      variant="contained"
+      fullWidth
+      disabled={!isValid}
+      onClick={handleSubmit}
+      data-testid="signIn-button"
+    >
       {value}
     </Button>
   );
